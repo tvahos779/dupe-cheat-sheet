@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>Guns n Subs — Dupe Cheat Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        color-scheme: dark;
+        --bg:#0d100e; --panel:#161a17; --panel2:#1b211c; --line:#343d35;
+        --ink:#f3f6f3; --muted:#aeb9b0; --faint:#7e8a80;
+        --accent:#67dc8b; --deal:#00e676; --deal-ink:#06130a;
+        --gold:#d8b04a; --gold-soft:#3a2d0d;
+        --red:#ff6647; --heat:#ff9c43;
+        --plate:#ece9e2;
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.55}
+      a{color:var(--accent)}
+      .wrap{max-width:1180px;margin:0 auto;padding:0 16px 64px}
+
+      /* back-to-main bar */
+      .backbar{position:sticky;top:0;z-index:20;background:rgba(13,16,14,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+      .backbar-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+      .back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--deal);color:var(--deal-ink);font-weight:800;font-size:15px;text-decoration:none;padding:10px 16px;border-radius:8px}
+      .back-btn:active{transform:translateY(1px)}
+      .backbar .tag{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+      header.masthead{padding:30px 0 6px}
+      h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:clamp(44px,9vw,84px);line-height:.95;margin:0;letter-spacing:.01em;text-transform:uppercase}
+      h1 .amp{color:var(--gold)}
+      .lede{color:var(--muted);font-size:17px;max-width:66ch;margin:12px 0 0}
+      .checked{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--faint);margin-top:12px;letter-spacing:.03em}
+      .checked b{color:var(--accent);font-weight:600}
+
+      nav.chips{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
+      nav.chips a{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:999px}
+      nav.chips a:hover{border-color:var(--accent);color:var(--accent)}
+
+      section{margin-top:44px}
+      .sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:18px}
+      .sec-head h2{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:clamp(26px,4.5vw,36px);margin:0;text-transform:uppercase;letter-spacing:.01em}
+      .sec-head p{margin:0;color:var(--muted);font-size:14.5px;max-width:70ch}
+
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:14px}
+      .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+      .card .media{background:var(--plate);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+      .card .media img{width:100%;height:100%;object-fit:cover;display:block}
+      .card .media.fit img{object-fit:contain;padding:10px}
+      .card .body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+      .badges{display:flex;gap:6px;flex-wrap:wrap}
+      .badge{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:5px;text-transform:uppercase}
+      .badge.rebate{background:var(--gold);color:#1a1200}
+      .badge.low{background:#4a1d12;color:var(--red);border:1px solid var(--red)}
+      .badge.deal{background:var(--deal);color:var(--deal-ink)}
+      .badge.box{background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold)}
+      .card h3{margin:0;font-size:17.5px;line-height:1.25;font-weight:800}
+      .spec{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+      .note{margin:0;font-size:14px;color:#d7ddd7;flex:1}
+      .pricerow{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-top:2px}
+      .price{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:700;color:var(--deal)}
+      .price small{font-size:13px;color:var(--muted);font-weight:500}
+      .was{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--faint);text-decoration:line-through}
+      .netline{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--gold)}
+      .seller{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+      .go{margin-top:6px;display:block;text-align:center;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:14.5px;text-decoration:none;padding:10px;border-radius:8px}
+      .go:hover{background:var(--accent);color:var(--deal-ink)}
+
+      /* hero spotlight card */
+      .spot{display:grid;grid-template-columns:1fr;gap:0;background:var(--panel);border:1px solid var(--gold);border-radius:14px;overflow:hidden}
+      @media (min-width:760px){.spot{grid-template-columns:1.15fr 1fr}}
+      .spot .media{background:var(--plate);display:flex;align-items:center;justify-content:center;min-height:260px}
+      .spot .media img{width:100%;height:100%;object-fit:contain;padding:18px;max-height:420px}
+      .spot .body{padding:22px;display:flex;flex-direction:column;gap:10px}
+      .spot h3{font-size:clamp(24px,3.4vw,32px);margin:0;line-height:1.1;font-weight:800}
+      .spot .price{font-size:34px}
+      .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+
+      /* guide blocks */
+      .guide{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 22px}
+      .guide h3{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:clamp(22px,3.6vw,30px);margin:0 0 6px;text-transform:uppercase}
+      .guide .sub{color:var(--muted);margin:0 0 16px;font-size:15px;max-width:72ch}
+      .cols{display:grid;grid-template-columns:1fr;gap:18px}
+      @media (min-width:820px){.cols{grid-template-columns:1fr 1fr}}
+      .cols3{display:grid;grid-template-columns:1fr;gap:18px}
+      @media (min-width:900px){.cols3{grid-template-columns:1fr 1fr 1fr}}
+      .mini h4{margin:0 0 6px;font-size:16px;font-weight:800;color:var(--accent)}
+      .mini h4.gold{color:var(--gold)}
+      .mini p{margin:0 0 10px;font-size:14.5px;color:#d7ddd7}
+      .mini p:last-child{margin-bottom:0}
+      .mini ul{margin:0;padding-left:18px;font-size:14.5px;color:#d7ddd7}
+      .mini li{margin-bottom:6px}
+      .mini li b, .mini p b{color:var(--ink)}
+      .takeline{border-top:1px dashed var(--line);margin-top:16px;padding-top:14px;font-size:14.5px;color:#d7ddd7}
+      .takeline b{color:var(--gold)}
+      ol.steps{margin:0;padding-left:20px;font-size:14.5px;color:#d7ddd7}
+      ol.steps li{margin-bottom:8px}
+      ol.steps b{color:var(--ink)}
+
+      footer{margin-top:56px;border-top:2px solid var(--line);padding-top:20px;color:var(--muted);font-size:14px}
+      footer .big{font-family:'Anton',Impact,sans-serif;font-size:22px;color:var(--ink);text-transform:uppercase;margin:0 0 8px}
+      footer a{font-weight:600}
+      .fineprint{font-size:12.5px;color:var(--faint);margin-top:14px;max-width:80ch}
+      @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+    </style>
+  </head>
+  <body>
+    <div class="backbar">
+      <div class="backbar-in">
+        <a class="back-btn" href="index.html">← Back to the Dupe Cheat Sheet</a>
+        <span class="tag">SISTER SHEET · GUNS, KNIVES, SUBS &amp; CIGARS</span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <header class="masthead">
+        <h1>Guns <span class="amp">n</span> Subs</h1>
+        <p class="lede">The armory annex of the Dupe Cheat Sheet — guns, rifles, knives, gun accessories, car audio, and the humidor, all in one place. Every firearm, knife, and speaker below is <b style="color:var(--ink)">new</b> — never used, never refurbished — and every cigar is genuine ACID by Drew Estate. Real prices, checked against the street, with the buying guides to match.</p>
+        <p class="checked">PRICES &amp; STOCK CHECKED <b>WED, OCT 21, 2026</b> · PRICES MOVE — THE LISTING PAGE IS THE FINAL WORD</p>
+        <nav class="chips">
+          <a href="#pistols">9MM PISTOLS</a>
+          <a href="#shotguns">SHOTGUNS</a>
+          <a href="#rifles">RIFLES</a>
+          <a href="#guide-9mm">9MM GUIDE</a>
+          <a href="#guide-ffl">FFL BASICS</a>
+          <a href="#accessories">ACCESSORIES</a>
+          <a href="#knives">KNIVES</a>
+          <a href="#audio">CAR AUDIO</a>
+          <a href="#cigars">CIGARS</a>
+          <a href="#guide-cigars">CIGAR GUIDE</a>
+        </nav>
+      </header>
+
+      <!-- ============ SPOTLIGHT ============ -->
+      <section aria-label="Top deal">
+        <div class="spot">
+          <div class="media"><img src="assets/img_f9e3f08e5ba82a13.webp" alt="Beretta APX A1 full-size 9mm pistol, side profile" /></div>
+          <div class="body">
+            <span class="kicker">★ Deal of the sheet</span>
+            <h3>Beretta APX A1 Full Size 9mm</h3>
+            <p class="spec">4.25″ BARREL · 17+1 · OPTIC-READY · FIBER-OPTIC FRONT SIGHT · STRIKER-FIRED</p>
+            <p class="note" style="flex:0">Beretta is buying market share right now and this is the proof. The APX A1 has the best ergonomics and the best stock trigger of any striker gun under $500 — interchangeable backstraps, aggressive-but-smart slide serrations, and a slide cut for a red dot out of the box. At $399.99 it's a deal. After Beretta's $100 rebate it's <b>three hundred bucks</b>, which is absurd for a duty-grade pistol from the oldest gunmaker on Earth.</p>
+            <div class="pricerow">
+              <span class="price">$399.99</span>
+              <span class="was">$549.00</span>
+              <span class="netline">= $299.99 NET AFTER $100 BERETTA REBATE*</span>
+            </div>
+            <span class="seller">GrabAGun · In stock · Ships to your FFL</span>
+            <a class="go" href="https://grabagun.com/beretta-apx-a1-9mm-4-25-barrel-17-rounds-fiber-optic-front-sight.html" target="_blank" rel="noopener">View listing at GrabAGun →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PISTOLS ============ -->
+      <section id="pistols">
+        <div class="sec-head">
+          <h2>9mm Pistols</h2>
+          <p>Fourteen handguns, seven makers, zero filler — CZ, Ruger, and Taurus joined the bench in the Oct 21 expansion, every price re-verified the same day. Beretta still leads on value because Beretta's rebate makes it the value king this fall — buy by Nov 30, claim by Dec 31, 2026.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_49ad087e15861a67.jpg" alt="Beretta M9 9mm pistol with open slide design" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge rebate">$100 Rebate</span></div>
+              <h3>Beretta M9</h3>
+              <p class="spec">4.9″ · 15+1 · DA/SA HAMMER · ALL-METAL FRAME</p>
+              <p class="note">The U.S. military's sidearm for three decades, and still the softest-shooting 9mm on this page — the open-slide design and all-metal weight soak up recoil like nothing else here. The long DA first pull is a feature, not a bug, for a nightstand gun.</p>
+              <div class="pricerow"><span class="price">$599.99</span><span class="was">$819.00</span></div>
+              <span class="netline">= $499.99 net after rebate*</span>
+              <span class="seller">GrabAGun · In stock</span>
+              <a class="go" href="https://grabagun.com/beretta-m9-9mm-4-9-bl-2-15rd.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_59090ca73f88e832.jpg" alt="Beretta Px4 Storm full-size 9mm pistol" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge rebate">$100 Rebate</span><span class="badge low">Low stock</span></div>
+              <h3>Beretta Px4 Storm Full Size</h3>
+              <p class="spec">4″ · 17+1 · DA/SA · ROTATING BARREL</p>
+              <p class="note">The most underrated pistol Beretta makes. The rotating barrel turns recoil into a gentle push instead of muzzle flip, so follow-up shots land faster than they should. If the APX is the value pick, this is the connoisseur pick — grab it before the low stock is no stock.</p>
+              <div class="pricerow"><span class="price">$629.99</span><span class="was">$749.00</span></div>
+              <span class="netline">= $529.99 net after rebate*</span>
+              <span class="seller">GrabAGun · Low stock</span>
+              <a class="go" href="https://grabagun.com/beretta-px4-9mm-4-bl-2-17rd.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_e8c0532c23e52f12.jpg" alt="Glock 19 9mm compact pistol" /></div>
+            <div class="body">
+              <h3>Glock 19 V</h3>
+              <p class="spec">4.02″ · 15+1 · STRIKER · FIXED GLOCK SIGHTS</p>
+              <p class="note">Heads up, because this confuses everyone: Glock wound down the Gen 3/4/5 double-stacks, and the <b>V series is the current-production 19</b> — same size, same mags, same holsters, updated internals. Still the default answer: every holster maker, mag, and part on Earth exists for this gun.</p>
+              <div class="pricerow"><span class="price">$539.00</span></div>
+              <span class="seller">Bass Pro Shops · Order online, ship to store</span>
+              <a class="go" href="https://www.basspro.com/p/glock-19-v-semi-auto-pistol-with-fixed-glock-sights" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_10ade491fb726306.jpg" alt="Glock 45 9mm pistol with full-size grip and compact slide" /></div>
+            <div class="body">
+              <h3>Glock 45 V</h3>
+              <p class="spec">4.02″ · 17+1 · STRIKER · FULL-SIZE GRIP</p>
+              <p class="note">The crossover: a G19-length slide on a full-size G17 grip. That extra grip is exactly why most people shoot the 45 better than the 19 — more hand on the gun, two more rounds, same carry footprint up top. Same $539 as the 19, so pick by hand size, not price.</p>
+              <div class="pricerow"><span class="price">$539.00</span></div>
+              <span class="seller">Bass Pro Shops · Order online, ship to store</span>
+              <a class="go" href="https://www.basspro.com/p/glock-45-v-semi-auto-pistol-with-fixed-glock-sights" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_a1af15552ac00192.jpg" alt="Springfield Hellcat Pro OSP 9mm micro-compact pistol" /></div>
+            <div class="body">
+              <h3>Springfield Hellcat Pro OSP</h3>
+              <p class="spec">3.7″ · 15+1 / 17+1 · OPTIC-READY · STRIKER</p>
+              <p class="note">The carry gun that ruined every other carry gun. Seventeen rounds in a pistol barely bigger than the single-stacks it replaced, with a real optic cut and tritium front sight. If you only buy one gun on this page to actually carry every day, it's this one.</p>
+              <div class="pricerow"><span class="price">$579.99</span><span class="was">$669.99</span></div>
+              <span class="seller">GrabAGun · In stock</span>
+              <a class="go" href="https://grabagun.com/springfield-armory-hellcat-pro-osp-9mm-3-7-barrel-15-rounds-or.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_20197cee0884e50c.jpg" alt="Springfield Echelon 9mm full-size pistol" /></div>
+            <div class="body">
+              <h3>Springfield Echelon</h3>
+              <p class="spec">4.5″ · 20+1 · OPTIC-READY · SERIALIZED CHASSIS</p>
+              <p class="note">The most forward-thinking duty gun here. The serialized part is a removable steel chassis, so grip frames swap without buying a new "gun" — and the optic system mounts most red dots directly with movable pins, no adapter-plate shopping list. Twenty rounds flush. This is where pistol design is heading.</p>
+              <div class="pricerow"><span class="price">$609.99</span><span class="was">$709.99</span></div>
+              <span class="seller">GrabAGun · In stock</span>
+              <a class="go" href="https://grabagun.com/springfield-ec9459b-u-echelon.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_44334630eedc5b06.webp" alt="Kimber Micro 9 compact 1911-style pistol" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge low">Low stock</span></div>
+              <h3>Kimber Micro 9 Liberty</h3>
+              <p class="spec">3.15″ · 7+1 · SINGLE-ACTION · ALL-METAL</p>
+              <p class="note">A 1911 shrunk to pocket size, with the 1911 trigger to prove it — short, crisp, and nothing like a striker gun. All-metal construction, real sights, and Kimber fit and finish. Seven rounds is the trade for a gun this small and this shootable; carry it cocked-and-locked like JMB intended.</p>
+              <div class="pricerow"><span class="price">$529.99</span><span class="was">$625.00</span></div>
+              <span class="seller">GrabAGun · Low stock</span>
+              <a class="go" href="https://grabagun.com/kimber-micro-9-liberty-9mm-3-15-barrel-7-rounds.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_5a2c438c9338cdb4.jpg" alt="Kimber R7 Mako optic-ready 9mm pistol" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Sleeper deal</span></div>
+              <h3>Kimber R7 Mako OR</h3>
+              <p class="spec">3.37″ · 13+1 · OPTIC-READY · TRUGLO PRO SIGHTS</p>
+              <p class="note">Kimber's striker gun is the sleeper of the micro-compact class — reviewers keep landing on the same conclusion: the best stock trigger in its segment, a closed ejection port that shrugs off lint and pocket crud, and TruGlo Pro sights that cost real money aftermarket. At $419.99 it's priced like a budget gun and built like a Kimber.</p>
+              <div class="pricerow"><span class="price">$419.99</span><span class="was">$502.00</span></div>
+              <span class="seller">GrabAGun · In stock</span>
+              <a class="go" href="https://grabagun.com/kimber-r7-mako-optic-ready-9mm-3-35-barrel-13-rounds-with-truglo-pro-sights.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_fb0af533dc31d7a5.jpg" alt="CZ P-10 C compact 9mm pistol" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$43 under street</span><span class="badge low">Almost gone</span></div>
+              <h3>CZ P-10 C</h3>
+              <p class="spec">4.02″ · 15+1 · STRIKER · STEEL SIGHTS · REVERSIBLE MAG CATCH</p>
+              <p class="note">The connoisseur's Glock alternative — and the gun that wins blind trigger tests. CZ's striker has a crisper break and shorter reset than any stock Glock, with ergonomics testers consistently rank at the top of the class. KYGUNCO's $426.99 is $43 under Sportsman's Guide for the exact same pistol.</p>
+              <div class="pricerow"><span class="price">$426.99</span></div>
+              <span class="netline">Sportsman's Guide charges $469.99 for this exact pistol</span>
+              <span class="seller">KYGUNCO · In stock · Free shipping · New</span>
+              <a class="go" href="https://www.kygunco.com/product/cz-usa-91531-p-10-c-9mm-4.02-black-15rd-reversible-mag-catch" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_9ace683543c840d0.jpg" alt="CZ P-10 C Optics Ready 9mm pistol with slide cut for a red dot" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Optic-ready deal</span><span class="badge low">Low stock</span></div>
+              <h3>CZ P-10 C Optics Ready</h3>
+              <p class="spec">4.02″ · 15+1 · OPTIC-READY · FRONT NIGHT SIGHT · STRIKER</p>
+              <p class="note">Same P-10 C, milled for a red dot and wearing a tritium front night sight — the version to buy in 2026, because the iron-sight-only guns are yesterday's inventory. GrabAGun has it at $449.99 against a $577 list, $22 under KYGUNCO's price for the identical SKU.</p>
+              <div class="pricerow"><span class="price">$449.99</span><span class="was">$577.00</span></div>
+              <span class="netline">KYGUNCO charges $471.99 for this exact pistol</span>
+              <span class="seller">GrabAGun · In stock · Ships to your FFL · New</span>
+              <a class="go" href="https://grabagun.com/cz-p-10-c-optics-ready-9mm-4-02-barrel-15-rounds-front-night-sight.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_a5a5e75ff0e39870.webp" alt="Ruger Security-9 full-size 9mm pistol" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Budget pick</span></div>
+              <h3>Ruger Security-9</h3>
+              <p class="spec">4″ · 15+1 · SECURE ACTION (INTERNAL HAMMER) · POLYMER FRAME</p>
+              <p class="note">The most gun Ruger sells for the money. The Security-9 borrows the LCP's internal-hammer Secure Action, so the trigger feels like a good striker gun's — smooth and consistent — in a full-size 15-round pistol with real sights and Ruger's lifetime service reputation behind it. $305.62 at KYGUNCO beats Bass Pro's $319.99.</p>
+              <div class="pricerow"><span class="price">$305.62</span></div>
+              <span class="netline">Bass Pro Shops charges $319.99 for this exact pistol</span>
+              <span class="seller">KYGUNCO · In stock · Free shipping · New</span>
+              <a class="go" href="https://www.kygunco.com/product/ruger-3810-security-9-4-9mm-151-blued" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_ebdb40e718a006e9.webp" alt="Taurus GX4 Carry TORO optic-ready 9mm pistol" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Deep under street</span><span class="badge low">Almost gone</span></div>
+              <h3>Taurus GX4 Carry TORO</h3>
+              <p class="spec">3.7″ · 15+1 · OPTIC-READY (TORO) · STRIKER · STEEL SIGHTS</p>
+              <p class="note">The GX4 grown up: a longer grip that takes 15-round mags, a TORO slide cut for micro dots, and Taurus's best striker trigger to date. The GX4 line is the one Taurus finally got all the way right — and KYGUNCO's $287.99 is nowhere near the $429.99 the only other listing we found is asking.</p>
+              <div class="pricerow"><span class="price">$287.99</span></div>
+              <span class="netline">The only other listing found: $429.99 at Green Top</span>
+              <span class="seller">KYGUNCO · In stock · Free shipping to FFL · New</span>
+              <a class="go" href="https://www.kygunco.com/product/taurus-1-gx4crp941-gx4-carry-9mm-toro-15rd-pistol" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_30079291aad44df9.jpg" alt="Ruger Max-9 micro-compact 9mm pistol with ReadyDot reflex sight" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Dot included</span></div>
+              <h3>Ruger Max-9 ReadyDot</h3>
+              <p class="spec">3.2″ · 12+1 · READYDOT REFLEX SIGHT FACTORY-MOUNTED · TRITIUM FRONT</p>
+              <p class="note">The cheapest honest way into a red-dot carry gun: Ruger's ReadyDot is factory-mounted and self-illuminating — a fiber/tritium dot with no battery, no switches, and nothing to remember at 3 a.m. Twelve rounds in a micro-compact that disappears in a waistband. GrabAGun at $269.99 (was $349) edges KYGUNCO's $273.99.</p>
+              <div class="pricerow"><span class="price">$269.99</span><span class="was">$349.00</span></div>
+              <span class="netline">KYGUNCO charges $273.99 for this exact pistol</span>
+              <span class="seller">GrabAGun · In stock · Ships to your FFL · New</span>
+              <a class="go" href="https://grabagun.com/ruger-max-9-9mm-3-2-barrel-12-rounds-w-ruger-readydot-micro-reflex-sight.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ SHOTGUNS ============ -->
+      <section id="shotguns">
+        <div class="sec-head">
+          <h2>Shotguns</h2>
+          <p>Three shotguns now: Mossberg's two best-value pumps, plus the semi-auto Beretta A300 Ultima Patrol that Bereli is selling $110 under the MAP price every other retailer is locked at. Benelli still gets its full say in the guide below — no retailer had a verifiable Benelli deal today, and we don't card prices we can't verify.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_3eac3d439cc6d87f.webp" alt="Mossberg 590A1 tactical pump shotgun with M-LOK forend" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Mil-spec</span></div>
+              <h3>Mossberg 590A1 Tactical M-LOK</h3>
+              <p class="spec">12 GA · 18.5″ · 6-ROUND TUBE · PUMP · GHOST-RING READY</p>
+              <p class="note">The only shotgun ever to pass the military's Mil-Spec 3443E torture test, and it shows: heavy-walled barrel, metal trigger guard and safety (plastic on the standard 590), parkerized finish. The M-LOK forend means a weapon light bolts on the day it arrives. This is the buy-once pump.</p>
+              <div class="pricerow"><span class="price">$559.99</span><span class="was">$770.00</span></div>
+              <span class="seller">GrabAGun · In stock · Ships to your FFL</span>
+              <a class="go" href="https://grabagun.com/mossberg-590a1-tactical-m-lok-12-gauge-18-5-6-round.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_b54d8bdc41c60940.webp" alt="Mossberg 500 All-Purpose field shotgun with 28-inch vent-rib barrel" /></div>
+            <div class="body">
+              <h3>Mossberg 500 All-Purpose Field</h3>
+              <p class="spec">12 GA · 28″ VENT RIB · 6+1 · ACCU-CHOKE · PUMP</p>
+              <p class="note">The do-everything gun: birds and clays with the 28″ barrel and screw-in chokes today, and Mossberg sells an 18.5″ barrel that drops in later if it ever pulls home-defense duty. The 500's aftermarket is the deepest of any pump shotgun ever made, and the tang safety is the best in the business for gloved hands.</p>
+              <div class="pricerow"><span class="price">$438.99</span><span class="netline">$417.04 Club price</span></div>
+              <span class="seller">Sportsman's Guide · In stock</span>
+              <a class="go" href="https://www.sportsmansguide.com/product/index/mossberg-500-all-purpose-pump-action-12-gauge-28-barrel-61-rounds?a=1795611" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_310b9dafdaad7636.webp" alt="Beretta A300 Ultima Patrol semi-automatic tactical shotgun" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$110 under MAP</span></div>
+              <h3>Beretta A300 Ultima Patrol — Realtree Trace Blue</h3>
+              <p class="spec">12 GA · 19.1″ · 7+1 · SEMI-AUTO GAS (BLINK) · M-LOK HANDGUARD · GHOST RING</p>
+              <p class="note">The patrol shotgun to beat, and the deal that broke a price lock: this gun is $1,099 at MidwayUSA, GrabAGun, KYGUNCO and everywhere else — MAP, take it or leave it. Bereli left it: $989 for the Trace Blue camo variant. Beretta's Blink gas system cycles faster than you can work a pump, the controls are enlarged for gloved hands, and the M-LOK forend takes a light the day it arrives.</p>
+              <div class="pricerow"><span class="price">$989.00</span><span class="was">$1,299.99</span></div>
+              <span class="netline">$1,099.00 at MidwayUSA, GrabAGun &amp; KYGUNCO — MAP-locked</span>
+              <span class="seller">Bereli · In stock · Free shipping · New</span>
+              <a class="go" href="https://www.bereli.com/beretta-a300-ultima-patrol-12-gauge-19-1-barrel-7-round-mag-tube-shotgun/?sku=J32LB11" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ 9MM GUIDE ============ -->
+      <section id="guide-9mm">
+        <div class="guide">
+          <h3>The 9mm Field Guide</h3>
+          <p class="sub">Forget caliber wars and YouTube hype. Here's what actually separates the nine pistols above — written the way we'd explain it to a friend at the counter.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>Striker vs. hammer-fired</h4>
+              <p><b>Striker-fired</b> (APX A1, both Glocks, Echelon, Hellcat Pro, Mako): one consistent trigger pull, no external hammer, simpler manual of arms. This is the modern default for a reason — nothing to decock, nothing to snag, same shot every time.</p>
+              <p><b>Hammer-fired DA/SA</b> (M9, Px4 Storm): the first pull is long and heavy — think of it as a built-in safety for a gun that lives in a nightstand drawer — then every shot after is a light, crisp single-action. Fans swear the heavy first pull prevents more accidents than any mechanical safety.</p>
+              <p><b>Single-action</b> (Micro 9): a tiny 1911. The best trigger feel here, full stop — but you carry it cocked with the thumb safety on, and you train that way or you don't carry it.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">What actually matters</h4>
+              <ul>
+                <li><b>Ergonomics first.</b> A gun that points where your hand naturally aims beats any spec sheet. Interchangeable backstraps (APX, Echelon) are worth real money.</li>
+                <li><b>Trigger quality = practical accuracy.</b> A clean break and short reset matter more than the pull-weight number in the ad copy.</li>
+                <li><b>Get the optic cut.</b> Even if you never mount a dot, optic-ready models are where the deals and the resale value live now. The irons-only guns are the ones getting cleared out.</li>
+                <li><b>Aftermarket support is a feature.</b> Holsters, spare mags, sights: Glock has the deepest ecosystem, Springfield and the APX are close behind, Kimber is slimmer. Budget for at least three magazines — factory mags run $25–45 each.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cols" style="margin-top:18px">
+            <div class="mini">
+              <h4>Brand quick-takes</h4>
+              <p><b>Beretta</b> — Best ergonomics per dollar right now, because Beretta is subsidizing it with rebates. The APX's trigger beats a stock Glock's, and the M9/Px4 pair are the softest shooters on the page. If you're price-sensitive, start here.</p>
+              <p><b>Glock</b> — Not the best trigger, not the best grip, and still the right answer for a lot of people: unmatched parts, holsters, and $25 magazines everywhere on Earth. Buy the V series without fear — it's the same gun, current production.</p>
+            </div>
+            <div class="mini">
+              <h4>&nbsp;</h4>
+              <p><b>Springfield</b> — The Hellcat Pro owns the carry niche outright, and the Echelon is the smartest duty-gun design of the bunch (chassis system, plate-free optics). Springfield is where the innovation is happening.</p>
+              <p><b>Kimber</b> — Two different plays: the Micro 9 is a craftsmanship buy (metal, fit, that 1911 trigger), while the Mako is the value buy nobody talks about — Kimber internals at a street price under the Hellcat. Either way you're getting better finish work than the price suggests.</p>
+            </div>
+          </div>
+          <p class="takeline"><b>The 10-second version:</b> Carry gun → Hellcat Pro or Mako. First pistol, tight budget → APX A1 at $299.99 net and don't look back. Nightstand → M9 or Px4. One gun for everything → Glock 45 V or Echelon.</p>
+        </div>
+      </section>
+
+      <!-- ============ FFL GUIDE ============ -->
+      <section id="guide-ffl">
+        <div class="guide">
+          <h3>Buying a Gun Online: FFL Transfer Basics</h3>
+          <p class="sub">First-timers picture a pistol arriving in a mailbox. It doesn't work that way — here's the actual process, start to finish. It's easier than it sounds.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>How it works</h4>
+              <ol class="steps">
+                <li><b>Pick your local FFL dealer first</b> — any gun shop or pawn shop with a Federal Firearms License. Call and confirm they accept online transfers and ask the fee (typically <b>$25–50</b>). Do this <i>before</i> you order.</li>
+                <li><b>Order online.</b> At checkout you select that dealer; the seller ships the firearm to the FFL — never to your house.</li>
+                <li><b>The FFL logs it in and calls you</b> when it arrives, usually 2–5 business days.</li>
+                <li><b>You go in, do the paperwork:</b> ATF Form 4473 plus a NICS background check, pay the transfer fee, and take your gun home.</li>
+              </ol>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Know before you buy</h4>
+              <ul>
+                <li><b>True cost = price + shipping + transfer fee.</b> A $400 pistol can be $460 out the door. Run that math before deciding an online deal beats the local shelf.</li>
+                <li><b>Illinois buyers:</b> you need a valid FOID card, and Illinois law adds a <b>72-hour waiting period</b> on every firearm purchase — the clock starts at application, so the gun may sit at the dealer a few days. Normal, not a problem with your order.</li>
+                <li><b>Rebates are on you.</b> Beretta's current promo ($100 back on the APX A1, M9, and Px4 above) is a mail-in/online claim — keep your receipt and photograph the serial number. Purchases by <b>Nov 30, 2026</b>, claims by <b>Dec 31, 2026</b>.</li>
+                <li><b>Inspect before you accept the transfer.</b> Once the 4473 is done, the gun is yours — any defect becomes a warranty conversation with the manufacturer instead of a return.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SHOTGUN GUIDE ============ -->
+      <section id="guide-shotguns">
+        <div class="guide">
+          <h3>Shotguns: Pump vs. Semi-Auto</h3>
+          <p class="sub">The shortest honest version: a pump is a tool you operate, a semi-auto is a machine that operates. Both are right answers — for different jobs and budgets.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>Pump vs. semi-auto</h4>
+              <p><b>Pump:</b> you are the gas system, so it cycles anything — light target loads, 3″ magnums, even low-recoil specialty shells that choke a semi. Cheapest path to a dead-reliable gun. The failure mode is you: short-stroke the action under stress and it jams. Train the full, violent rack.</p>
+              <p><b>Semi-auto:</b> faster follow-up shots and noticeably softer recoil. Gas guns (Benelli M4's ARGO system) are the most forgiving with varied loads; inertia guns (Benelli M2) are lighter and cleaner-running but want full-power shells. Expect to pay two to four times a good pump's price.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Mossberg vs. Benelli</h4>
+              <p><b>Mossberg</b> — The 500 is the everyman pump: aluminum receiver keeps it light and cheap, controls are the best in the class (top tang safety, slide release behind the trigger guard), and parts grow on trees. The <b>590A1</b> is the same gun overbuilt to a military spec — heavier barrel, metal where the 500 uses polymer. It's the one you hand down.</p>
+              <p><b>Benelli</b> — The Nova/SuperNova are polymer-over-steel pumps chambered for 3.5″ shells with the ComforTech stock chewing up recoil — the duck-blind and bad-weather choice, starting at $749 MSRP per Benelli USA. The <b>M4</b> is the semi-auto benchmark the Marines carry; street prices hover near $1,900 and it's worth it only if you'll actually run it hard. No verifiable Benelli deal exists today — but Beretta's A300 Patrol (card above) is what happens when a retailer breaks a MAP lock, and it's the semi-auto we'd buy at $989.</p>
+            </div>
+          </div>
+          <p class="takeline"><b>Load note:</b> for home defense, pattern #4 or 00 buckshot at your actual in-home distances — every shotgun patterns differently, and "birdshot is for birds" is the whole rule.</p>
+        </div>
+      </section>
+
+      <!-- ============ RIFLES ============ -->
+      <section id="rifles">
+        <div class="sec-head">
+          <h2>Rifles</h2>
+          <p>A new lane, opened with the two most-owned rifles in America — the rimfire trainer and the AR benchmark — both with verified same-day price beats. Bolt guns (Savage Axis, Tikka T3x, Bergara B-14) were checked hard on Oct 21: the Axis II .308 is $418.99 at KYGUNCO, but no other retailer stocks the identical variant to prove a beat against, so it waits. The rifle basics are in the guide below.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_49300c18c34ab9a6.webp" alt="Ruger 10/22 carbine semi-automatic rimfire rifle" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Cheapest verified</span></div>
+              <h3>Ruger 10/22 Carbine — Scope Rail (32033)</h3>
+              <p class="spec">.22 LR · 18.5″ · 10+1 ROTARY MAG · SCOPE RAIL · BLACK SYNTHETIC</p>
+              <p class="note">The best-selling rifle in American history, unchanged in the ways that matter: the rotary magazine feeds like nothing else in rimfire, and the aftermarket is bottomless. This is the scope-rail variant — mount a dot or a scope the day it arrives, no gunsmithing. Sportsman's Warehouse at $239.99 undercuts KYGUNCO's $243.99 for the identical model 32033.</p>
+              <div class="pricerow"><span class="price">$239.99</span></div>
+              <span class="netline">KYGUNCO charges $243.99 for this exact rifle</span>
+              <span class="seller">Sportsman's Warehouse · In stock · Ships to your FFL · New</span>
+              <a class="go" href="https://www.sportsmans.com/shooting-gear-gun-supplies/rifles/ruger-1022-22-long-rifle-satin-black-semi-automatic-rifle-185in/p/1989873" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_70a711a385f73f17.jpg" alt="Smith &amp; Wesson M&P15 Sport III AR-style rifle with M-LOK handguard" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$20 under street</span></div>
+              <h3>Smith &amp; Wesson M&amp;P15 Sport III</h3>
+              <p class="spec">5.56 NATO · 16″ · 30+1 · MID-LENGTH GAS · M-LOK HANDGUARD · 1:8″ TWIST</p>
+              <p class="note">The benchmark budget AR, and the Sport III fixed the old model's sins: mid-length gas (softer recoil impulse than carbine-length rivals), a proper free-float M-LOK handguard, and a 1:8 twist that stabilizes everything from 55-grain plinking ammo to 77-grain match. Sportsman's $659.99 (was $699.99) beats Bereli's $679.99 for the same rifle.</p>
+              <div class="pricerow"><span class="price">$659.99</span><span class="was">$699.99</span></div>
+              <span class="netline">Bereli charges $679.99 · Brownells $699.00</span>
+              <span class="seller">Sportsman's Warehouse · In stock · Ships to your FFL · New</span>
+              <a class="go" href="https://www.sportsmans.com/shooting-gear-gun-supplies/modern-sporting-rifles/smith-wesson-mp-15-sport-iii-series-556mm-nato-16in-black-semi-automatic-modern-sporting-rifle-301-rounds/p/1872172" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ RIFLE GUIDE ============ -->
+      <section id="guide-rifles">
+        <div class="guide">
+          <h3>Rifles: Barrels &amp; Actions, Quick and Honest</h3>
+          <p class="sub">Two rifles are carded above; a hundred more exist. These are the two spec areas that actually decide whether a rifle suits you — action type and barrel — minus the forum mythology.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>Actions: what cycles the next round</h4>
+              <p><b>Bolt-action</b> (Savage Axis, Tikka T3x, Bergara B-14 class): you run the bolt by hand. Nothing to go wrong, the most accurate action per dollar, and the default for hunting and precision. A smooth bolt and a good trigger matter more than the brand on the receiver.</p>
+              <p><b>Blowback semi-auto</b> (the 10/22): the cartridge's own pressure pushes the bolt back. Simple, cheap, and perfect for .22 LR — it doesn't scale to centerfire rifle power, which is why rimfires use it and ARs don't.</p>
+              <p><b>Gas semi-auto / direct impingement</b> (the M&amp;P15): tapped gas cycles the action, so follow-up shots are as fast as your trigger finger. Mid-length gas systems (Sport III) run softer and easier on parts than carbine-length — the one spec to check on any budget AR.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Barrels: twist is the number that matters</h4>
+              <ul>
+                <li><b>Twist rate matches bullet weight.</b> Rifling is written like 1:8″ — one full spin every 8 inches. A 1:8″ 5.56 barrel stabilizes 55–77 grain bullets; 1:7″ favors the heavy end, 1:9″ the light end. Buy the twist for the ammo you'll actually shoot.</li>
+                <li><b>Length buys velocity, not accuracy.</b> A 16″ AR barrel is handier and gives up only ~100–150 fps to a 20″. In .22 LR, anything past ~16″ adds nothing — the powder is done burning.</li>
+                <li><b>Free-floated + threaded is the modern baseline.</b> A handguard that doesn't touch the barrel keeps sling and bipod pressure off your groups; a threaded muzzle means a brake, comp, or suppressor later without a gunsmith bill.</li>
+                <li><b>Cold hammer-forged vs. button-rifled</b> is a longevity argument, not an accuracy one at normal round counts. Either outlasts most shooters.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="takeline"><b>The 10-second version:</b> Learn on the 10/22 — cheap ammo, no recoil, a lifetime of parts. One centerfire rifle for everything → the Sport III. Chasing groups or deer at distance → bolt gun, and spend the savings on the optic.</p>
+        </div>
+      </section>
+
+
+      <!-- ============ ACCESSORIES ============ -->
+      <section id="accessories">
+        <div class="sec-head">
+          <h2>Gun Accessories</h2>
+          <p>Eleven verified deals — holsters, red dots, a weapon light, magazines, slings, a range bag, an LPVO scope, and cleaning kits — every price checked against the next-cheapest reputable seller for the exact item, never against MSRP alone. The Oct 21 expansion finally filled the <b style="color:var(--ink)">weapon-light</b> gap: the TLR-7 X Sub below is $18 under Brownells (the full-size TLR-1 HL-X is still a price wash everywhere — checked again, still no card). Two categories stay honestly empty: <b style="color:var(--ink)">Holosun dots and gun safes</b> are MAP-locked at identical prices everywhere we checked — the safes buying rules are in the guide below for when a gap opens.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_6fc2a9aee10f14a3.png" alt="Safariland 7378 7TS ALS concealment paddle holster for Glock 17" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$15 under street</span></div>
+              <h3>Safariland 7378 7TS ALS — Glock 17</h3>
+              <p class="spec">ALS THUMB-RELEASE RETENTION · SAFARISEVEN SHELL · PADDLE + BELT LOOP COMBO · RH</p>
+              <p class="note">The concealment version of the holster half of American law enforcement carries on duty. The ALS locks onto the ejection port and releases with your thumb as part of the draw stroke — the gun stays put through a scuffle or a seatbelt snag, and still comes out fast. SafariSeven nylon shrugs off heat and abrasion that warp Kydex, and the box includes both a paddle and a belt loop, so it goes from range to carry with no extra parts. Sportsman's has it on clearance; the next cheapest reputable seller is at the full $97.</p>
+              <div class="pricerow"><span class="price">$81.97</span><span class="was">$97.00</span></div>
+              <span class="netline">KYGUNCO charges $97.00 for this exact holster</span>
+              <span class="seller">Sportsman's Warehouse · In stock · New</span>
+              <a class="go" href="https://www.sportsmans.com/shooting-gear-gun-supplies/gun-parts-accessories/gun-holsters-belts/handgun-holsters/safariland-7378-7ts-als-concealment-paddle-and-belt-loop-combo-glock-17-holster/p/1857366" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_a6d4d904e351c3ae.jpg" alt="Holosun ARO 2 MOA red dot rifle sight on pedestal mount" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Optic deal</span></div>
+              <h3>Holosun ARO — 2 MOA Red Dot (ARO-RD2)</h3>
+              <p class="spec">2 MOA DOT · 22MM 7075 HOUSING · CR2032 · UP TO 50,000 HRS · SHAKE AWAKE · T1/T2 FOOTPRINT</p>
+              <p class="note">Holosun's newest rifle dot is the budget king done right: a 7075 aluminum tube (the strong alloy, not 6061), a crisp 2 MOA dot, Shake Awake so it's lit the instant you pick the rifle up, and a rated 50,000 hours on one CR2032 at mid brightness. It rides the Aimpoint Micro (T1/T2) footprint and ships with both lower-1/3 and low mounts in the box — no separate mount purchase. KYGUNCO's $123.14 is the cheapest verified price anywhere; the next in-stock seller wants $138.77. Ships from a KYGUNCO partner warehouse.</p>
+              <div class="pricerow"><span class="price">$123.14</span></div>
+              <span class="netline">MountsPlus charges $138.77 for this exact optic</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/holosun-aro-2-moa-red-dot" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_5c1e53afe9f19f5c.jpg" alt="Magpul PMAG D-60 60-round drum magazine for AR-15" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$17 under street</span></div>
+              <h3>Magpul PMAG D-60 Drum — 60 Round</h3>
+              <p class="spec">5.56×45 · 60 RD · GEN M3 POLYMER · RATCHET LOADING LEVER · MADE IN USA</p>
+              <p class="note">Most drum mags are range toys that choke. The D-60 is the exception — Magpul engineered it to feed like a PMAG, with a ratcheting loading lever so stuffing 60 rounds doesn't wreck your thumbs, and it seats on a closed bolt fully loaded. It's the "aftermarket" magazine that's effectively OEM-grade (the guide below explains why that distinction matters). $102.99 at KYGUNCO vs. $119.99 at GunMag Warehouse. Capacity laws vary by state and city — know yours before ordering.</p>
+              <div class="pricerow"><span class="price">$102.99</span></div>
+              <span class="netline">GunMag Warehouse charges $119.99 for this exact drum</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/magpul-mag576-blk-pmag-d-60rd-arm4-gen-m3-5.56x45-black" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_2e63ae61c39e3823.jpg" alt="Viking Tactics VTAC padded two-point rifle sling in black" /></div>
+            <div class="body">
+              <h3>Viking Tactics VTAC Padded Sling</h3>
+              <p class="spec">2-POINT · QUICK-ADJUST PULL TAB · PADDED SHOULDER SECTION</p>
+              <p class="note">The sling that invented the fast-adjust two-point. One yank on the pull tab snugs the rifle to your chest for hands-free carry; a pull the other way drops it to shooting length — no dangling tail, no buckle-fiddling. The padded shoulder section earns its keep on any rifle over seven pounds. Brownells at $49.95 beats MidwayUSA's $55.95 for the same sling. Budget for QD swivels or hooks for your rifle's mounts — they're not in the box.</p>
+              <div class="pricerow"><span class="price">$49.95</span></div>
+              <span class="netline">MidwayUSA charges $55.95 for this exact sling</span>
+              <span class="seller">Brownells · In stock · New</span>
+              <a class="go" href="https://www.brownells.com/gear/slings-sling-swivels/slings/v-tac-padded-slings?sku=100005407" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_2032d7ad8387afac.jpg" alt="GPS Tactical range backpack in black with MOLLE webbing" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">23% under street</span></div>
+              <h3>GPS Tactical Range Backpack — Black</h3>
+              <p class="spec">HOLDS 3 HANDGUNS · 3 REMOVABLE PISTOL CASES · MAG STORAGE · LOCKING YKK ZIPPERS · RAIN COVER</p>
+              <p class="note">The range-bag endgame for pistol shooters: three removable padded pistol cases (each also stores 4 magazines), a rigid honeycomb frame so the pack stands up on the bench instead of flopping over, labeled Visual I.D. pockets for eyes, ears, and tools, and a pull-out rain cover. The handgun compartment's zippers lock — real peace of mind for legal transport. KYGUNCO's $114.99 is $35 under the next verified price.</p>
+              <div class="pricerow"><span class="price">$114.99</span></div>
+              <span class="netline">Next cheapest verified: $149.95 at Freedom Outdoors</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/gps-t1612bpb-tactical-range-backpack-holds-3-handguns-black" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_2a7dfc0847077c43.jpg" alt="Otis Tactical Cleaning System FG-750 universal gun cleaning kit" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">19% under street</span></div>
+              <h3>Otis Tactical Cleaning System (FG-750)</h3>
+              <p class="spec">.17 CAL – 12 GA · MEMORY-FLEX PULL-THROUGH · BRASS TIPS &amp; BRUSHES · ROLL-UP CASE</p>
+              <p class="note">The kit that lives in more range bags than any other, because the pull-through design cleans breech-to-muzzle — the correct direction, pushing fouling out the muzzle instead of dragging a rod across the crown. Memory-Flex cables, brass tips, obstruction removers, and brushes cover everything from a .17 rimfire to a 12 gauge in one roll-up case that actually fits in the bag above. $44.10 at KYGUNCO vs. $54.39 at EuroOptic; ships from a partner warehouse.</p>
+              <div class="pricerow"><span class="price">$44.10</span></div>
+              <span class="netline">EuroOptic charges $54.39 for this exact kit</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/otis-fg-750-tactical-cleaning-system" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_c1523b924ed106e0.webp" alt="Streamlight TLR-7 X Sub compact weapon light for short 1913 rails" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$18 under street</span></div>
+              <h3>Streamlight TLR-7 X Sub — Short 1913 Rail</h3>
+              <p class="spec">500 LUMENS · 5,000 CANDELA · MULTI-FUEL (USB SL-B9 OR CR123A) · SUBCOMPACT RAIL MOUNT</p>
+              <p class="note">The light that finally earned a card. The Sub is sized for short-railed carry guns — it sits flush instead of hanging past the muzzle collecting soot — and the X upgrade runs Streamlight's rechargeable SL-B9 pack or a plain CR123A, your choice. 5,000 candela is the number that matters: enough throw to identify a face across a house. KYGUNCO's $144.76 beats Brownells' $162.99 for the exact 69402 model. Remember the guide's rule: pick the light first, then buy the holster molded around it.</p>
+              <div class="pricerow"><span class="price">$144.76</span></div>
+              <span class="netline">Brownells charges $162.99 for this exact light</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/streamlight-tlr-7-x-sub-for-short-1913-rail" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_0034ac815109a569.jpg" alt="Sig Sauer Tango MSR 1-6x24 LPVO riflescope" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$34 under street</span></div>
+              <h3>Sig Sauer Tango MSR 1-6×24 LPVO (SOT61000)</h3>
+              <p class="spec">1-6×24 · 30MM TUBE · ILLUMINATED MSR BDC-6 RETICLE · ALPHA-MSR MOUNT INCLUDED</p>
+              <p class="note">The budget LPVO benchmark for an AR: a true 1× that runs almost like a red dot up close, 6× with a BDC reticle for distance, illumination that stays visible in daylight, and — the part rivals charge extra for — Sig's cantilever mount in the box. KYGUNCO's $271.99 is the lowest verified price anywhere; the next seller found wants $305.99. Pairs perfectly with the M&amp;P15 Sport III in the rifle section.</p>
+              <div class="pricerow"><span class="price">$271.99</span></div>
+              <span class="netline">DFC Arms charges $305.99 for this exact scope</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/sig-sauer-sot61000-tango-msr-1-6x24mm-30mm-sfp-illum-msr-bdc6" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_7fb240b922f9f495.jpg" alt="Magpul PMAG 15 GL9 magazine for Glock 19" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">21% under street</span></div>
+              <h3>Magpul PMAG 15 GL9 — Glock 19</h3>
+              <p class="spec">9MM · 15 RD · GEN M3 POLYMER · STAINLESS SPRING · FLARED FLOORPLATE</p>
+              <p class="note">The guide below lays down the law — OEM or Magpul, nothing else, for a serious gun — and this is the Magpul half of that law at $10.99, less than half what a factory Glock mag costs. Same feed geometry, a floorplate that's easier to strip for cleaning, and witness dots so you can count rounds at a glance. GunMag Warehouse charges $13.99 for the identical magazine. Capacity laws vary — know yours.</p>
+              <div class="pricerow"><span class="price">$10.99</span></div>
+              <span class="netline">GunMag Warehouse charges $13.99 for this exact magazine</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/magpul-mag550-blk-pmag-15rd-gl9-glock-g19" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_fa2662f097ddea18.jpg" alt="Magpul MS4 Dual QD sling Gen 2 in black" /></div>
+            <div class="body">
+              <h3>Magpul MS4 Dual QD Sling — Gen 2</h3>
+              <p class="spec">1-POINT ↔ 2-POINT CONVERTIBLE · DUAL QD SWIVELS · STEEL HARDWARE · 1.25″ WEBBING</p>
+              <p class="note">The transformer sling: two-point for carrying the rifle all day, then pop one QD swivel and it converts to a single-point for close work — no re-webbing, no tools. If the VTAC above is the fixed two-point done right, the MS4 is the answer for a rifle that splits time between patrol carry and the truck. $58.99 at KYGUNCO vs. $64.56 add-to-cart at Primary Arms.</p>
+              <div class="pricerow"><span class="price">$58.99</span></div>
+              <span class="netline">Primary Arms charges $64.56 for this exact sling</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/magpul-mag518-blk-ms4-dual-qd-sling-gen2-black" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_310a99f1cfd7ee80.jpg" alt="Hoppe's 1.2.3 Done 9mm pistol cleaning kit with Boresnake" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">36% under street</span></div>
+              <h3>Hoppe's 1.2.3 Done — 9mm Pistol Kit</h3>
+              <p class="spec">BORESNAKE VIPER · NO. 9 SOLVENT · LUBRICATING OIL · 9MM / .38 CAL</p>
+              <p class="note">The five-minute clean, boxed: wet the bore with No. 9 (the smell is half the hobby), pull the Boresnake through breech-to-muzzle, finish with a film of oil. It's not a deep-clean system like the Otis above — it's the kit that makes you actually clean the pistol after every range trip instead of "later." $15.97 at KYGUNCO vs. $24.95 at Freedom Outdoors.</p>
+              <div class="pricerow"><span class="price">$15.97</span></div>
+              <span class="netline">Freedom Outdoors charges $24.95 for this exact kit</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/hoppes-110009-1.2.3.-done-9mm-38-caliber-pistol-cleaning-kit" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ ACCESSORIES GUIDE ============ -->
+      <section id="guide-accessories">
+        <div class="guide">
+          <h3>Accessories: What Actually Matters</h3>
+          <p class="sub">The gun gets the glory, but these are the parts that decide whether your setup actually works when you pick it up. The same rules we card by.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>Holsters: fit is retention</h4>
+              <p>A holster is molded to <b>one gun</b> — and if it carries a light, to one gun-and-light combination. Change the light, change the holster. "Universal fit" means it fits nothing well.</p>
+              <p><b>Passive retention</b> (friction plus a molded trigger-guard click) is right for concealed carry under a garment. <b>Active retention</b> — Safariland's ALS thumb lever on the 7378 above — physically locks the gun in until your thumb drives the release as part of the draw. That's the standard for open carry, duty use, and any gun that could get grabbed or snagged.</p>
+              <p><b>The tests:</b> with the unloaded gun holstered, turn it upside down and shake — it shouldn't fall out. The draw shouldn't fight the lock. The trigger guard must be fully covered, and the mouth must stay open so you can reholster one-handed. Fail any of those and it's a pouch, not a holster.</p>
+              <h4 style="margin-top:14px">Magazines: OEM vs. aftermarket</h4>
+              <p>The magazine is the <b>#1 cause of malfunctions</b> in an otherwise good gun — it's a spring, a follower, and feed lips holding tight tolerances, and cheap copies get all three wrong. For a carry or defensive gun, buy factory OEM or Magpul and don't experiment.</p>
+              <p>"Aftermarket" splits in two. Magpul — and Mec-Gar, who quietly manufacture the "factory" mags for several big brands — are engineered and tested to OEM grade; the D-60 above is the proof. No-name bargain mags are range toys: fine for malfunction drills, never for the gun you'd grab at 3 a.m.</p>
+              <p><b>Practical rules:</b> own at least 3–5 mags per gun, number them with a paint pen, and any mag that stumbles twice gets marked and retired to range duty. Springs wear from cycling, not from sitting loaded.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Red dots: durability &amp; battery honesty</h4>
+              <ul>
+                <li><b>Housing alloy matters.</b> 7075 aluminum (the ARO above) survives recoil and drops that crack cheaper 6061 housings. It's the first spec to check on any dot.</li>
+                <li><b>Battery ratings are quoted at mid brightness.</b> "50,000 hours" means ~5 years always-on at a middle setting — real, but swap in a fresh CR2032 once a year anyway. They cost a dollar; a dead dot costs more.</li>
+                <li><b>Shake Awake is what makes those numbers usable:</b> the dot sleeps in the safe and wakes the instant you grab the gun, so you never have to remember to turn it on — or off.</li>
+                <li><b>Footprint before features.</b> Rifle dots want the Aimpoint Micro (T1/T2) pattern; pistol slides want RMR or RMSc/K footprints. The wrong footprint means adapter plates, extra height, and a weaker mount.</li>
+                <li><b>Enclosed beats open in weather.</b> A tube-style emitter (ARO) shrugs off the rain, dust, and pocket lint that can wash out an exposed open-reflex LED.</li>
+              </ul>
+              <h4 class="gold" style="margin-top:14px">Lights, slings &amp; bags — quickly</h4>
+              <ul>
+                <li><b>Weapon lights:</b> candela (throw) beats raw lumens for identifying anything past ten yards. And buy the light <i>before</i> the holster — the holster is molded around it.</li>
+                <li><b>Slings:</b> a quick-adjust two-point is the only style we'd buy in 2026. Padding if the rifle is heavy; skip single-points unless you enjoy being hit by your own rifle.</li>
+                <li><b>Range bags:</b> rigid frame, lockable zippers on the gun compartment, and labeled pockets beat raw size — and a backpack format keeps both hands free for ammo cans.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cols" style="margin-top:18px">
+            <div class="mini">
+              <h4>Safes: quick-access vs. long-gun</h4>
+              <p><b>Quick-access boxes</b> (Vaultek, Hornady RAPiD class) are for the one gun you might need at 3 a.m.: biometric or RFID entry that opens in about a second, in the nightstand, <b>bolted down</b> — unbolted, it's just a convenient carrying case for whoever grabs it. This is a kid-and-accident barrier, not burglary protection.</p>
+              <p><b>Long-gun safes</b> protect the collection. Buy by real steel (12-gauge door/body or thicker), a genuine fire rating, and weight — and know that most sub-$500 "safes" are technically residential security containers: fine against curious kids and smash-and-grab, not against fire or a pro with time and a pry bar. Buy one size bigger than you think; everyone does eventually.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Why there's no safe card (yet)</h4>
+              <p>We priced Vaultek's line and the Hornady RAPiD hard on Oct 21: pricing is <b>MAP-controlled</b> — the same number at every reputable seller, which means there is no honest deal to card. Same story for Holosun's red dots and most direct-only holster brands (Vedder, CrossBreed sell at fixed prices from their own stores). When a retailer breaks ranks on any of them, it gets a card the same day. Until then, buy the quick-access box that fits your gun and your nightstand, from whoever throws in free shipping.</p>
+            </div>
+          </div>
+          <p class="takeline"><b>The 10-second version:</b> ALS holster if the gun is carried openly, a 7075 dot with Shake Awake and a yearly battery swap, OEM-or-Magpul magazines only for serious guns — and never let a $20 no-name magazine be the reason a $600 pistol chokes.</p>
+        </div>
+      </section>
+
+      <!-- ============ KNIVES ============ -->
+      <section id="knives">
+        <div class="sec-head">
+          <h2>Knives — Folding &amp; EDC</h2>
+          <p>Four live deals, all new, all verified against the street on Oct 21 — and a fresh sweep the same day confirmed why the bench stays this size. KYGUNCO quietly undercuts everyone on Civivi (the Elementum below is $19.62 under KnifeCenter for the exact same knife), but Spyderco is now price-matched to the penny across dealers — Delica 4 at $99.00 and Tenacious at $68.25 at both KYGUNCO and KnifeCenter — Benchmade is MAP-locked, and the Para 3 Lightweight ($139.50) and Mini Bugout ($175) sit at one price everywhere. We don't card ties.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_6866b95249355d7b.jpg" alt="Civivi Elementum folding knife with OD green G10 handle and satin blade" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Best knife deal</span><span class="badge low">39% under street</span></div>
+              <h3>Civivi Elementum — OD Green (C907E)</h3>
+              <p class="spec">2.96″ D2 DROP POINT · G10 · LINER LOCK · BALL BEARINGS · 2.89 OZ</p>
+              <p class="note">The budget EDC benchmark, full stop. WE Knife Co. builds Civivi, and it shows: caged ceramic bearings, centered blade, no play, and a deep-carry clip on a knife that costs less than dinner. D2 holds an edge far longer than the 8Cr steel in most sub-$50 knives — it just wants a wipe of oil now and then. At $30.53 vs. KnifeCenter's $50.15 for this exact SKU, this isn't a sale, it's a misprice-grade gap.</p>
+              <div class="pricerow"><span class="price">$30.53</span><span class="was">$59.00</span></div>
+              <span class="netline">KnifeCenter charges $50.15 for this exact knife</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/civivi-c907e-elementum-green-g10-handle-gray-s-s-liner-satin-d2" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_01482dfbe571928b.jpg" alt="Civivi Baby Banter folding knife with black G10 handle" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">23% under street</span></div>
+              <h3>Civivi Baby Banter — Gray Nitro-V (C19068S-1)</h3>
+              <p class="spec">2.34″ NITRO-V SPEAR POINT · G10 · NESTED LINER LOCK · 1.99 OZ</p>
+              <p class="note">Ben Petersen's Baby Banter is the small-knife masterclass: under 2 ounces, a blade just long enough to be useful, and Nitro-V steel — stainless, tough, and dead easy to sharpen, the right call for a knife that lives in a pocket and gets ignored. Dual thumb studs, ceramic bearings, deep-carry clip. $45.99 here vs. $59.50 at KnifeCenter for the exact SKU.</p>
+              <div class="pricerow"><span class="price">$45.99</span><span class="was">$70.00</span></div>
+              <span class="netline">KnifeCenter charges $59.50 for this exact knife</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/civivi-c19068s-1-baby-banter-black-g10-graynitro-v-blade" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_4e9e50db21bba7f0.jpg" alt="Civivi Baby Banter folding knife with black stonewashed blade" /></div>
+            <div class="body">
+              <h3>Civivi Baby Banter — Black Stonewash (C19068S-2)</h3>
+              <p class="spec">2.34″ NITRO-V · BLACK STONEWASH · G10 · NESTED LINER LOCK · 1.99 OZ</p>
+              <p class="note">Same Baby Banter, murdered-out finish. The black stonewash hides pocket wear and scratches better than any satin blade — the right pick if the knife will actually get used hard. A smaller gap than its gray brother ($51.60 vs. ~$59.50 street) but still the cheapest verified price on this variant.</p>
+              <div class="pricerow"><span class="price">$51.60</span><span class="was">$70.00</span></div>
+              <span class="netline">Street price at major knife retailers: ~$59.50</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/manufacturer/civivi" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_a25943c793cf1c62.jpg" alt="Kershaw Blur folding knife with black handle and serrated blade" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">USA made</span><span class="badge low">36% under maker</span></div>
+              <h3>Kershaw Blur — Glassbreaker, Serrated (1670GBBLKST)</h3>
+              <p class="spec">3.4″ 14C28N · DLC COATED · SPEEDSAFE ASSIST · LINER LOCK · 4.0 OZ · MADE IN USA</p>
+              <p class="note">Ken Onion's Blur is the assisted-opener that outlived a hundred trends, and this is the fully-loaded variant: DLC-coated Sandvik 14C28N (a genuinely excellent, easy-sharpening stainless), partial serrations for rope and webbing, and a carbide glassbreaker in the butt. Built in Tualatin, Oregon. Kershaw's own store wants $147.99 for this exact variant — $94.97 is $53 under the maker.</p>
+              <div class="pricerow"><span class="price">$94.97</span><span class="was">$147.99</span></div>
+              <span class="netline">Kershaw's own store charges $147.99 for this exact variant</span>
+              <span class="seller">KYGUNCO · In stock, selling fast · New</span>
+              <a class="go" href="https://www.kygunco.com/product/kershaw-knives-1670gbblkst-blur-3.4-wglass-breaker-black-partially-serrated" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ KNIFE GUIDE ============ -->
+      <section id="guide-knives">
+        <div class="guide">
+          <h3>What Actually Matters in a Knife</h3>
+          <p class="sub">Knife marketing is steel-name bingo. Here's what separates a knife you'll carry for a decade from one that ends up in a drawer — the same way we'd explain it at the counter.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>Heat treat beats steel name</h4>
+              <p>The steel on the box is only half the story — <b>how it was heat-treated matters more</b>. The same D2 can be a chippy 62 HRC or a tough, keen 59 HRC depending on who ran the oven. This is why Civivi punches above its price: WE Knife's heat treats are consistently dialed, so their "budget" D2 and Nitro-V outperform no-name "super steels" from makers cutting corners. A well-treated mid-tier steel at the right hardness beats a poorly treated premium steel every time — and it's easier to sharpen at home.</p>
+              <h4 style="margin-top:14px">Lockup is safety</h4>
+              <p>Shake the knife and check for <b>blade play</b> — side-to-side wobble means worn or sloppy tolerances. A good liner lock (both Civivis here) engages early and solidly; a crossbar/AXIS lock (Benchmade) is stronger and ambidextrous; a compression lock (Spyderco) keeps fingers out of the blade path. Whatever the mechanism, it should lock with a positive, repeatable snap and zero vertical rock.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Ergonomics decide what you carry</h4>
+              <ul>
+                <li><b>The best knife is the one in your pocket.</b> Under 3 oz disappears; over 4 oz needs a reason. The Baby Banter at 1.99 oz gets carried on days a bigger knife stays home.</li>
+                <li><b>Handle before blade specs.</b> No hot spots, no sharp scale edges, a grip that works with wet hands. G10 (all the Civivis) is the sweet spot — grippy, tough, cheap.</li>
+                <li><b>Deployment you can do cold and tired:</b> thumb studs, a flipper, or Spyderco's hole — one-handed, every time, without thinking.</li>
+                <li><b>Deep-carry clip, tip-up.</b> The knife rides low, comes out oriented right, and doesn't advertise itself.</li>
+                <li><b>Edge geometry cuts, steel just lasts.</b> A thin, hollow- or flat-ground blade (Elementum) slices cardboard and food better than a thick "hard use" wedge at any steel grade.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="takeline"><b>The 10-second version:</b> First EDC → Elementum at $30.53, don't overthink it. Small carry → Baby Banter. Hard-use assisted opener, USA-made → the Blur. And when every store charges the same MAP price (Para 3, Bugout), there's no deal — wait for a real one.</p>
+        </div>
+      </section>
+
+      <!-- ============ CIGARS ============ -->
+      <section id="cigars">
+        <div class="sec-head">
+          <h2>Cigars — ACID by Drew Estate</h2>
+          <p>One brand, done right — and now nine ways to buy it. ACID is the preferred smoke around here, and Atlantic Cigar is running away with the section: the Kuba Kuba boxes sit $73 under JR Cigars, and the Oct 21 expansion added Deep Dish, Atom Maduro, Toast, Blondie, and Cold Infusion boxes plus a Blondie Belicoso pack — every one checked against Cigars International's price for the same box, and every one $49–$80 under it. Genuine product, factory boxes.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media"><img src="assets/img_051093e79ecc5b5e.jpg" alt="Open box of ACID Kuba Kuba cigars with blue bands by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 24 ct</span><span class="badge deal">43% off MSRP</span></div>
+              <h3>ACID Kuba Kuba — Box of 24</h3>
+              <p class="spec">5 × 54 ROBUSTO · SUMATRA WRAPPER · NICARAGUA · MILD-MEDIUM</p>
+              <p class="note">The best-selling infused cigar in America, full stop. Nicaraguan long filler cured for months in Drew Estate's aroma rooms, finished in an oily Ecuadorian Sumatra wrapper — sweet, floral, and smooth, with real tobacco underneath the botanicals. At $6.66 a stick this is humidor-stocking math, not treat-yourself math.</p>
+              <div class="pricerow"><span class="price">$159.92</span><span class="was">$283.20</span></div>
+              <span class="netline">$6.66 / stick · JR Cigars charges $232.99 for this box</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-kuba-kuba/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_c92e61f13a3aaa21.jpg" alt="Box of ACID Kuba Kuba Maduro cigars by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 24 ct</span><span class="badge deal">43% off MSRP</span></div>
+              <h3>ACID Kuba Kuba Maduro — Box of 24</h3>
+              <p class="spec">5 × 54 ROBUSTO · CONNECTICUT BROADLEAF MADURO · MILD-MEDIUM</p>
+              <p class="note">Same legendary Kuba infusion, dressed in a dark Connecticut broadleaf maduro wrapper that adds cocoa, coffee, and a little spice over the sweetness. If the original reads dessert, the Maduro reads dessert with an espresso next to it. Same giveaway box price as the Sumatra — buy whichever wrapper you lean toward, or split the difference and get both.</p>
+              <div class="pricerow"><span class="price">$159.92</span><span class="was">$283.20</span></div>
+              <span class="netline">$6.66 / stick</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-kuba-kuba-maduro/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_81c38b0594ce8d43.jpg" alt="ACID Seven Wonders sampler box with seven assorted Drew Estate cigars" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Pack deal · 7 ct</span></div>
+              <h3>ACID Seven Wonders Sampler</h3>
+              <p class="spec">7 CIGARS · ONE EACH OF THE FLAGSHIP LINES</p>
+              <p class="note">The correct first purchase if you're ACID-curious: one each of the Kuba Kuba, Kuba Maduro, Blondie Belicoso, Deep Dish, Liquid, Atom Maduro, and the wine-cured ACID One. Seven different infusions, one box, and you'll know exactly which full box to buy next — smart money says the answer is Kuba.</p>
+              <div class="pricerow"><span class="price">$59.40</span></div>
+              <span class="netline">$8.49 / stick · singles retail up to $11.80</span>
+              <span class="seller">Cigars Direct · In stock</span>
+              <a class="go" href="https://www.cigarsdirect.com/collections/cigars/products/drew-estate-acid-seven-wonders-sampler" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_f99c801feaebd0b0.jpg" alt="Box of ACID Deep Dish box-pressed cigars by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 24 ct</span><span class="badge deal">$80 under CI</span></div>
+              <h3>ACID Deep Dish — Box of 24</h3>
+              <p class="spec">5 × 58 GORDO · BOX-PRESSED · SUMATRA WRAPPER · MILD-MEDIUM</p>
+              <p class="note">The big-ring evening ACID. The square box-press packs the blend dense, so a Deep Dish burns slow, cool, and toasty-sweet for well over an hour — the one you light when nobody's in a hurry. Atlantic's $172.09 is $79.90 under Cigars International's box price, verified the same day.</p>
+              <div class="pricerow"><span class="price">$172.09</span><span class="was">$306.00</span></div>
+              <span class="netline">$7.17 / stick · Cigars International charges $251.99 for this box</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-deep-dish/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_2ee7e49cbe167f2f.webp" alt="Open box of ACID Atom Maduro cigars with gold bands by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 24 ct</span><span class="badge deal">$73 under CI</span></div>
+              <h3>ACID Atom Maduro — Box of 24</h3>
+              <p class="spec">5 × 50 ROBUSTO · MADURO WRAPPER · THE FULLER-BODIED END OF ACID</p>
+              <p class="note">The strongest smoke in the ACID line. Where the Kuba leads with florals and sweetness, the Atom's dark maduro wrapper pushes earth, leather, and spice to the front with the infusion riding underneath — the ACID for smokers who usually smoke traditional cigars. $158.61 at Atlantic vs. $231.99 at Cigars International.</p>
+              <div class="pricerow"><span class="price">$158.61</span></div>
+              <span class="netline">$6.61 / stick · Cigars International charges $231.99 for this box</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-atom-maduro/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_8e6fe3b6843a7c09.jpg" alt="Box of ACID Toast Subculture maduro cigars by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 24 ct</span><span class="badge deal">$75 under CI</span></div>
+              <h3>ACID Toast — Box of 24</h3>
+              <p class="spec">6 × 50 TORO · MADURO WRAPPER · SUBCULTURE LINE</p>
+              <p class="note">The dessert-course ACID: a maduro toro that's cocoa- and coffee-forward, richer and slower than the Kuba at an extra inch of length. Toast is the one converts reach for when the Blue line reads too light. Atlantic at $162.49 is $74.50 under Cigars International's price for the identical box.</p>
+              <div class="pricerow"><span class="price">$162.49</span></div>
+              <span class="netline">$6.77 / stick · Cigars International charges $236.99 for this box</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-toast-subculture/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_bb991547b74356c5.jpg" alt="Box of 40 ACID Blondie petite cigars by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 40 ct</span><span class="badge deal">Cheapest per stick</span></div>
+              <h3>ACID Blondie — Box of 40</h3>
+              <p class="spec">4 × 38 PETIT CORONA · CONNECTICUT SHADE · MILD · THE 20-MINUTE SMOKE</p>
+              <p class="note">The coffee-break ACID in its bulk box — and at $3.99 a stick, the cheapest smoke on this entire sheet. The Blondie's small ring concentrates the sweet, floral Blondie blend into a 20-minute cigar that never overstays. Atlantic's $159.58 for 40 beats Cigars International's $226.99 for the same box by $67.</p>
+              <div class="pricerow"><span class="price">$159.58</span><span class="was">$276.00</span></div>
+              <span class="netline">$3.99 / stick · Cigars International charges $226.99 for this box</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-blondie/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_b372551cc9fd6e2b.jpg" alt="Box of ACID Cold Infusion Tea cigars by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Box deal · 24 ct</span><span class="badge deal">$67 under CI</span></div>
+              <h3>ACID Cold Infusion Tea — Box of 24</h3>
+              <p class="spec">6.75 × 44 LONSDALE · CONNECTICUT WRAPPER · THE LIGHTEST ACID</p>
+              <p class="note">The morning cigar of the line: a slim Connecticut-wrapped lonsdale infused light and refreshing — the one to hand a first-timer who finds the Kuba too sweet, and the one to pair with coffee before noon. Atlantic's $149.60 undercuts Cigars International's $216.99 box by $67.39.</p>
+              <div class="pricerow"><span class="price">$149.60</span><span class="was">$264.00</span></div>
+              <span class="netline">$6.23 / stick · Cigars International charges $216.99 for this box</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-cold-infusion/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media"><img src="assets/img_7a7b26f91e35ef3d.webp" alt="Box of ACID Blondie Belicoso cigars by Drew Estate" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge box">Pack deal · 10 ct</span><span class="badge deal">55% off MSRP</span></div>
+              <h3>ACID Blondie Belicoso — 10-Pack</h3>
+              <p class="spec">5 × 54 BELICOSO · CONNECTICUT SHADE · MILD-MEDIUM</p>
+              <p class="note">The Blondie blend in a full-size torpedo — same sweet Connecticut profile, twice the cigar, and the tapered head concentrates the smoke as it warms up. Atlantic sells this 10-pack format at $4.95 a stick; Cigars International's box math for the same cigar runs $9.04 a stick. The sampler-first crowd's upgrade path.</p>
+              <div class="pricerow"><span class="price">$49.50</span><span class="was">$110.00</span></div>
+              <span class="netline">$4.95 / stick · CI's box of 24 works out to $9.04 / stick</span>
+              <span class="seller">Atlantic Cigar · In stock</span>
+              <a class="go" href="https://atlanticcigar.com/acid-blondie-belicoso-10-pack/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ CIGAR GUIDE ============ -->
+      <section id="guide-cigars">
+        <div class="guide">
+          <h3>The ACID Deep Dive</h3>
+          <p class="sub">Partisans will tell you infused cigars aren't "real" cigars. The sales charts — and anyone who's actually smoked a Kuba Kuba — tell a different story. Here's the whole picture.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>The Drew Estate story</h4>
+              <p>Jonathan Drew and Marvin Samel started Drew Estate in 1995, selling cigars from a kiosk in New York before relocating to Estelí, Nicaragua — hurricane-battered, dirt cheap, and the heart of cigar country — where exactly two rollers showed up on day one. They partnered with Scott "ACID" Chester, whose industrial-design studio (Arielle Chester Industrial Design — A.C.I.D.) gave the line its name and its graffiti-art look. The motorcycle-rider logo, the color-coded bands, the attitude: all of it was deliberately <i>not</i> your grandfather's cigar brand, and it built the best-selling infused cigar line in America.</p>
+              <h4 style="margin-top:16px">Infused ≠ flavored</h4>
+              <p>This is the part the snobs skip. A cheap flavored cigar is sprayed or dipped. ACID tobaccos are <b>cured for months in sealed aroma rooms</b> lined with over 140 essential oils, herbs, and botanicals, so the character is in the leaf itself — Drew Estate guards the exact recipes like trade secrets, because they are. Underneath the aromatics is genuinely good Nicaraguan long filler, which is why a Kuba still tastes like a cigar and not a candle.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">The lines worth knowing</h4>
+              <ul>
+                <li><b>Kuba Kuba</b> (Blue) — the flagship. Fat 5×54 robusto, Sumatra wrapper, sweet and floral. Start here; it's the best-seller for a reason.</li>
+                <li><b>Kuba Kuba Maduro</b> — the same blend under dark broadleaf: cocoa and coffee depth, a notch richer.</li>
+                <li><b>Blondie</b> — 4×38 short smoke in a Connecticut shade wrapper. The 20-minute, coffee-break ACID; also the easiest first cigar to hand a newcomer.</li>
+                <li><b>Deep Dish</b> — box-pressed 5×58, slow and cool-burning, toasty sweet. The big-ring evening version.</li>
+                <li><b>Cold Infusion Tea</b> — the lightest of the line, Connecticut-wrapped and refreshing; a morning cigar.</li>
+                <li><b>Liquid</b> (Red band) — the fuller-bodied end of ACID, no sweetened cap. For smokers who want the infusion turned down and the tobacco turned up.</li>
+                <li><b>ACID One</b> — the oddball: not infused at all, but cured in red-wine casks. The bridge cigar for traditionalists.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cols" style="margin-top:18px">
+            <div class="mini">
+              <h4>Humidor &amp; storage basics</h4>
+              <ul>
+                <li><b>65–70% humidity, ~70°F.</b> That's the whole target. Two-way Boveda packs are the zero-effort way to hold it — swap them when they go stiff and crunchy.</li>
+                <li><b>Give ACIDs their own space.</b> Non-negotiable: the aromatics <i>will</i> migrate into traditional cigars stored against them. A separate small humidor or a sealed tupperdor for the infused sticks keeps everybody happy.</li>
+                <li><b>Rest mail-order sticks 1–2 weeks</b> before smoking. Shipping dries and stresses them; the humidor evens them back out.</li>
+                <li><b>Keep the cello on</b> in a shared box — it slows aroma transfer and protects wrappers.</li>
+                <li><b>Gurgling or a tight draw?</b> Dry-box the cigar (unhumidified box, lid cracked) for a day. Over-humidified is the #1 cause of bad burns.</li>
+              </ul>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Buying ACIDs smart</h4>
+              <p><b>Boxes beat singles by a mile.</b> A Kuba Kuba single retails around $11.80; the Atlantic box price above works out to $6.66 a stick — a 44% swing for buying the format you'd buy anyway once you know you like them.</p>
+              <p><b>Sampler first, box second.</b> The Seven Wonders exists precisely so you don't commit to 24 of the wrong line. One sampler, one notebook, then the box.</p>
+              <p><b>Price-check the big four</b> — Atlantic, JR, Cigars International, Famous Smoke — because ACID pricing swings wildly between them week to week. This week Atlantic isn't close. Next month, re-check before you reorder.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============ CAR AUDIO ============ -->
+      <section id="audio">
+        <div class="sec-head">
+          <h2>Car Audio — Subs, Speakers &amp; Head Units</h2>
+          <p>Four verified deals, all new. No soundbars, ever. Expert rule baked into every card below: judge power in <b>RMS watts</b>, never the "peak/max" number on the box — peak is marketing, RMS is what the gear actually does all day.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_e1d14a2b44c2d95c.jpg" alt="Sony XAV-AX4000 touchscreen car stereo receiver" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$152 under street</span></div>
+              <h3>Sony XAV-AX4000 Receiver</h3>
+              <p class="spec">6.95″ TOUCHSCREEN · WIRELESS CARPLAY &amp; ANDROID AUTO · 20W RMS × 4</p>
+              <p class="note">The head unit is the brain — buy the interface, not the wattage claim. This Sony gets the things that matter: wireless CarPlay and Android Auto (no cable fumbling), a fast, anti-glare 6.95″ screen, and Sony's clean preamp outputs for when you add an amp later. Crutchfield at $448 vs. CarToys at $599.99 for the exact same unit — a $152 gap, and Crutchfield throws in its install support.</p>
+              <div class="pricerow"><span class="price">$448.00</span><span class="was">$598.00</span></div>
+              <span class="netline">CarToys charges $599.99 for this exact unit</span>
+              <span class="seller">Crutchfield · In stock · New</span>
+              <a class="go" href="https://www.crutchfield.com/p_158XAV4000/Sony-XAV-AX4000.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_986ab04fbb808a36.jpg" alt="JBL Club 122 12-inch car subwoofer" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Cheapest at JBL direct</span></div>
+              <h3>JBL Club 122 — 12″ Subwoofer</h3>
+              <p class="spec">400W RMS · DUAL 2/4Ω SELECTABLE (SSI) · 86 DB · 30–500 HZ</p>
+              <p class="note">The sub pick, and the cheap route is straight from JBL: $143.95 at jbl.com vs. $179.95 at Sonic Electronix. What makes the Club 122 smart is SSI — a switch flips it between 2Ω and 4Ω, so it matches whatever amp you own now <i>and</i> the one you upgrade to later. 400 real RMS watts is honest power for a daily driver; pair it with a ~400W RMS mono amp and a box built to JBL's spec volume and it will thump without distortion games.</p>
+              <div class="pricerow"><span class="price">$143.95</span><span class="was">$209.95</span></div>
+              <span class="netline">Sonic Electronix charges $179.95 for this exact sub</span>
+              <span class="seller">JBL.com · In stock · New</span>
+              <a class="go" href="https://www.jbl.com/JBLSUBCB122.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_2a9922d1985c6f4c.png" alt="JBL Club 602C component speaker set with separate tweeters" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">43% off list</span><span class="badge low">Clearance — discontinued</span></div>
+              <h3>JBL Club 602C — 6.5″ Component Set</h3>
+              <p class="spec">70W RMS EACH · 3Ω · 92 DB SENSITIVITY · SEPARATE TWEETERS + CROSSOVERS</p>
+              <p class="note">Components are the real upgrade: the tweeter mounts up high where your ears are, instead of firing at your ankles like a coaxial. This set is discontinued (replaced by the Club 64C), which is exactly why Sonic has it at $129.95 against a $229.95 list — Crutchfield no longer carries it new at all. The 92 dB sensitivity is the number to respect: it gets loud on head-unit power alone, and the 3Ω load squeezes extra watts out of any amp.</p>
+              <div class="pricerow"><span class="price">$129.95</span><span class="was">$229.95</span></div>
+              <span class="netline">Clearance pricing — no major retailer stocks it new anymore</span>
+              <span class="seller">Sonic Electronix · In stock · New</span>
+              <a class="go" href="https://www.sonicelectronix.com/item-189377-JBL-Club-602C-SPKCB602CAM.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_57376aa4ac633a27.jpg" alt="JBL Club 622 6.5-inch coaxial car speakers, pair" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">29% off list</span><span class="badge low">Clearance — discontinued</span></div>
+              <h3>JBL Club 622 — 6.5″ Coaxial Pair</h3>
+              <p class="spec">60W RMS EACH · 3Ω · 93 DB SENSITIVITY · 48–21K HZ</p>
+              <p class="note">The drop-in door upgrade. If you're not cutting holes for component tweeters, this is the pair: 93 dB sensitivity is exceptionally efficient, so even a factory head unit drives them noticeably louder and cleaner than stock speakers, and the edge-driven silk tweeter stays smooth where cheap tweeters get harsh. Same discontinued-clearance story as the 602C — $99.99 vs. $139.95 list at Sonic while stock lasts.</p>
+              <div class="pricerow"><span class="price">$99.99</span><span class="was">$139.95</span></div>
+              <span class="netline">Per pair · clearance pricing at Sonic Electronix</span>
+              <span class="seller">Sonic Electronix · In stock · New</span>
+              <a class="go" href="https://www.sonicelectronix.com/item-178585-JBL-Club-622.html" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ CAR AUDIO GUIDE ============ -->
+      <section id="guide-audio">
+        <div class="guide">
+          <h3>Car Audio: What Actually Matters</h3>
+          <p class="sub">Car audio is where spec-sheet lying was perfected. Three numbers cut through all of it.</p>
+          <div class="cols">
+            <div class="mini">
+              <h4>RMS is real, "peak" is fiction</h4>
+              <p><b>Every card on this sheet carries a one-line expert rationale, and every power figure we print is RMS</b> — continuous watts the gear handles all day. "Peak" or "max" power is a momentary number measured under conditions you'll never reproduce; a "$40 amp, 2,000 watts!" is making maybe 80 honest watts. Match amp RMS to sub RMS at the same impedance: a 400W RMS sub wants a ~400W RMS mono amp wired to the right ohm load — underpowering a sub and cranking the gain to compensate is how voice coils die (clipping kills, not wattage).</p>
+              <h4 style="margin-top:14px">The box is half the sub</h4>
+              <p>A subwoofer in the wrong box is a different, worse subwoofer. <b>Enclosure volume must match the maker's spec</b> (JBL publishes it for the Club 122) — too small strangles low end, too big lets the cone flop and bottom out. Sealed boxes are tight and accurate; ported boxes play louder and lower but must be tuned to the sub. Budget for the right box the way you budget for the sub itself.</p>
+            </div>
+            <div class="mini">
+              <h4 class="gold">Sensitivity is free volume</h4>
+              <ul>
+                <li><b>Speakers:</b> sensitivity (dB @ 1W/1m) tells you how loud a speaker gets on the power you actually have. +3 dB is like doubling your amp power — free. Both JBL sets above run 92–93 dB, which is why they work on head-unit power.</li>
+                <li><b>Impedance is a lever:</b> a 3Ω speaker pulls more watts from the same amp than a 4Ω one. And a switchable-impedance sub (the Club 122's SSI) future-proofs the whole system.</li>
+                <li><b>Components &gt; coaxials</b> when you can mount the tweeter high; coaxials win on install simplicity. Either beats factory paper cones by a mile.</li>
+                <li><b>Head units:</b> buy the interface — wireless CarPlay/Android Auto, screen quality, and clean preamp outputs for a future amp. Built-in "50W × 4" is really ~20W RMS × 4 everywhere; plan on an amp if you want real volume.</li>
+                <li><b>No soundbars.</b> Not in a car, not as a shortcut, not ever. Real speakers in real doors.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="takeline"><b>The 10-second version:</b> Start with the Sony head unit and the Club 622 doors on factory power — that alone transforms most cars. Then the Club 122 in a spec box on a matched 400W RMS mono amp when you're ready for bass.</p>
+          <p class="takeline"><b>Amplifier watch (re-checked Oct 21):</b> still no amp card, on purpose. Every amplifier we priced across the full lineup — Kicker CXA800.1 and CXA360.4, JBL Club A600, Rockford Punch, Alpine S-series — came back at the identical price at every authorized dealer. Car-audio MAP is total right now, and a card that pretends $299.99 = $299.99 is a "deal" would be lying to you. The moment a real amp gap opens, it gets carded the same day.</p>
+        </div>
+      </section>
+
+      <footer>
+        <p class="big">Guns n Subs</p>
+        <p>Guns, knives, subs, and cigars — the annex of the <a href="index.html">Dupe Cheat Sheet</a> — watches, jewelry, food deals, tickets, and everything else live over there. <a href="index.html">← Head back to the main sheet</a></p>
+        <p class="fineprint">*Beretta consumer rebate: purchase a qualifying APX A1, M9, or Px4 Storm by Nov 30, 2026 and claim by Dec 31, 2026 for $100 back (prepaid card; some models offer a higher-value Beretta gift card instead — see the claim site for your model's options). All firearms listed are new and must transfer through a licensed FFL dealer; know your state and local laws before ordering. Cigars ship only where legal and to adults of legal smoking age. Magazine capacity is restricted in some states and cities — including parts of Illinois — so confirm your local rules before ordering magazines or drums. Prices and stock were verified Wed, Oct 21, 2026 and can change or sell out at any time — the retailer's listing page is the final word.</p>
+      </footer>
+    </div>
+  </body>
+</html>
