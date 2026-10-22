@@ -55,27 +55,35 @@
     .weekend-copy strong{color:var(--ink)}
     .weekend-price{color:var(--accent-ink);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;white-space:nowrap}
     .weekend-tag{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:4px;background:var(--accent-soft);color:var(--accent-ink);font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
-    .hot-tickets{margin:12px 0 0;border:1px solid var(--line);border-top:3px solid var(--hot);border-radius:11px;background:var(--panel);overflow:hidden}
-    .hot-tickets-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:10px 14px;border-bottom:1px solid var(--line)}
-    .hot-tickets h2{margin:0;font-size:18px;line-height:1.15;letter-spacing:-.02em}
-    .hot-tickets-stamp{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.055em;white-space:nowrap}
+    .hot-tickets{margin:12px 0 0;border:1px solid color-mix(in srgb,var(--hot) 38%,var(--line));border-top:4px solid var(--hot);border-radius:11px;background:var(--panel);overflow:hidden;box-shadow:var(--shadow)}
+    .hot-tickets-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;border-bottom:1px solid color-mix(in srgb,var(--hot) 30%,var(--line));background-image:radial-gradient(circle,color-mix(in srgb,var(--hot) 13%,transparent) 1px,transparent 1.6px),linear-gradient(100deg,color-mix(in srgb,var(--hot) 17%,var(--panel)),color-mix(in srgb,var(--heat-orange) 7%,var(--panel)) 58%,var(--panel));background-size:12px 12px,auto}
+    .hot-tickets h2{margin:0;font-family:'Anton',Impact,sans-serif;font-size:25px;font-weight:400;line-height:1.05;letter-spacing:.02em;text-transform:uppercase}
+    .hot-tickets h2::before{content:"";display:inline-block;width:9px;height:9px;margin-right:10px;border-radius:2px;background:linear-gradient(135deg,var(--heat-red),var(--heat-orange));vertical-align:4px;box-shadow:0 0 10px color-mix(in srgb,var(--heat-orange) 55%,transparent)}
+    .hot-tickets-stamp{padding:5px 8px;border-radius:6px;background:var(--ink);color:var(--bg);font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.055em;white-space:nowrap}
     .hot-ticket-list{list-style:none;margin:0;padding:0}
     .hot-ticket{border-bottom:1px solid var(--line)}
     .hot-ticket:last-child{border-bottom:0}
-    .hot-ticket a{display:grid;grid-template-columns:105px minmax(160px,.9fr) minmax(130px,.72fr) 88px minmax(240px,1.35fr);gap:10px;align-items:center;padding:9px 14px;color:inherit;text-decoration:none}
-    .hot-ticket a:hover,.hot-ticket a:focus-visible{background:color-mix(in srgb,var(--accent-soft) 32%,var(--panel))}
+    .hot-ticket a{display:grid;grid-template-columns:105px minmax(160px,.9fr) minmax(130px,.72fr) 96px minmax(220px,1.35fr);gap:10px;align-items:center;padding:9px 14px;color:inherit;text-decoration:none;box-shadow:inset 3px 0 0 transparent;transition:background-color .18s ease,box-shadow .18s ease}
+    .hot-ticket:nth-child(even) a{background:color-mix(in srgb,var(--panel-2) 30%,var(--panel))}
+    .hot-ticket a:hover,.hot-ticket a:focus-visible{background:color-mix(in srgb,var(--accent-soft) 32%,var(--panel));box-shadow:inset 3px 0 0 var(--accent)}
     .hot-ticket a:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:-3px}
-    .ticket-date,.ticket-price{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;line-height:1.35}
+    .hot-ticket:has(.ticket-signal.heat) a{background:linear-gradient(90deg,color-mix(in srgb,var(--heat-orange) 11%,var(--panel)),color-mix(in srgb,var(--heat-orange) 3%,var(--panel)) 58%,var(--panel));box-shadow:inset 3px 0 0 var(--heat-red)}
+    .hot-ticket:has(.ticket-signal.heat) a:hover,.hot-ticket:has(.ticket-signal.heat) a:focus-visible{background:linear-gradient(90deg,color-mix(in srgb,var(--heat-orange) 17%,var(--panel)),color-mix(in srgb,var(--heat-orange) 6%,var(--panel)) 58%,var(--panel));box-shadow:inset 3px 0 0 var(--heat-red),inset 0 0 28px color-mix(in srgb,var(--heat-orange) 13%,transparent)}
+    @media (hover:hover) and (prefers-reduced-motion:no-preference){
+      .hot-ticket a{transition:background-color .18s ease,box-shadow .18s ease,transform .18s ease}
+      .hot-ticket a:hover{transform:translateX(2px)}
+    }
+    .ticket-date,.ticket-price{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;line-height:1.35}
     .ticket-date{color:var(--hot);letter-spacing:.035em;text-transform:uppercase}
-    .ticket-name{font-size:12px;font-weight:700;line-height:1.3}
-    .ticket-venue{color:var(--muted);font-size:11px;line-height:1.35}
-    .ticket-price{color:var(--accent-ink);text-align:right;white-space:nowrap}
-    .ticket-note{min-width:0;color:var(--muted);font-size:10.5px;line-height:1.4}
-    .ticket-signal{display:inline-flex;align-items:center;margin-right:6px;padding:2px 5px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.045em;white-space:nowrap}
-    .ticket-signal.deal{background:var(--accent-soft);color:var(--accent-ink)}
-    .ticket-signal.heat{background:var(--heat-soft);color:var(--heat-red)}
+    .ticket-name{font-size:13px;font-weight:700;line-height:1.3}
+    .ticket-venue{color:var(--muted);font-size:11.5px;line-height:1.35}
+    .ticket-price{color:var(--accent-ink);font-size:11px;text-align:right;white-space:nowrap}
+    .ticket-note{min-width:0;color:var(--muted);font-size:11px;line-height:1.45}
+    .ticket-signal{display:inline-flex;align-items:center;margin-right:6px;padding:2.5px 6px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.05em;white-space:nowrap}
+    .ticket-signal.deal{background:var(--accent-soft);color:var(--accent-ink);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 38%,transparent)}
+    .ticket-signal.heat{background:linear-gradient(90deg,var(--heat-red),var(--heat-orange));color:#fff;box-shadow:0 1px 9px color-mix(in srgb,var(--heat-orange) 48%,transparent)}
     .ticket-signal.combo{background:var(--gold-soft);color:var(--week-ink)}
-    .hot-tickets-foot{margin:0;padding:8px 14px;border-top:1px solid var(--line);background:var(--panel-2);color:var(--muted);font-size:9px;line-height:1.4}
+    .hot-tickets-foot{margin:0;padding:8px 14px;border-top:1px solid var(--line);background:var(--panel-2);color:var(--muted);font-size:9.5px;line-height:1.4}
     .search-panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px;border-radius:14px}
     .filters{display:flex;flex-wrap:nowrap;gap:7px;margin:10px -2px -2px;padding:2px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
     .filter{flex:0 0 auto;scroll-snap-align:start;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:600;cursor:pointer}
@@ -129,6 +137,27 @@
     .limited-collabs .section-note{margin-top:-8px}
     .bud-take{margin:16px 0 2px;padding:11px 14px;background:var(--accent-soft);border-radius:10px;color:var(--ink);font-size:.93rem;line-height:1.5}
     .bud-take strong{color:var(--accent-ink);font-weight:700}
+    .watch-feature{margin:0 0 20px;padding:26px 28px 24px;background:color-mix(in srgb,var(--gold-soft) 34%,var(--panel));border:1px solid color-mix(in srgb,var(--gold) 45%,var(--line));border-top:4px solid var(--gold);border-radius:12px;box-shadow:var(--shadow)}
+    .watch-feature .wf-kicker{margin:0 0 10px;color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em}
+    .watch-feature .wf-headline{margin:0;font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,4.4vw,44px);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+    .watch-feature .wf-dek{margin:12px 0 0;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(16px,2.2vw,20px);line-height:1.45;color:var(--muted);max-width:640px}
+    .watch-feature .wf-body{margin-top:18px;max-width:680px;font-size:15.5px;line-height:1.65}
+    .watch-feature .wf-body p{margin:0 0 14px;font-family:'Inter',system-ui,sans-serif}
+    .watch-feature .wf-lede::first-letter{font-family:Georgia,'Times New Roman',serif;font-size:3.4em;font-weight:700;float:left;line-height:.82;padding:5px 10px 0 0;color:var(--gold)}
+    .watch-feature .wf-pullquote{margin:22px 0;padding:16px 4px;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(20px,3vw,27px);line-height:1.3;text-align:center}
+    @media(max-width:640px){.watch-feature{padding:20px 18px 18px}}
+    .feature-ticker{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 88%,transparent);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.04em}
+    .feature-ticker .ft-date{color:var(--accent-ink);font-weight:700}
+    .wf-new-badge{display:inline-block;margin-left:9px;padding:2px 6px;border-radius:4px;background:var(--gold);color:#fff8dc;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.1em;vertical-align:2px}
+    /* Compact weekly feature — half-length editorial, no pull quote (Hot Tickets) */
+    .watch-feature.wf-compact{padding:20px 22px 16px}
+    .watch-feature.wf-compact .wf-headline{font-size:clamp(24px,3.4vw,34px)}
+    .watch-feature.wf-compact .wf-dek{margin-top:9px;font-size:clamp(15px,2vw,18px)}
+    .watch-feature.wf-compact .wf-body{margin-top:13px;font-size:14.5px;line-height:1.6}
+    .watch-feature.wf-compact .wf-body p{margin-bottom:10px}
+    /* Standalone entertainment feature — sits between the Weekend banner and Hot Tickets */
+    #entertainment-feature{margin:12px 0 0;background-image:radial-gradient(circle,color-mix(in srgb,var(--gold) 12%,transparent) 1px,transparent 1.6px);background-size:14px 14px}
+    @media(max-width:640px){.watch-feature.wf-compact{padding:16px 16px 12px}}
     .limited-collabs .media-label{background:rgba(10,14,11,.9)}
     .limited-collabs .card-badge.status{background:color-mix(in srgb,var(--accent) 88%,#0b2415)}
     .limited-collabs .card-badge.live{background:color-mix(in srgb,var(--hot) 88%,#371407)}
@@ -686,14 +715,15 @@
       .weekend-event{grid-template-columns:48px minmax(0,1fr);gap:8px;padding:10px 12px}
       .weekend-price{grid-column:2;white-space:normal}
       .hot-tickets{margin-top:10px}
-      .hot-tickets-head{align-items:flex-start;padding:10px 12px}
-      .hot-tickets h2{font-size:17px}
-      .hot-tickets-stamp{max-width:128px;text-align:right;white-space:normal}
+      .hot-tickets-head{align-items:center;padding:10px 12px}
+      .hot-tickets h2{font-size:21px}
+      .hot-tickets-stamp{max-width:128px;text-align:center;white-space:normal}
+      #entertainment-feature{margin-top:10px}
       .hot-ticket a{grid-template-columns:minmax(0,1fr) auto;gap:3px 10px;padding:9px 12px}
       .ticket-date{grid-column:1}
       .ticket-price{grid-column:2;grid-row:1;text-align:right}
       .ticket-name,.ticket-venue,.ticket-note{grid-column:1/-1}
-      .ticket-name{font-size:12.5px}
+      .ticket-name{font-size:13px}
       .ticket-note{padding-top:2px}
       .hot-tickets-foot{padding:8px 12px}
       .search-tools{top:64px;margin:10px 0 0}
@@ -940,6 +970,30 @@
     .ufc-headlines a:focus-visible{outline:2px solid var(--ufc-red);outline-offset:2px}
     .ufc-headline{font-size:12px;font-weight:600;line-height:1.35}
     .ufc-source{color:var(--ufc-red);font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+    .ufc-strip{margin-top:14px;border:1px solid var(--ufc-line);border-radius:8px;background:var(--ufc-panel-2);padding:11px 13px 12px}
+    .ufc-event-body .ufc-strip{margin-top:0}
+    .ufc-strip-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+    .ufc-strip-head h5{margin:0;color:var(--ufc-ink);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+    .ufc-strip-head span{color:var(--ufc-muted);font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:right}
+    .ufc-move-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) 14px minmax(0,1fr);gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--ufc-line);font-size:11px}
+    .ufc-move-row:last-of-type{border-bottom:0}
+    .ufc-move-match{font-weight:700;line-height:1.35}
+    .ufc-move-lines{color:var(--ufc-muted);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;line-height:1.45}
+    .ufc-move-lines.now{color:var(--ufc-gold)}
+    .ufc-move-arrow{color:var(--ufc-red);font-size:11px;font-weight:700;text-align:center}
+    .ufc-strip-read{margin:9px 0 0;padding-top:9px;border-top:1px solid var(--ufc-line);color:var(--ufc-ink);font-size:10.5px;line-height:1.5}
+    .ufc-strip-read strong{color:var(--ufc-gold)}
+    .ufc-booked-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:7px 0;border-bottom:1px solid var(--ufc-line)}
+    .ufc-booked-row:last-of-type{border-bottom:0}
+    .ufc-booked-match{font-size:11.5px;font-weight:700;line-height:1.35}
+    .ufc-booked-event{color:var(--ufc-red);font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-align:right;white-space:nowrap}
+    .ufc-booked-note{grid-column:1/-1;color:var(--ufc-muted);font-size:10.5px;line-height:1.45}
+    .ufc-booked-note em{color:#8e969a;font-style:normal}
+    .ufc-fullcard{margin-top:16px}
+    .ufc-bout-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--ufc-line)}
+    .ufc-bout-row:last-child{border-bottom:0}
+    .ufc-bout-match{font-size:11.5px;font-weight:700;line-height:1.35}
+    .ufc-bout-weight{color:var(--ufc-muted);font-size:10px;line-height:1.35;text-align:right}
     .boxing-corner{background:color-mix(in srgb,var(--ufc-gold) 4%,var(--ufc-bg))}
     .boxing-fights{border-top:1px solid var(--ufc-line)}
     .boxing-row{display:grid;grid-template-columns:30px 70px minmax(165px,.9fr) minmax(170px,.82fr) minmax(250px,1.45fr);gap:11px;align-items:center;padding:8px 2px;border-bottom:1px solid var(--ufc-line)}
@@ -977,6 +1031,12 @@
       .ufc-card-odds{text-align:right}
       .ufc-compact-row{grid-template-columns:66px minmax(0,1fr) auto;gap:8px;padding:11px 0}
       .ufc-headlines a{gap:9px;padding:12px 0}
+      .ufc-strip{padding:10px 11px 11px}
+      .ufc-move-row{grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr);gap:3px 8px;padding:7px 0}
+      .ufc-move-match{grid-column:1/-1}
+      .ufc-booked-row{grid-template-columns:minmax(0,1fr)}
+      .ufc-booked-event{text-align:left}
+      .ufc-bout-row{gap:8px;padding:8px 0}
       .ufc-headline{font-size:11.5px}
       .boxing-row{grid-template-columns:27px minmax(0,1fr) auto;gap:4px 8px;padding:9px 0}
       .boxing-rank{grid-row:1/3;align-self:start;padding-top:2px}
@@ -1120,12 +1180,13 @@
 </head>
 <body>
   <main class="wrap" id="top">
+    <div class="feature-ticker" data-next-refresh="2026-11-04"><span>✒️ Fresh commentary</span> <span class="ft-date"></span></div>
     <nav class="mobile-tabs" aria-label="Quick navigation">
       <a href="#top" data-tab="today"><span aria-hidden="true">●</span>Today</a>
       <a href="#fresh-rotation" data-tab="new"><span aria-hidden="true">＋</span>New</a>
       <a href="#ufc-fight-center" data-tab="ufc"><span aria-hidden="true">⬢</span>UFC</a>
       <a href="#black-friday-watchlist" data-tab="black-friday"><span aria-hidden="true">◆</span>Black Friday</a>
-      <a href="guns-cigars.html" class="guns-cigars-nav" data-tab="guns-cigars"><span aria-hidden="true">◎</span>Guns n Subs</a>
+      <a href="https://dupe-cheat-sheet.netlify.app/guns-cigars.html" class="guns-cigars-nav" data-tab="guns-cigars"><span aria-hidden="true">◎</span>Guns n Subs</a>
     </nav>
     <!-- PINNED TOP ORDER — do not change: quick nav → Bud's Lunch → This Weekend banner → everything else. Bud's Lunch sits directly below the quick nav (the true top of the sheet) and the This Weekend banner sits directly below Bud's Lunch. The load script enforces this order on every page load. -->
     <section class="bud-lunch" aria-labelledby="bud-lunch-title">
@@ -1145,15 +1206,41 @@
     <section class="weekend-banner" id="weekend-banner" aria-labelledby="weekend-banner-title" hidden>
       <div class="weekend-banner-head">
         <h2 id="weekend-banner-title">This Weekend</h2>
-        <span class="weekend-range">OCT 16–18 · CHICAGO AREA</span>
+        <span class="weekend-range">OCT 23–25 · CHICAGO AREA</span>
       </div>
       <ul class="weekend-list">
-        <li class="weekend-event" data-event-date="2026-10-16"><time class="weekend-day" datetime="2026-10-16">FRI</time><span class="weekend-copy"><strong>Boys in the Band</strong> · Alabama tribute · 7:30 PM · Woodstock Opera House</span><span class="weekend-price">FROM ~$63/SEAT · RESALE</span></li>
-        <li class="weekend-event" data-event-date="2026-10-17"><time class="weekend-day" datetime="2026-10-17">SAT</time><span class="weekend-copy"><strong>Spooky Zoo at Lincoln Park Zoo</strong> · Daytime, part of Fall Fest · Lincoln Park Zoo <span class="weekend-tag">FAMILY-FRIENDLY</span></span><span class="weekend-price">FREE</span></li>
-        <li class="weekend-event" data-event-date="2026-10-17"><time class="weekend-day" datetime="2026-10-17">SAT</time><span class="weekend-copy"><strong>Blackhawks vs Dallas Stars</strong> · 6:00 PM · United Center <span class="weekend-tag">NOT YET LIVE-VERIFIED</span></span><span class="weekend-price">~$60–75/SEAT ALL-IN · RE-VERIFY AT PURCHASE</span></li>
-        <li class="weekend-event" data-event-date="2026-10-17"><time class="weekend-day" datetime="2026-10-17">SAT</time><span class="weekend-copy"><strong>Simply Billy</strong> · Billy Joel tribute · 7:00 PM · Raue Center, Crystal Lake</span><span class="weekend-price">FROM $49</span></li>
-        <li class="weekend-event" data-event-date="2026-10-18"><time class="weekend-day" datetime="2026-10-18">SUN</time><span class="weekend-copy"><strong>ClarkeToberfest Family Day</strong> · 12–8 PM · Harley Clarke Mansion, Evanston lakefront <span class="weekend-tag">FAMILY-FRIENDLY</span></span><span class="weekend-price">FREE ENTRY</span></li>
+        <li class="weekend-event" data-event-date="2026-10-23"><time class="weekend-day" datetime="2026-10-23">FRI</time><span class="weekend-copy"><strong>Grunge Fest</strong> · STP + Alice in Chains tributes · 7:00 PM · The Vixen, McHenry <span class="weekend-tag">NEAR-SELLOUT RISK</span></span><span class="weekend-price">RESALE ~$71/SEAT · CHECK LISTING</span></li>
+        <li class="weekend-event" data-event-date="2026-10-24"><time class="weekend-day" datetime="2026-10-24">SAT</time><span class="weekend-copy"><strong>Rotary Rocks the Raue</strong> · Johnny Cash tribute · 7:00 PM · Raue Center, Crystal Lake <span class="weekend-tag">FAMILY-FRIENDLY</span></span><span class="weekend-price">~$124/PAIR ALL-IN</span></li>
+        <li class="weekend-event" data-event-date="2026-10-24"><time class="weekend-day" datetime="2026-10-24">SAT</time><span class="weekend-copy"><strong>Bulls vs Wizards</strong> · home opener · 7:00 PM · United Center <span class="weekend-tag">FAMILY-FRIENDLY</span></span><span class="weekend-price">~$114/PAIR INCL FEES</span></li>
+        <li class="weekend-event" data-event-date="2026-10-24"><time class="weekend-day" datetime="2026-10-24">SAT</time><span class="weekend-copy"><strong>Arts in the Dark Halloween Parade</strong> · evening · State Street, Chicago <span class="weekend-tag">FAMILY-FRIENDLY</span></span><span class="weekend-price">FREE</span></li>
+        <li class="weekend-event" data-event-date="2026-10-25"><time class="weekend-day" datetime="2026-10-25">SUN</time><span class="weekend-copy"><strong>Brett Goldstein</strong> · Sex, Death &amp; Small Talk · 7:00 PM · Chicago Theatre</span><span class="weekend-price">~$132/PAIR</span></li>
       </ul>
+    </section>
+    <!-- Compact live-entertainment feature — refreshes WEEKLY (data-refresh-cadence), unlike the biweekly section features. -->
+    <article id="entertainment-feature" class="watch-feature wf-compact" data-published="2026-10-21" data-refresh-cadence="weekly" aria-label="Feature article: The City That Goes Out">
+      <p class="wf-kicker">THE FEATURE</p>
+      <h3 class="wf-headline">The City That Goes Out</h3>
+      <p class="wf-dek">Chicago’s night life is a grand tour — a Moorish ballroom in Uptown, a low-ceilinged club room off Clark Street, a marquee burning over State — and it still sets the pace for every smaller room within driving distance.</p>
+      <div class="wf-body">
+        <p class="wf-lede">Start at the Aragon, a ballroom built to look like a Spanish courtyard, where the ceiling pretends to be sky and a weeknight crowd files in like it’s a coronation. Cross town to the Metro, close enough to Wrigley Field to feel the neighborhood change mood with the season — sticky floors, low ceilings, bands playing like the room is a rumor they have to live up to. That’s Chicago’s trick: the rooms have strata. The Green Mill keeps jazz hours in Uptown like Prohibition never ended. Pilsen’s halls run a bass the old plaster barely tolerates. A marquee on State Street turns a school night into a premiere. And the crowd knows the liturgy by heart — arrive early, stay for the encore, argue the setlist on the platform while the last train decides whether the night is really over.</p>
+        <p>The smart regular doesn’t always ride downtown, though. McHenry County keeps its own covenant: a thousand-cap rock room in McHenry where the floor sings the chorus back, a vaudeville palace in Crystal Lake, an opera house holding its hush since 1889 — smaller rooms, same religion, home by midnight if you want to be. And when the city gets too pleased with itself, there’s Milwaukee: an easy run up the highway to the Pabst’s old-world hush and Brady Street still warming up, a whole scene running one notch less discovered, as if it agreed to keep the secret a little longer. The region’s night life isn’t a ladder with Chicago on top. It’s a circuit — and the regulars are the ones who know which leg to run.</p>
+      </div>
+    </article>
+    <section class="hot-tickets" id="hot-tickets" aria-labelledby="hot-tickets-title">
+      <div class="hot-tickets-head">
+        <h2 id="hot-tickets-title">Hot Tickets</h2>
+        <span class="hot-tickets-stamp">7 PICKS · CHECKED OCT 20</span>
+      </div>
+      <ul class="hot-ticket-list">
+        <li class="hot-ticket"><a href="https://vixenmchenry.com" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-23T19:00">Fri Oct 23 · 7:00pm</time><strong class="ticket-name">Grunge Fest — STP “Creep” + AIC “Hollow” Tributes</strong><span class="ticket-venue">The Vixen · McHenry</span><span class="ticket-price">Check listing<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span>Friday-night show at a 1,000-cap room where the venue itself warns it expects a sell out — urgency is the story, not price. Venue sells only via its own Etix; no third-party tickets honored.</span></a></li>
+        <li class="hot-ticket"><a href="https://events.rauecenter.org/events/page/7/" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-30T20:00">Fri Oct 30 · 8:00pm (doors 7)</time><strong class="ticket-name">Anthem’s Grand Illusion: Styx Tribute</strong><span class="ticket-venue">Raue Center · Crystal Lake</span><span class="ticket-price">$39 all-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span>Cheapest get-in of the local set; RaueNOW members ~$27.30 — the lowest face-value ticket of the whole cycle.</span></a></li>
+        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-22T19:15">Thu Oct 22 · 7:15pm CT</time><strong class="ticket-name">Chicago Bears vs New England Patriots</strong><span class="ticket-venue">Soldier Field · Chicago</span><span class="ticket-price">$299 fees-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Primetime TNF two days out; open-market floor is $510 all-in and climbing into kickoff (up 23% in 2 days) — the $299 tixtracer lane (25% TicketNetwork discount) is the only near-deal angle.</span></a></li>
+        <li class="hot-ticket"><a href="https://www.vividseats.com/dave-matthews-band-tickets/performer/218" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-07T19:30">Sat Nov 7 · 7:30pm</time><strong class="ticket-name">Dave Matthews Band</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$91 all-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Sub-$100 all-in arena show on Vivid Seats, down ~17% from the prior $112 read — price drifting down for a major touring act.</span></a></li>
+        <li class="hot-ticket"><a href="https://www.gigsberg.com/concert-tickets/pop/stevie-wonder-tickets/show-272636" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-21T20:00">Sat Nov 21 · 8:00pm</time><strong class="ticket-name">Stevie Wonder: Songs in the Key of Life 50th Anniversary</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$374 pre-fee<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Legend + anniversary framing; Chicago is the value date of the run — ~$780 cheaper than MSG ($1,214) and ~$190 under DC. Only 2 left at this price on gigsberg.</span></a></li>
+        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-27T19:00">Tue Oct 27 · 7:00pm</time><strong class="ticket-name">Chicago Blackhawks vs Los Angeles Kings</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$31 fees-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Cheapest ticket on the board (tixtracer affiliate); squarely in the rebuilding-year $32–35 NHL lane.</span></a></li>
+        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-24T19:00">Tue Nov 24 · 7pm &amp; Wed Nov 25 · 8pm</time><strong class="ticket-name">John Summit: CTRL ESCAPE Tour</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$62–$70<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Hometown hero’s two-night arena run sitting barely above the $49/$55 face.</span></a></li>
+      </ul>
+      <p class="hot-tickets-foot">Every price is dated Oct 20 and can move. “All-in” and “fees-in” include fees where noted; other figures are listed get-in prices.</p>
     </section>
 <section id="local-food-deals" class="deal-section dupe-cheat-sheet-section">
   <div class="section-header-wrap">
@@ -1640,22 +1727,6 @@
         <div class="facts"><span class="fact" id="total-fact"></span><span class="fact" id="category-fact"></span></div>
       </div>
     </section>
-    <section class="hot-tickets" id="hot-tickets" aria-labelledby="hot-tickets-title">
-      <div class="hot-tickets-head">
-        <h2 id="hot-tickets-title">Hot Tickets</h2>
-        <span class="hot-tickets-stamp">7 PICKS · CHECKED OCT 20</span>
-      </div>
-      <ul class="hot-ticket-list">
-        <li class="hot-ticket"><a href="https://vixenmchenry.com" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-23T19:00">Fri Oct 23 · 7:00pm</time><strong class="ticket-name">Grunge Fest — STP “Creep” + AIC “Hollow” Tributes</strong><span class="ticket-venue">The Vixen · McHenry</span><span class="ticket-price">Check listing<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span>Friday-night show at a 1,000-cap room where the venue itself warns it expects a sell out — urgency is the story, not price. Venue sells only via its own Etix; no third-party tickets honored.</span></a></li>
-        <li class="hot-ticket"><a href="https://events.rauecenter.org/events/page/7/" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-30T20:00">Fri Oct 30 · 8:00pm (doors 7)</time><strong class="ticket-name">Anthem’s Grand Illusion: Styx Tribute</strong><span class="ticket-venue">Raue Center · Crystal Lake</span><span class="ticket-price">$39 all-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span>Cheapest get-in of the local set; RaueNOW members ~$27.30 — the lowest face-value ticket of the whole cycle.</span></a></li>
-        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-22T19:15">Thu Oct 22 · 7:15pm CT</time><strong class="ticket-name">Chicago Bears vs New England Patriots</strong><span class="ticket-venue">Soldier Field · Chicago</span><span class="ticket-price">$299 fees-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Primetime TNF two days out; open-market floor is $510 all-in and climbing into kickoff (up 23% in 2 days) — the $299 tixtracer lane (25% TicketNetwork discount) is the only near-deal angle.</span></a></li>
-        <li class="hot-ticket"><a href="https://www.vividseats.com/dave-matthews-band-tickets/performer/218" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-07T19:30">Sat Nov 7 · 7:30pm</time><strong class="ticket-name">Dave Matthews Band</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$91 all-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Sub-$100 all-in arena show on Vivid Seats, down ~17% from the prior $112 read — price drifting down for a major touring act.</span></a></li>
-        <li class="hot-ticket"><a href="https://www.gigsberg.com/concert-tickets/pop/stevie-wonder-tickets/show-272636" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-21T20:00">Sat Nov 21 · 8:00pm</time><strong class="ticket-name">Stevie Wonder: Songs in the Key of Life 50th Anniversary</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$374 pre-fee<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Legend + anniversary framing; Chicago is the value date of the run — ~$780 cheaper than MSG ($1,214) and ~$190 under DC. Only 2 left at this price on gigsberg.</span></a></li>
-        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-27T19:00">Tue Oct 27 · 7:00pm</time><strong class="ticket-name">Chicago Blackhawks vs Los Angeles Kings</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$31 fees-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Cheapest ticket on the board (tixtracer affiliate); squarely in the rebuilding-year $32–35 NHL lane.</span></a></li>
-        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-24T19:00">Tue Nov 24 · 7pm &amp; Wed Nov 25 · 8pm</time><strong class="ticket-name">John Summit: CTRL ESCAPE Tour</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$62–$70<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Hometown hero’s two-night arena run sitting barely above the $49/$55 face.</span></a></li>
-      </ul>
-      <p class="hot-tickets-foot">Every price is dated Oct 20 and can move. “All-in” and “fees-in” include fees where noted; other figures are listed get-in prices.</p>
-    </section>
     <section class="search-tools" id="search-tools" aria-label="Catalog filters">
       <div class="search-panel">
         <div class="audience-control">
@@ -1678,7 +1749,7 @@
         </div>
         <div class="guns-cigars-side">
           <span class="guns-cigars-stamp">REAL GUNS · CIGARS · BUYING GUIDES</span>
-          <a class="guns-cigars-cta" href="guns-cigars.html" target="_blank" rel="noopener">Open the Guns n Subs sheet ↗</a>
+          <a class="guns-cigars-cta" href="https://dupe-cheat-sheet.netlify.app/guns-cigars.html" target="_blank" rel="noopener">Open the Guns n Subs sheet ↗</a>
         </div>
       </div>
     </section>
@@ -1759,11 +1830,26 @@
                 <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Alexander Volkov vs. Rizvan Kuniev</div><div class="ufc-card-weight">Heavyweight</div><div class="ufc-card-odds">Volkov −115 / Kuniev −105</div></div>
                 <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Aaron Pico vs. Losene Keita</div><div class="ufc-card-weight">Featherweight</div><div class="ufc-card-odds">Pico −110 / Keita −110</div></div>
               </div>
+              <div class="ufc-strip" aria-label="UFC 333 line movement">
+                <div class="ufc-strip-head"><h5>Line Movement</h5><span>As of Oct 21 · ▼ = money on the dog</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Volkanovski vs. Evloev</span><span class="ufc-move-lines">Volk −130 / Evloev +110</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pick’em −113 / −113</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Yan vs. Dvalishvili 3</span><span class="ufc-move-lines">Yan −166 / Merab +140</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Yan −158 / Merab +124</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Kavanagh vs. Temirov</span><span class="ufc-move-lines">Kavanagh −155 / Temirov +135</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pick’em −113 / −113</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Volkov vs. Kuniev</span><span class="ufc-move-lines">Volkov −270 / Kuniev +222</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Volkov −136 / Kuniev +106</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Pico vs. Keita</span><span class="ufc-move-lines">Pico −150 / Keita +130</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pico −138 / Keita +108</span></div>
+                <p class="ufc-strip-read"><strong>Biggest steam:</strong> Kuniev +222 → +106 — the market keeps buying the underdogs on this card.</p>
+              </div>
               <p class="ufc-more"><strong>Card change:</strong> Arnold Allen withdrew injured — ongoing rehab, not enough runway to be ready. Losene Keita stepped in on short notice off his UFC Paris KO of Muhammad Naimov.</p>
               <p class="ufc-more"><strong>Movement since Oct 14:</strong> two favorites flipped (Kavanagh, Kuniev), Keita–Pico drifted to pick’em, money toward Merab. Dana White confirmed Oct 15 the card goes ahead in Abu Dhabi as planned.</p>
               <div class="ufc-broadcast"><span>FIRST NUMBERED MAIN CARD ON THE NEW PARAMOUNT+ DEAL</span><strong>1:00 PM CT · PARAMOUNT+</strong></div>
             </div>
           </article>
+        </div>
+        <div class="ufc-strip" aria-label="Just booked UFC matchups">
+          <div class="ufc-strip-head"><h5>Just Booked</h5><span>Newest first</span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Jacobe Smith vs. Randy Brown</span><span class="ufc-booked-event">UFC Fight Night · Oct 31</span><span class="ufc-booked-note">New co-main on 11 days’ notice — undefeated Smith (13-0, all UFC wins by stoppage) steps in for injured Carlos Leal. <em>(MMA Junkie 10/21)</em></span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Alex Pereira vs. Sergei Pavlovich</span><span class="ufc-booked-event">UFC 335 · Dec 12</span><span class="ufc-booked-note">Heavyweight co-main under the Oliveira–Lopes BMF title — Poatan’s second heavyweight outing after the Gane loss. <em>(announced Oct 4)</em></span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Dricus du Plessis — no fight booked</span><span class="ufc-booked-event">205-lb tournament · Declined</span><span class="ufc-booked-note">Rejected a UFC 205-lb tournament offer (Prochazka / Ankalaev / Stirling pool, winner gets Ulberg) — wants the middleweight belt back first. <em>(Sherdog 10/21)</em></span></div>
         </div>
         <div class="ufc-compact" aria-label="Later UFC events">
           <div class="ufc-compact-row"><time datetime="2026-10-31">Oct 31</time><strong>Fight Night</strong><span class="ufc-compact-venue">Meta Apex · Las Vegas</span><span class="ufc-compact-match">Moicano vs. Nolan</span><span class="ufc-compact-time">UPCOMING</span></div>
@@ -1773,6 +1859,41 @@
           <div class="ufc-compact-row"><time datetime="2026-12-05">Dec 5</time><strong>UFC Saudi Arabia</strong><span class="ufc-compact-venue">anb Arena · Riyadh</span><span class="ufc-compact-match">Adesanya vs. Shara Magomedov<br>Reported by Helwani Oct 15 — not yet UFC-official</span><span class="ufc-compact-time">REPORTED</span></div>
           <div class="ufc-compact-row"><time datetime="2026-12-12">Dec 12</time><strong>UFC 335</strong><span class="ufc-compact-venue">T-Mobile Arena · Las Vegas</span><span class="ufc-compact-match">Oliveira vs. Lopes · BMF<br>Pereira vs. Pavlovich</span><span class="ufc-compact-time">UPCOMING</span></div>
           <div class="ufc-compact-row"><time datetime="2027-01-30">Jan 30</time><strong>UFC 336</strong><span class="ufc-compact-venue">Scotiabank Arena · Toronto</span><span class="ufc-compact-match">First 2027 numbered card · no bouts confirmed<br>Makhachev vs. Prates — rumor only</span><span class="ufc-compact-time">UPCOMING</span></div>
+        </div>
+        <div class="ufc-fullcard">
+          <div class="ufc-card-head"><h4>Full Card — UFC Fight Night: Moicano vs. Nolan</h4><span>SAT OCT 31 · META APEX · LAS VEGAS</span></div>
+          <div class="ufc-main-card" role="list" aria-label="Full card for UFC Fight Night on October 31">
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Renato Moicano vs. Tom Nolan</span><span class="ufc-bout-weight">Lightweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Randy Brown vs. Jacobe Smith</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Luana Santos vs. Yana Santos</span><span class="ufc-bout-weight">Women’s Bantamweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Talita Alencar vs. Piera Rodriguez</span><span class="ufc-bout-weight">Women’s Strawweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Julian Erosa vs. Jeong Yeong Lee</span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Azamat Bekoev vs. Andre Petroski</span><span class="ufc-bout-weight">Middleweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Tainara Lisboa vs. Lucia Szabova</span><span class="ufc-bout-weight">Women’s Flyweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Nick Klein vs. Joe Kropschot</span><span class="ufc-bout-weight">Middleweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Farman Hasanov vs. Jean-Paul Lebosnoyani</span><span class="ufc-bout-weight">Lightweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Theodor Berggren vs. Rodrigo Sezinando</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Cody Durden vs. Ode Osbourne</span><span class="ufc-bout-weight">Flyweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Dakota Hope vs. Francis Marshall</span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Mickey Gall vs. Zach Reese</span><span class="ufc-bout-weight">Middleweight</span></div>
+          </div>
+        </div>
+        <div class="ufc-fullcard">
+          <div class="ufc-card-head"><h4>Full Card — UFC Fight Night: Bonfim vs. Brady</h4><span>SAT NOV 7 · META APEX · LAS VEGAS</span></div>
+          <div class="ufc-main-card" role="list" aria-label="Full card for UFC Fight Night on November 7">
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Gabriel Bonfim vs. Sean Brady</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Virna Jandiroba vs. Tatiana Suarez</span><span class="ufc-bout-weight">Women’s Strawweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Karine Silva vs. Gabriella Fernandes</span><span class="ufc-bout-weight">Women’s Flyweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Davey Grant vs. Elijah Smith</span><span class="ufc-bout-weight">Bantamweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Jose Souza vs. Jonny Parsons</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Jose Delano vs. Murtazali Magomedov</span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Seok Hyeon Ko vs. Wellington Turman</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Austin Bashi vs. Lucas Brennan</span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Billy Elekana vs. Lucas Fernando</span><span class="ufc-bout-weight">Light Heavyweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Alvin Hines vs. Gabriel Lorenco <span class="ufc-detail">— Hines withdrew, replacement TBA</span></span><span class="ufc-bout-weight">Heavyweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Ollie Schmid vs. Keiichiro Nakamura</span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Priscila Cachoeira vs. Nina Milosevic</span><span class="ufc-bout-weight">Women’s Bantamweight</span></div>
+          </div>
         </div>
         <p class="ufc-honesty">Main-card odds as of Oct 19, 2026 (main event: BetOnline) — lines move. Cards subject to change.</p>
       </div>
@@ -1961,6 +2082,7 @@
     const pageMast=document.querySelector('.mast');
     const pageWeekend=document.getElementById('weekend-banner');
     const pageHotTickets=document.getElementById('hot-tickets');
+    const pageEntFeature=document.getElementById('entertainment-feature');
     const pageSearchTools=document.getElementById('search-tools');
     const pageFood=document.querySelector('.dupe-cheat-sheet-section');
     const pageLunch=document.querySelector('.bud-lunch');
@@ -1970,10 +2092,12 @@
     // Bud's Lunch stays directly below the quick nav and the This Weekend banner stays directly below Bud's Lunch; never let another section slip in above either of them.
     pageMain.insertBefore(pageLunch,pageTabs.nextElementSibling);
     pageMain.insertBefore(pageWeekend,pageLunch.nextElementSibling);
-    pageMain.insertBefore(pageFood,pageWeekend.nextElementSibling);
+    // The "Know the Room" entertainment feature sits between the Weekend banner and Hot Tickets; Hot Tickets sits directly above Local Food Deals (below the pinned top block).
+    pageMain.insertBefore(pageEntFeature,pageWeekend.nextElementSibling);
+    pageMain.insertBefore(pageHotTickets,pageEntFeature.nextElementSibling);
+    pageMain.insertBefore(pageFood,pageHotTickets.nextElementSibling);
     pageMain.insertBefore(pageMast,pageFood.nextElementSibling);
-    pageMain.insertBefore(pageHotTickets,pageMast.nextElementSibling);
-    pageMain.insertBefore(pageSearchTools,pageHotTickets.nextElementSibling);
+    pageMain.insertBefore(pageSearchTools,pageMast.nextElementSibling);
     pageMain.insertBefore(pageFresh,pageSearchTools.nextElementSibling);
     pageMain.insertBefore(pageLimited,pageFresh.nextElementSibling);
 
@@ -4273,10 +4397,9 @@
     });
 
     // === AV receiver staging — October 18, 2026 (user-requested from chat; staged only, publishes on approval) ===
-    // Both receiver deals reported in chat go on the sheet. The Onkyo TX-NR7100 already
-    // has a card in AV Receivers, so it is updated in place (one card per product) with
-    // the $599 code price; the Denon AVR-X4400H is a new card with its used condition
-    // disclosed up front.
+    // The Onkyo TX-NR7100 already has a card in AV Receivers, so it is updated in
+    // place (one card per product) with the $599 code price. (The used Denon
+    // AVR-X4400H eBay card was removed Oct 21, 2026 — sheet is new-condition only.)
     updateEveryCard(item=>item.id==='hunt-20261013-onkyo-tx-nr7100',{
       dupe:'$599 with code JHCE9926', priceLabel:'Deal', retail:'$749 list at Adorama · $150 off with code',
       promo:'$150 OFF WITH CODE JHCE9926 · SLICKDEALS FRONTPAGE · THX CERTIFIED · DIRAC LIVE · 8K',
@@ -4284,16 +4407,6 @@
       url:'https://www.adorama.com/onkyo-tx-nr7100-9-2-channel-8k-network-av-receiver/p/onktxnr71', urlLabel:'Shop on Adorama ↗',
       new:true, forceNewBadge:true, verified:'Oct 18, 2026', dealBadge:'20% OFF W/ CODE', availabilityBadge:'NEW · CODE JHCE9926'
     });
-    addStagedCard('AV Receivers',{
-      id:'hunt-20261018-denon-avr-x4400h',name:'Denon AVR-X4400H 9.2-Channel AV Receiver — Used',
-      dupe:'~$521 total',priceLabel:'Deal',retail:'$350 or Best Offer + shipping on eBay',comparisonLabel:'Listing terms',
-      promo:'USED · 125W/CH · AUDYSSEY MULTEQ XT32 · FULL PRE-OUTS · ATMOS/DTS:X',
-      note:'USED · eBay item 960084107066. 125W/ch, Audyssey MultEQ XT32, full multichannel pre-outs, 9.2ch with Dolby Atmos/DTS:X. Seller on eBay since 2005 with zero negative feedback; unit sold as 100% functioning with all accessories. No returns accepted — eBay Money Back Guarantee applies. Expert note: XT32 + pre-outs are the real step up here — flagship-grade room correction plus an upgrade path to external amps, at used money.',
-      imgLocal:'assets/img_de625c375cae43ad.jpg',imgLabel:'GENUINE PRODUCT PHOTO',imgAlt:'Black Denon AVR-X4400H 9.2-channel AV receiver viewed from the front, display showing Dolby Atmos',
-      url:'https://www.ebay.com/itm/960084107066',urlLabel:'View eBay listing ↗',
-      new:true,forceNewBadge:true,verified:'Oct 18, 2026',dealBadge:'USED DEAL',availabilityBadge:'USED · EBAY'
-    });
-
     // === Morning hunt staging — October 19, 2026 (staged only; publishes on approval) ===
     // Designer rotation: the three longest-carded Represent pieces retire (carded
     // Oct 12 / Oct 14 / Oct 15) and two verified SSENSE replacements stage in their
@@ -4805,6 +4918,71 @@
       article.innerHTML=makeMedia(item,isGenuine)+`<div class="card-body"><h3 class="name">${item.name}</h3><div class="prices"><span class="dupe">${item.priceLabel||'Dupe'}: ${item.dupe}</span>${item.retail?`<span class="retail">${item.comparisonLabel||(item.priceLabel==='Deal'?'Was':'Retail')}: ${item.retail}</span>`:''}</div>${item.promo?`<p class="promo">${item.promo}</p>`:''}<p class="note">${item.note}</p><div class="card-foot"><div class="listing-links"><a class="listing" href="${listingUrl(item)}" target="_blank" rel="noopener noreferrer nofollow" aria-label="${(item.urlLabel||('View listings for '+item.name)).replace(/[↗↑]/g,'').trim().replace(/"/g,'&quot;')}">${item.urlLabel||'View listings ↗'}</a>${item.alternateUrl?`<a class="listing alternate" href="${item.alternateUrl}" target="_blank" rel="noopener noreferrer nofollow">${item.alternateUrlLabel||'Alternative ↗'}</a>`:''}${item.rebateUrl?`<a class="listing" href="${item.rebateUrl}" target="_blank" rel="noopener noreferrer nofollow">${item.rebateUrlLabel||'Rebate terms ↗'}</a>`:''}</div><span class="verified">${item.verified?`Verified ${item.verified}`:'Verification date not recorded'}</span></div></div>`;
       return article;
     };
+    // Watches section feature article — magazine editorial at the top of the
+    // section (added Oct 21, 2026, same treatment as the sheet-2 features).
+    const WATCH_FEATURE_HTML=`<article class="watch-feature" data-published="2026-10-21" aria-label="Feature article: The Watch Doesn't Care What It Cost">
+      <p class="wf-kicker">THE FEATURE</p>
+      <h3 class="wf-headline">The Watch Doesn't Care What It Cost</h3>
+      <p class="wf-dek">A $42 Casio keeps better time than a $13,000 Omega. So what are you actually buying?</p>
+      <div class="wf-body">
+        <p class="wf-lede">You're buying the movement. Everything else — the dial, the case, the story — is negotiation. A watch is a machine you wear, and machines have tells. An automatic that hacks and hand-winds. A true traveler GMT. Sapphire over mineral. A screw-down crown. These aren't spec-sheet trivia; they're the difference between a watch that earns its wrist time and one that just fills it.</p>
+        <p>Here's the open secret of the industry: the big brands abandoned the two-thousand-dollar tier. They chased margins uphill and left a hole — and the hole is where the value lives. Seiko, Citizen, Bulova, and a swarm of microbrands are making the best watches of their lives down here, while the luxury houses argue about waitlists.</p>
+        <blockquote class="wf-pullquote">Buy the movement. The rest is negotiation.</blockquote>
+        <p>So ignore the price tag and read the watch. A Seiko 5 with a workhorse automatic will out-charm a fashion watch at triple the price. A Casio that embarrasses luxury on specs isn't a joke — it's a verdict. Buy the movement, buy the finishing, buy the thing that makes you check the time just to look at it again.</p>
+        <p>That's taste. It doesn't care what you paid.</p>
+      </div>
+    </article>`;
+    // Section feature articles (added Oct 21, 2026) — same magazine treatment as
+    // the Watches feature, one at the top of each section. Copy is the user's, verbatim.
+    const SNEAKER_FEATURE_HTML=`<article class="watch-feature" data-published="2026-10-21" aria-label="Feature article: The Shoe Knows">
+      <p class="wf-kicker">THE FEATURE</p>
+      <h3 class="wf-headline">The Shoe Knows</h3>
+      <p class="wf-dek">Hype fades. A great silhouette doesn't.</p>
+      <div class="wf-body">
+        <p class="wf-lede">Every sneakerhead has a pair they should have bought. The one that sat on shelves, then didn't. The Jordan 1 that was "too plain" at retail and now costs triple. The shoe game runs on regret, and regret is expensive.</p>
+        <p>Here's the thing nobody in the hype cycle wants to admit: the silhouette is the investment, not the colorway. A Jordan 1, a Dunk, an Air Force 1 — these shapes have survived forty years of trends trying to kill them. The colorway is fashion. The silhouette is architecture. Buy architecture.</p>
+        <blockquote class="wf-pullquote">Buy architecture, not fashion. The silhouette is the investment.</blockquote>
+        <p>The play is patience. Retros cycle. The shoe that sells out today restocks in eighteen months, and the one everyone slept on goes on sale. The smart money buys Jordan retros at historic lows, not at peak hype — the shoe doesn't get better because the price went up. It gets worse, because now you're afraid to wear it.</p>
+        <p>And wear them. Deadstock is a museum, not a collection. A creased pair with stories beats a pristine pair in a box every time. The shoe knows the difference between a collector and a curator. Be the curator.</p>
+      </div>
+    </article>`;
+    const COLOGNE_FEATURE_HTML=`<article class="watch-feature" data-published="2026-10-21" aria-label="Feature article: Smell Like You Mean It">
+      <p class="wf-kicker">THE FEATURE</p>
+      <h3 class="wf-headline">Smell Like You Mean It</h3>
+      <p class="wf-dek">Nobody remembers what you wore. Everybody remembers how you smelled.</p>
+      <div class="wf-body">
+        <p class="wf-lede">Scent is the only part of your outfit people experience with their eyes closed. It's invisible, it's intimate, and it's the thing that actually lingers in someone's memory after you've left the room. A great fragrance is a signature. Everything else is clothing.</p>
+        <p>The game has rules. First: buy from the discounters, never retail. Jomashop, FragranceNet, FragranceX, Maxaroma — the exact same bottle, often half the department store price. Paying retail for designer fragrance is a tax on not knowing. Second: sample before you commit. A fragrance that sings on paper can die on skin, and skin chemistry doesn't negotiate.</p>
+        <blockquote class="wf-pullquote">Paying retail for designer fragrance is a tax on not knowing.</blockquote>
+        <p>Third, and this is the one people skip: longevity over projection. A scent that fills the room for twenty minutes and vanishes is a party trick. You want the one that's still there at hour six, sitting close, making people lean in. That's the difference between being noticed and being remembered.</p>
+        <p>The picks below are the real bottles at the real prices — no fakes, no grey-market gambles, no "inspired by" chemistry sets. Just the good stuff, cheaper than the counter, because the counter is for tourists.</p>
+      </div>
+    </article>`;
+    const DESIGNER_FEATURE_HTML=`<article class="watch-feature" data-published="2026-10-21" aria-label="Feature article: The Grail Hunt">
+      <p class="wf-kicker">THE FEATURE</p>
+      <h3 class="wf-headline">The Grail Hunt</h3>
+      <p class="wf-dek">Nobody pays retail. The game is knowing where the bodies are buried.</p>
+      <div class="wf-body">
+        <p class="wf-lede">There's a special thrill to wearing Chrome Hearts you didn't pay Chrome Hearts prices for. Not a dupe, not "inspired by" — the real thing, with the real hardware, at a price that makes retail buyers wince. That's the grail hunt, and it's a skill.</p>
+        <p>The map: brand outlets first, then the sale calendars — SSENSE, Mr Porter, Nordstrom Rack, Saks Off 5th. End-of-season is when the real pieces surface, sixty to seventy percent off, if you know your size and you don't hesitate. Hesitation is how grails become someone else's story.</p>
+        <blockquote class="wf-pullquote">Hesitation is how grails become someone else's story.</blockquote>
+        <p>Then there's authenticated pre-owned. The RealReal, Vestiaire Collective, Fashionphile, Grailed — the real thing, verified, at fractions of retail. A Chrome Hearts hoodie at four hundred instead of twelve hundred isn't a compromise. It's the same hoodie. The only thing you gave up was the boutique bag.</p>
+        <p>One rule, non-negotiable: never the fakes. A counterfeit grail isn't a deal, it's a costume. The hunt is for the real thing at the unreal price. Everything below is exactly that — genuine pieces, reputable sources, well below retail. Happy hunting.</p>
+      </div>
+    </article>`;
+    const FASHION_FEATURE_HTML=`<article class="watch-feature" data-published="2026-10-21" aria-label="Feature article: Fit Is Everything">
+      <p class="wf-kicker">THE FEATURE</p>
+      <h3 class="wf-headline">Fit Is Everything</h3>
+      <p class="wf-dek">The most expensive thing in your closet is the thing that doesn't fit.</p>
+      <div class="wf-body">
+        <p class="wf-lede">You can spot it from across the street: the guy in the expensive jacket that doesn't fit. The shoulders hang, the sleeves swallow his hands, and four hundred dollars looks like forty. Fit is the whole game. Everything else — brand, fabric, trend — is decoration on a foundation that isn't there.</p>
+        <p>The rules are simple and nobody follows them. Shoulders end at your shoulders. Sleeves show a half-inch of cuff. Pants break once, maybe. A tailor costs twenty dollars and makes a hundred-dollar jacket look like five hundred. This is the cheapest upgrade in menswear and the most ignored.</p>
+        <blockquote class="wf-pullquote">A tailor costs twenty dollars and makes a hundred-dollar jacket look like five hundred.</blockquote>
+        <p>Then there's the why-buy test. Every piece should answer it: is it the quality (materials, construction, cost-per-wear), the scarcity (genuinely limited, not manufactured hype), or the trend (real cultural heat, right now)? A discount on something with no reason to exist is just cheap. It's not a deal. It's clutter with a receipt.</p>
+        <p>Dress like you mean it. Not expensive — intentional. The difference is visible from across the street.</p>
+      </div>
+    </article>`;
+    const FEATURE_BY_CATEGORY={'Watches':WATCH_FEATURE_HTML,'Sneaker Deals':SNEAKER_FEATURE_HTML,'Real Cologne — Genuine Only':COLOGNE_FEATURE_HTML,'Authentic Designer Deals':DESIGNER_FEATURE_HTML};
     const renderedGroups=new Set();
     DATA.categories.forEach(cat=>{
       const family=catGroupOf[cat.name];
@@ -4817,7 +4995,8 @@
         const sec=document.createElement('section');
         sec.className='category'; sec.dataset.category=group.name; sec.id='cat-'+idSlug(group.name);
         sec.innerHTML=`<div class="category-head"><h2>${group.name}</h2><span class="category-count">${totalIn(group)} picks</span></div>`+
-          (group.note?`<p class="section-note">${group.note}</p>`:'');
+          (group.note?`<p class="section-note">${group.note}</p>`:'')+
+          (group.name==='Style'?FASHION_FEATURE_HTML:'');
         group.subsections.forEach(sub=>{
           const members=membersOf(sub);
           const subCount=members.reduce((m,c)=>m+c.items.length,0);
@@ -4840,6 +5019,7 @@
       sec.innerHTML=`<div class="category-head"><h2>${cat.name}</h2><span class="category-count">${cat.items.length} picks</span></div>`+
         (cat.name.startsWith('Replica Guns')?`<p class="safety"><strong>Toy blasters, replicas &amp; other cool physical toys.</strong> Firearm-lookalike picks are toys only: keep required orange tips intact, never display them in public, use proper eye protection, and check state and local replica rules before ordering or transporting.</p>`:'')+
         (cat.note?`<p class="section-note">${cat.note}</p>`:'')+
+        (FEATURE_BY_CATEGORY[cat.name]||'')+
         `<div class="grid"></div>`;
       const grid=sec.querySelector('.grid');
       [...cat.items].sort(newestFirst).forEach(item=>grid.appendChild(buildCard(cat,item)));
@@ -5117,6 +5297,40 @@
         if(event.target===box)closeLightbox();
       });
       document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!box.hidden)closeLightbox();});
+    })();
+  </script>
+  <script>
+    // Editorial freshness: the top ticker counts down to the next biweekly
+    // feature refresh, and any feature panel published within the last 7 days
+    // gets a small NEW badge beside its kicker.
+    (function(){
+      const DAY_MS=24*60*60*1000;
+      const today=new Date(); today.setHours(0,0,0,0);
+      const parseDay=value=>{
+        const parts=(value||'').split('-').map(Number);
+        return parts.length===3&&parts.every(n=>!Number.isNaN(n))?new Date(parts[0],parts[1]-1,parts[2]):null;
+      };
+      const ticker=document.querySelector('.feature-ticker');
+      if(ticker){
+        const next=parseDay(ticker.dataset.nextRefresh);
+        const label=ticker.querySelector('.ft-date');
+        if(next&&label){
+          const days=Math.round((next-today)/DAY_MS);
+          label.textContent=days<=0?'dropping now':days===1?'tomorrow':'in '+days+' days';
+        }
+      }
+      document.querySelectorAll('.watch-feature[data-published]').forEach(panel=>{
+        const published=parseDay(panel.dataset.published);
+        if(!published) return;
+        const ageDays=Math.round((today-published)/DAY_MS);
+        if(ageDays<0||ageDays>=7) return;
+        const kicker=panel.querySelector('.wf-kicker');
+        if(!kicker) return;
+        const badge=document.createElement('span');
+        badge.className='wf-new-badge';
+        badge.textContent='NEW';
+        kicker.appendChild(badge);
+      });
     })();
   </script>
 </body>
