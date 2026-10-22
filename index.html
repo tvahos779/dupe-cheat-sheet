@@ -1176,6 +1176,22 @@
       #local-food-deals .weekday-tag{padding:7px 5px 6px 14px;font-size:8.5px}
       #local-food-deals .weekday-deals{padding:6px 14px 6px 8px;font-size:10px}
     }
+    /* === Oct 22, 2026 — web-design playbook §1: price emphasis (CSS only) === */
+    .card .dupe{font-size:21px;font-weight:800;color:var(--accent-ink);letter-spacing:-.02em;line-height:1.1}
+    .card .card-badge{font-size:9px;font-weight:500;letter-spacing:.04em;opacity:.72}
+    .card .verified{font-size:9.5px;font-weight:500;opacity:.75}
+    .card .media-label{font-size:9.5px;font-weight:500;opacity:.7}
+    /* === Oct 22, 2026 — UFC tale of the tape === */
+    .ufc-tape{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .ufc-tape-card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel-2)}
+    .ufc-tape-card h4{margin:0 0 8px;font-size:12.5px;letter-spacing:-.01em}
+    .ufc-tape-card h4 span{color:var(--accent-ink)}
+    .ufc-tape-card table{width:100%;border-collapse:collapse;font-size:11.5px}
+    .ufc-tape-card th,.ufc-tape-card td{padding:3px 4px;text-align:left;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+    .ufc-tape-card tr:last-child th,.ufc-tape-card tr:last-child td{border-bottom:0}
+    .ufc-tape-card th{color:var(--muted);font-weight:600;width:52px}
+    .ufc-tape-card td{font-weight:600}
+    @media (max-width:640px){.ufc-tape{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -1186,7 +1202,7 @@
       <a href="#fresh-rotation" data-tab="new"><span aria-hidden="true">＋</span>New</a>
       <a href="#ufc-fight-center" data-tab="ufc"><span aria-hidden="true">⬢</span>UFC</a>
       <a href="#black-friday-watchlist" data-tab="black-friday"><span aria-hidden="true">◆</span>Black Friday</a>
-      <a href="https://dupe-cheat-sheet.netlify.app/guns-cigars.html" class="guns-cigars-nav" data-tab="guns-cigars"><span aria-hidden="true">◎</span>Guns n Subs</a>
+      <a href="guns-cigars.html" class="guns-cigars-nav" data-tab="guns-cigars"><span aria-hidden="true">◎</span>Guns n Subs</a>
     </nav>
     <!-- PINNED TOP ORDER — do not change: quick nav → Bud's Lunch → This Weekend banner → everything else. Bud's Lunch sits directly below the quick nav (the true top of the sheet) and the This Weekend banner sits directly below Bud's Lunch. The load script enforces this order on every page load. -->
     <section class="bud-lunch" aria-labelledby="bud-lunch-title">
@@ -1229,364 +1245,408 @@
     <section class="hot-tickets" id="hot-tickets" aria-labelledby="hot-tickets-title">
       <div class="hot-tickets-head">
         <h2 id="hot-tickets-title">Hot Tickets</h2>
-        <span class="hot-tickets-stamp">7 PICKS · CHECKED OCT 20</span>
+        <span class="hot-tickets-stamp">6 PICKS · CHECKED OCT 22</span>
       </div>
       <ul class="hot-ticket-list">
-        <li class="hot-ticket"><a href="https://vixenmchenry.com" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-23T19:00">Fri Oct 23 · 7:00pm</time><strong class="ticket-name">Grunge Fest — STP “Creep” + AIC “Hollow” Tributes</strong><span class="ticket-venue">The Vixen · McHenry</span><span class="ticket-price">Check listing<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span>Friday-night show at a 1,000-cap room where the venue itself warns it expects a sell out — urgency is the story, not price. Venue sells only via its own Etix; no third-party tickets honored.</span></a></li>
-        <li class="hot-ticket"><a href="https://events.rauecenter.org/events/page/7/" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-30T20:00">Fri Oct 30 · 8:00pm (doors 7)</time><strong class="ticket-name">Anthem’s Grand Illusion: Styx Tribute</strong><span class="ticket-venue">Raue Center · Crystal Lake</span><span class="ticket-price">$39 all-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span>Cheapest get-in of the local set; RaueNOW members ~$27.30 — the lowest face-value ticket of the whole cycle.</span></a></li>
-        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-22T19:15">Thu Oct 22 · 7:15pm CT</time><strong class="ticket-name">Chicago Bears vs New England Patriots</strong><span class="ticket-venue">Soldier Field · Chicago</span><span class="ticket-price">$299 fees-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Primetime TNF two days out; open-market floor is $510 all-in and climbing into kickoff (up 23% in 2 days) — the $299 tixtracer lane (25% TicketNetwork discount) is the only near-deal angle.</span></a></li>
-        <li class="hot-ticket"><a href="https://www.vividseats.com/dave-matthews-band-tickets/performer/218" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-07T19:30">Sat Nov 7 · 7:30pm</time><strong class="ticket-name">Dave Matthews Band</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$91 all-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Sub-$100 all-in arena show on Vivid Seats, down ~17% from the prior $112 read — price drifting down for a major touring act.</span></a></li>
-        <li class="hot-ticket"><a href="https://www.gigsberg.com/concert-tickets/pop/stevie-wonder-tickets/show-272636" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-21T20:00">Sat Nov 21 · 8:00pm</time><strong class="ticket-name">Stevie Wonder: Songs in the Key of Life 50th Anniversary</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$374 pre-fee<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Legend + anniversary framing; Chicago is the value date of the run — ~$780 cheaper than MSG ($1,214) and ~$190 under DC. Only 2 left at this price on gigsberg.</span></a></li>
-        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-27T19:00">Tue Oct 27 · 7:00pm</time><strong class="ticket-name">Chicago Blackhawks vs Los Angeles Kings</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$31 fees-in<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Cheapest ticket on the board (tixtracer affiliate); squarely in the rebuilding-year $32–35 NHL lane.</span></a></li>
-        <li class="hot-ticket"><a href="https://tixtracer.com/cities/chicago-il" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-24T19:00">Tue Nov 24 · 7pm &amp; Wed Nov 25 · 8pm</time><strong class="ticket-name">John Summit: CTRL ESCAPE Tour</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$62–$70<br>AS OF OCT 20</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Hometown hero’s two-night arena run sitting barely above the $49/$55 face.</span></a></li>
+        <li class="hot-ticket"><a href="https://events.rauecenter.org/event/rotary-rocks-the-raue-james-garners-tribute-to-johnny-cash/raue/crystal-lake-illinois/" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-24T19:00">Sat Oct 24 · 7:00pm</time><strong class="ticket-name">Rotary Rocks the Raue: James Garner’s Tribute to Johnny Cash</strong><span class="ticket-venue">Raue Center · Crystal Lake</span><span class="ticket-price">$35–70 all-in<br>AS OF OCT 22</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span><span class="ticket-signal deal">DEAL</span>Fundraiser night with the PBS-featured Cash tribute; venue-direct pricing (event page lists from $54; RaueNOW members 30% off) — sub-$55 all-in at the county’s premier room.</span></a></li>
+        <li class="hot-ticket"><a href="https://vixenmchenry.com/event/grunge-fest/" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-23T19:00">Fri Oct 23 · doors 7:00pm</time><strong class="ticket-name">Grunge Fest — STP “Creep” + Alice in Chains “Hollow” Tributes</strong><span class="ticket-venue">The Vixen · McHenry</span><span class="ticket-price">Check listing<br>AS OF OCT 22</span><span class="ticket-note"><span class="ticket-signal deal">LOCAL</span><span class="ticket-signal heat">HEAT</span>Tomorrow night, and the venue itself flags sellout risk. The Vixen sells only via vixenmchenry.com/etix and rejects third-party tickets — buy direct or don’t buy.</span></a></li>
+        <li class="hot-ticket"><a href="https://tixtracer.com/tickets/chicago-bears" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-08T19:20">Sun Nov 8 · 7:20pm</time><strong class="ticket-name">Chicago Bears vs Tampa Bay Buccaneers — Sunday Night Football</strong><span class="ticket-venue">Soldier Field · Chicago</span><span class="ticket-price">From $210 all-in<br>AS OF OCT 22</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>SNF get-in at roughly half the ~$401 open-market floor. The $210 lane is TicketNetwork’s 25% TixTracer affiliate link (list $280) — that discount mechanism is the deal, disclosed up front.</span></a></li>
+        <li class="hot-ticket"><a href="https://TheKingOfTickets.com/performer/chicago-blackhawks-tickets" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-10-27T19:00">Tue Oct 27 · 7:00pm</time><strong class="ticket-name">Chicago Blackhawks vs Los Angeles Kings</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$34 all-in<br>AS OF OCT 22</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>The UC’s cheapest major-league seat, down 12% day-over-day via TheKingOfTickets.</span></a></li>
+        <li class="hot-ticket"><a href="https://www.vividseats.com/john-summit-tickets-chicago-united-center-11-24-2026--concerts-dance-electronica/production/7058753" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-24T19:00">Tue Nov 24 · 7pm &amp; Wed Nov 25 · 8pm</time><strong class="ticket-name">John Summit — CTRL Escape Arena Tour</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">$80 / $65 all-in<br>AS OF OCT 22</span><span class="ticket-note"><span class="ticket-signal deal">DEAL</span>Hometown-hero house music’s arena stand on Vivid Seats (refreshed this morning) — the later night runs ~$15 cheaper.</span></a></li>
+        <li class="hot-ticket"><a href="https://seatgeek.com/stevie-wonder-tickets" target="_blank" rel="noopener noreferrer nofollow"><time class="ticket-date" datetime="2026-11-21T20:00">Sat Nov 21 · 8:00pm</time><strong class="ticket-name">Stevie Wonder — Songs in the Key of Life 50th Anniversary</strong><span class="ticket-venue">United Center · Chicago</span><span class="ticket-price">Check listing<br>AS OF OCT 22</span><span class="ticket-note"><span class="ticket-signal heat">HEAT</span>Legacy act, anniversary framing. Last verified ~$412–428 — and Chicago is the cheapest US date of the 6-show run vs $1,200+ at MSG.</span></a></li>
       </ul>
-      <p class="hot-tickets-foot">Every price is dated Oct 20 and can move. “All-in” and “fees-in” include fees where noted; other figures are listed get-in prices.</p>
+      <p class="hot-tickets-foot">Every price is dated Oct 22 and can move. “All-in” includes fees where noted; other figures are listed get-in prices.</p>
     </section>
-<section id="local-food-deals" class="deal-section dupe-cheat-sheet-section">
-  <div class="section-header-wrap">
-    <h2>Local Food Deals</h2>
-    <span class="date-range">Wed, Oct 21st thru Thu, Oct 22nd</span>
-  </div>
+<div class="dupe-cheat-sheet-section">
+  <h2>Local Food Deals</h2>
+  <p class="section-subtitle">Thu, Oct 22nd thru Fri, Oct 23rd</p>
 
   <div class="dont-miss-strip">
-    <span class="dont-miss-label">Don't Miss:</span>
-    <ul class="dont-miss-list">
-      <li><a href="#deal-kfc-snackers">1. KFC — 2 Snackers for $4 (Wed only)</a></li>
-      <li><a href="#deal-little-king-crab">2. Little King Crab — extra 10% off w/ code HALLOWEEN (ends 11/1)</a></li>
-      <li><a href="#deal-potbelly">3. Potbelly — 50% off sandwich w/ pastrami purchase (ends 10/25)</a></li>
-    </ul>
+    <span class="dont-miss-label">Don't Miss:</span> <a href="#deal-kfc-day4">KFC FREE 2pc bone-in chicken w/ $10+ &mdash; THU only</a> &bull; <a href="#deal-mcdonalds-boo">McDonald's Disney Villains Boo Buckets &mdash; NEW, while supplies last</a> &bull; <a href="#deal-starbucks-blackcat">Starbucks Black Cat Frappuccino &mdash; arriving today</a>
   </div>
 
-  <!-- WEDNESDAY, OCT 21 -->
-  <div class="day-group" data-day="wed">
-    <div class="day-header">
-      <h3>Wednesday, Oct 21st</h3>
-      <span class="day-badge">WED</span>
-    </div>
+  <div class="day-group">
+    <h3 class="day-header">Thursday (Oct 22)</h3>
 
-    <!-- Chicken -->
-    <div class="food-type-group">
-      <h4>Chicken</h4>
-      <div class="deal-card" id="deal-kfc-snackers">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a></span>, Algonquin
-          <span class="badge redeem-app">APP / ONLINE</span>
-          <span class="day-badge">WED</span>
-        </div>
-        <div class="deal-title"><span class="heat-label" style="background:var(--heat-soft);color:var(--heat-red)">🔥 ONE-DAY ONLY</span> Scary Good: 2 Snackers for $4</div>
-        <div class="deal-price">$4 for 2</div>
-        <div class="deal-details">
-          <span class="promo-info">Two Snackers for $4 — today only (Wed, Oct 21). No code needed; KFC Rewards login required, limit 1 per account, participating locations. Note: the Crystal Lake KFC is permanently closed — this is the Algonquin location.</span>
-        </div>
-        <div class="valid-dates">Valid: Wed, Oct 21, 2026 — TODAY ONLY</div>
-      </div>
-      <div class="deal-card" id="deal-popeyes-wed">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.popeyes.com" target="_blank" rel="noopener">Popeyes</a></span>, Crystal Lake area
-          <span class="badge redeem-instore">IN-STORE PICKUP</span>
-          <span class="day-badge">WED</span>
-        </div>
-        <div class="deal-title">T-Mobile: FREE Chicken Sandwich w/ $5+</div>
-        <div class="deal-price">FREE w/ $5+</div>
-        <div class="deal-details">
-          <span class="promo-info">T-Mobile customers only: free chicken sandwich with a $5+ purchase using a T-Life app code. Popeyes Rewards account required. Redeem by Oct 26.</span>
-        </div>
-        <div class="valid-dates">Valid: Redeem by Mon, Oct 26, 2026</div>
-      </div>
-      <div class="deal-card" id="deal-wendys-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.wendys.com" target="_blank" rel="noopener">Wendy's</a></span>, Crystal Lake
-          <span class="badge redeem-app">APP</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">FREE 6pc Nuggets w/ $5+ App Order</div>
-        <div class="deal-price">FREE w/ $5+</div>
-        <div class="deal-details">
-          <span class="promo-info">Free 6pc nuggets (regular or spicy) with any $5+ mobile app purchase. No code needed. Ongoing app offer. [UNVERIFIED]</span>
-        </div>
-        <div class="valid-dates">Valid: Ongoing app offer</div>
-      </div>
-    </div>
-
-    <!-- Tacos & Mexican -->
     <div class="food-type-group">
       <h4>Tacos &amp; Mexican</h4>
-      <div class="deal-card" id="deal-tacobell-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.tacobell.com" target="_blank" rel="noopener">Taco Bell</a></span>, Crystal Lake &amp; Algonquin
-          <span class="badge redeem-app">APP / ONLINE / IN-STORE</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">Paris Hilton's "Usual" $4 Combo</div>
-        <div class="deal-price">$4</div>
-        <div class="deal-details">
-          <span class="promo-info">Diablo Ranch Crispy Chicken Crunchwrap Slider + Crunchy Taco + medium drink for $4. No code needed.</span>
-        </div>
-        <div class="valid-dates">Valid: Oct 20–26, 2026</div>
+      <div class="deal-card" id="deal-taco-bell-paris">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-app">APP</span>
+        <h5><a href="https://www.tacobell.com" target="_blank" rel="noopener">Taco Bell</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Paris Hilton's Usual $4 (Diablo Ranch Crispy Chicken Crunchwrap Slider + Crunchy Taco + medium drink), Oct 20&ndash;26, in-restaurant/online/app, limit 1/transaction. Still live per qsrweb/eatdrinkdeals 10/22. No code.</p>
       </div>
     </div>
 
-    <!-- Pizza -->
     <div class="food-type-group">
       <h4>Pizza</h4>
-      <div class="deal-card" id="deal-nicks-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a></span>, Crystal Lake
-          <span class="badge redeem-carryout">CARRYOUT / DELIVERY</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">Pizza &amp; Wings Special</div>
-        <div class="deal-price">$25.95</div>
-        <div class="deal-details">
-          <span class="promo-info">Large 14" 1-topping pizza + order of Moose Wings for $25.95. Wed–Sun, limited-time returning promo; carryout &amp; delivery only. No code needed.</span>
-        </div>
-        <div class="valid-dates">Valid: Wed–Sun, limited time</div>
+      <div class="deal-card" id="deal-nicks-wings">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-carryout">CARRYOUT</span>
+        <h5><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a> &mdash; Crystal Lake</h5>
+        <p>Large 1-topping pizza + order of Moose Wings $25.95, Wed&ndash;Sun, carryout &amp; delivery only. Confirmed live 10/22 (reposted on official social 10/17). Limited-time returning promo. No code.</p>
+      </div>
+      <div class="deal-card" id="deal-dominos-combo">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-carryout">CARRYOUT</span>
+        <h5><a href="https://www.dominos.com" target="_blank" rel="noopener">Domino's</a> &mdash; Crystal Lake</h5>
+        <p>Perfect Combo Meal $19.99: 2 medium 1-topping pizzas + 16pc bread bites + 8pc cinnamon twists. NEW.</p>
+      </div>
+      <div class="deal-card" id="deal-pizzahut-haunt">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://www.pizzahut.com" target="_blank" rel="noopener">Pizza Hut</a> &mdash; Crystal Lake</h5>
+        <p>Haunt Box, limited time through Nov 2, order via app/website. Price <strong>[UNVERIFIED]</strong> ($6.99&ndash;$8.49 depending on source). NEW.</p>
+      </div>
+      <div class="deal-card" id="deal-littlecaesars-3off18">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-carryout">CARRYOUT</span>
+        <h5><a href="https://www.littlecaesars.com" target="_blank" rel="noopener">Little Caesars</a> &mdash; Crystal Lake</h5>
+        <p><strong>CODE: 3OFF18</strong> = $3 off $18+. Live-tested working on official site 10/15 ("YAY! You saved $3.00"); DontPayFull re-verified 4 days ago. Expiry Nov 6 per DontPayFull (was 10/31).</p>
+      </div>
+      <div class="deal-card" id="deal-grubhub-pizza">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-app">APP</span>
+        <h5><a href="https://www.grubhub.com" target="_blank" rel="noopener">Grubhub</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Free Papa John's medium pepperoni pizza OR free Little Caesars ExtraMostBestest pizza w/ $20+ order, Oct 19&ndash;31. <strong>[UNVERIFIED]</strong> &mdash; single-aggregator source (sweetdealsfinder), not cross-checked.</p>
       </div>
     </div>
 
-    <!-- Burgers -->
     <div class="food-type-group">
-      <h4>Burgers</h4>
-      <div class="deal-card" id="deal-shakeshack-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.shakeshack.com" target="_blank" rel="noopener">Shake Shack</a></span>
-          <span class="badge redeem-app">APP / ONLINE / KIOSK</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">FREE ShackBurger w/ $10+</div>
-        <div class="deal-price">FREE w/ $10+ · code <code class="highlight-code">SCARYGOOD</code></div>
-        <div class="deal-details">
-          <span class="promo-info">Free ShackBurger with a $10+ purchase using code <code class="highlight-code">SCARYGOOD</code> on in-store kiosks, the app, or shakeshack.com (online pickup/delivery). Nearest local location: Algonquin [UNVERIFIED].</span>
-        </div>
-        <div class="valid-dates">Valid: Oct 19–31, 2026</div>
+      <h4>Wings &amp; Chicken</h4>
+      <div class="deal-card" id="deal-kfc-day4">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin</h5>
+        <p>FREE 2pc bone-in chicken w/ $10+ purchase, KFC Rewards members, kfc.com/app only, must click Redeem in-app. Scary Good Deals Day 4 of 13 (Oct 19&ndash;31). Confirmed by press schedule (nrn.com, qsrmagazine, slickdeals) 10/22. No code. (Crystal Lake KFC is permanently closed &mdash; Algonquin only.)</p>
       </div>
     </div>
 
-    <!-- Sandwiches -->
     <div class="food-type-group">
-      <h4>Sandwiches</h4>
-      <div class="deal-card" id="deal-potbelly">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.potbelly.com" target="_blank" rel="noopener">Potbelly</a></span>, Crystal Lake + Algonquin
-          <span class="badge redeem-instore">IN-STORE / APP</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">50% Off Sandwich w/ Pastrami Purchase</div>
-        <div class="deal-price">50% off</div>
-        <div class="deal-details">
-          <span class="promo-info">50% off any Original sandwich or wrap with purchase of a BIG or Original Pastrami Reuben or Pastrami &amp; Swiss. Free Potbelly Perks scan at checkout; no code needed.</span>
-        </div>
-        <div class="valid-dates">Valid: Oct 19–25, 2026</div>
+      <h4>Burgers &amp; More</h4>
+      <div class="deal-card" id="deal-mcdonalds-boo">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-instore">IN-STORE</span>
+        <h5><a href="https://www.mcdonalds.com" target="_blank" rel="noopener">McDonald's</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Disney Villains Boo Buckets with Happy Meal purchase, started 10/20, while supplies last. No code. NEW.</p>
       </div>
-      <div class="deal-card" id="deal-subway-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.subway.com" target="_blank" rel="noopener">Subway</a></span>
-          <span class="badge redeem-app">APP / ONLINE</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">BOGO Footlongs / $6.99 Footlongs</div>
-        <div class="deal-price">BOGO free · $6.99 w/ code <code class="highlight-code">699FORFTL</code></div>
-        <div class="deal-details">
-          <span class="promo-info">BOGO free footlongs for Rewards members through Nov 8; $6.99 any footlong with code <code class="highlight-code">699FORFTL</code> through Nov 15. [UNVERIFIED] — aggregator listing, not cross-checked on subway.com.</span>
-        </div>
-        <div class="valid-dates">Valid: BOGO thru Nov 8 · $6.99 thru Nov 15, 2026</div>
+      <div class="deal-card" id="deal-shakeshack-scarygood">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://www.shakeshack.com" target="_blank" rel="noopener">Shake Shack</a> &mdash; <strong>[UNVERIFIED]</strong> local location</h5>
+        <p><strong>CODE: SCARYGOOD</strong> = free Single ShackBurger w/ $10+ purchase, Oct 19&ndash;31. In-shack kiosk or app/website pickup &amp; delivery; NOT drive-thru, NOT third-party; limit 1/order. Nearest confirmed location Vernon Hills (~20 mi); delivery may reach parts of Algonquin. Working per chicagoonthecheap/fabulesslyfrugal/vonbeau 10/21.</p>
       </div>
     </div>
 
-    <!-- Treats -->
     <div class="food-type-group">
-      <h4>Treats</h4>
-      <div class="deal-card" id="deal-little-king-crab">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.groupon.com/deals/little-king-crab" target="_blank" rel="noopener">Little King Crab</a></span>, Crystal Lake
-          <span class="badge redeem-online">GROUPON / IN-STORE</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">Groupon: $30 Credit for $21.60</div>
-        <div class="deal-price">$21.60 for $30 credit · code <code class="highlight-code">HALLOWEEN</code></div>
-        <div class="deal-details">
-          <span class="promo-info">$30 food+drink credit for $21.60 with code <code class="highlight-code">HALLOWEEN</code> (extra ~10% off the current Groupon price). Dinner-for-two options also on the deal page. Buy on Groupon, redeem in-store.</span>
-        </div>
-        <div class="valid-dates">Valid: Thru Sun, Nov 1, 2026</div>
+      <h4>Sandwiches &amp; Deli</h4>
+      <div class="deal-card" id="deal-potbelly-pastrami">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-app">APP</span>
+        <h5><a href="https://www.potbelly.com" target="_blank" rel="noopener">Potbelly</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Perks members: 50% off any Original sandwich or wrap w/ purchase of a BIG or Original Pastrami Reuben or Pastrami &amp; Swiss, 10/19&ndash;10/25. Online, app, or in-shop scan. Crystal Lake + Algonquin shops confirmed. Per dealnews/qsrmagazine (brand PR). No code (Perks login).</p>
       </div>
     </div>
 
-    <!-- Coffee -->
     <div class="food-type-group">
-      <h4>Coffee</h4>
-      <div class="deal-card" id="deal-dunkin-wed">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.dunkindonuts.com" target="_blank" rel="noopener">Dunkin'</a></span>, Crystal Lake &amp; Algonquin
-          <span class="badge redeem-app">APP</span>
-          <span class="day-badge">WED</span>
-        </div>
-        <div class="deal-title"><span class="heat-label" style="background:var(--heat-soft);color:var(--heat-red)">🔥 TODAY</span> FREE Coffee TODAY — Grab the Code at Noon</div>
-        <div class="deal-price">FREE</div>
-        <div class="deal-details">
-          <span class="promo-info">The code drops ~12pm ET today on Dunkin's Instagram (TBA) — grab the code at noon. First 1 million to enter it in the app's Offers &amp; Rewards get a free hot or iced coffee; redeemable through Oct 24.</span>
-        </div>
-        <div class="valid-dates">Valid: Code drops Wed, Oct 21 · redeem thru Oct 24, 2026</div>
+      <h4>Coffee &amp; Sweets</h4>
+      <div class="deal-card" id="deal-starbucks-blackcat">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-instore">IN-STORE</span>
+        <h5><a href="https://www.starbucks.com" target="_blank" rel="noopener">Starbucks</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Black Cat Frappuccino + Venti Black Night Cookie arriving 10/22 at select stores, limited time (Halloween menu). Per vonbeau.com. No code. NEW.</p>
       </div>
     </div>
 
-    <!-- Delivery -->
-    <div class="food-type-group">
-      <h4>Delivery</h4>
-      <div class="deal-card" id="deal-grubhub-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.grubhub.com" target="_blank" rel="noopener">Grubhub</a></span>
-          <span class="badge redeem-delivery">DELIVERY</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">FREE Papa John's or Little Caesars Pizza w/ $20+</div>
-        <div class="deal-price">FREE w/ $20+</div>
-        <div class="deal-details">
-          <span class="promo-info">Free Papa John's medium pepperoni OR free Little Caesars ExtraMostBestest pizza with a $20+ order. No code needed. [UNVERIFIED] — single aggregator.</span>
-        </div>
-        <div class="valid-dates">Valid: Oct 19–31, 2026</div>
-      </div>
-    </div>
-
-    <!-- Dine-in (Wednesday) -->
-    <div class="food-type-group dine-in-section">
-      <h4>Dine-in</h4>
-      <div class="deal-card" id="deal-outback-wed-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.outback.com" target="_blank" rel="noopener">Outback Steakhouse</a></span>, Crystal Lake
-          <span class="badge redeem-dinein">DINE-IN</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">Aussie 3-Course</div>
-        <div class="deal-price">from $15.99</div>
-        <div class="deal-details">
-          <span class="promo-info">Warm Honey Wheat Bread + soup or salad + select entrée (6oz sirloin, Bloomin' Burger, coconut shrimp, or grilled shrimp) + NY-style cheesecake. Dine-in only; not on third-party delivery. No code needed.</span>
-        </div>
-        <div class="valid-dates">Valid: Limited time</div>
-      </div>
-    </div>
-
-    <!-- New Locals -->
     <div class="food-type-group">
       <h4>New Locals</h4>
-      <div class="deal-card" id="deal-epic-burger-barrington">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.clipp.com/all-offers/20-casual-dining-barrington-il-deal-12895213" target="_blank" rel="noopener">Epic Burger</a></span>, Barrington (~11 mi)
-          <span class="badge redeem-app">WEBSITE / APP</span>
-          <span class="day-badge">WED–THU</span>
-        </div>
-        <div class="deal-title">Clipp: $10 for $20 Worth of Casual Dining (50% Off)</div>
-        <div class="deal-price">$10 for $20 · 50% off</div>
-        <div class="deal-details">
-          <span class="promo-info">Clipp: $10 for $20 worth of casual dining (50% off) — NEW today. Dine-in &amp; takeout (no delivery); one certificate per visit; no cash or credit back; not valid on tax or gratuity; tip on the pre-discounted total; cannot combine with other offers. No stated expiry. Buy on Clipp, redeem in-store. Live-verified on Clipp 10/21. No code.</span>
-        </div>
-        <div class="valid-dates">Valid: No stated expiry</div>
+      <div class="deal-card" id="deal-little-king-thu">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://groupon.com/deals/little-king-crab" target="_blank" rel="noopener">Little King Crab</a> &mdash; Crystal Lake</h5>
+        <p><strong>CODE: HALLOWEEN</strong> (auto-applies): Groupon Spooky Sale &mdash; $30 food+drink credit $24, drops to $21.60 w/ code (up to 36% off); $60 credit tier; Dinner-for-2 w/ wine or beer option. Code window ends 11/1. Live-read on Groupon 10/22. Buy on Groupon, redeem in-store. Limited-time.</p>
       </div>
     </div>
-  </div>
 
-  <!-- THURSDAY, OCT 22 -->
-  <div class="day-group" data-day="thu">
-    <div class="day-header">
-      <h3>Thursday, Oct 22nd</h3>
-      <span class="day-badge">THU</span>
-    </div>
-
-    <!-- Chicken -->
     <div class="food-type-group">
-      <h4>Chicken</h4>
-      <div class="deal-card" id="deal-kfc-thu">
-        <div class="card-header">
-          <span class="restaurant-name"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a></span>, Algonquin
-          <span class="badge redeem-app">APP / ONLINE</span>
-          <span class="day-badge">THU</span>
-        </div>
-        <div class="deal-title">Scary Good: FREE 2-Pc Bone-In Chicken w/ $10+</div>
-        <div class="deal-price">FREE w/ $10+</div>
-        <div class="deal-details">
-          <span class="promo-info">Free 2-piece bone-in chicken with a $10+ purchase — Thu, Oct 22 only. No code needed; KFC Rewards login required, limit 1 per account.</span>
-        </div>
-        <div class="valid-dates">Valid: Thu, Oct 22, 2026 ONLY</div>
+      <h4>Pub &amp; Daily Specials</h4>
+      <div class="deal-card" id="deal-outback-3course">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-dinein">DINE-IN</span>
+        <h5><a href="https://www.outback.com" target="_blank" rel="noopener">Outback Steakhouse</a> &mdash; Crystal Lake</h5>
+        <p>Aussie 3-Course starting $15.99 (soup/salad + 6oz sirloin or Bloomin' Burger / coconut shrimp / grilled shrimp + NY-style cheesecake + honey wheat bread), dine-in, limited time. Verified live on outback.com 10/20. No code.</p>
+      </div>
+      <div class="deal-card" id="deal-dennys-oct26">
+        <span class="badge badge-thu">THU</span>
+        <span class="badge badge-dinein">DINE-IN</span>
+        <h5><a href="https://www.dennys.com" target="_blank" rel="noopener">Denny's</a> &mdash; Free Pancakes Now + Triple Play Shot</h5>
+        <p><strong>FREE stack of pancakes</strong> with the purchase of any beverage &mdash; Denny's Rewards digital-wallet offer, in-restaurant only, redeemable one time only, thru Oct 31, 2026. <strong>Ends Oct 31.</strong> The pancakes are the guaranteed part.</p>
+        <p><strong>Triple Play shot:</strong> if either team turns a triple play during the 2026 Baseball Championship Series (Oct 23&ndash;31), every U.S. Denny's Rewards member enrolled by 11:59 p.m. PT on Nov 1 gets a FREE Triple Play Combo Meal (starter + entr&eacute;e + drink), automatically credited Nov 3 and redeemable Nov 3 only, dine-in only at participating locations; every Nov 3 redemption is also an automatic entry into the Denny's-for-Life sweepstakes. The meal is contingent on a triple play happening &mdash; a rare play. Sign up free at <a href="https://www.dennys.com/rewards" target="_blank" rel="noopener">dennys.com/rewards</a> by Nov 1. Nearest location: Carpentersville, IL (~16.8 mi from Crystal Lake); participating locations only.</p>
       </div>
     </div>
+
+    <div class="steak-watch-note" id="deal-steak-thu"><strong>Steak Watch &mdash; Thu:</strong> NO sub-$6/lb steak live (checked 10/22 &mdash; Jewel-Osco, Mariano's, Meijer, Aldi, Woodman's, Costco/Sam's). Fallback: Jewel-Osco (Algonquin) USDA Choice T-Bone or Bone-In Strip Steak $9.99/lb, ad 10/21&ndash;10/27 &mdash; the best advertised Choice-grade steak this week, honestly labeled (not a sub-$6 deal). Budget cut: Aldi USDA Choice Black Angus Eye of Round $7.49/lb (price-cut; lean roast cut &mdash; best as a braise or thin-sliced, not a ribeye stand-in). Watch-list: Thanksgiving is 5 weeks out &mdash; Mariano's/Kroger runs the ribeye doorbuster on holiday weekends; buy the limit and freeze.</div>
+    <div class="steak-watch-note" id="deal-grocery-thu"><strong>Grocery Steals &mdash; Thu:</strong> Jewel-Osco (ad 10/21&ndash;10/27): fresh bone-in pork shoulder roast $0.99/lb; pork baby back ribs $2.99/lb; BOGO fresh bone-in pork loin chops / chicken breast / Italian sausage; $0.99 deals (Eckrich bologna, Snapple, Mars/Hershey candy, Hass avocados). Meijer (ad 10/21&ndash;10/27): 80/20 ground beef $4.79/lb (3lb+ pkg); pork loin chops BOGO $1; baby-cut carrots 39&cent;/lb (Buy 5); 3lb Honeycrisp apples BOGO $1. Aldi (ad 10/21&ndash;10/27): chicken drumsticks family pack $1.09/lb; eggs $1.85/doz; Perdue drumsticks value pack $0.89/lb.</div>
   </div>
 
-  <!-- STEAK CHECK -->
-  <div class="food-type-group">
-    <h4>Steak Check</h4>
-    <div class="deal-card" id="deal-steak-check">
-      <div class="card-header">
-        <strong style="color:var(--ink)">Jewel-Osco</strong>, Algonquin · <strong style="color:var(--ink)">Aldi</strong>, Algonquin
-        <span class="badge redeem-instore">IN-STORE</span>
-        <span class="day-badge">WED–THU</span>
+  <div class="day-group">
+    <h3 class="day-header">Friday (Oct 23)</h3>
+
+    <div class="food-type-group">
+      <h4>Tacos &amp; Mexican</h4>
+      <div class="deal-card" id="deal-taco-bell-paris-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-app">APP</span>
+        <h5><a href="https://www.tacobell.com" target="_blank" rel="noopener">Taco Bell</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Paris Hilton's Usual $4 (Diablo Ranch Crispy Chicken Crunchwrap Slider + Crunchy Taco + medium drink), Oct 20&ndash;26, in-restaurant/online/app, limit 1/transaction. Still live per qsrweb/eatdrinkdeals 10/22. No code.</p>
       </div>
-      <div class="deal-title">Steak Check: Best Local Beef Buys</div>
-      <div class="deal-price">No sub-$6/lb steak this week</div>
-      <div class="deal-details">
-        <span class="promo-info">No sub-$6/lb steak anywhere this week. Best: Jewel-Osco, Algonquin — USDA Choice T-Bone or Bone-In Strip Steak $9.99/lb, valid Oct 21–27. Honest alt: Aldi, Algonquin — USDA Choice Black Angus Eye of Round $7.49/lb through Nov 3 (tough cut — good for marinade or slow cooking). No code needed.</span>
-      </div>
-      <div class="valid-dates">Valid: Oct 21–27 (Jewel-Osco) · thru Nov 3 (Aldi), 2026</div>
     </div>
+
+    <div class="food-type-group">
+      <h4>Pizza</h4>
+      <div class="deal-card" id="deal-nicks-wings-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-carryout">CARRYOUT</span>
+        <h5><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a> &mdash; Crystal Lake</h5>
+        <p>Large 1-topping pizza + order of Moose Wings $25.95, Wed&ndash;Sun, carryout &amp; delivery only. Confirmed live 10/22 (reposted on official social 10/17). Limited-time returning promo. No code.</p>
+      </div>
+      <div class="deal-card" id="deal-dominos-combo-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-carryout">CARRYOUT</span>
+        <h5><a href="https://www.dominos.com" target="_blank" rel="noopener">Domino's</a> &mdash; Crystal Lake</h5>
+        <p>Perfect Combo Meal $19.99: 2 medium 1-topping pizzas + 16pc bread bites + 8pc cinnamon twists. NEW.</p>
+      </div>
+      <div class="deal-card" id="deal-pizzahut-haunt-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://www.pizzahut.com" target="_blank" rel="noopener">Pizza Hut</a> &mdash; Crystal Lake</h5>
+        <p>Haunt Box, limited time through Nov 2, order via app/website. Price <strong>[UNVERIFIED]</strong> ($6.99&ndash;$8.49 depending on source). NEW.</p>
+      </div>
+      <div class="deal-card" id="deal-littlecaesars-3off18-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-carryout">CARRYOUT</span>
+        <h5><a href="https://www.littlecaesars.com" target="_blank" rel="noopener">Little Caesars</a> &mdash; Crystal Lake</h5>
+        <p><strong>CODE: 3OFF18</strong> = $3 off $18+. Live-tested working on official site 10/15 ("YAY! You saved $3.00"); DontPayFull re-verified 4 days ago. Expiry Nov 6 per DontPayFull (was 10/31).</p>
+      </div>
+      <div class="deal-card" id="deal-grubhub-pizza-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-app">APP</span>
+        <h5><a href="https://www.grubhub.com" target="_blank" rel="noopener">Grubhub</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Free Papa John's medium pepperoni pizza OR free Little Caesars ExtraMostBestest pizza w/ $20+ order, Oct 19&ndash;31. <strong>[UNVERIFIED]</strong> &mdash; single-aggregator source (sweetdealsfinder), not cross-checked.</p>
+      </div>
+    </div>
+
+    <div class="food-type-group">
+      <h4>Wings &amp; Chicken</h4>
+      <div class="deal-card" id="deal-kfc-day5">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin</h5>
+        <p>40% off 5pc Tenders Combo, KFC Rewards members, kfc.com/app only. Scary Good Deals Day 5 of 13 (Oct 19&ndash;31). Per press schedule (nrn.com, qsrmagazine) 10/22. No code.</p>
+      </div>
+    </div>
+
+    <div class="food-type-group">
+      <h4>Burgers &amp; More</h4>
+      <div class="deal-card" id="deal-mcdonalds-boo-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-instore">IN-STORE</span>
+        <h5><a href="https://www.mcdonalds.com" target="_blank" rel="noopener">McDonald's</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Disney Villains Boo Buckets with Happy Meal purchase, started 10/20, while supplies last. No code. NEW.</p>
+      </div>
+      <div class="deal-card" id="deal-shakeshack-scarygood-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://www.shakeshack.com" target="_blank" rel="noopener">Shake Shack</a> &mdash; <strong>[UNVERIFIED]</strong> local location</h5>
+        <p><strong>CODE: SCARYGOOD</strong> = free Single ShackBurger w/ $10+ purchase, Oct 19&ndash;31. In-shack kiosk or app/website pickup &amp; delivery; NOT drive-thru, NOT third-party; limit 1/order. Nearest confirmed location Vernon Hills (~20 mi); delivery may reach parts of Algonquin. Working per chicagoonthecheap/fabulesslyfrugal/vonbeau 10/21.</p>
+      </div>
+    </div>
+
+    <div class="food-type-group">
+      <h4>Sandwiches &amp; Deli</h4>
+      <div class="deal-card" id="deal-potbelly-pastrami-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-app">APP</span>
+        <h5><a href="https://www.potbelly.com" target="_blank" rel="noopener">Potbelly</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Perks members: 50% off any Original sandwich or wrap w/ purchase of a BIG or Original Pastrami Reuben or Pastrami &amp; Swiss, 10/19&ndash;10/25. Online, app, or in-shop scan. Crystal Lake + Algonquin shops confirmed. Per dealnews/qsrmagazine (brand PR). No code (Perks login).</p>
+      </div>
+    </div>
+
+    <div class="food-type-group">
+      <h4>Coffee &amp; Sweets</h4>
+      <div class="deal-card" id="deal-starbucks-blackcat-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-instore">IN-STORE</span>
+        <h5><a href="https://www.starbucks.com" target="_blank" rel="noopener">Starbucks</a> &mdash; Crystal Lake/Algonquin</h5>
+        <p>Black Cat Frappuccino + Venti Black Night Cookie arriving 10/22 at select stores, limited time (Halloween menu). Per vonbeau.com. No code. NEW.</p>
+      </div>
+    </div>
+
+    <div class="food-type-group">
+      <h4>New Locals</h4>
+      <div class="deal-card" id="deal-little-king-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-website">WEBSITE/APP</span>
+        <h5><a href="https://groupon.com/deals/little-king-crab" target="_blank" rel="noopener">Little King Crab</a> &mdash; Crystal Lake</h5>
+        <p><strong>CODE: HALLOWEEN</strong> (auto-applies): Groupon Spooky Sale &mdash; $30 food+drink credit $24, drops to $21.60 w/ code (up to 36% off); $60 credit tier; Dinner-for-2 w/ wine or beer option. Code window ends 11/1. Live-read on Groupon 10/22. Buy on Groupon, redeem in-store. Limited-time.</p>
+      </div>
+    </div>
+
+    <div class="food-type-group">
+      <h4>Pub &amp; Daily Specials</h4>
+      <div class="deal-card" id="deal-outback-3course-fri">
+        <span class="badge badge-fri">FRI</span>
+        <span class="badge badge-dinein">DINE-IN</span>
+        <h5><a href="https://www.outback.com" target="_blank" rel="noopener">Outback Steakhouse</a> &mdash; Crystal Lake</h5>
+        <p>Aussie 3-Course starting $15.99 (soup/salad + 6oz sirloin or Bloomin' Burger / coconut shrimp / grilled shrimp + NY-style cheesecake + honey wheat bread), dine-in, limited time. Verified live on outback.com 10/20. No code.</p>
+      </div>
+    </div>
+
+    <div class="steak-watch-note" id="deal-steak-fri"><strong>Steak Watch &mdash; Fri:</strong> NO sub-$6/lb steak live (checked 10/22 &mdash; same ads). Fallback: Jewel-Osco (Algonquin) USDA Choice T-Bone or Bone-In Strip $9.99/lb, ad 10/21&ndash;10/27 &mdash; best advertised Choice-grade steak this week (not sub-$6, labeled honestly). Budget cut: Aldi USDA Choice Black Angus Eye of Round $7.49/lb (lean roast cut). Watch-list: Thanksgiving is 5 weeks out &mdash; Mariano's/Kroger holiday ribeye doorbuster; buy the limit and freeze.</div>
+    <div class="steak-watch-note" id="deal-grocery-fri"><strong>Grocery Steals &mdash; Fri:</strong> Same ads (run through 10/27): Jewel-Osco bone-in pork shoulder roast $0.99/lb, pork baby back ribs $2.99/lb, BOGO pork loin chops/chicken breast/Italian sausage, $0.99 avocados/candy/deals. Meijer 80/20 ground beef $4.79/lb (3lb+), baby carrots 39&cent;/lb (Buy 5). Aldi drumsticks $1.09/lb, eggs $1.85/doz.</div>
   </div>
 
-  <!-- WEEKLY SPECIALS GRID -->
-  <div class="weekly-specials-section">
-    <h3>Weekly Specials (Standing Offers)</h3>
-    <div class="weekly-grid">
-      <div class="weekday-row">
-        <span class="weekday-tag">MON</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — 8" Italian beef + double sausage, fries &amp; drink $13.97 (IN-STORE/CARRYOUT) | Iron Horse, Algonquin — $5 off pizza (DINE-IN) | Wings and Rings, Crystal Lake — Kids Eat Free, $10 min (DINE-IN) | Papa Saverio's, Lake in the Hills — 30% off all pizzas, mention coupon (TAKEOUT/DELIVERY) | Rosati's, Cary + Crystal Lake — Back to School Bundle: large 14" 1-topping + 2L soda $19, Mon–Thu (CARRYOUT/DELIVERY; code FBSNS19 [UNVERIFIED]) | Duke's Alehouse, Crystal Lake — Meatless Mondays: BOGO 50% off vegan/vegetarian (DINE-IN) | KFC, Algonquin — $10 Bucket of the Day: 24 nuggets (IN-STORE) | Chick &amp; The Pig, Algonquin — $9 pulled pork sandwich meal w/ side + drink (TAKEOUT/DELIVERY) | Bulldog Ale House, Algonquin — 20% off all online orders Sun–Thu (ONLINE; excl. specials)
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">TUE</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — footlong Polish + fries &amp; drink $14.49 (IN-STORE/CARRYOUT) | Iron Horse, Algonquin — $2 chicken/beef/pork tacos + $5 chips &amp; guac (DINE-IN) | Nick's Pizza &amp; Pub, Crystal Lake — BOGO pizza (CARRYOUT); $8 burger or chicken sandwich + fries (DINE-IN ONLY) | Wings and Rings, Crystal Lake — 40% off wings | Cottage, Crystal Lake — half-price large pizza (DINE-IN ONLY) | Antigua Mexican Grill, Algonquin — $1.99 tacos all day (Algonquin location only) | Casa Chapala's, Crystal Lake — 99¢ tacos + $5 specials all day (DINE-IN/TAKEOUT) | El Fuego Tacos, Algonquin — $22.99 10-taco pack (CARRYOUT) | Taco Y Tequila, Crystal Lake — $1 tacos + $6 burritos | Taqueria Las Cumbres, Crystal Lake — mini tacos $1.50; regular 2 for $5.00 (PICKUP/DELIVERY) | Papa Saverio's, Lake in the Hills — 50% off selected pastas | Rosati's, Cary + Crystal Lake — bundle $19 (Mon–Thu) (CARRYOUT/DELIVERY) | Pinemoor Pizza, Crystal Lake — $2 off any pizza, call-in mention promo [UNVERIFIED] | KFC, Algonquin — $10 bucket: 8pc drums &amp; thighs (IN-STORE) | Chick &amp; The Pig, Algonquin — $7 fried chicken breast sandwich meal | Outback, Crystal Lake — Tuesday Tails from $24.99 (DINE-IN) | Bold American Fare, Algonquin — ½-off small plates (Tapas Tuesday) | Cary Tracks, Cary — 5 sliders $8 w/ drink purchase | Fire Bar &amp; Grill, Crystal Lake — $7 Fire Burger w/ fries
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">WED</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — 8" Italian sausage + fries &amp; drink $11.39 (IN-STORE/CARRYOUT) | Iron Horse, Algonquin — $9.99 jumbo wings, choose 3 sauces (DINE-IN) | Bonefish Grill, Algonquin — $7 Bang Bang Shrimp w/ any food or non-alcoholic bev purchase (DINE-IN ONLY) | Outback, Crystal Lake — Walkabout Wednesday from $13.99: 6oz sirloin or grilled chicken + fries + 16oz draft/soda (DINE-IN) | Nick's Pizza &amp; Pub, Crystal Lake — $8 Italian beef + fries (DINE-IN ONLY) | Wings and Rings, Crystal Lake — $8.49 three-piece tender basket (IN-STORE/ONLINE) | Cottage, Crystal Lake — build-your-own burger w/ side $5 (DINE-IN ONLY) | Papa Saverio's, Lake in the Hills — 30% off all pizzas, mention coupon | Chick &amp; The Pig, Algonquin — $10 burger meal | Fire Bar &amp; Grill, Crystal Lake — half-off pizzas | Donkey Inn, Algonquin — ½-price pizza (DINE-IN ONLY) | Rosati's, Cary + Crystal Lake — bundle $19 (Mon–Thu) | Bulldog Ale House, Algonquin — 20% off online Sun–Thu (ONLINE) | KFC, Algonquin — $10 Bucket of the Day: 10 wings + 2 sauces (IN-STORE) | Burger King — $3.98 Whopper or Impossible Whopper, Royal Perks members (APP/ONLINE) | Cary Ale House, Cary — happy hour 2–5pm: 15% off appetizers (Tue–Fri) | Cucina Bella, Algonquin — happy hour Tue–Thu 4–6pm: ½-price select appetizers (BAR ONLY)
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">THU</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — 12" submarine + fries &amp; drink $14.49 (IN-STORE/CARRYOUT) | Iron Horse, Algonquin — $10.99 nachos | Nick's Pizza &amp; Pub, Crystal Lake — any wrap + fries $8 (DINE-IN ONLY) | Cottage, Crystal Lake — $0.60 traditional or boneless wings (DINE-IN ONLY) | Pinemoor Pizza, Crystal Lake — $2 off any pizza, call-in mention promo [UNVERIFIED] | Chick &amp; The Pig, Algonquin — $7 two char dogs meal | Goal Line Sports Bar, Crystal Lake — $10 half slab BBQ ribs + fries (game day, DINE-IN) | KFC, Algonquin — $10 bucket: 8 tenders + 4 sauces (IN-STORE) | Buffalo Wild Wings, Crystal Lake — BOGO free boneless wings (ONLINE, TAKEOUT/DELIVERY ONLY) | Rosati's, Cary + Crystal Lake — bundle $19 (Mon–Thu) | Bulldog Ale House, Algonquin — 20% off online Sun–Thu (ONLINE) | Cary Tracks, Cary — full slab ribs after 4pm (prices unlisted, DINE-IN)
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">FRI</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — jumbo shrimp dinner w/ fries, drink, garlic bread &amp; cocktail sauce $14.49 | Iron Horse, Algonquin — $19.99 all-you-can-eat fish fry | Wings and Rings, Crystal Lake — Kids Eat Free ($10 min, DINE-IN) | Cottage, Crystal Lake — fish fry: Fish &amp; Chips Cod $18, Broiled Cod $19, Perch $18, Haddock $21 (CARRYOUT/DINE-IN) | Windhill, McHenry — AYCE fish fry $16 (DINE-IN) | Donkey Inn, Algonquin — Friday Fish Fry: Beer Battered Cod $17; Fish Tacos $15; Tempura Shrimp $20; Blackened Shrimp Tacos $20 (DINE-IN/TAKE-OUT) | Andy's Restaurant, Crystal Lake — Friday Night Fish Favorites, prices in store (DINE-IN/CARRYOUT) | Bold American Fare, Algonquin — Early Bird 20% off before 5:30pm (Mon–Fri) | Taylor Street Pizza, Algonquin — Fried Shrimp Basket $14.99, 4–9:30pm; 5% off online only | Cary Ale House, Cary — 15% off appetizers 2–5pm | Chick &amp; The Pig, Algonquin — $10 chopped brisket sandwich meal | KFC, Algonquin — $10 bucket: 24 nuggets (IN-STORE) | Port Edward Restaurant, Algonquin — Fried Walleye $27 (DINE-IN/CURBSIDE PICKUP) | BREWHAUS 31, Algonquin — AYCE Fish Fry 4–7pm (DINE-IN ONLY; price $15 [UNVERIFIED]) | Cary Tracks, Cary — AYCE fish fry all day (prices unlisted)
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">SAT</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — full-slab BBQ baby back ribs w/ fries &amp; garlic bread $20.70 | Chick &amp; The Pig, Algonquin — $8 6pc jumbo wings meal | Cary Tracks, Cary — broasted chicken all day (price unlisted) | Port Edward Restaurant, Algonquin — Prime Rib $35 / Lobster Tail $38
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">SUN</span>
-        <div class="weekday-deals">
-          Tommy's Red Hots, Crystal Lake — gyros platter w/ fries &amp; drink $13.19 | Iron Horse, Algonquin — $7 build-your-own burger | Bulldog Ale House, Algonquin — 20% off online Sun–Thu (ONLINE) | Bold American Fare, Algonquin — AYCE crab legs &amp; peel-and-eat shrimp | Chick &amp; The Pig, Algonquin — $18 1/2 slab ribs meal
-        </div>
-      </div>
-      <div class="weekday-row">
-        <span class="weekday-tag">ANY<br>TIME</span>
-        <div class="weekday-deals">
-          IHOP, Crystal Lake — 20% off first online order w/ code IHOP20 (IHOP Rewards join required; expiry 12/31/26 [UNVERIFIED]) | Wings and Rings, Crystal Lake — FREE delivery all October w/ code GAMEON ($30+) | Bulldog Ale House, Algonquin — 5 free wings w/ $20+ spend (DINE-IN/CARRYOUT, not online) | Taylor Street Pizza, Algonquin — 5% off online only | Kumi Sushi, Crystal Lake — AYCE sushi lunch Mon–Fri 11am–3pm $28.95/person (DINE-IN); Happy Hour Mon–Fri 2–3pm &amp; 8:30–9:30pm (DINE-IN ONLY, limit 2 orders/table) | Little Rice, Crystal Lake — BOGO weekday discounts on 6 items via online order [UNVERIFIED]
-        </div>
-      </div>
+  <div class="weekly-specials">
+    <h3 class="weekly-specials-title">Weekly Specials &mdash; the steady week-in, week-out rhythm</h3>
+    <div class="ws-day">
+      <h4 class="ws-weekday">MON</h4>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; 8&Prime; Italian beef + double sausage, fries &amp; drink $13.97 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://ironhorsebar.com/drink-specials/" target="_blank" rel="noopener">Iron Horse Bar &amp; Grill</a> &mdash; Algonquin &mdash; $5 off pizza <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://papasaverios.com/stores/lake-in-the-hills-lake-in-the-hills/" target="_blank" rel="noopener">Papa Saverio's</a> &mdash; Lake in the Hills &mdash; 30% off all pizzas, <strong>CODE: 30OFF</strong> <strong>[UNVERIFIED]</strong>; ALSO $10 14&Prime; cheese pizza <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://rosatispizza.com/location/crystal-lake-il" target="_blank" rel="noopener">Rosati's Pizza</a> &mdash; Crystal Lake &mdash; Back to School Bundle Mon&ndash;Thu: large 14&Prime; 1-topping + 2L soda $19, <strong>CODE: FBSNS19</strong> <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://myrosatis.com/cary/" target="_blank" rel="noopener">Rosati's Pizza</a> &mdash; Cary &mdash; <strong>CODE: 10OFF</strong> 10% off any order; <strong>CODE: 3OFF</strong> $3 off 18&Prime;; <strong>CODE: 2OFF</strong> $2 off 16&Prime;; <strong>CODE: 1OFF</strong> $1 off 14&Prime; (limited time) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://wingsandrings.com/deals" target="_blank" rel="noopener">Wings and Rings</a> &mdash; Crystal Lake &mdash; Kids Eat Free Mon &amp; Fri (dine-in, $10 min purchase); FREE delivery all October w/ code GAMEON ($30+) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $9 pulled pork sandwich meal w/ side &amp; drink <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://thedukeabides.com" target="_blank" rel="noopener">Duke's Alehouse and Kitchen</a> &mdash; Crystal Lake &mdash; Meatless Mondays: BOGO 50% off vegan/vegetarian <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin &mdash; $10 Bucket of the Day (Mon: 24 nuggets), thru 10/30; rotating Scary Good daily deals at kfc.com/menu#deals, Oct 19&ndash;31 <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item"><a href="https://kumisushiorder.com" target="_blank" rel="noopener">Kumi Sushi</a> &mdash; Crystal Lake &mdash; AYCE sushi lunch Mon&ndash;Fri 11&ndash;3pm $28.95/person; happy hour Mon&ndash;Fri 2&ndash;3pm &amp; 8:30&ndash;9:30pm <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.boldamericanfare.com" target="_blank" rel="noopener">Bold American Fare</a> &mdash; Algonquin &mdash; Early Bird Mon&ndash;Fri: 20% off meal dine-in before 5:30pm (tell server) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://thecarytracks.com/specials" target="_blank" rel="noopener">The Cary Tracks</a> &mdash; Cary &mdash; broasted pork chop dinner after 4pm + wing special <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Little Rice &mdash; Crystal Lake &mdash; BOGO Weekday Discounts on 6 items via online order (weekdays only): Tempura Roll $9.25, Godzilla Roll $18.95, Sweet Sour Chicken $14.95, Chicken Fried Rice $12.75, Fried Gyoza $7.00, Crab Rangoon $7.00 <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">TUE</h4>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; footlong Polish, fries &amp; drink $14.49 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://ironhorsebar.com/drink-specials/" target="_blank" rel="noopener">Iron Horse Bar &amp; Grill</a> &mdash; Algonquin &mdash; $2 tacos (chicken/beef/pork) + $5 chips &amp; guacamole <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a> &mdash; Crystal Lake &mdash; BOGO pizza carryout 3&ndash;9pm (Oct only); ALSO $8 burger or chicken sandwich + fries, dine-in only <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://wingsandrings.com/deals" target="_blank" rel="noopener">Wings and Rings</a> &mdash; Crystal Lake &mdash; 40% off wings (traditional or boneless) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://papasaverios.com/stores/lake-in-the-hills-lake-in-the-hills/" target="_blank" rel="noopener">Papa Saverio's</a> &mdash; Lake in the Hills &mdash; 50% off selected pastas <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin &mdash; $10 Bucket of the Day (Tue: 8pc drums &amp; thighs), thru 10/30 <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item">Casa Chapala's &mdash; Crystal Lake &mdash; 99&cent; tacos + $5 specials all day (dine-in + takeout) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://antiguamexicangrill.com" target="_blank" rel="noopener">Antigua Mexican Grill</a> &mdash; Algonquin &mdash; $1.99 tacos all day (Algonquin location only) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://elfuegogrill.com" target="_blank" rel="noopener">El Fuego</a> &mdash; Algonquin &mdash; $22.99 10-taco pack (2 steak / 2 chicken / 2 pork / 2 chorizo / 2 ground beef) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item">Fire Bar &amp; Grill &mdash; Crystal Lake &mdash; $7 Fire Burger w/ fries <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item">Taqueria Las Cumbres &mdash; Crystal Lake &mdash; mini tacos $1.50 ea; regular tacos (asada, al pastor, pollo) 2 for $5.00 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $7 fried chicken breast sandwich meal <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.boldamericanfare.com" target="_blank" rel="noopener">Bold American Fare</a> &mdash; Algonquin &mdash; Tapas Tuesday: &half; off small plates (tell server) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Cottage Pub &mdash; Crystal Lake &mdash; half-price large pizza <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://labemis.com" target="_blank" rel="noopener">Labemi's Tavern</a> &mdash; Crystal Lake &mdash; German Night (Pork F&uuml;rstein $24, Beef Stroganoff $23) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://thecarytracks.com/specials" target="_blank" rel="noopener">The Cary Tracks</a> &mdash; Cary &mdash; 5 sliders $8 w/ drink purchase <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Cucina Bella &mdash; Algonquin &mdash; Happy Hour 4&ndash;6pm: &half;-price select appetizers (bar service only) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://pinemoorpizza.com" target="_blank" rel="noopener">Pinemoor Pizza</a> &mdash; Crystal Lake &mdash; $2 off any pizza, any size (call-in, mention promo) <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://caryalehousebrewing.com/daily-specials" target="_blank" rel="noopener">Cary Ale House</a> &mdash; Cary &mdash; Happy Hour 2&ndash;5pm: 15% off appetizers (pickup available) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://andysrestaurantcl.com" target="_blank" rel="noopener">Andy's Restaurant</a> &mdash; Crystal Lake &mdash; breakfast specials $6.99, 7&ndash;10am <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.outback.com" target="_blank" rel="noopener">Outback Steakhouse</a> &mdash; Crystal Lake &mdash; Tuesday Tails starting $24.99 (6oz sirloin + lobster tail + 2 sides), dine-in, Tuesdays <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Little Rice &mdash; Crystal Lake &mdash; BOGO Weekday Discounts on 6 items via online order (weekdays only) <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">WED</h4>
+      <div class="ws-item"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin &mdash; $10 Bucket of the Day (Wed: 10 wings + 2 sauces), thru 10/30 <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; 8&Prime; Italian sausage, fries &amp; drink $11.39 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://ironhorsebar.com/drink-specials/" target="_blank" rel="noopener">Iron Horse Bar &amp; Grill</a> &mdash; Algonquin &mdash; $9.99 jumbo wings (choose 3 sauces) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a> &mdash; Crystal Lake &mdash; $8 Italian beef + fries, dine-in only <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://papasaverios.com/stores/lake-in-the-hills-lake-in-the-hills/" target="_blank" rel="noopener">Papa Saverio's</a> &mdash; Lake in the Hills &mdash; 30% off all pizzas, <strong>CODE: 30OFF</strong> <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://wingsandrings.com/deals" target="_blank" rel="noopener">Wings and Rings</a> &mdash; Crystal Lake &mdash; $8.49 three-piece tender basket <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $10 burger meal w/ side &amp; drink <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.boldamericanfare.com" target="_blank" rel="noopener">Bold American Fare</a> &mdash; Algonquin &mdash; &half;-off mussels <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://donkeyinnalgonquin.com" target="_blank" rel="noopener">Donkey Inn Bar &amp; Grill</a> &mdash; Algonquin &mdash; &half;-price pizza, dine-in only <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Fire Bar &amp; Grill &mdash; Crystal Lake &mdash; half-off pizzas <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item">Cottage Pub &mdash; Crystal Lake &mdash; $5 build-an-original burger w/ side, dine-in only <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://labemis.com" target="_blank" rel="noopener">Labemi's Tavern</a> &mdash; Crystal Lake &mdash; German Night (Pork F&uuml;rstein $24, Beef Stroganoff $23) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://thecarytracks.com/specials" target="_blank" rel="noopener">The Cary Tracks</a> &mdash; Cary &mdash; ahi tuna salad/tacos <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://andysrestaurantcl.com" target="_blank" rel="noopener">Andy's Restaurant</a> &mdash; Crystal Lake &mdash; breakfast specials $6.99, 7&ndash;10am <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://rosatispizza.com/location/crystal-lake-il" target="_blank" rel="noopener">Rosati's Pizza</a> &mdash; Crystal Lake &mdash; Back to School Bundle Mon&ndash;Thu: large 14&Prime; 1-topping + 2L soda $19, <strong>CODE: FBSNS19</strong> <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://myrosatis.com/cary/" target="_blank" rel="noopener">Rosati's Pizza</a> &mdash; Cary &mdash; 10OFF/3OFF/2OFF/1OFF coupons (limited time) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://kumisushiorder.com" target="_blank" rel="noopener">Kumi Sushi</a> &mdash; Crystal Lake &mdash; AYCE sushi lunch Mon&ndash;Fri 11&ndash;3pm $28.95/person; happy hour Mon&ndash;Fri 2&ndash;3pm &amp; 8:30&ndash;9:30pm <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Cucina Bella &mdash; Algonquin &mdash; Happy Hour 4&ndash;6pm: &half;-price select appetizers (bar service only) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Bonefish Grill &mdash; Algonquin &mdash; Bang Wednesday: $7 Bang Bang Shrimp&reg; w/ any food or non-alcoholic beverage purchase, dine-in only <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.outback.com" target="_blank" rel="noopener">Outback Steakhouse</a> &mdash; Crystal Lake &mdash; Walkabout Wednesday starting $13.99 (6oz sirloin or Grilled Chicken + Aussie Fries + 16oz domestic draft/Coca-Cola), dine-in, Wednesdays <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.burgerking.com" target="_blank" rel="noopener">Burger King</a> &mdash; Crystal Lake/Algonquin &mdash; $3.98 Whopper or Impossible Whopper, Royal Perks members, app/online, Wednesdays <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item"><a href="https://www.wendys.com" target="_blank" rel="noopener">Wendy's</a> &mdash; Crystal Lake/Algonquin &mdash; FREE 6pc nuggets w/ $5+ mobile app purchase, Rewards members, Wednesdays <span class="badge badge-app">APP</span></div>
+      <div class="ws-item">Little Rice &mdash; Crystal Lake &mdash; BOGO Weekday Discounts on 6 items via online order (weekdays only) <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">THU</h4>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; 12&Prime; submarine, fries &amp; drink $14.49 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://ironhorsebar.com/drink-specials/" target="_blank" rel="noopener">Iron Horse Bar &amp; Grill</a> &mdash; Algonquin &mdash; $10.99 nachos <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a> &mdash; Crystal Lake &mdash; any wrap + fries $8, dine-in only <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Cottage Pub &mdash; Crystal Lake &mdash; 60&cent; traditional or boneless wings, dine-in only <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $7 two char dogs meal <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.boldamericanfare.com" target="_blank" rel="noopener">Bold American Fare</a> &mdash; Algonquin &mdash; $18 NY strip &amp; bone-in pork chops (tell server) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://thecarytracks.com/specials" target="_blank" rel="noopener">The Cary Tracks</a> &mdash; Cary &mdash; full slab ribs after 4pm (price unlisted) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://pinemoorpizza.com" target="_blank" rel="noopener">Pinemoor Pizza</a> &mdash; Crystal Lake &mdash; $2 off any pizza, any size (call-in, mention promo) <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://andysrestaurantcl.com" target="_blank" rel="noopener">Andy's Restaurant</a> &mdash; Crystal Lake &mdash; breakfast specials $6.99, 7&ndash;10am <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin &mdash; $10 Bucket of the Day (Thu: 8 tenders + 4 sauces), thru 10/30 <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item"><a href="https://rosatispizza.com/location/crystal-lake-il" target="_blank" rel="noopener">Rosati's Pizza</a> &mdash; Crystal Lake &mdash; Back to School Bundle Mon&ndash;Thu: large 14&Prime; 1-topping + 2L soda $19, <strong>CODE: FBSNS19</strong> <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://myrosatis.com/cary/" target="_blank" rel="noopener">Rosati's Pizza</a> &mdash; Cary &mdash; 10OFF/3OFF/2OFF/1OFF coupons (limited time) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://kumisushiorder.com" target="_blank" rel="noopener">Kumi Sushi</a> &mdash; Crystal Lake &mdash; AYCE sushi lunch Mon&ndash;Fri 11&ndash;3pm $28.95/person; happy hour Mon&ndash;Fri 2&ndash;3pm &amp; 8:30&ndash;9:30pm <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Cucina Bella &mdash; Algonquin &mdash; Happy Hour 4&ndash;6pm: &half;-price select appetizers (bar service only) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://caryalehousebrewing.com/daily-specials" target="_blank" rel="noopener">Cary Ale House</a> &mdash; Cary &mdash; Happy Hour 2&ndash;5pm: 15% off appetizers (pickup available) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item">Little Rice &mdash; Crystal Lake &mdash; BOGO Weekday Discounts on 6 items via online order (weekdays only) <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://bulldogalehouse.com" target="_blank" rel="noopener">Bulldog Ale House</a> &mdash; Algonquin &mdash; 20% off all online orders Sun&ndash;Thu; ALSO 5 free wings w/ $20+ spend (dine-in + carryout, not online) <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item"><a href="https://www.buffalowildwings.com" target="_blank" rel="noopener">Buffalo Wild Wings</a> &mdash; Crystal Lake &mdash; Thu BOGO FREE boneless wings, order online via app or website, TAKEOUT/DELIVERY ONLY <span class="badge badge-website">WEBSITE/APP</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">FRI</h4>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; jumbo shrimp dinner w/ fries, drink, garlic bread &amp; cocktail sauce $14.49 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $10 chopped brisket sandwich meal <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://donkeyinnalgonquin.com" target="_blank" rel="noopener">Donkey Inn Bar &amp; Grill</a> &mdash; Algonquin &mdash; Friday Fish Fry: beer-battered cod $17; fish tacos $15; tempura shrimp $20; blackened shrimp tacos $20 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://andysrestaurantcl.com" target="_blank" rel="noopener">Andy's Restaurant</a> &mdash; Crystal Lake &mdash; Friday Night Fish Favorites menu (fish, shrimp, ribs; prices unlisted); ALSO breakfast specials $6.99 7&ndash;10am <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://portedward.com" target="_blank" rel="noopener">Port Edward</a> &mdash; Algonquin &mdash; Fried Walleye $27 w/ soup or salad + two sides <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://taylorstreetpizzaofalgonquin.com" target="_blank" rel="noopener">Taylor Street Pizza</a> &mdash; Algonquin &mdash; Fried Shrimp Basket $14.99 (4&ndash;9:30pm); 5% off online orders <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://windhillmchenry.com/page/friday-fish-fry">Windhill</a> &mdash; McHenry &mdash; AYCE fish fry (haddock fried or boiled, shrimp scampi, fries; open till 9pm) $16 <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://thecarytracks.com/specials" target="_blank" rel="noopener">The Cary Tracks</a> &mdash; Cary &mdash; all-you-can-eat fish fry ALL DAY <strong>[UNVERIFIED price]</strong> <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.kfc.com" target="_blank" rel="noopener">KFC</a> &mdash; Algonquin &mdash; $10 Bucket of the Day (Fri: 24 nuggets), thru 10/30 <span class="badge badge-website">WEBSITE/APP</span></div>
+      <div class="ws-item"><a href="https://caryalehousebrewing.com/daily-specials">Cary Ale House</a> &mdash; Cary &mdash; Happy Hour 2&ndash;5pm: 15% off appetizers (pickup available) <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.boldamericanfare.com" target="_blank" rel="noopener">Bold American Fare</a> &mdash; Algonquin &mdash; Early Bird Mon&ndash;Fri: 20% off meal dine-in before 5:30pm (tell server) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://kumisushiorder.com" target="_blank" rel="noopener">Kumi Sushi</a> &mdash; Crystal Lake &mdash; AYCE sushi lunch Mon&ndash;Fri 11&ndash;3pm $28.95/person <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://wingsandrings.com/deals" target="_blank" rel="noopener">Wings and Rings</a> &mdash; Crystal Lake &mdash; Kids Eat Free Fri (dine-in, $10 min purchase) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item">Little Rice &mdash; Crystal Lake &mdash; BOGO Weekday Discounts on 6 items via online order (weekdays only) <strong>[UNVERIFIED]</strong> <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item">BREWHAUS 31 &mdash; Algonquin &mdash; Friday AYCE Fish Fry 4&ndash;7pm, DINE-IN ONLY, $15 <strong>[UNVERIFIED]</strong> <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://nickspizzapub.com" target="_blank" rel="noopener">Nick's Pizza &amp; Pub</a> &mdash; Crystal Lake &mdash; Friday happy hour 4&ndash;6pm: 12&Prime; 1-topping pizza $9, dine-in (carryout <strong>[UNVERIFIED]</strong>) <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://www.wendys.com" target="_blank" rel="noopener">Wendy's</a> &mdash; Crystal Lake/Algonquin &mdash; FREE any-size fries w/ $5+ purchase, Rewards members, Fridays, app <span class="badge badge-app">APP</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">SAT</h4>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; full-slab BBQ baby back ribs w/ fries &amp; garlic bread $20.70 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $8 6pc jumbo wings meal <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://portedward.com" target="_blank" rel="noopener">Port Edward</a> &mdash; Algonquin &mdash; Prime Rib $35 (12oz) / Lobster Tail $38 (8oz) w/ soup or salad + two sides <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://thecarytracks.com/specials" target="_blank" rel="noopener">The Cary Tracks</a> &mdash; Cary &mdash; broasted chicken ALL DAY <strong>[UNVERIFIED price]</strong> <span class="badge badge-dinein">DINE-IN</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">SUN</h4>
+      <div class="ws-item"><a href="https://www.tommysredhots.com" target="_blank" rel="noopener">Tommy's Red Hots</a> &mdash; Crystal Lake / Lake in the Hills &mdash; gyros platter w/ fries &amp; drink $13.19 <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://www.thechickandthepig.com" target="_blank" rel="noopener">The Chick &amp; The Pig</a> &mdash; Algonquin &mdash; $18 half slab ribs meal <span class="badge badge-carryout">TAKEOUT</span></div>
+      <div class="ws-item"><a href="https://ironhorsebar.com/drink-specials/" target="_blank" rel="noopener">Iron Horse Bar &amp; Grill</a> &mdash; Algonquin &mdash; $7 build-your-own burger <span class="badge badge-dinein">DINE-IN</span></div>
+      <div class="ws-item"><a href="https://bulldogalehouse.com" target="_blank" rel="noopener">Bulldog Ale House</a> &mdash; Algonquin &mdash; 20% off all online orders Sun&ndash;Thu; ALSO 5 free wings w/ $20+ spend (dine-in + carryout, not online) <span class="badge badge-website">WEBSITE/APP</span></div>
+    </div>
+
+    <div class="ws-day">
+      <h4 class="ws-weekday">ANY DAY</h4>
+      <div class="ws-item"><a href="https://restaurants.ihop.com" target="_blank" rel="noopener">IHOP</a> &mdash; Crystal Lake &mdash; 20% off first online order w/ <strong>CODE: IHOP20</strong>, Rewards join required, exp 12/31/26 <strong>[UNVERIFIED]</strong> <span class="badge badge-website">WEBSITE/APP</span></div>
     </div>
   </div>
-</section>
+</div>
     <section class="category limited-collabs" id="limited-collabs" aria-labelledby="limited-collabs-title">
       <div class="category-head">
         <h2 id="limited-collabs-title">Limited Collabs</h2>
-        <span class="category-count">9 drops</span>
+        <span class="category-count">10 drops</span>
       </div>
       <p class="section-note">Verified launch dates for upcoming pairs and watches, plus live releases still at retail. Dates and availability can change at the brand.</p>
       <div class="grid">
@@ -1618,14 +1678,14 @@
         </article>
         <article class="card">
           <div class="media">
-            <div class="badge-row"><span class="card-badge live">DROPPED OCT 16</span></div>
+            <div class="badge-row"><span class="card-badge live">LIVE NOW</span></div>
             <img loading="lazy" decoding="async" src="assets/img_16ede4477400cc45.webp" alt="Song for the Mute x adidas Samba OG in Base Green with collapsible heel">
             <span class="media-label">OCT 16, 2026</span>
           </div>
           <div class="card-body">
             <h3 class="name">Song for the Mute × adidas Samba OG — SFTM-010</h3>
             <div class="prices"><span class="dupe">Pricing: TBA</span><span class="retail">adidas + SFTM</span></div>
-            <p class="note">The eighth SFTM × adidas chapter deconstructs the Samba OG with a collapsible elastic heel — wear it as a sneaker or crush it down into a mule — in faux-nubuck and leather colorways. Dropped October 16.</p>
+            <p class="note">The eighth SFTM × adidas chapter deconstructs the Samba OG with a collapsible elastic heel — wear it as a sneaker or crush it down into a mule — in faux-nubuck and leather colorways. Dropped October 16 and still sitting at retail — no resale premium needed.</p>
             <div class="card-foot"><a class="listing" href="https://houseofheat.co/adidas/song-for-the-mute-adidas-originals-samba-fall-winter-2026" target="_blank" rel="noopener noreferrer nofollow">View release details ↗</a><span class="verified">Dropped Oct 16, 2026</span></div>
           </div>
         </article>
@@ -1683,28 +1743,41 @@
         </article>
         <article class="card">
           <div class="media">
-            <div class="badge-row"><span class="card-badge status">UPCOMING OCT 22</span></div>
+            <div class="badge-row"><span class="card-badge status">UPCOMING OCT 24</span></div>
+            <img loading="lazy" decoding="async" src="assets/img_44822eb45e837e24.webp" alt="Pharrell x adidas Adistar Jellyfish Red held in hand, showing the red mesh upper and molded cage">
+            <span class="media-label">OCT 24, 2026</span>
+          </div>
+          <div class="card-body">
+            <h3 class="name">Pharrell × adidas Adistar Jellyfish “Red” — KK0633</h3>
+            <div class="prices"><span class="dupe">Retail: $300</span><span class="retail">adidas + CONFIRMED</span></div>
+            <p class="note">The second Jellyfish colorway of the weekend: an all-red take on Pharrell's VIRGINIA Adistar with the sculpted cage and exaggerated proportions. Drops October 24 via adidas, the CONFIRMED app, and select retailers — date verified across Sneaker News, Sneaker Bar Detroit, Modern Notoriety, and Men's Journal.</p>
+            <div class="card-foot"><a class="listing" href="https://sneakerbardetroit.com/pharrell-adidas-adistar-jellyfish-red/" target="_blank" rel="noopener noreferrer nofollow">View release details ↗</a><span class="verified">Drops Oct 24, 2026</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media">
+            <div class="badge-row"><span class="card-badge live">LIVE NOW</span></div>
             <img loading="lazy" decoding="async" src="assets/img_780917b2376396aa.jpg" alt="JJJJound x New Balance 990v3 Suede in beige tan suede with black N logo and black sole">
             <span class="media-label">OCT 22, 2026</span>
           </div>
           <div class="card-body">
             <h3 class="name">JJJJound × New Balance 990v3 “Suede” — U9904D8</h3>
             <div class="prices"><span class="dupe">Pricing: TBA</span><span class="retail">jjjjound.com</span></div>
-            <p class="note">Made-in-USA 990v3 in a full beige suede build with a black N and blacked-out sole. JJJJound × New Balance sells through instantly — be on jjjjound.com at drop time on October 22. Price still unannounced.</p>
-            <div class="card-foot"><a class="listing" href="https://hypebeast.com/2026/10/jjjjound-new-balance-990v3-suede-u9904d8-official-look-release-info" target="_blank" rel="noopener noreferrer nofollow">View release details ↗</a><span class="verified">Drops Oct 22, 2026</span></div>
+            <p class="note">Made-in-USA 990v3 in a full beige suede build with a black N and blacked-out sole. Dropping today via jjjjound.com — JJJJound × New Balance sells through instantly, so be on the site at drop time. Price still unlisted.</p>
+            <div class="card-foot"><a class="listing" href="https://hypebeast.com/2026/10/jjjjound-new-balance-990v3-suede-u9904d8-official-look-release-info" target="_blank" rel="noopener noreferrer nofollow">View release details ↗</a><span class="verified">Live Oct 22, 2026</span></div>
           </div>
         </article>
         <article class="card">
           <div class="media">
-            <div class="badge-row"><span class="card-badge status">UPCOMING OCT 22</span></div>
+            <div class="badge-row"><span class="card-badge live">LIVE NOW</span></div>
             <img loading="lazy" decoding="async" src="assets/img_624e9dc6a64a0af7.jpg" alt="VANSZA Knu Skool Mule in black and white with the heel removed, from SZA's Vans Drop 1">
             <span class="media-label">OCT 22, 2026</span>
           </div>
           <div class="card-body">
             <h3 class="name">SZA × Vans — VANSZA Drop 1</h3>
-            <div class="prices"><span class="dupe">Retail: $110–$115</span><span class="retail">Vans + Foot Locker + SNIPES</span></div>
+            <div class="prices"><span class="dupe">Retail: $110–$115</span><span class="retail">Vans + Foot Locker + Finish Line</span></div>
             <p class="note">SZA's debut as Vans' first Artistic Director: the Knu Skool Mule ($115) with the heel cut clean off, and the Authentic Kickdown ($110) in distressed canvas with Sage Adams fish artwork and a collapsible heel. Genuinely reworked silhouettes at sane retail prices.</p>
-            <div class="card-foot"><a class="listing" href="https://hypebeast.com/2026/10/vans-sza-collaboration-collection-drop-1-campaign-release-info" target="_blank" rel="noopener noreferrer nofollow">View release details ↗</a><span class="verified">Drops Oct 22, 2026</span></div>
+            <div class="card-foot"><a class="listing" href="https://hypebeast.com/2026/10/vans-sza-collaboration-collection-drop-1-campaign-release-info" target="_blank" rel="noopener noreferrer nofollow">View release details ↗</a><span class="verified">Live Oct 22, 2026</span></div>
           </div>
         </article>
       </div>
@@ -1749,7 +1822,7 @@
         </div>
         <div class="guns-cigars-side">
           <span class="guns-cigars-stamp">REAL GUNS · CIGARS · BUYING GUIDES</span>
-          <a class="guns-cigars-cta" href="https://dupe-cheat-sheet.netlify.app/guns-cigars.html" target="_blank" rel="noopener">Open the Guns n Subs sheet ↗</a>
+          <a class="guns-cigars-cta" href="guns-cigars.html" target="_blank" rel="noopener">Open the Guns n Subs sheet ↗</a>
         </div>
       </div>
     </section>
@@ -1757,20 +1830,20 @@
     <section class="field-notes" id="field-notes" aria-labelledby="field-notes-title">
       <div class="field-notes-head">
         <h2 id="field-notes-title">Bud’s Field Notes</h2>
-        <span class="field-notes-count">3 NOTES · OCT 20</span>
+        <span class="field-notes-count">3 NOTES · OCT 22</span>
       </div>
       <div class="field-notes-grid">
         <article class="field-note">
-          <h3>The asking price is a wish</h3>
-          <p>Buying Time #266 tracked four watch auctions that sought $77,500 combined and hammered at $43,301 — 44.1% below asking. The Girard-Perregaux Laureato F1 missed its $18k ask by 56.7%. The number printed on a listing is the least reliable number in the deal — that's why this sheet prices everything against sold comps and the cheapest live reputable seller, never the asking.</p>
+          <h3>The no-restock era is here</h3>
+          <p>7UICE × BAPE STA launched with explicit no-restock language, and drop calendars now read like concert posters. Collab cards live or die on same-week purchasability — if a pair isn't buyable at retail the day it drops, it's already a museum piece.</p>
         </article>
         <article class="field-note">
-          <h3>Watches are going smaller</h3>
-          <p>Bob's Watches published its actual Jan–Sep 2026 sold data: the Datejust 36 median-sold at $9,515, the 34mm Air-King and Date medians under $6,000 — and “size and price do not move together.” The compact-lane cards on this sheet (Seiko Presage 34mm Cocktail Time, Orient Bambino) are the trend, not a compromise.</p>
+          <h3>The fight-night discount is real</h3>
+          <p>The Venum outlet slashed the Fight Week hoodie to $29.99 inside the UFC 333 hype window (was $99.99). Event-tied outlet clearance is the UFC merch pattern: when the cage is in Abu Dhabi, the prices come to you.</p>
         </article>
         <article class="field-note">
-          <h3>If it needs a grade in front of 'new,' it isn't new</h3>
-          <p>The Home Audio card cut today was an eBay listing described as “Grade A+ refurbished” at $445. This sheet's rule is NEW — no refurbished, renewed, or open-box, no exceptions, whatever the grade. eBay condition lines get read, not assumed.</p>
+          <h3>New and refurb can share a name</h3>
+          <p>The Denon X2800H backfill hunt turned up two different pages for one model: polkaudio.com's $949 NEW page vs denon.com's $949 REFURBISHED page. Same model, same price, different condition — read the page, not the badge. This sheet cards the new one or nothing at all.</p>
         </article>
       </div>
     </section>
@@ -1793,7 +1866,7 @@
       <header class="ufc-head">
         <span class="ufc-octagon" aria-hidden="true">UFC</span>
         <h2 id="ufc-fight-center-title">UFC Fight Center</h2>
-        <span class="ufc-stamp">FIGHT BOARD · OCT 20</span>
+        <span class="ufc-stamp">FIGHT BOARD · OCT 22</span>
       </header>
       <div class="ufc-block">
         <div class="ufc-subhead"><h3>Next Up</h3><span>UFC 333 · SAT OCT 24 · FULL MAIN CARD</span></div>
@@ -1810,118 +1883,147 @@
                 <div>
                   <span class="ufc-label">Main event spotlight · Featherweight title</span>
                   <div class="ufc-match">Alexander Volkanovski <span class="ufc-detail">champion</span> vs. Movsar Evloev <span class="ufc-detail">undefeated challenger</span></div>
-                  <p class="ufc-style-clash"><strong>Bud’s take:</strong> Volkanovski’s elite takedown defense — proved against Makhachev — meets Evloev’s control wrestling at 4.78 takedowns per 15 minutes. The whole fight is one question: can Evloev hold a 38-year-old champion down for 25 minutes without gassing?</p>
+                  <p class="ufc-style-clash"><strong>Bud’s take:</strong> The style clash in one line — Evloev’s 25-minute control wrestling against the division’s best-ever takedown defense and championship cardio. Volk’s path: stuff the early shots, keep it standing, drown him in volume late. Evloev’s path: 25 minutes of chain wrestling with damage, not just minutes. One thing to watch: Evloev’s takedown success rate in rounds 1–2.</p>
                 </div>
-                <div class="ufc-odds"><span>AS OF OCT 19 · BETONLINE · LINES MOVE</span>Volkanovski −110<br>Evloev −110<br><span style="margin:4px 0 0">DEAD HEAT</span></div>
+                <div class="ufc-odds"><span>AS OF OCT 22 · LINES MOVE</span>Volkanovski −113<br>Evloev −113<br><span style="margin:4px 0 0">DEAD PICK’EM</span></div>
               </div>
               <div class="ufc-feature-main">
                 <div>
                   <span class="ufc-label">Co-main · Bantamweight title · The trilogy, 1–1</span>
                   <div class="ufc-match">Petr Yan vs. Merab Dvalishvili 3</div>
-                  <p class="ufc-style-clash"><strong>The clash:</strong> Merab’s relentless pace against Yan’s sharp boxing — Merab attempted 49 takedowns in their first fight, and he’ll try to drown Yan the same way in the rubber match.</p>
+                  <p class="ufc-style-clash"><strong>The clash:</strong> Yan’s path is the Dec 2025 blueprint — boxing on the feet, takedown entries dying before they start. Merab’s path is 49-attempt volume where 11 landings can’t be enough. Watch whether Merab’s entries stick this time.</p>
                 </div>
-                <div class="ufc-odds"><span>AS OF OCT 19 · LINES MOVE</span>Petr Yan −170<br>Merab Dvalishvili +143</div>
+                <div class="ufc-odds"><span>AS OF OCT 22 · LINES MOVE</span>Petr Yan −158<br>Merab Dvalishvili +124</div>
               </div>
-              <div class="ufc-card-head"><h4>Full Main Card</h4><span>ODDS AS OF OCT 19 · LINES MOVE</span></div>
+              <div class="ufc-tape" aria-label="Tale of the tape">
+                <div class="ufc-tape-card"><h4>Tale of the Tape — <span>Main Event</span></h4><table>
+                  <tr><th></th><td>Volkanovski</td><td>Evloev</td></tr>
+                  <tr><th>Age</th><td>38</td><td>32</td></tr>
+                  <tr><th>Height</th><td>5′6″</td><td>5′7″</td></tr>
+                  <tr><th>Reach</th><td>71.5″</td><td>72″</td></tr>
+                  <tr><th>Stance</th><td>Orthodox</td><td>Orthodox</td></tr>
+                  <tr><th>Record</th><td>28-4</td><td>20-0</td></tr>
+                </table></div>
+                <div class="ufc-tape-card"><h4>Tale of the Tape — <span>Co-Main</span></h4><table>
+                  <tr><th></th><td>Yan</td><td>Dvalishvili</td></tr>
+                  <tr><th>Age</th><td>33</td><td>35</td></tr>
+                  <tr><th>Height</th><td>5′7″</td><td>5′6″</td></tr>
+                  <tr><th>Reach</th><td>67″</td><td>68″</td></tr>
+                  <tr><th>Stance</th><td>Switch</td><td>Orthodox</td></tr>
+                  <tr><th>Record</th><td>20-5</td><td>21-5</td></tr>
+                </table></div>
+              </div>
+              <div class="ufc-card-head"><h4>Full Main Card</h4><span>ODDS AS OF OCT 22 · LINES MOVE</span></div>
               <div class="ufc-main-card" role="list" aria-label="Full UFC 333 main card">
-                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match"><span class="ufc-fight-role">Main event</span>Alexander Volkanovski vs. Movsar Evloev</div><div class="ufc-card-weight">Featherweight title</div><div class="ufc-card-odds">Volkanovski −110 / Evloev −110</div></div>
-                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match"><span class="ufc-fight-role">Co-main</span>Petr Yan vs. Merab Dvalishvili</div><div class="ufc-card-weight">Bantamweight title</div><div class="ufc-card-odds">Yan −170 / Dvalishvili +143</div></div>
-                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Lone’er Kavanagh vs. Ramazan Temirov</div><div class="ufc-card-weight">Flyweight</div><div class="ufc-card-odds">Kavanagh −115 / Temirov −105</div></div>
-                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Alexander Volkov vs. Rizvan Kuniev</div><div class="ufc-card-weight">Heavyweight</div><div class="ufc-card-odds">Volkov −115 / Kuniev −105</div></div>
-                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Aaron Pico vs. Losene Keita</div><div class="ufc-card-weight">Featherweight</div><div class="ufc-card-odds">Pico −110 / Keita −110</div></div>
+                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match"><span class="ufc-fight-role">Main event</span>Alexander Volkanovski vs. Movsar Evloev</div><div class="ufc-card-weight">Featherweight title</div><div class="ufc-card-odds">Volkanovski −113 / Evloev −113</div></div>
+                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match"><span class="ufc-fight-role">Co-main</span>Petr Yan vs. Merab Dvalishvili</div><div class="ufc-card-weight">Bantamweight title</div><div class="ufc-card-odds">Yan −158 / Dvalishvili +124</div></div>
+                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Lone’er Kavanagh vs. Ramazan Temirov</div><div class="ufc-card-weight">Flyweight</div><div class="ufc-card-odds">Kavanagh −113 / Temirov −113</div></div>
+                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Alexander Volkov vs. Rizvan Kuniev</div><div class="ufc-card-weight">Heavyweight</div><div class="ufc-card-odds">Volkov −136 / Kuniev +106</div></div>
+                <div class="ufc-card-row" role="listitem"><div class="ufc-card-match">Aaron Pico vs. Losene Keita</div><div class="ufc-card-weight">Featherweight</div><div class="ufc-card-odds">Pico −138 / Keita +108</div></div>
               </div>
               <div class="ufc-strip" aria-label="UFC 333 line movement">
-                <div class="ufc-strip-head"><h5>Line Movement</h5><span>As of Oct 21 · ▼ = money on the dog</span></div>
-                <div class="ufc-move-row"><span class="ufc-move-match">Volkanovski vs. Evloev</span><span class="ufc-move-lines">Volk −130 / Evloev +110</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pick’em −113 / −113</span></div>
-                <div class="ufc-move-row"><span class="ufc-move-match">Yan vs. Dvalishvili 3</span><span class="ufc-move-lines">Yan −166 / Merab +140</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Yan −158 / Merab +124</span></div>
-                <div class="ufc-move-row"><span class="ufc-move-match">Kavanagh vs. Temirov</span><span class="ufc-move-lines">Kavanagh −155 / Temirov +135</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pick’em −113 / −113</span></div>
-                <div class="ufc-move-row"><span class="ufc-move-match">Volkov vs. Kuniev</span><span class="ufc-move-lines">Volkov −270 / Kuniev +222</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Volkov −136 / Kuniev +106</span></div>
-                <div class="ufc-move-row"><span class="ufc-move-match">Pico vs. Keita</span><span class="ufc-move-lines">Pico −150 / Keita +130</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pico −138 / Keita +108</span></div>
-                <p class="ufc-strip-read"><strong>Biggest steam:</strong> Kuniev +222 → +106 — the market keeps buying the underdogs on this card.</p>
+                <div class="ufc-strip-head"><h5>Line Movement</h5><span>Openers → current · as of Oct 22</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Volkanovski vs. Evloev</span><span class="ufc-move-lines">Volk −130 / Evloev +110</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pick’em −113 / −113 · money on Evloev</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Yan vs. Dvalishvili 3</span><span class="ufc-move-lines">Yan −166 / Merab +140</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Yan −158 / Merab +124 · money on Merab</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Kavanagh vs. Temirov</span><span class="ufc-move-lines">Kavanagh −155 / Temirov +135</span><span class="ufc-move-arrow" aria-hidden="true">▲</span><span class="ufc-move-lines now">Pick’em −113 / −113 · Temirov steam</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Volkov vs. Kuniev</span><span class="ufc-move-lines">Volkov −270 / Kuniev +222</span><span class="ufc-move-arrow" aria-hidden="true">▲</span><span class="ufc-move-lines now">Volkov −136 / Kuniev +106 · Kuniev steam</span></div>
+                <div class="ufc-move-row"><span class="ufc-move-match">Pico vs. Keita</span><span class="ufc-move-lines">Pico −150 / Keita +130</span><span class="ufc-move-arrow" aria-hidden="true">▼</span><span class="ufc-move-lines now">Pico −138 / Keita +108 · money on Keita</span></div>
+                <p class="ufc-strip-read"><strong>Biggest move on the card:</strong> Kuniev’s steam from +222 to +106 — the market is all over the underdogs in Abu Dhabi.</p>
               </div>
+              <p class="ufc-more"><strong>Stakes — Volk:</strong> every defense at 38 is a legacy deposit, and he’s defending the P4P #2 slot. <strong>Stakes — Evloev:</strong> a win ends the longest-winning-streak-in-featherweight-history debate and makes him the champion the roster machine didn’t want.</p>
               <p class="ufc-more"><strong>Card change:</strong> Arnold Allen withdrew injured — ongoing rehab, not enough runway to be ready. Losene Keita stepped in on short notice off his UFC Paris KO of Muhammad Naimov.</p>
-              <p class="ufc-more"><strong>Movement since Oct 14:</strong> two favorites flipped (Kavanagh, Kuniev), Keita–Pico drifted to pick’em, money toward Merab. Dana White confirmed Oct 15 the card goes ahead in Abu Dhabi as planned.</p>
-              <div class="ufc-broadcast"><span>FIRST NUMBERED MAIN CARD ON THE NEW PARAMOUNT+ DEAL</span><strong>1:00 PM CT · PARAMOUNT+</strong></div>
+              <div class="ufc-broadcast"><span>SOLD OUT · ETIHAD ARENA · EARLY PRELIMS 9AM CT · PRELIMS 11AM CT · PAUL FELDER REPLACES JOE ROGAN ON COMMENTARY</span><strong>1:00 PM CT · PARAMOUNT+</strong></div>
             </div>
           </article>
         </div>
         <div class="ufc-strip" aria-label="Just booked UFC matchups">
           <div class="ufc-strip-head"><h5>Just Booked</h5><span>Newest first</span></div>
-          <div class="ufc-booked-row"><span class="ufc-booked-match">Jacobe Smith vs. Randy Brown</span><span class="ufc-booked-event">UFC Fight Night · Oct 31</span><span class="ufc-booked-note">New co-main on 11 days’ notice — undefeated Smith (13-0, all UFC wins by stoppage) steps in for injured Carlos Leal. <em>(MMA Junkie 10/21)</em></span></div>
-          <div class="ufc-booked-row"><span class="ufc-booked-match">Alex Pereira vs. Sergei Pavlovich</span><span class="ufc-booked-event">UFC 335 · Dec 12</span><span class="ufc-booked-note">Heavyweight co-main under the Oliveira–Lopes BMF title — Poatan’s second heavyweight outing after the Gane loss. <em>(announced Oct 4)</em></span></div>
-          <div class="ufc-booked-row"><span class="ufc-booked-match">Dricus du Plessis — no fight booked</span><span class="ufc-booked-event">205-lb tournament · Declined</span><span class="ufc-booked-note">Rejected a UFC 205-lb tournament offer (Prochazka / Ankalaev / Stirling pool, winner gets Ulberg) — wants the middleweight belt back first. <em>(Sherdog 10/21)</em></span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Islam Dulatov vs. Levan Chokheli</span><span class="ufc-booked-event">UFC Saudi Arabia · Dec 5</span><span class="ufc-booked-note">The 23-second DWCS finisher draws Chokheli on the Saudi card while its headliner stays unofficial. <em>(reported Oct 21)</em></span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Bilal Hasan vs. Luis Gurule</span><span class="ufc-booked-event">UFC 334 · Nov 14</span><span class="ufc-booked-note">The fastest DWCS-to-MSG build in years lands on the UFC 334 card. <em>(Sherdog, Oct 21)</em></span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Julian Erosa vs. Jeong Yeong Lee</span><span class="ufc-booked-event">UFC FN 292 · Oct 31</span><span class="ufc-booked-note">Erosa’s announced retirement fight — three UFC stints, family and health over one more run. <em>(announced Oct 21)</em></span></div>
+          <div class="ufc-booked-row"><span class="ufc-booked-match">Donte Johnson vs. Cesar Almeida</span><span class="ufc-booked-event">UFC 334 · Nov 14</span><span class="ufc-booked-note">Johnson steps in after Susurkaev withdrew Sep 29. <em>(booked Oct 2026)</em></span></div>
         </div>
         <div class="ufc-compact" aria-label="Later UFC events">
-          <div class="ufc-compact-row"><time datetime="2026-10-31">Oct 31</time><strong>Fight Night</strong><span class="ufc-compact-venue">Meta Apex · Las Vegas</span><span class="ufc-compact-match">Moicano vs. Nolan</span><span class="ufc-compact-time">UPCOMING</span></div>
-          <div class="ufc-compact-row"><time datetime="2026-11-07">Nov 7</time><strong>Fight Night</strong><span class="ufc-compact-venue">Meta Apex · Las Vegas</span><span class="ufc-compact-match">Bonfim vs. Brady</span><span class="ufc-compact-time">UPCOMING</span></div>
-          <div class="ufc-compact-row"><time datetime="2026-11-14">Nov 14</time><strong>UFC 334</strong><span class="ufc-compact-venue">MSG · New York</span><span class="ufc-compact-match">Gane vs. Hokit · heavyweight title<br>Harrison vs. Nunes · women’s bantamweight title<br>Yanez out (hospitalized Oct 19) — Diaz vs. TBA</span><span class="ufc-compact-time">UPCOMING</span></div>
-          <div class="ufc-compact-row"><time datetime="2026-11-21">Nov 21</time><strong>Fight Night 294</strong><span class="ufc-compact-venue">Doha, Qatar</span><span class="ufc-compact-match">Procházka vs. Stirling · 5 rounds<br>Sterling vs. Vallejos · co-main</span><span class="ufc-compact-time">UPCOMING</span></div>
-          <div class="ufc-compact-row"><time datetime="2026-12-05">Dec 5</time><strong>UFC Saudi Arabia</strong><span class="ufc-compact-venue">anb Arena · Riyadh</span><span class="ufc-compact-match">Adesanya vs. Shara Magomedov<br>Reported by Helwani Oct 15 — not yet UFC-official</span><span class="ufc-compact-time">REPORTED</span></div>
-          <div class="ufc-compact-row"><time datetime="2026-12-12">Dec 12</time><strong>UFC 335</strong><span class="ufc-compact-venue">T-Mobile Arena · Las Vegas</span><span class="ufc-compact-match">Oliveira vs. Lopes · BMF<br>Pereira vs. Pavlovich</span><span class="ufc-compact-time">UPCOMING</span></div>
-          <div class="ufc-compact-row"><time datetime="2027-01-30">Jan 30</time><strong>UFC 336</strong><span class="ufc-compact-venue">Scotiabank Arena · Toronto</span><span class="ufc-compact-match">First 2027 numbered card · no bouts confirmed<br>Makhachev vs. Prates — rumor only</span><span class="ufc-compact-time">UPCOMING</span></div>
+          <div class="ufc-compact-row"><time datetime="2026-10-31">Oct 31</time><strong>Fight Night 292</strong><span class="ufc-compact-venue">Meta Apex · Las Vegas</span><span class="ufc-compact-match">Moicano vs. Nolan<br>Erosa vs. Lee · retirement fight</span><span class="ufc-compact-time">7PM CT</span></div>
+          <div class="ufc-compact-row"><time datetime="2026-11-07">Nov 7</time><strong>Fight Night</strong><span class="ufc-compact-venue">Meta Apex · Las Vegas</span><span class="ufc-compact-match">Bonfim vs. Brady<br>Suarez vs. Jandiroba · co-main</span><span class="ufc-compact-time">7PM CT</span></div>
+          <div class="ufc-compact-row"><time datetime="2026-11-14">Nov 14</time><strong>UFC 334</strong><span class="ufc-compact-venue">MSG · New York</span><span class="ufc-compact-match">Gane vs. Hokit · heavyweight title<br>Harrison vs. Nunes · women’s bantamweight title<br>Three withdrawals: Yanez OUT (Diaz vs. TBA) · Nascimento OUT (Sadykhov vs. TBA) · Susurkaev OUT (Johnson now faces Almeida)</span><span class="ufc-compact-time">8PM CT</span></div>
+          <div class="ufc-compact-row"><time datetime="2026-11-21">Nov 21</time><strong>Fight Night 294</strong><span class="ufc-compact-venue">ABHA Arena · Doha</span><span class="ufc-compact-match">Procházka vs. Stirling<br>Sterling vs. Vallejos · co-main</span><span class="ufc-compact-time">4PM CT</span></div>
+          <div class="ufc-compact-row"><time datetime="2026-12-05">Dec 5</time><strong>UFC Saudi Arabia</strong><span class="ufc-compact-venue">anb Arena · Riyadh</span><span class="ufc-compact-match">Adesanya vs. Shara Magomedov — reported by Helwani Oct 15, still not UFC-official as of Oct 21<br>Dulatov vs. Chokheli added (reported)</span><span class="ufc-compact-time">REPORTED</span></div>
+          <div class="ufc-compact-row"><time datetime="2026-12-12">Dec 12</time><strong>UFC 335</strong><span class="ufc-compact-venue">T-Mobile Arena · Las Vegas</span><span class="ufc-compact-match">Oliveira vs. Lopes · BMF title<br>Pereira vs. Pavlovich · heavyweight</span><span class="ufc-compact-time">8PM CT</span></div>
+          <div class="ufc-compact-row"><time datetime="2027-01-30">Jan 30</time><strong>UFC 336</strong><span class="ufc-compact-venue">Scotiabank Arena · Toronto</span><span class="ufc-compact-match">Announced Oct 18 · no bouts yet<br>Makhachev vs. Prates rumor COOLING — manager: “not close to becoming a reality” (Oct 21)</span><span class="ufc-compact-time">UPCOMING</span></div>
         </div>
         <div class="ufc-fullcard">
-          <div class="ufc-card-head"><h4>Full Card — UFC Fight Night: Moicano vs. Nolan</h4><span>SAT OCT 31 · META APEX · LAS VEGAS</span></div>
-          <div class="ufc-main-card" role="list" aria-label="Full card for UFC Fight Night on October 31">
+          <div class="ufc-card-head"><h4>Full Card — UFC Fight Night 292: Moicano vs. Nolan</h4><span>SAT OCT 31 · META APEX · LAS VEGAS · MAIN CARD 7PM CT</span></div>
+          <div class="ufc-card-head"><h4>Main Card</h4><span>NO ODDS POSTED YET</span></div>
+          <div class="ufc-main-card" role="list" aria-label="Main card for UFC Fight Night 292 on October 31">
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Renato Moicano vs. Tom Nolan</span><span class="ufc-bout-weight">Lightweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Randy Brown vs. Jacobe Smith</span><span class="ufc-bout-weight">Welterweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Luana Santos vs. Yana Santos</span><span class="ufc-bout-weight">Women’s Bantamweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Talita Alencar vs. Piera Rodriguez</span><span class="ufc-bout-weight">Women’s Strawweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Julian Erosa vs. Jeong Yeong Lee</span><span class="ufc-bout-weight">Featherweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Azamat Bekoev vs. Andre Petroski</span><span class="ufc-bout-weight">Middleweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Tainara Lisboa vs. Lucia Szabova</span><span class="ufc-bout-weight">Women’s Flyweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Nick Klein vs. Joe Kropschot</span><span class="ufc-bout-weight">Middleweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Farman Hasanov vs. Jean-Paul Lebosnoyani</span><span class="ufc-bout-weight">Lightweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Theodor Berggren vs. Rodrigo Sezinando</span><span class="ufc-bout-weight">Welterweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Cody Durden vs. Ode Osbourne</span><span class="ufc-bout-weight">Flyweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Dakota Hope vs. Francis Marshall</span><span class="ufc-bout-weight">Featherweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Mickey Gall vs. Zach Reese</span><span class="ufc-bout-weight">Middleweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Yana Santos vs. Luana Santos</span><span class="ufc-bout-weight">Women’s Bantamweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Jean-Paul Lebosnoyani vs. Farman Hasanov</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Ode Osbourne vs. Cody Durden</span><span class="ufc-bout-weight">Flyweight</span></div>
           </div>
+          <div class="ufc-card-head"><h4>Prelims</h4><span></span></div>
+          <div class="ufc-main-card" role="list" aria-label="Prelims for UFC Fight Night 292 on October 31">
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Francis Marshall vs. Dakota Hope</span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Azamat Bekoev vs. Andre Petroski</span><span class="ufc-bout-weight">Middleweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Rodrigo Sezinando vs. Theodor Berggren</span><span class="ufc-bout-weight">Welterweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Julian Erosa vs. Jeong Yeong Lee <span class="ufc-detail">— Erosa’s retirement fight</span></span><span class="ufc-bout-weight">Featherweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Nick Klein vs. Joe Kropschot</span><span class="ufc-bout-weight">Middleweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Talita Alencar vs. Piera Rodriguez</span><span class="ufc-bout-weight">Women’s Strawweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Tainara Lisboa vs. Lucia Szabova</span><span class="ufc-bout-weight">Women’s Bantamweight</span></div>
+          </div>
+          <p class="ufc-more">Reese vs. Gall placement unconfirmed.</p>
         </div>
         <div class="ufc-fullcard">
-          <div class="ufc-card-head"><h4>Full Card — UFC Fight Night: Bonfim vs. Brady</h4><span>SAT NOV 7 · META APEX · LAS VEGAS</span></div>
-          <div class="ufc-main-card" role="list" aria-label="Full card for UFC Fight Night on November 7">
+          <div class="ufc-card-head"><h4>Full Card — UFC Fight Night: Bonfim vs. Brady</h4><span>SAT NOV 7 · META APEX · LAS VEGAS · MAIN CARD 7PM CT</span></div>
+          <div class="ufc-card-head"><h4>Main Card</h4><span>NO ODDS POSTED YET</span></div>
+          <div class="ufc-main-card" role="list" aria-label="Main card for UFC Fight Night on November 7">
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Gabriel Bonfim vs. Sean Brady</span><span class="ufc-bout-weight">Welterweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Virna Jandiroba vs. Tatiana Suarez</span><span class="ufc-bout-weight">Women’s Strawweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Tatiana Suarez vs. Virna Jandiroba</span><span class="ufc-bout-weight">Women’s Strawweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Karine Silva vs. Gabriella Fernandes</span><span class="ufc-bout-weight">Women’s Flyweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Davey Grant vs. Elijah Smith</span><span class="ufc-bout-weight">Bantamweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Jose Souza vs. Jonny Parsons</span><span class="ufc-bout-weight">Welterweight</span></div>
+          </div>
+          <div class="ufc-card-head"><h4>Prelims</h4><span></span></div>
+          <div class="ufc-main-card" role="list" aria-label="Prelims for UFC Fight Night on November 7">
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Jose Delano vs. Murtazali Magomedov</span><span class="ufc-bout-weight">Featherweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Seok Hyeon Ko vs. Wellington Turman</span><span class="ufc-bout-weight">Welterweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Austin Bashi vs. Lucas Brennan</span><span class="ufc-bout-weight">Featherweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Billy Elekana vs. Lucas Fernando</span><span class="ufc-bout-weight">Light Heavyweight</span></div>
-            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Alvin Hines vs. Gabriel Lorenco <span class="ufc-detail">— Hines withdrew, replacement TBA</span></span><span class="ufc-bout-weight">Heavyweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Gabriel Lorenco vs. TBA</span><span class="ufc-bout-weight">Heavyweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Ollie Schmid vs. Keiichiro Nakamura</span><span class="ufc-bout-weight">Featherweight</span></div>
             <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Priscila Cachoeira vs. Nina Milosevic</span><span class="ufc-bout-weight">Women’s Bantamweight</span></div>
+            <div class="ufc-bout-row" role="listitem"><span class="ufc-bout-match">Raposo vs. Degli <span class="ufc-detail">— announced</span></span><span class="ufc-bout-weight">Flyweight</span></div>
           </div>
         </div>
-        <p class="ufc-honesty">Main-card odds as of Oct 19, 2026 (main event: BetOnline) — lines move. Cards subject to change.</p>
+        <p class="ufc-honesty">UFC 333 odds as of Oct 22, 2026 — lines move. No odds posted yet for Oct 31 / Nov 7 (books open midweek) — no guesses printed. Cards subject to change.</p>
       </div>
       <div class="ufc-block">
-        <div class="ufc-subhead"><h3>Big Headlines</h3><span>OCT 20 · OPEN SOURCE</span></div>
+        <div class="ufc-subhead"><h3>Big Headlines</h3><span>OCT 22 · OPEN SOURCE</span></div>
         <ul class="ufc-headlines">
-          <li><a href="https://particle.news/story/ufc-336-scheduled-for-scotiabank-arena-in-toronto-on-jan-30-2027" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>UFC 336 officially announced for Toronto, Jan 30, 2027</b> — first numbered card of 2027 gets a date and venue; the Makhachev–Prates main event is still just a rumor.</span><span class="ufc-source">Particle News ↗</span></a></li>
-          <li><a href="https://bloodyelbow.com/2026/10/19/adrian-yanez-confirms-his-ufc-334-withdrawal-in-post-from-hospital-bed/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Adrian Yanez hospitalized, out of UFC 334 vs Juan Diaz</b> — confirmed from his hospital bed Oct 19 (undisclosed medical issue); Diaz stays on the MSG card vs TBA; third withdrawal to hit the card.</span><span class="ufc-source">Bloody Elbow · Oct 19 ↗</span></a></li>
-          <li><a href="https://sportswirelive.com/article/farid-basharat-says-ufc-told-his-team-he-was-a-boring-fighter-1792476351369" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Farid Basharat: UFC cut him for being ‘a boring fighter’</b> — the 16-0, 7-0 UFC, #9-ranked bantamweight goes on the record; the UFC is now explicitly releasing undefeated winners for lack of finishes.</span><span class="ufc-source">SportsWire Live ↗</span></a></li>
-          <li><a href="https://bloodyelbow.com/2026/10/19/ian-machado-garry-set-to-fight-again-in-2026-with-announcement-seemingly-imminent-according-to-report/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Ian Machado Garry fighting again ‘in about a month’</b> — Helwani reports an announcement is imminent after the UFC 330 title loss; the WW contender bottleneck is about to move.</span><span class="ufc-source">Bloody Elbow · Oct 19 ↗</span></a></li>
-          <li><a href="https://bloodyelbow.com/2026/10/15/israel-adesanyas-return-reportedly-set-for-ufc-saudi-arabia-main-event-against-17-1-middleweight/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Adesanya vs Shara Magomedov reported for UFC Saudi Arabia, Dec 5</b> — Adesanya (4-fight skid, winless since 2023) takes a high-variance striker; a loss ends the elite-fighter era.</span><span class="ufc-source">Bloody Elbow · Oct 15 ↗</span></a></li>
+          <li><a href="https://www.bjpenn.com/mma-news/ufc/islam-makhachev-vs-carlos-prates-is-not-close-to-being-finalized-per-manager-still-far-from-realistic/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Makhachev–Prates “not close,” manager says</b> — the assumed UFC 336 headliner is wobbling (Ushatayka via BJPenn).</span><span class="ufc-source">BJPenn ↗</span></a></li>
+          <li><a href="https://menews247.com/ufc-333-volkanovski-vs-evloev-sells-out-etihad-arena-in-abu-dhabi/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>UFC 333 officially sells out Etihad Arena</b> — Abu Dhabi as the UFC’s second home is now a business fact (Oct 21).</span><span class="ufc-source">MENews247 · Oct 21 ↗</span></a></li>
+          <li><a href="https://www.sherdog.com/news/news/23second-UFC-finisher-reportedly-draws-Islam-Dulatov-in-Saudi-Arabia-203300" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Dulatov vs Chokheli reported for UFC Saudi Arabia, Dec 5</b> — the Saudi card builds from the bottom up while the headliner stays unofficial.</span><span class="ufc-source">Sherdog ↗</span></a></li>
+          <li><a href="https://bloodyelbow.com/tag/ufc-333/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Paul Felder replaces Joe Rogan on the UFC 333 broadcast</b> — Felder steps into the booth for the Abu Dhabi card (Oct 20).</span><span class="ufc-source">Bloody Elbow · Oct 20 ↗</span></a></li>
+          <li><a href="https://bloodyelbow.com/tag/ufc-333/" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Evloev credits fans with preventing his cut ahead of the title shot</b> — the Basharat churn story is now the challenger’s narrative.</span><span class="ufc-source">Bloody Elbow ↗</span></a></li>
+          <li><a href="https://sportsnewsreport.com/stories/julian-erosa-announces-ufc-fight-night-292-will-be-his-final-fight-mviv7ljf-7xwe" target="_blank" rel="noopener noreferrer nofollow"><span class="ufc-headline"><b>Julian Erosa announces his retirement fight</b> — UFC Fight Night 292, Oct 31 vs Jeong Yeong Lee; three UFC stints, family and health over one more run.</span><span class="ufc-source">Yahoo Sports / Heavy · Oct 21 ↗</span></a></li>
         </ul>
       </div>
       <div class="ufc-block boxing-corner">
-        <div class="ufc-subhead"><h3>Boxing — Top 10 Fights of 2026</h3><span>RANKED SNAPSHOT · REFRESHED OCT 20</span></div>
+        <div class="ufc-subhead"><h3>Boxing — Top 10 Fights of 2026</h3><span>ROLLING 12 MONTHS · REFRESHED OCT 22</span></div>
         <div class="boxing-fights" role="list" aria-label="Top 10 boxing fights of 2026">
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">01</span><time class="boxing-date" datetime="2026-12-11">Dec 11</time><strong class="boxing-match">Anthony Joshua vs. Tyson Fury</strong><span class="boxing-status scheduled">Scheduled · Cardiff · Netflix</span><span class="boxing-note">The biggest boxing mega-fight on the books: the decade-in-the-making all-British heavyweight showdown.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">02</span><time class="boxing-date" datetime="2026-10-31">Oct 31</time><strong class="boxing-match">Canelo Álvarez vs. Christian Mbilli</strong><span class="boxing-status scheduled">Scheduled · WBC 168-lb title</span><span class="boxing-note">A true mega-fight: Canelo challenges the unbeaten champion in Riyadh.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">01</span><time class="boxing-date" datetime="2026-12-11">Dec 11</time><strong class="boxing-match">Anthony Joshua vs. Tyson Fury</strong><span class="boxing-status scheduled">Scheduled · Cardiff · Netflix</span><span class="boxing-note">For the vacant WBA heavyweight title — the decade-in-the-making all-British heavyweight showdown.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">02</span><time class="boxing-date" datetime="2026-10-31">Oct 31</time><strong class="boxing-match">Canelo Álvarez vs. Christian Mbilli</strong><span class="boxing-status scheduled">Scheduled · Riyadh</span><span class="boxing-note">Canelo challenges for Mbilli’s WBC super-middleweight title in Riyadh.</span></div>
           <div class="boxing-row" role="listitem"><span class="boxing-rank">03</span><time class="boxing-date" datetime="2026-12-12">Dec 12</time><strong class="boxing-match">Dmitry Bivol vs. Callum Smith</strong><span class="boxing-status scheduled">Scheduled · UMMC Arena · DAZN</span><span class="boxing-note">Newly announced unified light-heavyweight title defense with the Beterbiev-trilogy road at stake.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">04</span><time class="boxing-date" datetime="2026-05-02">May 2</time><strong class="boxing-match">Naoya Inoue vs. Junto Nakatani</strong><span class="boxing-status">Inoue UD 12</span><span class="boxing-note">Two unbeaten pound-for-pound stars filled the Tokyo Dome; Inoue retained the undisputed 122-pound crown.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">05</span><time class="boxing-date" datetime="2026-10-17">Oct 17</time><strong class="boxing-match">Fabio Wardley vs. Daniel Dubois</strong><span class="boxing-status">Dubois TKO 2</span><span class="boxing-note">Dubois retains the WBO heavyweight title at the O2 Arena — Wardley’s corner threw the towel at 2:21 of round two.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">06</span><time class="boxing-date" datetime="2026-09-12">Sep 12</time><strong class="boxing-match">Ryan Garcia vs. Conor Benn</strong><span class="boxing-status">Garcia TKO 2</span><span class="boxing-note">A massive USA-vs.-UK event became a two-round statement in Garcia’s first WBC welterweight defense.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">07</span><time class="boxing-date" datetime="2026-10-24">Oct 24</time><strong class="boxing-match">Alberto Puello vs. Dalton Smith</strong><span class="boxing-status scheduled">Scheduled</span><span class="boxing-note">Elite 140-pound stakes: Smith gets the proving-ground fight against a seasoned champion.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">08</span><time class="boxing-date" datetime="2026-10-24">Oct 24</time><strong class="boxing-match">O’Shaquie Foster vs. Emanuel Navarrete</strong><span class="boxing-status scheduled">Scheduled</span><span class="boxing-note">High-level style clash with Foster’s control matched against Navarrete’s pressure and awkward volume.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">09</span><time class="boxing-date" datetime="2026-06-27">Jun 27</time><strong class="boxing-match">Jaron “Boots” Ennis vs. Xander Zayas</strong><span class="boxing-status">Ennis TKO 7</span><span class="boxing-note">Three knockdowns made Ennis a two-weight unified champion and the man to beat at 154 pounds.</span></div>
-          <div class="boxing-row" role="listitem"><span class="boxing-rank">10</span><time class="boxing-date" datetime="2026-12-19">Dec 19</time><strong class="boxing-match">Nick Ball vs. Anthony Cacace</strong><span class="boxing-status scheduled">Scheduled</span><span class="boxing-note">All-action British featherweights meet in a late-year fight with real division-shaping stakes.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">04</span><time class="boxing-date" datetime="2026-11-08">Nov 8</time><strong class="boxing-match">Baumgardner vs. Turhan</strong><span class="boxing-status scheduled">Scheduled</span><span class="boxing-note">Baumgardner back in action Nov 8 against Turhan.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">05</span><time class="boxing-date" datetime="2026-05-02">May 2</time><strong class="boxing-match">Naoya Inoue vs. Junto Nakatani</strong><span class="boxing-status">Inoue UD 12</span><span class="boxing-note">Two unbeaten pound-for-pound stars filled the Tokyo Dome; Inoue retained the undisputed 122-pound crown.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">06</span><time class="boxing-date" datetime="2026-10-17">Oct 17</time><strong class="boxing-match">Fabio Wardley vs. Daniel Dubois</strong><span class="boxing-status">Dubois TKO 2</span><span class="boxing-note">Dubois retains the WBO heavyweight title at the O2 Arena — Wardley’s corner threw the towel at 2:21 of round two. Result stays listed through Oct 24.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">07</span><time class="boxing-date" datetime="2026-09-12">Sep 12</time><strong class="boxing-match">Ryan Garcia vs. Conor Benn</strong><span class="boxing-status">Garcia TKO 2</span><span class="boxing-note">A massive USA-vs.-UK event became a two-round statement in Garcia’s first WBC welterweight defense.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">08</span><time class="boxing-date" datetime="2026-06-27">Jun 27</time><strong class="boxing-match">Jaron “Boots” Ennis vs. Xander Zayas</strong><span class="boxing-status">Ennis TKO 7</span><span class="boxing-note">Three knockdowns made Ennis a two-weight unified champion and the man to beat at 154 pounds.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">09</span><span class="boxing-date">TBD</span><strong class="boxing-match">Jaron “Boots” Ennis vs. Josh Kelly</strong><span class="boxing-status">REPORTED · date TBD</span><span class="boxing-note">Three-belt unification with terms agreed per reports — flagged REPORTED and not slotted into the ranked dates until it’s official.</span></div>
+          <div class="boxing-row" role="listitem"><span class="boxing-rank">10</span><span class="boxing-date">—</span><strong class="boxing-match">Open slot</strong><span class="boxing-status">Empty</span><span class="boxing-note">Left empty on purpose — nothing else in the rolling year clears the top-10 bar right now.</span></div>
         </div>
-        <p class="boxing-honesty">Completed results and confirmed bouts, refreshed Oct 20. Upcoming cards can change.</p>
+        <p class="boxing-honesty">Rolling 12-month window, refreshed Oct 22. Results stay listed one week after fight night; reported bouts are flagged, never slotted as official.</p>
       </div>
       <p class="ufc-foot"><span>Section refreshed every 2 days.</span></p>
     </section>
@@ -2719,7 +2821,7 @@
       dupe:'$49.99',priceLabel:'Clearance',retail:'Fanatics regular $99.99',comparisonLabel:'Was',
       promo:'50% OFF · CLEARANCE · OFFICIALLY LICENSED',
       note:'NEW · Sold by Fanatics. Officially licensed UFC and Venum Fight Week pullover hoodie in the white colorway. The $49.99 single-unit clearance price and $99.99 regular price were verified on the live listing.',
-      imgLocal:'assets/img_1cc1e79c31f0ef88.jpg',imgLabel:'FANATICS PRODUCT PHOTO',imgAlt:'Model wearing the white, black, and orange UFC Zenith by Venum Fight Week hoodie',
+      imgLocal:'assets/morning-20261007-ufc-zenith-hoodie-white.jpg',imgLabel:'FANATICS PRODUCT PHOTO',imgAlt:'Model wearing the white, black, and orange UFC Zenith by Venum Fight Week hoodie',
       url:'https://www.fanatics.com/ufc/ufc-merchandise/ufc-zenith-by-venum-authentic-fight-week-hoodie-white/o-4601+t-92896347+p-3588363791066+z-9-894207342',urlLabel:'Shop on Fanatics ↗',
       new:true,verified:'Oct 7, 2026',dealBadge:'50% OFF',availabilityBadge:'NEW · OFFICIALLY LICENSED'
     });
@@ -3227,15 +3329,6 @@
         url:'https://www.oakley.com/en-us/product/W0OO9528?variant=888392686671',urlLabel:'Shop on Oakley ↗',
         new:true,forceNewBadge:true,verified:'Oct 8, 2026',dealBadge:'50% OFF',availabilityBadge:'NEW · POLARIZED · UV400'
       }},
-      {category:'Coffee',item:{
-        id:'fresh-20261008-nespresso-vertuo-pop-deluxe',name:'Nespresso Vertuo POP+ Deluxe Machine with Coffee Pods + 50-Pod Voucher — Silver (920-512)',
-        dupe:'$99.95',priceLabel:'Deal',retail:'$149.99 regular',comparisonLabel:'Was',
-        promo:'33% OFF · FREE SHIPPING · CUSTOMER PICK',
-        note:'NEW · HSN. Includes coffee pods and a 50-pod voucher. Rated 4.5 stars from 2,474 reviews and marked Customer Pick; free shipping was shown.',
-        imgLocal:'assets/fresh-2026-10-08-nespresso-vertuo-pop-deluxe.jpg',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Silver and black Nespresso Vertuo POP+ Deluxe coffee machine with coffee, capsules, and milk frother',
-        url:'https://www.hsn.com/products/nespresso-vertuo-pop-deluxe-machine-with-coffee-pods-an/23737503',urlLabel:'Shop on HSN ↗',
-        new:true,forceNewBadge:true,verified:'Oct 8, 2026',dealBadge:'33% OFF',availabilityBadge:'NEW · FREE SHIPPING'
-      }},
       {category:'Authentic Designer Deals',item:{
         id:'fresh-20261008-sp5der-og-web-v2-hoodie',name:'SP5DER OG WEB V2 Hoodie — Green',
         dupe:'about $115 after 25% promo',priceLabel:'Deal',retail:'Was $153',comparisonLabel:'Was',
@@ -3506,7 +3599,7 @@
       dupe:'$198.00',priceLabel:'Deal',retail:'$248–$298 typical street',comparisonLabel:'Real street range',
       promo:'ABOUT 20%–34% BELOW STREET · ENDS OCT. 11',
       note:'NEW · Sold by Best Buy. The $198 Techtober price is measured against the real $248–$298 street range; Best Buy’s internal $398 comparison is not used for the deal math.',
-      imgLocal:'assets/img_21daed460f5795cc.webp',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Black Sony WH-1000XM5 wireless over-ear noise-cancelling headphones',
+      imgLocal:'assets/hunt-20261010-sony-wh1000xm5.webp',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Black Sony WH-1000XM5 wireless over-ear noise-cancelling headphones',
       url:'https://www.bestbuy.com/product/sony-wh-1000xm5-wireless-noise-cancelling-over-the-ear-headphones-black/J7XSRH5CXG',urlLabel:'Shop on Best Buy ↗',
       new:true,forceNewBadge:true,verified:'Oct 10, 2026',dealBadge:'$198',availabilityBadge:'NEW · TECHTOBER DEAL'
     });
@@ -4122,7 +4215,7 @@
         dupe:'$389.99',priceLabel:'Deal',retail:'$549.99 Samsung / ~$471.78 Amazon',comparisonLabel:'Street',
         promo:'29% OFF · CHEAPEST CHECKED',
         note:'NEW · Woot. The Grade-4 titanium Ultra flagship — sapphire glass, 100-hour battery, Wear OS — at the cheapest reputable price on record, $82 under Amazon. Ships with a generic (non-Samsung) band.',
-        imgLocal:'assets/img_c9cc965db432a5d7.jpg',imgLabel:'PRODUCT PHOTO',imgAlt:'Samsung Galaxy Watch Ultra 2025 smartwatch with titanium gray case and orange marine band',
+        imgLocal:'assets/fresh-2026-10-20-galaxy-watch-ultra.jpg',imgLabel:'PRODUCT PHOTO',imgAlt:'Samsung Galaxy Watch Ultra 2025 smartwatch with titanium gray case and orange marine band',
         url:'https://electronics.woot.com/offers/new-samsung-galaxy-watch-ultra-2025-generic-watch-band-0',urlLabel:'Shop on Woot ↗',
         new:true,forceNewBadge:true,verified:'Oct 20, 2026',dealBadge:'$82 UNDER STREET',availabilityBadge:'NEW · IN STOCK'
       }},
@@ -4131,7 +4224,7 @@
         dupe:'$169.00',priceLabel:'Deal',retail:'$229.99 Ashford / $249.41 Walmart',comparisonLabel:'Street',
         promo:'26% OFF STREET',
         note:'NEW · Jomashop. J810 Eco-Drive solar — never needs a battery — 42mm, 100m, 5-year Jomashop warranty. HONESTY FLAG: Jomashop\'s page says mineral crystal while Citizen lists sapphire — buy the watch for the price, not the crystal claim.',
-        imgLocal:'assets/img_3368b0df4d184d16.webp',imgLabel:'PRODUCT PHOTO',imgAlt:'Citizen Carson Eco-Drive AW1773-55E watch with rose gold-tone case and bracelet and black dial',
+        imgLocal:'assets/fresh-2026-10-20-citizen-carson.webp',imgLabel:'PRODUCT PHOTO',imgAlt:'Citizen Carson Eco-Drive AW1773-55E watch with rose gold-tone case and bracelet and black dial',
         url:'https://www.jomashop.com/citizen-carson-eco-drive-black-dial-mens-watch-aw1773-55e.html',urlLabel:'Shop on Jomashop ↗',
         new:true,forceNewBadge:true,verified:'Oct 20, 2026',dealBadge:'26% OFF STREET',availabilityBadge:'NEW · IN STOCK'
       }},
@@ -4140,7 +4233,7 @@
         dupe:'$13.50',priceLabel:'Deal',retail:'$44.99 · 70% OFF',comparisonLabel:'Was',
         promo:'70% OFF · NEW',
         note:'NEW · venum.com. Official Fight Week long-sleeve at off-brand tee money — Venum-exclusive so 70% off own retail IS the street beat. All sizes XS–XXXXL in stock today.',
-        imgLocal:'assets/img_346c591e62539072.webp',imgLabel:'PRODUCT PHOTO',imgAlt:'UFC Zenith by Venum Authentic Fight Week long sleeve tee in black, white and orange, worn by a model',
+        imgLocal:'assets/fresh-2026-10-20-ufc-zenith-tee.webp',imgLabel:'PRODUCT PHOTO',imgAlt:'UFC Zenith by Venum Authentic Fight Week long sleeve tee in black, white and orange, worn by a model',
         url:'https://www.venum.com/products/ufc-zenith-by-venum-fight-week-t-shirt-long-sleeve-black-white-orange-1',urlLabel:'Shop on Venum ↗',
         new:true,forceNewBadge:true,verified:'Oct 20, 2026',dealBadge:'70% OFF',availabilityBadge:'NEW · ALL SIZES'
       }},
@@ -4149,7 +4242,7 @@
         dupe:'$91.99 net',priceLabel:'Deal',retail:'$175 retail · $129.95 Amazon street',comparisonLabel:'Street',
         promo:'29% OFF STREET · SALE ENDS OCT 21',
         note:'NEW · Woot. Nylon-plated speed trainer (PWRRUN PB foam, SpeedRoll) at daily-trainer money: $114.99 on the page with an extra 20% off auto-applied at checkout = $91.99 net, $38 under street. Sizes 7.5 and 14 already gone; sale ends Oct 21 at 11:58pm CT — moves fast.',
-        imgLocal:'assets/img_7f9ca464be74368a.jpg',imgLabel:'PRODUCT PHOTO',imgAlt:'Saucony Endorphin Speed 5 running shoe in white with volt laces and teal midsole',
+        imgLocal:'assets/fresh-2026-10-20-saucony-speed-5.jpg',imgLabel:'PRODUCT PHOTO',imgAlt:'Saucony Endorphin Speed 5 running shoe in white with volt laces and teal midsole',
         url:'https://sport.woot.com/offers/saucony-endorphin-speed-5-mens-shoes-5',urlLabel:'Shop on Woot ↗',
         new:true,forceNewBadge:true,verified:'Oct 20, 2026',dealBadge:'$38 UNDER STREET',availabilityBadge:'NEW · ENDS OCT 21'
       }}
@@ -4524,7 +4617,7 @@
       dupe:'$79.99 net', priceLabel:'Deal', retail:'$170 retail · 53% off', comparisonLabel:'Retail',
       promo:'$99.99 + EXTRA 20% AUTO-APPLIED AT CHECKOUT \u00b7 ENDS OCT 21, 11:58PM CT',
       note:'NEW · Sold by Woot. Men\u2019s sizes 9–13 and 15 in stock. Why-buy QUALITY: Saucony\u2019s max-cushion flagship trainer (PWRRUN PB foam) — comfort-tech is where the press, and the demand, moved. The extra 20% comes off automatically at checkout, netting $79.99.',
-      imgLocal:'assets/img_b2869a15b0ca003d.webp', imgLabel:'GENUINE PRODUCT PHOTO', imgAlt:'Saucony Triumph 23 men\u2019s max-cushion running shoes in navy with volt and orange soles',
+      imgLocal:'assets/hunt-20261020-saucony-triumph-23.webp', imgLabel:'GENUINE PRODUCT PHOTO', imgAlt:'Saucony Triumph 23 men\u2019s max-cushion running shoes in navy with volt and orange soles',
       url:'https://sport.woot.com/offers/saucony-triumph-23-mens-shoes-13', urlLabel:'Shop on Woot \u2197',
       new:true, forceNewBadge:true, verified:'Oct 20, 2026', dealBadge:'53% OFF RETAIL', availabilityBadge:'NEW \u00b7 ENDS OCT 21'
     });
@@ -4788,6 +4881,155 @@
       imgAlt:'Smartmi Rainforest humidifier with clear tank showing the rainfall effect',
       url:'https://smartmi.io/en-us/collections/mega-menu-featured-products/products/rainforest', urlLabel:'Shop on Smartmi ↗',
       new:true, forceNewBadge:true, verified:'Oct 21, 2026', dealBadge:'$169 UNDER AMAZON', availabilityBadge:'NEW · IN STOCK'
+    });
+
+    // === 48-hour maintenance staging — October 22, 2026 ===
+    // A. Retire 5 cards: 2 exact duplicates (newer card kept) + 3 whose live prices rose after promos ended.
+    ['hunt-20261012-bowers-wilkins-pi6','morning-20261007-ufc-zenith-hoodie-white','hunt-20261010-sony-wh1000xm5','hunt-20261010-adidas-ultraboost-5x','hunt-20261020-saucony-triumph-23'].forEach(retireCardById);
+    // B. Fresh Finds rotation: the Oct 20 batch (2-day life over) and the Nespresso machine rotate out.
+    //    Coffee cards are the coffee itself (beans/grounds/pods) — never machines.
+    for(let index=freshRotationEntries.length-1;index>=0;index--){
+      const rid=freshRotationEntries[index].item.id;
+      if(rid.startsWith('fresh-20261020-')||rid==='fresh-20261008-nespresso-vertuo-pop-deluxe') freshRotationEntries.splice(index,1);
+    }
+    freshRotationEntries.push(
+      {category:'Cool Tech',item:{
+        id:'fresh-20261022-beats-studio-buds',name:'Beats Studio Buds True Wireless ANC Earbuds — Black',
+        dupe:'$59.99',priceLabel:'Deal',retail:'Street ~$99.99',comparisonLabel:'Street',
+        promo:'NEW · LIMIT 2 · ~40% UNDER STREET',
+        note:'NEW · Woot (electronics.woot.com). Real ANC + transparency, IPX4, 8h buds / 24h with the case — the cheapest legitimate entry into brand-name ANC earbuds, about 40% under the ~$99.99 street.',
+        imgLocal:'assets/img_a7036e028f795990.webp',imgLabel:'PRODUCT PHOTO',imgAlt:'Beats Studio Buds true wireless earbuds in black with the charging case',
+        url:'https://electronics.woot.com/offers/new-beats-studio-buds-true-wireless-anc-earbuds-5',urlLabel:'Shop on Woot ↗',
+        new:true,forceNewBadge:true,verified:'Oct 22, 2026',dealBadge:'~40% UNDER STREET',availabilityBadge:'NEW · LIMIT 2'
+      }},
+      {category:'Cool Tech',item:{
+        id:'fresh-20261022-beats-fit-pro',name:'Beats Fit Pro True Wireless ANC Earbuds — Coral',
+        dupe:'$119.99',priceLabel:'Deal',retail:'Street ~$159.99–199.95',comparisonLabel:'Street',
+        promo:'NEW · APPLE H1 · SPATIAL AUDIO',
+        note:'NEW · Woot (sellout.woot.com). Apple H1 chip, secure-fit wingtips, spatial audio — the workout-ready AirPods alternative at its lowest new-price tier, ~25% under street.',
+        imgLocal:'assets/img_164b509a3f0b2bde.jpg',imgLabel:'PRODUCT PHOTO',imgAlt:'Beats Fit Pro true wireless earbuds in coral pink with wingtips, in the open charging case',
+        url:'https://sellout.woot.com/offers/new-beats-fit-pro-true-wireless-anc-earbuds-coral-13',urlLabel:'Shop on Woot ↗',
+        new:true,forceNewBadge:true,verified:'Oct 22, 2026',dealBadge:'~25% UNDER STREET',availabilityBadge:'NEW · IN STOCK'
+      }},
+      {category:'Sneaker Deals',item:{
+        id:'fresh-20261022-aj1-low-se-silver',name:'Air Jordan 1 Low SE — Silver (IR2278-100)',
+        dupe:'$69.98',priceLabel:'Deal',retail:'$130 regular',comparisonLabel:'Was',
+        promo:'46% OFF · SIZES 7.5–14',
+        note:'NEW · DTLR. The perennial rotation staple — metallic silver AJ1 Low SE at 46% off with a near-full size run; AJ1 Low street runs ~$90–100.',
+        imgLocal:'assets/img_164a0af467cc94c8.webp',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Air Jordan 1 Low SE in metallic silver with white midsole, rear three-quarter view',
+        url:'https://www.dtlr.com/products/jordan-air-jordan-1-low-se-mf-silver-ir2278-100',urlLabel:'Shop on DTLR ↗',
+        new:true,forceNewBadge:true,verified:'Oct 22, 2026',dealBadge:'46% OFF',availabilityBadge:'NEW · SIZES 7.5–14'
+      }},
+      {category:'Sneaker Deals',item:{
+        id:'fresh-20261022-nike-dunk-low-bw',name:'Nike Dunk Low Retro — Black/White (DD1391-100)',
+        dupe:'$69.97',priceLabel:'Deal',retail:'$120 regular',comparisonLabel:'Was',
+        promo:'42% OFF · SIZES 9–13',
+        note:'NEW · Shop Nice Kicks. Black/white is the most wearable Dunk colorway there is — back to sane pricing post-resale-era at 42% off; street runs ~$90–115.',
+        imgLocal:'assets/img_00f1c3c5070ce90f.webp',imgLabel:'PRODUCT PHOTO',imgAlt:'Pair of Nike Dunk Low Retro sneakers in black and white, top view',
+        url:'https://shopnicekicks.com/products/nike-dd1391-100-dunk-low-mens-lifestyle-shoe-black-white',urlLabel:'Shop on Shop Nice Kicks ↗',
+        new:true,forceNewBadge:true,verified:'Oct 22, 2026',dealBadge:'42% OFF',availabilityBadge:'NEW · SIZES 9–13'
+      }}
+    );
+    // C. Section backfills — 10 picks live-verified Oct 22, 2026. No Denon X2800H: the carded Woot unit at $869 already beats polkaudio's $949.
+    addStagedCard('Tools',{
+      id:'backfill-20261022-milwaukee-m18-8tool-kit', name:'Milwaukee M18 18V 8-Tool Combo Kit (3692-28)',
+      dupe:'$649', priceLabel:'Deal', retail:'Was $1,298', comparisonLabel:'Was',
+      promo:'HOME DEPOT · LIMIT 3 · 2 BATTERIES + CHARGER',
+      note:'NEW · Home Depot. Eight M18 tools in one kit — drill/driver, impact driver, multi-tool, impact wrench, angle grinder, circular saw, Hackzall recip saw, and work light — with two batteries and a charger at half the $1,298 list. Limit 3 per order.',
+      imgLocal:'assets/img_8082b7ae36a59a55.webp', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Milwaukee M18 8-tool cordless combo kit with two tool bags, batteries, and charger',
+      url:'https://www.homedepot.com/p/Milwaukee-M18-18-Volt-Lithium-Ion-Cordless-Combo-Kit-8-Tool-with-2-Batteries-Charger-3692-28/342880227', urlLabel:'Shop on Home Depot ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'50% OFF LIST', availabilityBadge:'NEW · LIMIT 3'
+    });
+    addStagedCard('Tools',{
+      id:'backfill-20261022-ridgid-5tool-kit', name:'RIDGID 18V Cordless 5-Tool Combo Kit (R96255)',
+      dupe:'$299', priceLabel:'Deal', retail:'5 tools · 2× 4.0Ah batteries · tool bag', comparisonLabel:'In the kit',
+      promo:'HOME DEPOT · BRUSHED MOTORS DISCLOSED',
+      note:'NEW · Home Depot. Drill/driver, impact driver, reciprocating saw, circular saw, and LED light with two 4.0Ah batteries, charger, and bag. DISCLOSURE: per Home Depot’s own Q&A these are brushed motors, not brushless — priced right for brushed, just know what you’re buying.',
+      imgLocal:'assets/img_3578e7f86bee46d9.webp', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'RIDGID 18V 5-tool cordless combo kit with tool bag, batteries, and charger',
+      url:'https://www.homedepot.com/p/RIDGID-18V-Cordless-5-Tool-Combo-Kit-with-2-4-0-Ah-Batteries-Charger-Tool-Bag-and-Accessories-R96255/331612752', urlLabel:'Shop on Home Depot ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'5-TOOL KIT', availabilityBadge:'NEW · IN STOCK'
+    });
+    addStagedCard('Belts',{
+      id:'backfill-20261022-wrangler-buffalo-belt', name:'Wrangler Casual Everyday Classic Buffalo Leather Belt — Light Brown, Size 44',
+      dupe:'$19.99', priceLabel:'Deal', retail:'Street-level price', comparisonLabel:'Street',
+      promo:'GENUINE BUFFALO LEATHER · SIZE 44',
+      note:'NEW · Target. Genuine buffalo leather in light brown; size 44 fits a 40″+ waist — the right cut for a 42″ waist. Honest framing: this is a street-level price, not a deep discount — the value is real leather at $20.',
+      imgLocal:'assets/img_9067d1a054823ec2.webp', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Wrangler buffalo leather belt in light brown with silver-tone buckle, coiled',
+      url:'https://www.target.com/p/wrangler-men-s-leather-country-casual-every-day-dress-belt-for-jeans-khakis-light-brown-32/-/A-93110043', urlLabel:'Shop on Target ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'GENUINE BUFFALO', availabilityBadge:'NEW · SIZE 44'
+    });
+    addStagedCard('New & Trending 2026',{
+      id:'backfill-20261022-lego-arcade-40805', name:'LEGO Arcade Machine (40805)',
+      dupe:'$31.99', priceLabel:'Deal', retail:'Was $39.99', comparisonLabel:'Was',
+      promo:'RETIRING SOON · LIMIT 5 · DOUBLE INSIDERS POINTS',
+      note:'NEW · lego.com. The 468-piece mini arcade cabinet at 20% off direct, flagged “Retiring soon” — it retires Dec 31, 2026, so scarcity is the play. Limit 5, and Insiders earn double points.',
+      imgLocal:'assets/img_bd52be336e71212b.webp', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'LEGO Arcade Machine 40805 set box with the built red mini arcade cabinet and minifigure',
+      url:'https://www.lego.com/en-us/product/arcade-machine-40805', urlLabel:'Shop on LEGO ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'20% OFF · RETIRING', availabilityBadge:'NEW · LIMIT 5'
+    });
+    addStagedCard('Novelty Tech',{
+      id:'backfill-20261022-divoom-pixoo64', name:'Divoom Pixoo-64 II WiFi 64×64 Pixel Art LED Display — Black',
+      dupe:'$109.99', priceLabel:'Deal w/code', retail:'Reg $149.99', comparisonLabel:'Was',
+      promo:'CODE PX40 · 4.7/5 RATED',
+      note:'NEW · divoom.com with code PX40. A WiFi 64×64 pixel-art LED frame — clocks, weather, social counters, and a huge community art library. A genuine gadget on its own merit, rated 4.7/5.',
+      imgLocal:'assets/img_c7fae60d3b9215d9.webp', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Divoom Pixoo-64 II pixel art LED display in black showing a colorful dashboard',
+      url:'https://divoom.com/products/pixoo-64?dt_id=1238284%3Bap%3A529368', urlLabel:'Shop on Divoom ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'$40 OFF W/CODE', availabilityBadge:'NEW · CODE PX40'
+    });
+    addStagedCard('Novelty Tech',{
+      id:'backfill-20261022-divoom-ditoo-pro', name:'Divoom Ditoo-Pro Retro Pixel Art Bluetooth Speaker — White',
+      dupe:'$69.99', priceLabel:'Deal w/code', retail:'Reg $99.99', comparisonLabel:'Was',
+      promo:'CODE DTP30 · 4.7/5 RATED',
+      note:'NEW · divoom.com with code DTP30. The retro mini-PC speaker in white — pixel-art display, backlit mechanical keys, Bluetooth tunes, alarm, and mini games. A genuine gadget on its own merit, rated 4.7/5.',
+      imgLocal:'assets/img_0c295d5f83f81ff4.jpg', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Divoom Ditoo-Pro retro pixel art Bluetooth speaker in white with mint keys',
+      url:'https://divoom.com/products/divoom-pro', urlLabel:'Shop on Divoom ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'$30 OFF W/CODE', availabilityBadge:'NEW · CODE DTP30'
+    });
+    addStagedCard('Puzzles & Games',{
+      id:'backfill-20261022-uno-dare', name:'UNO Dare Card Game',
+      dupe:'$10.99', priceLabel:'Deal', retail:'Reg $19.99', comparisonLabel:'Was',
+      promo:'TARGET · PARTY TIER · 2–10 PLAYERS',
+      note:'NEW · Target. Classic UNO with a dare-or-draw twist — the Dare cards are what make it a game-night staple instead of another family deck.',
+      imgLocal:'assets/img_08fb8ef47d0e844e.png', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'UNO Dare card game box and cards showing the dare-or-draw cards',
+      url:'https://www.target.com/p/uno-dare-card-game/-/A-95117040', urlLabel:'Shop on Target ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'45% OFF', availabilityBadge:'NEW · IN STOCK'
+    });
+    addStagedCard('Puzzles & Games',{
+      id:'backfill-20261022-mantis', name:'Exploding Kittens Mantis Card Game',
+      dupe:'$11.99', priceLabel:'Deal', retail:'Reg $18.99', comparisonLabel:'Was',
+      promo:'TARGET · 2–6 PLAYERS · 10 MIN',
+      note:'NEW · Target. From the Exploding Kittens crew — a colorfully cutthroat card game of rainbows and revenge: steal, score, and sabotage in about 10 minutes. Party tier, genuinely funny.',
+      imgLocal:'assets/img_2e2f426bff68bd4b.jpg', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Mantis card game box with a rainbow mantis shrimp illustration',
+      url:'https://www.target.com/p/exploding-kittens-mantis-card-game/-/A-91976436', urlLabel:'Shop on Target ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'37% OFF', availabilityBadge:'NEW · IN STOCK'
+    });
+    addStagedCard('Chicago Bears',{
+      id:'backfill-20261022-bears-champion-fullzip', name:'Chicago Bears Champion Powerblend Fleece Full-Zip Hoodie — Heather Gray',
+      dupe:'$59.99', priceLabel:'Deal', retail:'Reg $79.99', comparisonLabel:'Was',
+      promo:'FANATICS DESIGN · NO CODE NEEDED',
+      note:'NEW · Fanatics design via NFL Shop. Champion Powerblend fleece full-zip with the bear head on the chest and BEARS down the sleeve, in heather gray. No code needed.',
+      imgLocal:'assets/img_a2185d4d1857572a.jpg', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Chicago Bears Champion Powerblend full-zip hoodie in heather gray with bear head logo',
+      url:'https://www.nflshop.com/chicago-bears/mens-chicago-bears-champion-heather-gray-powerblend-fleece-full-zip-hoodie/t-92602492+p-57220395324040+z-8-555065202', urlLabel:'Shop on NFL Shop ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'25% OFF', availabilityBadge:'NEW · IN STOCK'
+    });
+    addStagedCard('Chicago Bears',{
+      id:'backfill-20261022-bears-champion-seal-tee', name:'Chicago Bears Champion Seal Long Sleeve T-Shirt — Orange',
+      dupe:'$29.24', priceLabel:'Deal', retail:'Reg $38.99', comparisonLabel:'Was',
+      promo:'FANATICS-EXCLUSIVE · NO CODE NEEDED',
+      note:'NEW · Fanatics-exclusive Champion design. The orange seal long sleeve with sleeve patches — timed to tonight’s Patriots TNF game. No code needed.',
+      imgLocal:'assets/img_454b4eaca32937df.jpg', imgLabel:'PRODUCT PHOTO',
+      imgAlt:'Chicago Bears Champion seal long sleeve t-shirt in orange with sleeve patches',
+      url:'https://www.fanatics.com/nfl/chicago-bears/-chicago-bears-champion-seal-long-sleeve-t-shirt-orange/o-2461+t-14932458+p-3500032317600+z-9-3238467207', urlLabel:'Shop on Fanatics ↗',
+      new:true, forceNewBadge:true, verified:'Oct 22, 2026', dealBadge:'25% OFF', availabilityBadge:'NEW · IN STOCK'
     });
 
     const monthNumbers={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
