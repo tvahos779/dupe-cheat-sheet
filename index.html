@@ -104,11 +104,16 @@
     .guns-cigars-cta{display:inline-block;padding:10px 14px;border-radius:9px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
     .guns-cigars-cta:hover{background:color-mix(in srgb,var(--accent) 84%,var(--ink))}
     .guns-cigars-cta:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:2px}
+    .banner-cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .travel-cta{display:inline-block;padding:10px 14px;border-radius:9px;border:1px solid var(--accent);background:transparent;color:var(--accent-ink);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+    .travel-cta:hover{background:var(--accent-soft)}
+    .travel-cta:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:2px}
     @media (max-width:760px){
       .guns-cigars-banner{padding:18px 14px}
       .guns-cigars-head{grid-template-columns:1fr}
       .guns-cigars-side{justify-items:start}
       .guns-cigars-stamp{white-space:normal}
+      .banner-cta-row{justify-content:flex-start}
     }
     .spotlight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
     .spot-card{min-width:0;display:grid;grid-template-columns:78px minmax(0,1fr);gap:11px;align-items:center;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-decoration:none;transition:border-color .15s ease,background-color .15s ease}
@@ -676,12 +681,14 @@
     .accordion-toggle[hidden]{display:none}
     .accordion-hidden{display:none!important}
     .audience-hidden{display:none!important}
-    .mobile-tabs{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
+    .mobile-tabs{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
     .mobile-tabs a{display:flex;min-width:0;min-height:50px;align-items:center;justify-content:center;flex-direction:column;gap:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-decoration:none;border-radius:7px;text-align:center;line-height:1.2;padding:4px 2px}
     .mobile-tabs a span{font-size:17px;line-height:1;color:var(--accent-ink)}
     .mobile-tabs a:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:-2px}
     .mobile-tabs a.guns-cigars-nav{background:color-mix(in srgb,var(--accent-soft) 55%,transparent);color:var(--accent-ink)}
     .mobile-tabs a.guns-cigars-nav:hover{background:var(--accent-soft)}
+    .mobile-tabs a.travel-nav{background:color-mix(in srgb,var(--accent-soft) 55%,transparent);color:var(--accent-ink)}
+    .mobile-tabs a.travel-nav:hover{background:var(--accent-soft)}
     .filter,.listing,.food-source,.deal-code{min-height:44px}
     .filter{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px}
     .listing,.food-source{display:inline-flex;align-items:center}
@@ -734,7 +741,7 @@
       .audience-segment{min-height:44px;padding:7px 9px}
       .filters{gap:8px;margin-top:8px;padding:2px;scroll-margin-top:150px}
       .filter{min-height:44px;padding:8px 13px;font-size:12px}
-      .mobile-tabs{position:sticky;display:grid;grid-template-columns:repeat(5,1fr);top:0;z-index:50;margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
+      .mobile-tabs{position:sticky;display:grid;grid-template-columns:repeat(6,1fr);top:0;z-index:50;margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
       .mobile-tabs a{display:flex;min-width:0;min-height:50px;align-items:center;justify-content:center;flex-direction:column;gap:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-decoration:none;border-radius:7px}
       .mobile-tabs a span{font-size:17px;line-height:1;color:var(--accent-ink)}
       .mobile-tabs a:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:-2px}
@@ -1203,6 +1210,7 @@
       <a href="#ufc-fight-center" data-tab="ufc"><span aria-hidden="true">⬢</span>UFC</a>
       <a href="#black-friday-watchlist" data-tab="black-friday"><span aria-hidden="true">◆</span>Black Friday</a>
       <a href="guns-cigars.html" class="guns-cigars-nav" data-tab="guns-cigars"><span aria-hidden="true">◎</span>Guns n Subs</a>
+      <a href="travel.html" class="travel-nav" data-tab="travel"><span aria-hidden="true">✈</span>Travel (beta)</a>
     </nav>
     <!-- PINNED TOP ORDER — do not change: quick nav → Bud's Lunch → This Weekend banner → everything else. Bud's Lunch sits directly below the quick nav (the true top of the sheet) and the This Weekend banner sits directly below Bud's Lunch. The load script enforces this order on every page load. -->
     <section class="bud-lunch" aria-labelledby="bud-lunch-title">
@@ -1822,7 +1830,10 @@
         </div>
         <div class="guns-cigars-side">
           <span class="guns-cigars-stamp">REAL GUNS · CIGARS · BUYING GUIDES</span>
-          <a class="guns-cigars-cta" href="guns-cigars.html" target="_blank" rel="noopener">Open the Guns n Subs sheet ↗</a>
+          <span class="banner-cta-row">
+            <a class="guns-cigars-cta" href="guns-cigars.html" target="_blank" rel="noopener">Open the Guns n Subs sheet ↗</a>
+            <a class="travel-cta" href="travel.html" target="_blank" rel="noopener">Travel (beta) ↗</a>
+          </span>
         </div>
       </div>
     </section>

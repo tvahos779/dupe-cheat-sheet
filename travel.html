@@ -1,0 +1,1799 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Sheet 3 Draft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --paper:#f6f3ec;
+        --panel:#fffdf8;
+        --panel-2:#efe9db;
+        --ink:#17242b;
+        --ink-soft:#43525b;
+        --ink-faint:#77858d;
+        --line:#d9d2c0;
+        --line-strong:#17242b;
+        --teal:#0d6e6a;
+        --teal-deep:#0a4f4c;
+        --coral:#d9481f;
+        --coral-soft:#fbe9e2;
+        --amber:#b97e0c;
+        --amber-soft:#f8ecd2;
+        --green:#2e7d43;
+        --green-soft:#e4f0e4;
+        --red:#b3261e;
+        --red-soft:#f9e3e1;
+        --shadow:6px 6px 0 rgba(23,36,43,.14);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --paper:#0d1418;
+          --panel:#16212a;
+          --panel-2:#1d2b35;
+          --ink:#eef2ee;
+          --ink-soft:#b7c3c9;
+          --ink-faint:#8496a0;
+          --line:#2c3d47;
+          --line-strong:#eef2ee;
+          --teal:#35b3ac;
+          --teal-deep:#7fd1cb;
+          --coral:#ff7a52;
+          --coral-soft:#3a211a;
+          --amber:#e0a83c;
+          --amber-soft:#33290f;
+          --green:#6fce8b;
+          --green-soft:#16301f;
+          --red:#ff8a80;
+          --red-soft:#3a1b18;
+          --shadow:6px 6px 0 rgba(0,0,0,.45);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      @media (prefers-reduced-motion: reduce){
+        html{scroll-behavior:auto}
+        *{animation:none!important;transition:none!important}
+      }
+      body{
+        margin:0;background:var(--paper);color:var(--ink);
+        font-family:"Archivo",system-ui,sans-serif;
+        font-size:16.5px;line-height:1.55;
+        -webkit-font-smoothing:antialiased;
+      }
+      .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+      a{color:var(--teal-deep);text-decoration-thickness:1px;text-underline-offset:2px}
+      img{display:block;max-width:100%}
+      .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+      /* ---------- masthead ---------- */
+      .masthead{border-bottom:3px solid var(--line-strong);padding:18px 0 0}
+      .mast-top{display:flex;gap:26px;align-items:flex-start}
+      .mast-text{flex:1 1 auto;min-width:0}
+      .mast-photo{flex:0 0 218px}
+      .mast-photo img{width:218px;height:218px;object-fit:cover;border:2px solid var(--line-strong);border-radius:var(--radius);box-shadow:var(--shadow)}
+      .mast-photo figcaption{font-size:11.5px;color:var(--ink-faint);margin-top:8px;font-family:"IBM Plex Mono",monospace}
+      .kicker-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+      .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+      .draft-tag{
+        font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+        background:var(--amber);color:#fff;padding:3px 10px;border-radius:99px;letter-spacing:.08em;
+      }
+      @media (prefers-color-scheme: dark){.draft-tag{color:#14100a}}
+      h1{
+        font-size:clamp(34px,5vw,50px);line-height:1;font-weight:900;letter-spacing:-.015em;
+        margin:0 0 10px;
+      }
+      h1 .accent{color:var(--teal)}
+      .lede{font-size:clamp(17px,2.4vw,20px);color:var(--ink-soft);max-width:640px;margin:0}
+      .lede strong{color:var(--ink)}
+
+      .hero-photo{margin:16px 0 0;border-top:3px solid var(--line-strong)}
+      .hero-photo img{width:100%;height:300px;object-fit:cover}
+      .hero-photo figcaption{
+        font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);
+        padding:8px 20px;border-bottom:1px solid var(--line);max-width:1120px;margin:0 auto;
+      }
+
+      /* ---------- nav ---------- */
+      nav.sheet-nav{
+        position:sticky;top:0;z-index:40;background:var(--paper);
+        border-bottom:2px solid var(--line-strong);
+      }
+      nav.sheet-nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+      nav.sheet-nav .wrap::-webkit-scrollbar{display:none}
+      nav.sheet-nav a{
+        flex:0 0 auto;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;
+        color:var(--ink-soft);text-decoration:none;padding:6px 12px;border-radius:99px;border:1px solid transparent;
+      }
+      nav.sheet-nav a:hover{border-color:var(--line)}
+      nav.sheet-nav a.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+      nav.sheet-nav a.fun-link{background:var(--coral-soft);color:var(--coral);border-color:var(--coral);font-weight:600}
+      nav.sheet-nav a.fun-link.active{background:var(--coral);color:#fff;border-color:var(--coral)}
+
+      /* ---------- sections ---------- */
+      section{padding:52px 0 8px}
+      .sec-head{display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--line-strong);padding-bottom:12px;margin-bottom:24px}
+      .sec-num{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--coral);font-weight:600}
+      .sec-head h2{font-size:clamp(26px,4.4vw,38px);font-weight:800;letter-spacing:-.01em;margin:0;line-height:1.05}
+      .sec-head p{margin:0 0 2px auto;max-width:380px;font-size:14px;color:var(--ink-soft);text-align:right}
+      .sec-photo{border:2px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:26px}
+      .sec-photo img{width:100%;height:230px;object-fit:cover}
+      .sec-photo.tall img{height:300px}
+      .sec-photo figcaption{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);padding:7px 12px;background:var(--panel)}
+
+      .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+      .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+      .grid-32{display:grid;grid-template-columns:1.55fr 1fr;gap:20px;align-items:start}
+      .grid-23{display:grid;grid-template-columns:1fr 1.55fr;gap:20px;align-items:start}
+
+      .panel{
+        background:var(--panel);border:2px solid var(--line-strong);border-radius:var(--radius);
+        box-shadow:var(--shadow);padding:20px 22px;
+      }
+      .panel.flat{box-shadow:none;border-width:1px;border-color:var(--line)}
+      .panel h3{margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-.01em}
+      .panel h4{margin:18px 0 6px;font-size:15px;font-weight:700}
+      .panel h4:first-child{margin-top:0}
+      .panel p{margin:0 0 10px;color:var(--ink-soft)}
+      .panel p strong,.panel li strong{color:var(--ink)}
+      .panel ul{margin:0 0 6px;padding-left:19px;color:var(--ink-soft)}
+      .panel li{margin-bottom:7px}
+      .panel li:last-child{margin-bottom:0}
+      .small{font-size:13.5px}
+      .fineprint{font-size:12.5px;color:var(--ink-faint)}
+
+      /* step sequence */
+      .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+      .step{background:var(--panel);border:1.5px solid var(--line-strong);border-radius:10px;padding:13px 14px}
+      .step .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--coral);letter-spacing:.12em}
+      .step b{display:block;font-size:16px;margin:3px 0 3px}
+      .step span{font-size:13px;color:var(--ink-soft);line-height:1.45;display:block}
+
+      /* tags + callouts */
+      .tag{
+        display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+        letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;vertical-align:middle;
+      }
+      .tag.sample{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+      .tag.good{background:var(--green-soft);color:var(--green);border:1px solid var(--green)}
+      .tag.bad{background:var(--red-soft);color:var(--red);border:1px solid var(--red)}
+      .tag.info{background:var(--coral-soft);color:var(--coral);border:1px solid var(--coral)}
+      .callout{border-radius:10px;padding:14px 16px;font-size:14.5px;margin:14px 0}
+      .callout p{margin:0}
+      .callout.warn{background:var(--amber-soft);border:1.5px solid var(--amber)}
+      .callout.danger{background:var(--red-soft);border:1.5px solid var(--red)}
+      .callout.good{background:var(--green-soft);border:1.5px solid var(--green)}
+
+      /* tables */
+      table{width:100%;border-collapse:collapse;font-size:14.5px}
+      th,td{text-align:left;padding:8px 10px;vertical-align:top}
+      thead th{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);border-bottom:2px solid var(--line-strong)}
+      tbody td{border-bottom:1px solid var(--line);color:var(--ink-soft)}
+      tbody td:first-child{color:var(--ink);font-weight:600}
+      tbody tr:last-child td{border-bottom:none}
+      td.num,th.num{text-align:right;font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+      .table-scroll{overflow-x:auto}
+
+      /* deal card — the sheet's core format */
+      .deal-card{
+        background:var(--panel);border:2px solid var(--line-strong);border-radius:var(--radius);
+        box-shadow:var(--shadow);overflow:hidden;
+      }
+      .deal-card .dc-head{padding:16px 20px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+      .deal-card .dc-route{font-weight:800;font-size:19px;letter-spacing:-.01em;margin-right:auto}
+      .deal-card .dc-sub{padding:2px 20px 0;font-size:13.5px;color:var(--ink-faint)}
+      .breakdown{padding:12px 20px 4px}
+      .breakdown .row{display:flex;justify-content:space-between;gap:14px;padding:5px 0;font-size:14.5px;color:var(--ink-soft);border-bottom:1px dashed var(--line)}
+      .breakdown .row span:last-child{font-family:"IBM Plex Mono",monospace;color:var(--ink);white-space:nowrap}
+      .breakdown .row.included span:last-child{color:var(--green);font-weight:600}
+      .breakdown .row.total{border-bottom:none;border-top:2px solid var(--line-strong);margin-top:6px;padding:10px 0 6px;color:var(--ink);font-weight:700;font-size:16px}
+      .breakdown .row.total span:last-child{font-size:19px;font-weight:600}
+      .vs-bar{margin:8px 20px 0;background:var(--panel-2);border-radius:8px;padding:10px 12px;font-size:13.5px}
+      .vs-bar .track{height:8px;border-radius:99px;background:var(--line);margin-top:7px;position:relative;overflow:hidden}
+      .vs-bar .fill{position:absolute;inset:0 auto 0 0;background:var(--teal);border-radius:99px}
+      .deal-card .dc-note{padding:12px 20px 18px;font-size:14px;color:var(--ink-soft)}
+      .deal-card .dc-note strong{color:var(--ink)}
+
+      /* calculator */
+      .calc label{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:14px 0 5px}
+      .calc label:first-of-type{margin-top:4px}
+      .calc input,.calc select{
+        width:100%;font:inherit;font-size:16px;padding:9px 11px;border-radius:8px;
+        border:1.5px solid var(--line-strong);background:var(--panel);color:var(--ink);
+      }
+      .calc .out{margin-top:16px;border-top:2px solid var(--line-strong);padding-top:12px}
+      .calc .out .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14.5px;color:var(--ink-soft)}
+      .calc .out .row span:last-child{font-family:"IBM Plex Mono",monospace;color:var(--ink)}
+      .calc .out .grand{font-size:17px;font-weight:700;color:var(--ink);border-top:1px dashed var(--line);margin-top:6px;padding-top:10px}
+      .calc .out .grand span:last-child{font-size:21px}
+      .calc .verdict{margin-top:10px;font-size:14px;background:var(--coral-soft);border:1px solid var(--coral);border-radius:8px;padding:9px 12px}
+
+      /* hunt board */
+      .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+      .chip{
+        font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.04em;
+        border:1.5px solid var(--line-strong);background:var(--panel);color:var(--ink-soft);
+        padding:6px 13px;border-radius:99px;cursor:pointer;
+      }
+      .chip:hover{border-color:var(--teal)}
+      .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+      .hunt-tools{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 18px}
+      .hunt-tools input[type="search"],.hunt-tools select{
+        font:inherit;font-size:15px;padding:9px 12px;border-radius:8px;
+        border:1.5px solid var(--line-strong);background:var(--panel);color:var(--ink);
+      }
+      .hunt-tools input[type="search"]{flex:1 1 220px}
+      .hunt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+      .hunt-card{
+        background:var(--panel);color:var(--ink);border:2px solid var(--line-strong);border-radius:var(--radius);
+        box-shadow:var(--shadow);padding:16px 18px;display:flex;flex-direction:column;gap:8px;
+      }
+      .hunt-card .hc-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+      .hunt-card h3{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+      .hc-price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+      .hc-price .amt{font-size:27px;font-weight:900;letter-spacing:-.02em}
+      .hc-price .unit{font-size:13px;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace}
+      .hc-save{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--green);background:var(--green-soft);border:1px solid var(--green);border-radius:99px;padding:2px 9px}
+      .hunt-card p{margin:0;font-size:14px;color:var(--ink-soft)}
+      .hunt-card .hc-src{margin-top:auto;padding-top:6px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);line-height:1.5}
+      .hunt-count{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-faint);margin:0 0 14px}
+      .hunt-empty{border:1.5px dashed var(--line-strong);border-radius:var(--radius);padding:26px;text-align:center;color:var(--ink-soft)}
+      .hunt-card .hc-link{
+        margin-top:2px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;
+        color:var(--teal-deep);text-decoration:none;letter-spacing:.02em;
+      }
+      .hunt-card .hc-link:hover{text-decoration:underline;text-underline-offset:3px}
+
+      /* dart throw */
+      .dart-panel{padding:26px 28px}
+      .dart-stage{display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+      .target{
+        position:relative;flex:0 0 auto;width:min(320px,80vw);aspect-ratio:1;border-radius:50%;
+        border:2px solid var(--line-strong);box-shadow:var(--shadow);margin:0 auto;
+        background:radial-gradient(circle at center,
+          var(--coral) 0 13%, var(--panel) 13% 30%, var(--teal) 30% 47%,
+          var(--panel) 47% 64%, var(--amber) 64% 81%, var(--panel-2) 81% 100%);
+      }
+      .dart-pin{
+        position:absolute;left:50%;top:50%;font-size:36px;line-height:1;opacity:0;pointer-events:none;
+        transform:translate(-50%,-50%) scale(2.6) rotate(24deg);
+        transition:transform .45s cubic-bezier(.2,1.5,.4,1),opacity .18s ease;
+        filter:drop-shadow(2px 3px 2px rgba(0,0,0,.3));
+      }
+      .dart-pin.landed{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-14deg)}
+      .dart-side{flex:1 1 250px;min-width:0}
+      .dart-ticker{font-size:19px;font-weight:600;min-height:58px;margin:0 0 16px;line-height:1.4}
+      .dart-btn{
+        font:inherit;font-weight:800;font-size:17px;letter-spacing:.01em;cursor:pointer;
+        background:var(--coral);color:#fff;border:2px solid var(--line-strong);border-radius:99px;
+        padding:13px 28px;box-shadow:4px 4px 0 rgba(23,36,43,.22);
+        transition:transform .15s ease,box-shadow .15s ease;
+      }
+      .dart-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 rgba(23,36,43,.22)}
+      .dart-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(23,36,43,.22)}
+      .dart-btn:disabled{opacity:.55;cursor:wait;transform:none}
+      .dart-result{margin-top:24px;border-top:2px solid var(--line-strong);padding-top:18px}
+      .dart-count{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.1em;color:var(--ink-soft);margin:0 0 4px}
+      .dart-pick{border-top:1.5px dashed var(--line);padding-top:20px;margin-top:22px}
+      .dart-pick h3{font-size:clamp(23px,3.6vw,29px);font-weight:900;letter-spacing:-.015em;margin:8px 0 6px;line-height:1.08}
+      .dart-pick .dart-photo img{height:200px}
+      .dart-result h3{font-size:clamp(25px,4.4vw,34px);font-weight:900;letter-spacing:-.015em;margin:8px 0 6px;line-height:1.05}
+      .drow{display:grid;grid-template-columns:132px 1fr;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px}
+      .drow:last-of-type{border-bottom:none}
+      .drow .dl{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);padding-top:3px}
+      .drow p{margin:0;color:var(--ink-soft)}
+      .drow p strong{color:var(--ink)}
+      @media (max-width:560px){.drow{grid-template-columns:1fr;gap:2px}.dart-panel{padding:20px 16px}}
+
+      /* food trips */
+      .food-card{display:flex;flex-direction:column}
+      .food-card .frow{padding:9px 0;border-bottom:1px dashed var(--line)}
+      .food-card .frow:last-child{border-bottom:none;padding-bottom:0}
+      .food-card .fl{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);display:block;margin-bottom:3px}
+      .food-card .frow p{margin:0;font-size:14.5px}
+      .food-card .fc-link{margin:auto 0 0;padding-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600}
+      .food-card .fc-link a{color:var(--teal-deep);text-decoration:none}
+      .food-card .fc-link a:hover{text-decoration:underline;text-underline-offset:3px}
+
+      /* timing calendar */
+      .month-btns{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+      .cal-row{display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+      .cal-row:last-of-type{border-bottom:none}
+      .cal-row .cal-name{font-weight:700;font-size:15px}
+      .cal-chips{display:flex;flex-wrap:wrap;gap:4px}
+      .cal-chip{
+        font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.03em;
+        padding:4px 0;width:44px;text-align:center;border-radius:6px;border:1.5px solid transparent;color:var(--ink-soft);
+      }
+      .cal-chip.cls-floor{background:var(--green-soft);color:var(--green)}
+      .cal-chip.cls-value{background:var(--panel-2);color:var(--teal-deep)}
+      .cal-chip.cls-mid{background:transparent;color:var(--ink-faint);border-color:var(--line)}
+      .cal-chip.cls-peak{background:var(--coral-soft);color:var(--coral)}
+      .cal-chip.cls-risk{background:var(--amber-soft);color:var(--amber)}
+      .cal-chip.sel{border-color:var(--line-strong);box-shadow:2px 2px 0 rgba(23,36,43,.18)}
+      .cal-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--ink-soft);margin:12px 0 4px;font-family:"IBM Plex Mono",monospace}
+      .cal-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+      .cal-readout{margin-top:14px;background:var(--panel-2);border-radius:10px;padding:14px 16px;font-size:14.5px}
+      .cal-readout b{font-size:15.5px}
+      .cal-readout ul{margin:8px 0 0;padding-left:19px;color:var(--ink-soft)}
+      .cal-readout li{margin-bottom:5px}
+      @media (max-width:900px){
+        .hunt-grid{grid-template-columns:1fr 1fr}
+        .cal-row{grid-template-columns:1fr;gap:5px}
+      }
+      @media (max-width:560px){.hunt-grid{grid-template-columns:1fr}}
+
+      footer{margin-top:64px;border-top:3px solid var(--line-strong);padding:26px 0 46px}
+      footer .cols{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+      footer h3{margin:0 0 8px;font-size:17px}
+      footer p{margin:0 0 8px;font-size:14px;color:var(--ink-soft)}
+      .credits{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);margin-top:20px;line-height:1.7}
+
+      /* ---------- visual upgrade: hero, section drama, motion ---------- */
+      .hero-media{position:relative;overflow:hidden}
+      .hero-media img{width:100%;height:clamp(168px,23vw,248px);object-fit:cover;animation:kenburns 28s ease-in-out infinite alternate}
+      @keyframes kenburns{from{transform:scale(1) translateY(0)}to{transform:scale(1.08) translateY(-8px)}}
+      .hero-overlay{
+        position:absolute;left:0;right:0;bottom:0;color:#f4f1e8;
+        padding:30px 22px 14px;background:linear-gradient(180deg,rgba(8,18,22,0) 0%,rgba(8,18,22,.55) 55%,rgba(8,18,22,.85) 100%);
+      }
+      .hero-overlay .big{
+        font-size:clamp(20px,3vw,30px);font-weight:900;letter-spacing:-.015em;line-height:1.05;
+        max-width:1120px;margin:0 auto;text-shadow:0 2px 14px rgba(0,0,0,.35);
+      }
+      .hero-overlay .big em{font-style:normal;color:#ffb59d}
+      .hero-chips{max-width:1120px;margin:12px auto 0;display:flex;flex-wrap:wrap;gap:8px}
+      .hero-chips span{
+        font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.1em;
+        border:1px solid rgba(244,241,232,.6);border-radius:99px;padding:4px 11px;color:#f4f1e8;
+        background:rgba(8,18,22,.35);backdrop-filter:blur(3px);
+      }
+      .sec-num{font-size:22px;font-weight:700}
+      .sec-head h2::after{content:"";display:block;width:56px;height:5px;border-radius:3px;background:var(--coral);margin-top:10px}
+      .deal-card{position:relative}
+      .deal-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 55%,var(--coral) 100%);z-index:1}
+      .deal-card,.hunt-card{transition:transform .25s ease,box-shadow .25s ease}
+      @media (hover:hover){
+        .deal-card:hover,.hunt-card:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 rgba(23,36,43,.18)}
+      }
+      .sub-head{font-size:clamp(21px,3.2vw,28px);font-weight:800;letter-spacing:-.01em;margin:32px 0 6px}
+      .sub-head:first-of-type{margin-top:0}
+      .sub-note{margin:0 0 18px;color:var(--ink-soft);max-width:640px}
+
+      /* hunt board: dark board treatment */
+      section.dark{
+        background:#0b3532;color:#f2efe6;border-radius:18px;
+        padding:42px 22px 30px;margin-top:34px;box-shadow:8px 8px 0 rgba(11,53,50,.25);
+      }
+      section.dark .sec-head{border-bottom-color:rgba(242,239,230,.35)}
+      section.dark .sec-head p{color:#c3d2cc}
+      section.dark .sec-num{color:#ff9d7a}
+      section.dark .chip{background:transparent;color:#e9e5d8;border-color:rgba(242,239,230,.45)}
+      section.dark .chip:hover{border-color:#f2efe6}
+      section.dark .chip[aria-pressed="true"]{background:#f2efe6;color:#0b3532;border-color:#f2efe6}
+      section.dark .hunt-count{color:#a9beb5}
+      section.dark .fineprint{color:#93aca1}
+      section.dark .hunt-empty{border-color:rgba(242,239,230,.5);color:#dfe5df}
+
+      /* ---------- photos, logistics strips, trip-length badges ---------- */
+      .hunt-card .hc-photo{margin:-16px -18px 2px;border-bottom:2px solid var(--line-strong)}
+      .hunt-card .hc-photo img{width:100%;height:168px;object-fit:cover}
+      .hc-len{
+        margin:2px -18px 0;padding:8px 18px;background:var(--coral);color:#fff;
+        font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;letter-spacing:.1em;
+        display:flex;justify-content:space-between;align-items:center;gap:10px;
+      }
+      .hc-len .bucket{font-size:11px;opacity:.85;letter-spacing:.06em}
+      @media (max-width:560px){.hc-len{font-size:11.5px;letter-spacing:.05em;padding:8px 14px}.hc-len .bucket{font-size:10px}}
+      .hc-log{font-size:13px;color:var(--ink-soft);background:var(--panel-2);border-radius:8px;padding:8px 11px;line-height:1.5}
+      .hc-log b{color:var(--ink)}
+      .len-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 16px}
+      .len-row .len-label{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;color:#a9beb5;margin-right:2px}
+      .food-card .fc-photo{margin:-20px -22px 14px;border-bottom:2px solid var(--line-strong)}
+      .food-card .fc-photo img{width:100%;height:150px;object-fit:cover}
+      .dart-photo{margin:0 0 16px;border:2px solid var(--line-strong);border-radius:10px;overflow:hidden}
+      .dart-photo img{width:100%;height:230px;object-fit:cover}
+      .logi-strip{background:var(--panel);border:1.5px solid var(--line-strong);border-radius:10px;padding:12px 16px;font-size:14.5px;color:var(--ink-soft);margin-bottom:22px;box-shadow:var(--shadow)}
+      .logi-strip p{margin:0}
+      .logi-strip strong{color:var(--ink)}
+      .cr-ship{margin:14px 0 4px;border:1.5px solid var(--line-strong);border-radius:10px;overflow:hidden}
+      .cr-ship img{width:100%;height:170px;object-fit:cover}
+      .cr-ship figcaption{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);padding:6px 10px;background:var(--panel)}
+
+      /* ---------- deal cards: photography-forward redesign ---------- */
+      .hunt-card{padding:18px 20px 20px;gap:10px}
+      .hunt-card .hc-photo{margin:-18px -20px 4px;position:relative}
+      .hunt-card .hc-photo img{height:208px;opacity:.95;transition:opacity .25s ease}
+      @media (hover:hover){.hunt-card:hover .hc-photo img{opacity:1}}
+      .hunt-card .hc-len{
+        position:absolute;left:0;right:0;bottom:0;margin:0;color:#fff;
+        padding:30px 16px 10px;font-size:12.5px;
+        background:linear-gradient(180deg,rgba(9,22,26,0) 0%,rgba(9,22,26,.78) 55%,rgba(9,22,26,.92) 100%);
+      }
+      .hunt-card .hc-len.solo{position:static;background:var(--coral);padding:8px 14px}
+      .hunt-card h3{font-size:19.5px;line-height:1.18}
+      .hc-price{gap:6px 10px;padding:2px 0 11px;border-bottom:1px dashed var(--line)}
+      .hc-price .amt{font-size:35px;line-height:1;letter-spacing:-.03em}
+      .hc-price .unit{order:3;flex:1 1 100%;font-size:12.5px;color:var(--ink-soft)}
+      .hc-price .hc-save{order:2}
+      .tag.nonstop{background:var(--teal);border-color:var(--teal);color:#fff}
+      .hunt-card .hc-link{font-size:13px;padding-top:2px}
+      .hc-dual{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+      .hc-dual .side{border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--panel-2)}
+      .hc-dual .side.win{border-color:var(--green);background:var(--green-soft)}
+      .hc-dual .dl2{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--ink-faint);display:block;margin-bottom:2px}
+      .hc-dual .dp{font-size:21px;font-weight:900;letter-spacing:-.02em}
+      .hc-dual .dnote{grid-column:1/-1;font-size:13px;color:var(--ink-soft);margin:0}
+      @media (max-width:400px){.hc-dual{grid-template-columns:1fr}}
+      .deal-card .dc-route{font-size:21px}
+      .breakdown .row.total span:last-child{font-size:25px;letter-spacing:-.02em}
+      .food-card .fc-photo img{height:176px}
+
+      /* ---------- polish pass ---------- */
+      ::selection{background:var(--coral-soft)}
+      :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+      nav.sheet-nav{box-shadow:0 12px 24px -18px rgba(23,36,43,.5)}
+      section{scroll-margin-top:70px}
+      .masthead{padding-bottom:0}
+      .lede{max-width:660px}
+
+      @media (max-width:900px){
+        .grid-2,.grid-3,.grid-32,.grid-23{grid-template-columns:1fr}
+        .steps{grid-template-columns:1fr 1fr}
+        .mast-photo{display:none}
+        .sec-head{flex-wrap:wrap}
+        .sec-head p{text-align:left;margin:0;max-width:none}
+        .hero-photo img{height:180px}
+        .hero-media img{height:252px}
+        .hero-overlay{padding:24px 14px 12px}
+        .hero-chips{gap:6px;margin-top:9px}
+        .hero-chips span{font-size:10px;padding:3px 8px}
+        footer .cols{grid-template-columns:1fr}
+      }
+      @media (max-width:520px){
+        .steps{grid-template-columns:1fr}
+        body{font-size:16px}
+        .panel{padding:17px 16px}
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ================= MASTHEAD ================= -->
+    <header class="masthead">
+      <div class="wrap">
+        <div class="mast-top">
+          <div class="mast-text">
+            <div class="kicker-row">
+              <span class="kicker">Bud's Cheat Sheets · Sheet 3</span>
+              <span class="draft-tag">DRAFT — FOR YOUR GREEN LIGHT</span>
+            </div>
+            <h1>Travel, priced<br /><span class="accent">honestly.</span></h1>
+            <p class="lede">Flights, Vegas, all-inclusives, cruises, Puerto Rico and the desert-and-coast runs. <strong>Every price here is the true total, all fees in</strong> — and every deal below earned its place by beating the street price for the same trip. Complete fly-and-stay packages lead, logistics attached.</p>
+          </div>
+        </div>
+
+      </div>
+      <figure class="hero-photo">
+        <div class="hero-media">
+          <img src="assets/img_6f9c7c5e309a7980.jpg" alt="Aerial view of the Cancún Hotel Zone — white-sand beach, turquoise water and resort towers" />
+          <div class="hero-overlay">
+            <p class="big">Every destination.<br />The price you see is <em>the price you pay.</em></p>
+            <div class="hero-chips"><span>LAS VEGAS</span><span>CANCÚN</span><span>PUERTO RICO</span><span>CRUISES</span><span>SOUTHWEST &amp; WEST COAST</span><span>FROM ORD · MDW</span></div>
+          </div>
+        </div>
+        <figcaption>CANCÚN HOTEL ZONE, FROM THE AIR — THE ALL-INCLUSIVE HEARTLAND, SECTION 04.</figcaption>
+      </figure>
+    </header>
+
+    <!-- ================= NAV ================= -->
+    <nav class="sheet-nav" aria-label="Sheet sections">
+      <div class="wrap" id="navLinks">
+        <a href="#hunt">🎯 Hunt Board</a>
+        <a href="#dart" class="fun-link">🗺 Dart Throw</a>
+        <a href="#food" class="fun-link">🍽 Food Trips</a>
+        <a href="#flights">✈ Flights</a>
+        <a href="#vegas">🎲 Las Vegas</a>
+        <a href="#cancun">🏖 Cancún &amp; All-Inclusives</a>
+        <a href="#puertorico">🇵🇷 Puerto Rico</a>
+        <a href="#cruises">🚢 Cruises</a>
+        <a href="#southwest">🌵 Southwest &amp; West Coast</a>
+        <a href="#timing">🗓 Timing</a>
+        <a href="#money">🛡 Trip Insurance</a>
+      </div>
+    </nav>
+
+    <main class="wrap">
+
+      <!-- ================= HUNT BOARD ================= -->
+      <section id="hunt" class="dark">
+        <div class="sec-head">
+          <span class="sec-num">00</span>
+          <h2>The Hunt Board</h2>
+          <p>Two hunts are in: 23 live deals plus the board's first dual-price fare card, verified Oct 22–23, 2026 — true totals, street-price checks and booking links on every card. Headline prices are per person for the full trip; per-day math rides along small, underneath. Complete fly-and-stay packages lead the board, flights nonstop or the card says why not. Every price assumes a Chicago departure (ORD/MDW) — Milwaukee (MKE) and Rockford (RFD) get priced too, and when a nearby airport wins, the card shows both totals with the savings called out. Below the live deals sit the standing value plays from the research bank. Filter it by destination or trip length, search it, sort it.</p>
+        </div>
+        <div class="chips" id="huntChips" role="group" aria-label="Filter hunt board by destination"></div>
+        <div class="len-row"><span class="len-label">TRIP LENGTH →</span><div class="chips" id="lenChips" role="group" aria-label="Filter hunt board by trip length" style="margin:0"></div></div>
+        <div class="hunt-tools">
+          <input type="search" id="huntSearch" placeholder="Search the board — try “steak”, “ferry”, “status match”…" aria-label="Search hunt board" />
+          <select id="huntSort" aria-label="Sort hunt board">
+            <option value="featured">Sort: featured</option>
+            <option value="price">Sort: lowest price</option>
+            <option value="save">Sort: biggest saving</option>
+          </select>
+        </div>
+        <p class="hunt-count" id="huntCount" aria-live="polite"></p>
+        <div class="hunt-grid" id="huntGrid"></div>
+        <div class="hunt-empty" id="huntEmpty" hidden>Nothing on the board matches that — clear the search or pick another destination.</div>
+        <p class="fineprint" style="margin-top:14px">Every card carries a photo of the actual hotel, ship or place, a trip-length badge on every package, and a logistics line — route from Chicago, transfers, book-by dates — so the trip is planned, not just priced. Cards tagged LIVE HUNT were priced and verified live on Oct 22–23, 2026 — prices move fast, and several carry hard deadlines (the ELLIS code ends Oct 29; book-by dates run through Oct 31, Nov 2 and Nov 12), so re-check at the link before you commit. The BANKED cards are the research bank's verified 2026 figures (fee stacks, published rates, seasonal averages) — the standing value plays the live hunts price against.</p>
+      </section>
+
+      <!-- ================= 01 DART THROW ================= -->
+      <section id="dart">
+        <div class="sec-head">
+          <span class="sec-num">01</span>
+          <h2>Toss a dart at the map</h2>
+          <p>Everywhere except home turf. Vegas, Cancún, Puerto Rico, Tucson, San Diego and the cruise ports already run this sheet — the dartboard is the rest of the planet. One throw deals ten pins, each with the why-now, the season, the logistics and the honest catch.</p>
+        </div>
+
+        <div class="panel dart-panel">
+          <div class="dart-stage">
+            <div class="target" aria-hidden="true"><span class="dart-pin" id="dartPin">🎯</span></div>
+            <div class="dart-side">
+              <p class="dart-ticker" id="dartTicker" aria-live="polite">The board is worldwide now — Tokyo to Tirana, Cairo to Chiang Mai. One throw, ten pins. None of them are the usual destinations; those already have their own sections.</p>
+              <button type="button" class="dart-btn" id="dartBtn">🎯 Throw a dart — deal me 10</button>
+              <p class="fineprint" style="margin-top:14px">The pool is the rest of the world, and it grows as the hunts surface deals anywhere on the planet: new nonstop routes out of ORD, currency dips, shoulder seasons, festival windows. Where a pin needs a connection — because no nonstop exists — the pin flags it plainly, the board's one standing exception. Value first — the dart just picks which ten.</p>
+            </div>
+          </div>
+          <div class="dart-result" id="dartResult" hidden></div>
+        </div>
+      </section>
+
+      <!-- ================= 02 FLIGHTS ================= -->
+      <section id="flights">
+        <div class="sec-head">
+          <span class="sec-num">02</span>
+          <h2>Flights out of Chicago</h2>
+          <p>The system first: alerts catch the anomaly, search frames the trip, cross-check proves it, book direct keeps it clean.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step"><span class="n">STEP 1</span><b>Alerts</b><span>Going (ORD/MDW-filtered), Google Flights tracking, Secret Flying, FlyerTalk — where mistake fares surface first.</span></div>
+          <div class="step"><span class="n">STEP 2</span><b>Search</b><span>Google Flights date grid + Explore map. Skyscanner for the broadest market cross-check and "Everywhere" trips.</span></div>
+          <div class="step"><span class="n">STEP 3</span><b>Verify</b><span>Re-price on the airline's own site. Check the fare-class letter in Details before you believe the price.</span></div>
+          <div class="step"><span class="n">STEP 4</span><b>Book direct</b><span>Smooth refunds and changes, nobody between you and the airline when things break.</span></div>
+        </div>
+
+        <div class="grid-32">
+          <div>
+            <div class="panel" style="margin-bottom:20px">
+              <h3>When to book — the 2026 math</h3>
+              <ul>
+                <li><strong>Domestic sweet spot: 15–30 days out</strong> — averages ~$130 less than booking 180+ days ahead (Expedia's 2026 Air Hacks data). Google's five-year average low lands at 39 days.</li>
+                <li><strong>Friday is the cheapest day to book</strong> (~3% under Sunday). "Book on Tuesday" is dead.</li>
+                <li><strong>Tuesday is the cheapest day to fly</strong> domestically — 14% under Sunday, the most expensive day both ways.</li>
+                <li><strong>January is the cheapest month</strong> to fly; Vegas, Orlando and Fort Lauderdale run ~25% below the national average fare.</li>
+                <li><strong>Holidays: have tickets done by Halloween.</strong> Christmas books best ~56 days out, Thanksgiving ~35.</li>
+                <li><strong>Hub attacks happen:</strong> a rival airline undercuts into ORD for a few days, unadvertised. Airfarewatchdog route alerts are the countermeasure.</li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <h3>ORD vs MDW — price both, every time</h3>
+              <div class="grid-2" style="gap:16px">
+                <div>
+                  <h4>O'Hare (ORD)</h4>
+                  <p class="small">United + American fortress hub and the international gateway. Best nonstops, and United-vs-American fare wars on overlapping routes. Blue Line downtown in 40–45 min, runs 24/7.</p>
+                </div>
+                <div>
+                  <h4>Midway (MDW)</h4>
+                  <p class="small">Southwest's base (~90% of traffic), smaller and faster curb-to-gate, Orange Line in 25–30 min. Southwest's Tue/Wed flash sales live here — and the re-fare trick still works: no change fees, so rebook when the price drops and pocket the credit.</p>
+                </div>
+              </div>
+              <div class="callout warn"><p><strong>The 2026 catch:</strong> Southwest's free-bag era is over — first bag is $45 like everyone else. Run the bag math before assuming MDW wins; the old fee edge is gone.</p></div>
+            </div>
+          </div>
+
+          <div>
+            <article class="deal-card" style="margin-bottom:20px">
+              <div class="dc-head"><span class="dc-route">ORD → LAS, round trip</span><span class="tag sample">Sample card</span></div>
+              <p class="dc-sub">Main Cabin · nonstop both ways · Tue out / Fri back · 1 checked bag — the format every flight deal ships in</p>
+              <div class="breakdown">
+                <div class="row"><span>Base fare</span><span>$148.00</span></div>
+                <div class="row"><span>Taxes &amp; carrier fees</span><span>$41.20</span></div>
+                <div class="row"><span>First checked bag</span><span>$45.00</span></div>
+                <div class="row included"><span>Seat selection (Main Cabin)</span><span>Included</span></div>
+                <div class="row total"><span>True total</span><span>$234.20</span></div>
+              </div>
+              <div class="vs-bar">Typical street price for this route: <strong>$310</strong> — this fare beats it by ~24%.
+                <div class="track"><div class="fill" style="width:76%"></div></div>
+              </div>
+              <p class="dc-note"><strong>Why it cards:</strong> midweek both ways, inside the 15–30 day window, Main Cabin — so it takes free changes and boards before the overhead bins fill. The same itinerary in Basic would headline lower and cost more the first time anything moved.</p>
+            </article>
+
+            <div class="panel flat">
+              <h3>2026 bag fees — first checked bag</h3>
+              <div class="table-scroll">
+              <table>
+                <thead><tr><th>Airline</th><th class="num">1st bag</th></tr></thead>
+                <tbody>
+                  <tr><td>American · Delta · Alaska · Southwest</td><td class="num">$45</td></tr>
+                  <tr><td>United</td><td class="num">$45–50</td></tr>
+                  <tr><td>JetBlue (dynamic)</td><td class="num">$45–59</td></tr>
+                  <tr><td>Frontier (dynamic)</td><td class="num">$53–99+</td></tr>
+                </tbody>
+              </table>
+              </div>
+              <p class="small" style="margin-top:10px">Second bag runs $55–60. Overweight (51+ lbs) is a flat $100–200 hit — keep it at 50.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px">
+          <div class="panel">
+            <h3>⚡ Mistake fares — the 4-hour protocol</h3>
+            <p>A real pricing error — a misfiled fare, a currency slip, a dropped zero. Airlines fix them within hours, so the playbook is speed plus discipline:</p>
+            <ul>
+              <li><strong>Book direct with the airline</strong>, inside the first 2–4 hours. OTA bookings can die silently if the carrier rejects the fare.</li>
+              <li><strong>Capture the fare basis and the 13-digit ticket number</strong> — that's your proof.</li>
+              <li><strong>Buy nothing non-refundable</strong> (hotels, activities) until the ticket confirms — 24–48 hours.</li>
+              <li>US carriers aren't legally forced to honor errors, but DOT rules require honor-or-full-refund — in practice, domestic mistake fares usually stick.</li>
+            </ul>
+            <p class="small">Fastest sources: FlyerTalk's Mileage Run forums (zero-day), Secret Flying's mistake-fare desk, Going Premium ($49/yr, vetted, filtered to ORD/MDW).</p>
+          </div>
+          <div class="panel">
+            <h3>The Basic Economy trap</h3>
+            <p>Fare <em>type</em> isn't fare <em>class</em> — and in 2026 Basic is a trap door:</p>
+            <ul>
+              <li><strong>No changes or cancellations</strong> on American, Delta or United Basic. One moved plan and "Basic" costs more than Main Cabin.</li>
+              <li><strong>American Basic earns zero AAdvantage miles</strong> (since Dec 17, 2025). Delta Basic earns zero SkyMiles/Medallion credit.</li>
+              <li><strong>United Basic restricts full-size carry-ons;</strong> American Basic boards Group 9, last.</li>
+              <li><strong>Pro move:</strong> check the booking-code letter at checkout (Y = full-fare economy, N = United Basic, B = American Basic). Two "Main Cabin" results can be wildly different tickets.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 02 VEGAS ================= -->
+      <section id="vegas">
+        <div class="sec-head">
+          <span class="sec-num">03</span>
+          <h2>Las Vegas</h2>
+          <p>The room rate is the ad. The resort fee is the bill. This section prices the bill.</p>
+        </div>
+
+        <div class="logi-strip"><p>✈ <strong>From Chicago:</strong> nonstops ORD/MDW→LAS all day (~4 hrs) · the 15–30-day booking window is the sweet spot · the Strip is ~15 min from LAS · run every room through the fee calculator below before booking — and when a fare looks fat, MKE and RFD get priced too.</p></div>
+
+        <figure class="sec-photo tall">
+          <img src="assets/img_4e58c4c258a62780.jpg" alt="The Las Vegas Strip at dusk from the air, casino lights stretching across the valley" />
+          <figcaption>THE STRIP AT DUSK. EVERY RATE BELOW IS PRE-TAX — CLARK COUNTY THEN TAXES THE FEE ITSELF AT 13.38%.</figcaption>
+        </figure>
+
+        <div class="grid-32">
+          <div>
+            <div class="panel" style="margin-bottom:20px">
+              <h3>The resort-fee map <span class="tag info">Sept 2026</span></h3>
+              <div class="table-scroll">
+              <table>
+                <thead><tr><th>Fee / night</th><th>Properties</th><th class="num">Real cost*</th></tr></thead>
+                <tbody>
+                  <tr><td>$55</td><td>Bellagio · Aria · Cosmopolitan · Vdara · Caesars Palace · Paris · Planet Hollywood · Venetian / Palazzo · Wynn / Encore · Fontainebleau · Resorts World</td><td class="num">$62.36</td></tr>
+                  <tr><td>$50</td><td>MGM Grand · Mandalay Bay · Park MGM · Flamingo · Harrah's · Rio · Virgin</td><td class="num">$56.69</td></tr>
+                  <tr><td>$45</td><td>Luxor · Excalibur · New York-New York · Circus Circus</td><td class="num">$51.02</td></tr>
+                  <tr><td>$0</td><td><strong>Best Western Plus Casino Royale</strong> (center Strip — the only one) · <strong>Four Queens</strong> + <strong>Binion's</strong> (downtown)</td><td class="num">$0.00</td></tr>
+                </tbody>
+              </table>
+              </div>
+              <p class="fineprint">*After the 13.38% Clark County room tax, which is charged on the fee too. Watch the reputations: Treasure Island charges ~$42–50 despite its old "no fee" name, and the Golden Nugget downtown charges $46.</p>
+              <div class="callout warn"><p><strong>Parking counts too:</strong> Strip self-parking at MGM/Caesars runs $20–25/day unless you're mid-tier loyalty or better (MGM Pearl+, Caesars Platinum+). Run it before the rental car looks cheap.</p></div>
+            </div>
+
+            <div class="grid-2">
+              <div class="panel flat">
+                <h3>The coupon book that pays rent</h3>
+                <p class="small"><strong>Las Vegas Advisor's</strong> ~$50/yr coupon book routinely pays for itself in a single night — the standing exhibit is an $18/night Rio coupon with no resort fee, next to $60 "comped" rooms that still bill the fee. Anthony Curtis has been the Strip's consumer advocate for 30+ years; it's the highest-ROI Vegas follow there is.</p>
+              </div>
+              <div class="panel flat">
+                <h3>Mark the calendar</h3>
+                <p class="small">The <strong>annual Vegas 5-Day Sale</strong> (late September, ran its second year in 2026) posts 180+ offers at up to 60% off rooms, bookable for travel through Feb–Mar.</p>
+              </div>
+            </div>
+
+            <div class="panel" style="margin-top:20px">
+              <h3>Nightlife — skip the guest-list pitch</h3>
+              <p>There is no independent Vegas nightlife critic on YouTube — the lane is promoter-run, and anyone offering a "free guest list" is selling <em>you</em> to the club:</p>
+              <div class="callout danger"><p><strong>Treat every "free guest list" as lead generation, not a deal.</strong> Nightlife is only worth paying for with a real price edge — a verified presale ticket under the door price, or genuine happy-hour pricing.</p></div>
+              <p class="small">2026 reality check: top rooms are LIV (Fontainebleau) and Zouk (Resorts World); XS at Wynn reopens Nov 5, 2026 after a full renovation; Drai's After Hours runs latest (1 AM doors, Thu–Sun). Budget the night honestly — covers $20–50, club cocktails $20–30. For what's actually changing on the ground (fee hikes, closures, quiet cuts), <strong>VitalVegas</strong> is the feed behind the news.</p>
+            </div>
+          </div>
+
+          <div>
+            <article class="deal-card" style="margin-bottom:20px">
+              <div class="dc-head"><span class="dc-route">3 nights, mid-Strip</span><span class="tag sample">Sample card</span></div>
+              <p class="dc-sub">The "$89 a night" room, priced whole — fee, tax-on-the-fee and all</p>
+              <div class="breakdown">
+                <div class="row"><span>Room — 3 × $89 headline rate</span><span>$267.00</span></div>
+                <div class="row"><span>Resort fee — 3 × $55</span><span>$165.00</span></div>
+                <div class="row"><span>Tax on the resort fee (13.38%)</span><span>$22.08</span></div>
+                <div class="row"><span>Room tax (13.38%)</span><span>$35.72</span></div>
+                <div class="row total"><span>True total</span><span>$489.80</span></div>
+              </div>
+              <div class="vs-bar">The headline says $267. The checkout says $489.80 — <strong>83% more</strong>, before parking.
+                <div class="track"><div class="fill" style="width:55%"></div></div>
+              </div>
+              <p class="dc-note"><strong>The takeaway:</strong> a $0-fee property at $119/night beats a $55-fee property at $89. Run this math on every Vegas room before you book — the teaser rate never tells the story.</p>
+            </article>
+
+            <div class="panel calc">
+              <h3>🧮 Run your own room</h3>
+              <p class="small">Headline rate in, true total out — fee and the tax-on-the-fee included.</p>
+              <label for="cRate">Nightly room rate ($)</label>
+              <input id="cRate" type="number" min="0" step="1" value="89" inputmode="decimal" />
+              <label for="cNights">Nights</label>
+              <input id="cNights" type="number" min="1" max="30" step="1" value="3" inputmode="numeric" />
+              <label for="cFee">Resort fee tier</label>
+              <select id="cFee">
+                <option value="55">$55 — top tier (Bellagio, Wynn, Cosmo…)</option>
+                <option value="50">$50 — MGM Grand, Mandalay Bay, Rio…</option>
+                <option value="45">$45 — Luxor, Excalibur…</option>
+                <option value="0">$0 — Casino Royale / Four Queens / Binion's</option>
+              </select>
+              <label for="cPark">Self-parking days ($22.50/day)</label>
+              <input id="cPark" type="number" min="0" max="30" step="1" value="0" inputmode="numeric" />
+              <div class="out" aria-live="polite">
+                <div class="row"><span>Room</span><span id="oRoom">$267.00</span></div>
+                <div class="row"><span>Resort fees</span><span id="oFee">$165.00</span></div>
+                <div class="row"><span>Tax 13.38% (on room + fee)</span><span id="oTax">$57.80</span></div>
+                <div class="row"><span>Parking</span><span id="oPark">$0.00</span></div>
+                <div class="row grand"><span>True total</span><span id="oTotal">$489.80</span></div>
+                <div class="verdict" id="oVerdict"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 03 CANCUN ================= -->
+      <section id="cancun">
+        <div class="sec-head">
+          <span class="sec-num">04</span>
+          <h2>Cancún &amp; All-Inclusives</h2>
+          <p>All-inclusive preferred — but "all-inclusive" varies by property, so every card reads the inclusions line by line.</p>
+        </div>
+
+        <div class="logi-strip"><p>✈ <strong>From Chicago:</strong> nonstop ORD→CUN (~3.5–4 hrs) · pre-book the airport transfer (Happy Shuttle / USA Transfers, ~$18pp shared) and walk straight past the shark tank — your driver waits <em>outside</em> · Visitax ~$15 and the ~$4–5/night environmental tax land at the edges · storm-season trips: insurance bought the day you book.</p></div>
+
+        <div class="grid-32">
+          <div>
+            <div class="panel" style="margin-bottom:20px">
+              <h3>Costco Travel — the value anchor</h3>
+              <p>For Mexico and the Caribbean, Costco is the benchmark every other package gets priced against — on <strong>total value</strong>, never the room rate alone:</p>
+              <ul>
+                <li><strong>Digital Shop Card</strong> lands by email after the trip — $50 to $500+ back, depending on the package.</li>
+                <li><strong>Airport transfers included</strong> (typically shared; private on select packages — check the listing), plus hotel taxes and gratuities in the price.</li>
+                <li><strong>Executive members stack 2%</strong> back (up to $1,250/yr) — but you must still be Executive when the trip <em>begins</em> or you forfeit it. The upgrade pays for itself at ~$3,250/yr of travel.</li>
+                <li>Airfare is never sold standalone — it bundles. Selection is curated and smaller than Expedia's; that's the trade.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3>The ALG trio — one owner, three storefronts</h3>
+              <p><strong>Apple Vacations, CheapCaribbean and Funjet</strong> are all ALG Vacations (Hyatt) — same inventory engine, different shop windows. Their "up to 75% off" is off <strong>brochure rates</strong>, not street.</p>
+              <ul>
+                <li>Price the <em>same</em> package — same dates, room, departure airport — across all three, plus Kayak and Expedia. In 2026 price tests <strong>no single brand always won</strong>; Funjet and CheapCaribbean each took different packages.</li>
+                <li>Apple runs a published <strong>price-match policy</strong> (same-day, every component identical). Deposits run $250–350/person.</li>
+                <li>Airline vacation arms (Southwest / United / JetBlue Vacations) sometimes undercut — and you earn miles on the package.</li>
+              </ul>
+              <div class="callout warn"><p><strong>Sargassum season runs ~April–August.</strong> A cheap July all-inclusive can mean a rotting-seaweed beach. The price is only a deal if the beach is swimmable — check the sargassum report before booking summer dates.</p></div>
+            </div>
+          </div>
+
+          <div>
+            <article class="deal-card" style="margin-bottom:20px">
+              <div class="dc-head"><span class="dc-route">5 nights, all-inclusive · 2 adults</span><span class="tag sample">Sample card</span></div>
+              <p class="dc-sub">Nonstop flights from ORD + resort + transfers — the package format</p>
+              <div class="breakdown">
+                <div class="row"><span>Package (air + resort + transfers)</span><span>$2,398.00</span></div>
+                <div class="row included"><span>Resort taxes &amp; gratuities</span><span>Included</span></div>
+                <div class="row included"><span>Airport transfers</span><span>Included</span></div>
+                <div class="row"><span>Checked bags — 2 × $45 × 2 ways</span><span>$180.00</span></div>
+                <div class="row total"><span>True total</span><span>$2,578.00</span></div>
+              </div>
+              <div class="vs-bar">That's <strong>$1,289 per person, $258 a day</strong> with food and drink in — the number a package has to beat à la carte.
+                <div class="track"><div class="fill" style="width:64%"></div></div>
+              </div>
+              <p class="dc-note"><strong>Read the inclusions line:</strong> low-tier "all-inclusive" listings hide buffet-only dining, premium-liquor upcharges, days-ahead restaurant reservations and paid Wi-Fi. Costco and Apple state inclusions explicitly — if a listing won't state them, walk away.</p>
+            </article>
+
+            <div class="panel flat">
+              <h3>Do this, skip that — Riviera Maya</h3>
+              <ul>
+                <li><strong>Snorkel Puerto Morelos, not the Hotel Zone</strong> — shore-entry reef, small boats booked at the pier for less than the hotel desk charges. Hotel Zone beaches have nothing worth seeing from shore.</li>
+                <li><strong>Mornings only.</strong> Wind kills visibility after 11 AM. Akumal's turtle zone is guided-only; whale sharks run from June.</li>
+                <li><strong>Xel-Há math:</strong> the all-inclusive ticket covers river, gear, lockers, bikes, tubes, buffet and domestic drinks — zip-lines and photo packages are extra. Know it before the upsell.</li>
+              </ul>
+              <p class="fineprint">Field intel: Mr Playas (Reddit-sourced snorkel verdicts) and Discover with Orlando, a 10-year Riviera Maya tour operator — logistics gold, recommendations read as top-of-funnel sales.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 04 PUERTO RICO ================= -->
+      <section id="puertorico">
+        <div class="sec-head">
+          <span class="sec-num">05</span>
+          <h2>Puerto Rico</h2>
+          <p>The Caribbean run with no passport, no currency exchange, and a 500-year-old city at the end of the flight.</p>
+        </div>
+
+        <div class="logi-strip"><p>✈ <strong>From Chicago:</strong> nonstop ORD→SJU (~5 hrs) — no passport, dollars, US cell service · SJU to Condado or Old San Juan is ~15 min · anything west of the metro (Rincón stays, a Guavate Sunday) means a rental car, booked with the flight.</p></div>
+
+        <div class="grid-23">
+          <figure class="sec-photo" style="margin:0">
+            <img src="assets/img_0569c3d7f1ff99d6.jpg" alt="A cobblestone street in Old San Juan lined with pastel colonial buildings, the cathedral dome ahead" style="height:100%;min-height:340px" />
+            <figcaption>OLD SAN JUAN — BLUE COBBLESTONE, PASTEL FACADES, CATHEDRAL AT THE END OF THE STREET.</figcaption>
+          </figure>
+          <div>
+            <div class="panel" style="margin-bottom:20px">
+              <h3>Why PR runs different</h3>
+              <ul>
+                <li><strong>No passport, US dollars, US cell service</strong> — the easiest Caribbean trip there is from ORD, and a natural pairing with a San Juan cruise departure.</li>
+                <li><strong>Base in Condado or Old San Juan:</strong> Condado for the beach-and-lagoon strip (Ashford Avenue, Ventana al Mar), Old San Juan for the port-day walk — Paseo de la Princesa, the Raíces fountain, the city-wall perimeter.</li>
+                <li><strong>See it before you book it:</strong> TravelWithSilent's no-narration walking tours cover both neighborhoods end to end — the rare preview that shows you the street, not the sales pitch.</li>
+              </ul>
+            </div>
+            <div class="panel flat">
+              <h3>Where this section stands</h3>
+              <p class="small">The full Puerto Rico file prices the Condado strip's resort-fee and tax math, SJU fare patterns from ORD/MDW, and the all-inclusive question — PR has few true AIs, so the sheet prices the best beach resorts against Cancún's all-in totals, honestly, line for line. The deep-dive finds already live on the Hunt Board and in §09–§10; the cards land here in this same format.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 05 CRUISES ================= -->
+      <section id="cruises">
+        <div class="sec-head">
+          <span class="sec-num">06</span>
+          <h2>Cruises</h2>
+          <p>Agencies win on price, direct wins on simplicity — and nothing about a price drop is automatic. You spot it, you file it.</p>
+        </div>
+
+        <div class="logi-strip"><p>✈ <strong>From Chicago:</strong> every sailing here leaves a fly-to port — Miami, Port Canaveral, Galveston or San Juan · fly in the day before, always, and add the buffer night and the flights to the true total · price ORD/MDW against MKE/RFD for the port flight before you book either.</p></div>
+
+        <figure class="sec-photo">
+          <img src="assets/img_13747fe2f2b8b508.jpg" alt="A large cruise ship under way in turquoise water, seen from the air" />
+          <figcaption>72% OF SAILINGS DIP 5%+ AFTER BOOKING. CATCH THE DIP BEFORE FINAL PAYMENT — THE TABLE BELOW SHOWS WHO HONORS A REPRICE.</figcaption>
+        </figure>
+
+        <div class="grid-32">
+          <div>
+            <div class="panel" style="margin-bottom:20px">
+              <h3>Where cruise prices actually move</h3>
+              <ul>
+                <li><strong>VacationsToGo's 90-Day Ticker</strong> is the last-minute clearinghouse — sailings inside 90 days, average availability under a week. No booking fees. Their real edge is <strong>group space</strong>: agency-blocked cabins at negotiated rates, forum-verified at roughly half the line's direct price on the same sailing. Always ask: assigned cabin, or GTY (cheaper, but the line picks your spot)?</li>
+                <li><strong>CruiseCompete:</strong> submit one sailing, get 3–5 agency bids that must include all taxes and fees. Same-cabin gaps of 5–15% are common.</li>
+                <li><strong>Quiet offers:</strong> published prices are retail. A phone quote unlocks unpublished reductions and commission rebated as onboard credit — $100–300 is routine. Never pay an agency booking fee for a cruise; the good ones don't charge one.</li>
+                <li><strong>Repositioning cruises</strong> (Apr–May, Sep–Nov) run 50–70% cheaper per day — more sea days, oddball itineraries, real value if the sea days are the point.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3>Price-drop repricing — who honors what</h3>
+              <div class="table-scroll">
+              <table>
+                <thead><tr><th>Line</th><th>Policy</th></tr></thead>
+                <tbody>
+                  <tr><td>Royal Caribbean</td><td>Best Price Guarantee: reprice or refund before final payment. After final payment, upgrades only — full reprice only within 24h of booking.</td></tr>
+                  <tr><td>Carnival</td><td>Early Saver: price protection before final payment; after, the difference comes back as onboard credit.</td></tr>
+                  <tr><td>Celebrity</td><td>Mirrors Royal Caribbean.</td></tr>
+                  <tr><td>Norwegian</td><td>Discretionary — no published guarantee. Ask, in writing.</td></tr>
+                  <tr><td>MSC · Holland America · Princess</td><td>Weak or none. Price the first quote like it's final.</td></tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <article class="deal-card" style="margin-bottom:20px">
+              <div class="dc-head"><span class="dc-route">7-night Caribbean, balcony · 2 guests</span><span class="tag sample">Sample card</span></div>
+              <p class="dc-sub">The "from $699" sailing, priced whole</p>
+              <div class="breakdown">
+                <div class="row"><span>Cruise fare — 2 × $699</span><span>$1,398.00</span></div>
+                <div class="row"><span>Port taxes &amp; fees</span><span>$312.00</span></div>
+                <div class="row"><span>Gratuities — 7 nights × $18 × 2</span><span>$252.00</span></div>
+                <div class="row total"><span>True total</span><span>$1,962.00</span></div>
+              </div>
+              <div class="vs-bar"><strong>$140 per person, per day</strong> — the only per-day number worth comparing across lines.
+                <div class="track"><div class="fill" style="width:71%"></div></div>
+              </div>
+              <p class="dc-note"><strong>Fee traps priced in, every card:</strong> port taxes are fixed and non-refundable even when fares drop, and "free" drink/dining perks (NCL's Free at Sea is the exhibit) carry $300–400+ per person in mandatory service charges. Drink-package break-even is roughly 5–7 drinks a day — below that, pay as you go.</p>
+            </article>
+
+            <div class="panel calc" style="margin-bottom:20px">
+              <h3>🧮 Cruise all-in comparator</h3>
+              <p class="small">The teaser fare is never the price. Pick a line, add your base fare — the tool stacks the line's verified 2026 add-ons (gratuities, drink package, Wi-Fi) and gives you the only number worth comparing: <strong>all-in per person, per day</strong>.</p>
+              <label for="crLine">Cruise line</label>
+              <select id="crLine">
+                <option value="carnival">Carnival (Excel class)</option>
+                <option value="rc">Royal Caribbean</option>
+                <option value="ncl">Norwegian (NCL)</option>
+                <option value="msc">MSC</option>
+                <option value="virgin">Virgin Voyages</option>
+              </select>
+              <label for="crFare">Base fare per person ($)</label>
+              <input id="crFare" type="number" min="0" step="10" value="699" inputmode="decimal" />
+              <label for="crNights">Nights</label>
+              <input id="crNights" type="number" min="1" max="30" step="1" value="7" inputmode="numeric" />
+              <label for="crGuests">Guests</label>
+              <input id="crGuests" type="number" min="1" max="8" step="1" value="2" inputmode="numeric" />
+              <label for="crExtras">Add-ons</label>
+              <select id="crExtras">
+                <option value="full">Drink package + Wi-Fi (the full stack)</option>
+                <option value="grat">Gratuities only — pay as I go</option>
+              </select>
+              <figure class="cr-ship"><img id="crShipImg" src="assets/img_1552bf5d2f6d9bae.jpg" alt="Carnival Mardi Gras — the Excel-class ship behind the Carnival stack" /><figcaption id="crShipCap">CARNIVAL MARDI GRAS — EXCEL CLASS</figcaption></figure>
+              <div class="out" aria-live="polite">
+                <div class="row"><span>Base fare per day</span><span id="crBaseDay">$99.86</span></div>
+                <div class="row"><span>Add-ons per day</span><span id="crAddDay">$123.34</span></div>
+                <div class="row"><span>Port taxes &amp; fees</span><span>varies — added per itinerary</span></div>
+                <div class="row grand"><span>All-in per person / day</span><span id="crAllDay">$223.20</span></div>
+                <div class="row"><span>Trip total, all guests (excl. port taxes)</span><span id="crTrip">$3,124.76</span></div>
+                <div class="verdict" id="crVerdict"></div>
+              </div>
+              <p class="fineprint" style="margin-top:10px">Fee stacks verified 2026: RC $18.50 grat + ~$97 drinks + ~$29 Wi-Fi ≈ $145/day · Carnival $17 + $82.54 CHEERS! (grat incl.) + $23.80 Wi-Fi ≈ $123 · NCL $20 + $28.50 "free" drink-pkg gratuity + ~$30 Wi-Fi ≈ $79 · MSC $17 + Easy Plus ~$61–64 (grat incl.) + ~$10–14 Wi-Fi ≈ $90 · Virgin $20 grat + ~$35 bar tab, Wi-Fi included ≈ $55. Port taxes are itinerary-specific and come on top — add them to any fare you compare.</p>
+            </div>
+
+            <div class="panel flat">
+              <h3>The watch list</h3>
+              <p class="small"><strong>Gary Bembridge</strong> (Tips for Travellers) and <strong>Emma Cruises</strong> are the gold standard — both refuse free cruises, pay their own way, and say what a cabin is worth at the price paid. <strong>Royal Caribbean Blog</strong> tracks fleetwide price moves and gratuity hikes; <strong>Cruise Critic's</strong> Price Drops tool and forums surface live deals.</p>
+              <p class="small" style="margin-top:10px"><strong>Promo clock:</strong> Royal Caribbean's BOGO60 (60% off the 2nd guest) plus kids 12 &amp; under sail free on select 3+ night sailings both end <strong>Nov 2, 2026</strong> — verified against the line's own promo terms in the Oct 22 hunt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 06 SOUTHWEST & WEST COAST ================= -->
+      <section id="southwest">
+        <div class="sec-head">
+          <span class="sec-num">07</span>
+          <h2>Southwest &amp; West Coast</h2>
+          <p>One run, two landscapes — saguaro desert and Pacific coast, grouped because they pair in a single trip and price against each other.</p>
+        </div>
+
+        <div class="logi-strip"><p>✈ <strong>From Chicago:</strong> Tucson — nonstop ORD→TUS, or PHX + a ~2-hr desert drive; San Diego — nonstop ORD/MDW→SAN · both are hotel last-minute towns (the 8–14-day window), never flight last-minute towns · the pair also flies as one trip: into TUS, out of SAN.</p></div>
+
+        <h3 class="sub-head">🌵 Tucson — the desert run</h3>
+        <p class="sub-note">Saguaros, a missile silo, and a UNESCO food city. The thinnest video lane of any destination here — so this file is built from written intel.</p>
+
+        <figure class="sec-photo tall">
+          <img src="assets/img_a37f1f88db3a08ff.jpg" alt="Sunset over a saguaro forest in the Sonoran Desert near Tucson" />
+          <figcaption>SAGUARO COUNTRY AT SUNSET. ONE $25 PASS COVERS BOTH PARK DISTRICTS FOR 7 DAYS.</figcaption>
+        </figure>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3>One visit? Go West</h3>
+            <ul>
+              <li><strong>Saguaro West beats East</strong> for a first trip — the densest saguaro stands, the Bajada Loop Drive, Signal Hill petroglyphs. Best short hike: <strong>Valley View Overlook</strong>.</li>
+              <li><strong>$25 per vehicle covers both districts for 7 days</strong> — the cheapest headline act on this whole sheet.</li>
+              <li><strong>Arizona-Sonora Desert Museum</strong> — 98 acres of zoo, botanical garden and earth museum in one, with the Raptor Free Flight show.</li>
+              <li><strong>Titan Missile Museum</strong> — the underground tour books out; reserve ahead. <strong>San Xavier del Bac</strong>, the "White Dove of the Desert," is the other essential stop.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Eat like it's designated</h3>
+            <p>Tucson is a <strong>UNESCO City of Gastronomy</strong> — the Mexican food is the attraction, not a side quest. Work 4th Avenue's vintage strip between meals.</p>
+            <p class="small">Honest gap, stated plainly: no standout Tucson YouTuber surfaced in the research — every other destination here has a voice; Tucson's intel is written-source. The full city file adds lodging math (desert resorts vs in-town value), TUS fare patterns, and the winter-season pricing curve.</p>
+          </div>
+        </div>
+        <h3 class="sub-head">🌊 San Diego — the coast run</h3>
+        <p class="sub-note">70 and sunny, priced like it knows it. The play is hotel discipline and a tight 48 hours.</p>
+
+        <figure class="sec-photo">
+          <img src="assets/img_500933e889fb65fb.jpg" alt="La Jolla Cove in San Diego — rocky shoreline, sea lions on the rocks, palms above the beach" />
+          <figcaption>LA JOLLA COVE, SEA LIONS INCLUDED AT NO EXTRA CHARGE.</figcaption>
+        </figure>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3>The 48-hour hit list</h3>
+            <ul>
+              <li><strong>La Jolla Cove</strong> — sea lions on the rocks, the postcard shot, free.</li>
+              <li><strong>Hotel del Coronado</strong> — walk the grounds of the 1888 grande dame even if you're not sleeping there.</li>
+              <li><strong>Balboa Park</strong> — Spanish Revival architecture, museums, gardens.</li>
+              <li><strong>Point Loma &amp; Cabrillo</strong> — the 1542 landing site, WWII bunkers, harbor views; <strong>Mount Soledad</strong> for the panorama.</li>
+              <li><strong>Old Town</strong> (the birthplace of California) and <strong>Liberty Station</strong> to close it out.</li>
+            </ul>
+            <p class="fineprint">Route assembled from Voyager Guru + Dusan's World's 48-hours-in-San-Diego pass — history-rich, not just photo stops.</p>
+          </div>
+          <div class="panel">
+            <h3>Hotel discipline</h3>
+            <p><strong>Voyager Guru</strong> has 350+ deep-dive hotel reviews on file — the move is looking up your <em>specific</em> property before booking, because San Diego's rate spread between a great-value week and an event week is enormous.</p>
+            <p class="small">The full city file adds the SAN fare math from ORD/MDW, the neighborhood-by-neighborhood lodging map (Coronado money vs Mission Valley value), and event-week traps. Cards land here in the same all-fees-in format as everything above.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 08 FOOD TRIPS ================= -->
+      <section id="food">
+        <div class="sec-head">
+          <span class="sec-num">08</span>
+          <h2>Worth the flight: food destinations</h2>
+          <p>The rest of the planet's table. The home-turf destinations eat in their own sections — these are the food trips worth a long flight: the dish that justifies the airfare, what eating well actually costs, when to go, how you get there, and the catch.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="panel food-card">
+            <figure class="fc-photo"><img src="assets/img_bf3f8be5a06ef8bf.jpg" alt="A steaming bowl of ramen with egg and scallions" loading="lazy" /></figure>
+            <h3>🍜 Tokyo — the yen is the discount</h3>
+            <div class="frow"><span class="fl">The dish</span><p><strong>Ramen</strong>, in a country that treats a noodle bowl like a craft discipline — then the whole ladder behind it: conveyor-belt sushi, depachika basement food halls, standing sake bars. There is no single plate; the city itself is the dish.</p></div>
+            <div class="frow"><span class="fl">Eating well costs</span><p>Less than it should — the <strong>yen sits near a four-decade low</strong> (Going's 2026 budget file), so the exchange rate does the discounting. No coupons, no happy hours: world-class eating at prices that read like a mid-tier US city.</p></div>
+            <div class="frow"><span class="fl">When to go</span><p><strong>Late Oct–Nov</strong>: fall color, comfortable walking weather between meals, and the new-route launch window on fares.</p></div>
+            <div class="frow"><span class="fl">Getting there</span><p>Three nonstops by spring 2027: United flies ORD→Haneda and restores <strong>daily ORD→Narita from Oct 24, 2026</strong>; American enters the route Mar 27, 2027 — competition is the fare play.</p></div>
+            <div class="frow"><span class="fl">The catch</span><p>The best rooms seat eight people and the queue is the reservation system. And it's ~13 hours in the air — build the trip around eating and the flight earns it.</p></div>
+            <p class="fc-link"><a href="https://aviationweek.com/air-transport/airlines-lessors/50-new-routes-launching-october-2026" target="_blank" rel="noopener">The new ORD–Tokyo route file — Aviation Week ↗</a></p>
+          </div>
+
+          <div class="panel food-card">
+            <figure class="fc-photo"><img src="assets/img_aa9c603e07ef0bb4.jpg" alt="Korean barbecue grilling at the table with banchan" loading="lazy" /></figure>
+            <h3>🥩 Seoul — barbecue as a team sport</h3>
+            <div class="frow"><span class="fl">The dish</span><p><strong>Korean barbecue</strong> — you grill it yourself, wrap it in lettuce with garlic and ssamjang, and the banchan keep coming free. Then Gwangjang Market for bindaetteok pancakes and knife-cut noodles, eaten shoulder to shoulder.</p></div>
+            <div class="frow"><span class="fl">Eating well costs</span><p>Seoul keeps landing on <strong>Chicago's December deal boards</strong>, and the won stretches on the ground: market meals price like snacks, and a full barbecue spread for the table costs what one steakhouse entrée does at home.</p></div>
+            <div class="frow"><span class="fl">When to go</span><p><strong>December</strong> for the deal fares — the cold is exactly why they're deals. April–May trades the discount for blossom season.</p></div>
+            <div class="frow"><span class="fl">Getting there</span><p><strong>ORD→Incheon nonstop</strong> (Korean Air / Asiana), then the AREX express train puts you downtown in under an hour.</p></div>
+            <div class="frow"><span class="fl">The catch</span><p>December averages −3°C at night to 4°C by day — this is a winter-city food trip, gloves between restaurants. The nonstop is 13–14 hours.</p></div>
+            <p class="fc-link"><a href="https://manyflights.io/blog/best-international-flight-deals-from-chicago-december" target="_blank" rel="noopener">Chicago's December international deal board ↗</a></p>
+          </div>
+
+          <div class="panel food-card">
+            <figure class="fc-photo"><img src="assets/img_371faf8a4a41b2bf.jpg" alt="A bowl of phở with herbs, lime and chili" loading="lazy" /></figure>
+            <h3>🍲 Hanoi &amp; Hoi An — phở for pocket change</h3>
+            <div class="frow"><span class="fl">The dish</span><p><strong>Phở</strong> at a Hanoi street stall at 7 AM — the real breakfast of the city — and in Hoi An, <strong>cao lầu</strong>, the noodle dish that exists only there, plus white-rose dumplings in the lantern-lit old town.</p></div>
+            <div class="frow"><span class="fl">Eating well costs</span><p>Going's line says it best: a bowl of phở <strong>costs less than your morning coffee back home</strong>. A comfortable mid-range Vietnam trip — good hotels, sit-down dinners, domestic hops — runs <strong>$80–150 a day</strong> all-in.</p></div>
+            <div class="frow"><span class="fl">When to go</span><p><strong>February–April or August–October</strong> — the shoulder windows that dodge both the Tết (Lunar New Year) price surge and peak-season airfare.</p></div>
+            <div class="frow"><span class="fl">Getting there</span><p>⚠ Connections — no nonstop exists from Chicago; routings run via an Asian hub into Hanoi (HAN) or Ho Chi Minh City (SGN), with cheap domestic flights stitching the country together.</p></div>
+            <div class="frow"><span class="fl">The catch</span><p>The traffic is a contact sport and crossing the street is a learned skill. Two stops each way is the real price — the food is the rebate.</p></div>
+            <p class="fc-link"><a href="https://www.going.com/guides/best-budget-travel-destinations" target="_blank" rel="noopener">Going's best budget destinations file ↗</a></p>
+          </div>
+
+          <div class="panel food-card">
+            <figure class="fc-photo"><img src="assets/img_120e001b60a0d47a.jpg" alt="A Bangkok street-food stall at night, wok flames and crowds" loading="lazy" /></figure>
+            <h3>🌶 Bangkok &amp; Chiang Mai — the street-food capital</h3>
+            <div class="frow"><span class="fl">The dish</span><p><strong>Street food as fine dining</strong>: wok-fired pad see ew, boat noodles, mango sticky rice — Bangkok's stalls hold Michelin listings, and Chiang Mai adds khao soi, the curry-noodle bowl the north guards jealously.</p></div>
+            <div class="frow"><span class="fl">Eating well costs</span><p>Backpacker math runs <strong>$25–50 a day</strong> (Going) and comfort doesn't cost much more. The islands — Phuket, Koh Samui — run <strong>40–60% pricier than Chiang Mai</strong>; the value lives on the mainland and up north.</p></div>
+            <div class="frow"><span class="fl">When to go</span><p><strong>May–June or September–October</strong> shoulders price below the Nov–Mar high season; Nov–Feb is the cool, dry classic at higher rates.</p></div>
+            <div class="frow"><span class="fl">Getting there</span><p>⚠ Connections — via Bangkok (BKK) on one stop from a hub, then a 1-hour hop or the overnight train to Chiang Mai. A new <strong>300-baht (~$9) tourist entry fee</strong> applies on air arrivals from 2026.</p></div>
+            <div class="frow"><span class="fl">The catch</span><p>Heat is the house condition, and Feb–Apr brings the north's smoky season — the shoulder windows above are picked to dodge it.</p></div>
+            <p class="fc-link"><a href="https://www.going.com/guides/best-budget-travel-destinations" target="_blank" rel="noopener">Going's best budget destinations file ↗</a></p>
+          </div>
+
+          <div class="panel food-card">
+            <figure class="fc-photo"><img src="assets/img_ff8fa32757f759b9.jpg" alt="Pastéis de nata — Lisbon custard tarts, warm and blistered" loading="lazy" /></figure>
+            <h3>🥧 Lisbon — Europe's affordable table</h3>
+            <div class="frow"><span class="fl">The dish</span><p><strong>Pastel de nata</strong>, warm and blistered, eaten standing at the counter with cinnamon — then tasca lunches: bifana pork sandwiches, grilled fish, the fixed-price prato do dia that feeds the neighborhood.</p></div>
+            <div class="frow"><span class="fl">Eating well costs</span><p>Portugal's cost base runs <strong>roughly one-third lower than the US</strong>, and spring shoulder fares compress the flight on top of it. It's the full European food trip at a daily spend that feels domestic.</p></div>
+            <div class="frow"><span class="fl">When to go</span><p><strong>Spring shoulder (Mar–May)</strong> — mild weather, sardine season approaching, fares below summer. Early fall is the understudy.</p></div>
+            <div class="frow"><span class="fl">Getting there</span><p><strong>ORD→Lisbon nonstop</strong> (TAP) — one of the shortest Europe hops on this page, which makes it the easiest long weekend of the six.</p></div>
+            <div class="frow"><span class="fl">The catch</span><p>The hills are real and the center's prices are creeping as the secret spreads. Eat a few neighborhoods out — that's where the tascas still price for locals.</p></div>
+            <p class="fc-link"><a href="https://retirehub.org/articles/spring-shoulder-season-trips-retirees-2027/" target="_blank" rel="noopener">Portugal's spring shoulder-season math ↗</a></p>
+          </div>
+
+          <div class="panel food-card">
+            <figure class="fc-photo"><img src="assets/img_18c476ad9982d52e.jpg" alt="Jemaa el-Fnaa square at dusk — Marrakech's open-air food fair" loading="lazy" /></figure>
+            <h3>🍢 Marrakech — dinner in the open-air food fair</h3>
+            <div class="frow"><span class="fl">The dish</span><p><strong>Jemaa el-Fnaa at dusk</strong> — a square that turns into a hundred-stall open-air restaurant every night: grilled skewers, harira soup, snail broth for the brave, then a tagine lunch the next day inside the medina.</p></div>
+            <div class="frow"><span class="fl">Eating well costs</span><p>Morocco sits in the <strong>$35–60 a day</strong> band on the 2026 cheapest-countries tables — riad breakfasts, market lunches and a full medina dinner for what a single entrée costs at home.</p></div>
+            <div class="frow"><span class="fl">When to go</span><p><strong>Spring and fall shoulders</strong> — summer is desert-hot and winter nights in the medina run cold. The food fair runs every night of the year.</p></div>
+            <div class="frow"><span class="fl">Getting there</span><p>⚠ Connections — no ORD nonstop exists; routings run via European hubs or Casablanca. Riads are hidden in the medina maze — the good ones send someone to meet you at the square.</p></div>
+            <div class="frow"><span class="fl">The catch</span><p>Haggling is the pricing system, not a scam — but agree every price before the service, from the taxi to the henna, and the trip stays fun.</p></div>
+            <p class="fc-link"><a href="https://www.weroad.com/blog/the-cheapest-countries-to-visit-in-2026" target="_blank" rel="noopener">The cheapest countries to visit in 2026 ↗</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="timing">
+        <div class="sec-head">
+          <span class="sec-num">09</span>
+          <h2>Timing — the seasonal calendar</h2>
+          <p>Same trip, different month, wildly different price. Pick a month and read the whole board at once.</p>
+        </div>
+
+        <div class="panel" style="margin-bottom:20px">
+          <h3>When each destination is cheap, sweet, peak — or a trap</h3>
+          <div class="month-btns" id="calMonths" role="group" aria-label="Pick a month"></div>
+          <div id="calRows"></div>
+          <div class="cal-legend">
+            <span><i style="background:var(--green)"></i>FLOOR — cheapest of the year</span>
+            <span><i style="background:var(--teal)"></i>SWEET — value + good conditions</span>
+            <span><i style="background:var(--line)"></i>Normal</span>
+            <span><i style="background:var(--coral)"></i>PEAK — priciest</span>
+            <span><i style="background:var(--amber)"></i>CHEAP BUT RISKY — storm / heat / seaweed</span>
+          </div>
+          <div class="cal-readout" id="calReadout" aria-live="polite"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Last-minute mechanics — where late actually pays</h3>
+            <ul>
+              <li><strong>Last-minute is a hotel and cruise game, not a flight game.</strong> Flights inside 14–21 days usually cost <em>more</em> — the cheap buckets close for business travelers. Exceptions: mistake fares, and Southwest flash sales plus the re-fare trick.</li>
+              <li><strong>Hotels:</strong> the sweet spot is 8–14 days out (~20%+ cheaper); same-day runs ~14% cheaper than a week out. Channels: Priceline Express (40–60% off) and Hotwire Hot Rates (30–60%) — opaque, so you pay first and learn the name second, non-refundable. HotelTonight owns same-day; chain apps direct still price-match.</li>
+              <li><strong>Cruises:</strong> the 60–90 day window after final-payment deadlines is the classic play — but 2026 runs an early-bird model, with the lowest prices 6–18 months out. Peak sailings (Christmas, new ships) never drop. They climb.</li>
+              <li><strong>Packages:</strong> Apple Vacations' "Last Minute Deals" filter (60 days or less) and Mystery Deals (up to 75% off, resort revealed 2 days out); Costco Travel keeps a last-minute page too.</li>
+              <li><strong>Never last-minute a must-be-there trip.</strong> Set a cutoff date — if the deal hasn't appeared by then, book normally and stop watching.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="callout good" style="margin-top:0"><p><strong>The May loophole:</strong> Caribbean all-inclusives hit their floor prices in May — the same floor as September/October — with <strong>zero storm risk</strong>. It's the single best risk-adjusted month on this whole sheet.</p></div>
+            <div class="callout danger"><p><strong>Christmas week (Dec 20–Jan 2) is the most expensive travel week of the year at every destination here.</strong> Any "deal" in that window that doesn't price in the holiday premium isn't one.</p></div>
+            <div class="panel flat">
+              <h3>Book-by windows that matter</h3>
+              <ul>
+                <li><strong>Cruises:</strong> book in wave season, Jan–Mar; sail cheap Sep–Oct, early Nov, Jan.</li>
+                <li><strong>Vegas:</strong> the annual 5-Day Sale (late Sept) books Feb–Mar travel at up to 60% off.</li>
+                <li><strong>Holidays:</strong> Christmas flights ~56 days out, Thanksgiving ~35 — tickets done by Halloween.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="money">
+        <div class="sec-head">
+          <span class="sec-num">10</span>
+          <h2>Trip insurance — buy it or skip it</h2>
+          <p>The one money call that can save a trip: when a policy earns its premium, and when it's money for nothing.</p>
+        </div>
+
+        <div style="max-width:680px">
+            <div class="panel calc">
+              <h3>🧮 Insurance: buy it or skip it?</h3>
+              <p class="small">Answer three things and get the verdict — plus what the policy should cost.</p>
+              <label for="imType">Trip type</label>
+              <select id="imType">
+                <option value="cancun">Cancún / Riviera Maya all-inclusive</option>
+                <option value="cruise">Cruise</option>
+                <option value="domestic">Domestic US (Vegas / Tucson / San Diego)</option>
+                <option value="pr">Puerto Rico</option>
+              </select>
+              <label for="imCost">Prepaid, non-refundable trip cost ($)</label>
+              <input id="imCost" type="number" min="0" step="100" value="5000" inputmode="decimal" />
+              <label for="imWhen">First deposit was…</label>
+              <select id="imWhen">
+                <option value="early">Within the last 14–21 days</option>
+                <option value="late">More than 21 days ago</option>
+              </select>
+              <div class="out" aria-live="polite">
+                <div class="row"><span>Recommendation</span><span id="imRec">—</span></div>
+                <div class="row"><span>Expected premium</span><span id="imPrem">—</span></div>
+                <div class="row"><span>Where to look</span><span id="imProv">—</span></div>
+                <div class="verdict" id="imVerdict"></div>
+              </div>
+              <p class="fineprint" style="margin-top:10px">Policies have holes too — read the medical and evacuation limits before you count on one; the cheap tiers cap out far below the cost of a real airlift. Hurricane timing: once NOAA names a storm it's a "known event" and new policies exclude it. Buy the day you book.</p>
+            </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <div class="wrap">
+        <div class="cols">
+          <div>
+            <h3>What you're looking at</h3>
+            <p>This is the working draft of sheet 3, built from the travel black box: sixteen deep dives — flight mechanics, the Vegas fee map, Cancún resort tiers, the cruise line showdown, seasonal calendars, airport plays, insurance, hurricane math, last-minute mechanics, family value and the scam files — plus 35+ creators vetted for independence.</p>
+            <p>The price cards are <strong>samples</strong> — they lock the format: photo, route, full fee breakdown, true total, street-price check, one honest note. The Hunt Board up top now carries two live hunts — 24 cards verified Oct 22–23, 2026, each with its true total, street-price check and booking link — on top of the banked research plays. The tools — the Vegas true-total calculator, the cruise all-in comparator, the seasonal calendar, the insurance advisor, the family bag-fee math and the dart throw — are live and working, with a food-destinations section making the case for eating your way there. Three hunt finds didn't make the cut — a broker ticket that wasn't cheaper than the box office, an unverifiable "63% OFF," and an ended sale.</p>
+          </div>
+          <div>
+            <h3>How new finds land</h3>
+            <p>Live hunts post to the Hunt Board first — dated, linked, and priced with every fee in. The sections behind it hold the deep-dive files those cards are priced from: fee maps, seasonal calendars, agency mechanics and the scam files.</p>
+            <p>Destinations in rotation: Las Vegas · Cancún · Puerto Rico · Cruises · Southwest &amp; West Coast (Tucson · San Diego) — from ORD/MDW out.</p>
+          </div>
+        </div>
+        <p class="credits">PHOTOS: Las Vegas Strip aerial — Erik Kabik · Cancún Hotel Zone aerial — Sprinkles Travel · Old San Juan street — iStock via Living with the Magic · Cruise ship aerial — Shutterstock via The Travel Images · Saguaro sunset — Tucson Hot Springs · La Jolla Cove — Porthole Cruise Magazine · Window wing at sunset — Serhiy Hipskyy (Unsplash). Card photos are the actual properties, ships and dishes: Grand Sirenis, El Dorado Seaside Palms, Ocean Riviera Paradise, Fiesta Americana Condesa, Finest Playa Mujeres, Excellence Riviera Cancún, Golden Nugget, Loews Ventana Canyon, Town and Country, Jockey Club and Rincón Beach Resort via their listing and press photos (HRS, Expedia, property sites); Carnival Celebration, Carnival Mardi Gras, MSC World America, MSC Seaside, Resilient Lady, Scarlet Lady, Sky Princess and Icon of the Seas via Parade, Cruise Hive, Cruise Spotlight, The Points Guy and line press images; destinations and dishes via Aruba Tourism, Atlas Obscura, Fodor's, Tasting Table and Pexels. Research current as of Oct 22, 2026; fees and policies move — every live card gets re-verified before it posts.</p>
+      </div>
+    </footer>
+
+    <script>
+      (function(){
+        var fmt = function(n){ return "$" + n.toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); };
+
+        /* ---- Vegas true-total calculator ---- */
+        var rate = document.getElementById("cRate"),
+            nights = document.getElementById("cNights"),
+            fee = document.getElementById("cFee"),
+            park = document.getElementById("cPark"),
+            oRoom = document.getElementById("oRoom"),
+            oFee = document.getElementById("oFee"),
+            oTax = document.getElementById("oTax"),
+            oPark = document.getElementById("oPark"),
+            oTotal = document.getElementById("oTotal"),
+            oVerdict = document.getElementById("oVerdict"),
+            TAX = 0.1338, PARK_DAY = 22.50;
+
+        function num(el, fallback){
+          var v = parseFloat(el.value);
+          return isNaN(v) || v < 0 ? fallback : v;
+        }
+        function calc(){
+          var r = num(rate, 0), n = Math.max(1, Math.round(num(nights, 1))),
+              f = parseFloat(fee.value) || 0, p = Math.round(num(park, 0));
+          var room = r * n, fees = f * n, tax = (room + fees) * TAX, parking = p * PARK_DAY;
+          var total = room + fees + tax + parking;
+          oRoom.textContent = fmt(room);
+          oFee.textContent = fmt(fees);
+          oTax.textContent = fmt(tax);
+          oPark.textContent = fmt(parking);
+          oTotal.textContent = fmt(total);
+          if (room > 0){
+            var over = ((total - room) / room * 100).toFixed(0);
+            var extras = [];
+            if (fees > 0) extras.push("the resort fee and the tax on it");
+            if (parking > 0) extras.push("parking");
+            oVerdict.innerHTML = "The headline says <strong>" + fmt(room) + "</strong> — the true total runs <strong>" +
+              over + "% higher</strong>" + (extras.length ? " once " + extras.join(" and ") + " land" : "") + "." +
+              (f === 0 && fees === 0 ? " A $0-fee property is the one headline in Vegas that means what it says." : "");
+          } else {
+            oVerdict.textContent = "Enter a nightly rate to see what the headline is hiding.";
+          }
+        }
+        [rate, nights, fee, park].forEach(function(el){
+          el.addEventListener("input", calc);
+          el.addEventListener("change", calc);
+        });
+        calc();
+
+        /* ================= HUNT BOARD ================= */
+        var HUNT = [
+          {n:"Grand Sirenis Riviera Maya — 3nt AI + flights", len:"short", lenLabel:"3 NIGHTS · LONG WEEKEND", img:"assets/img_b79ea21c4d647d5f.jpg", alt:"Grand Sirenis Riviera Maya Resort & Spa — palm-lined pool deck", log:"ORD→CUN nonstop in the fare · add ~$36pp shared transfer, $15 Visitax and ~$12–15 environmental tax · book by Oct 31", d:"cancun", c:"Live package · Travelzoo", live:true, ns:true, p:"$749", pn:749, u:"per person · true total ≈ $800 all-in", s:null, st:"BEATS DIY ≈ $950–1,150 PP", risk:true,
+           note:"3 nights Deluxe Junior Suite all-inclusive + roundtrip nonstop ORD→CUN flights + taxes/fees. Not in the headline: transfers (~$36 pp RT), Visitax ~$15, environmental tax ~$12–15. <strong>Book by Oct 31.</strong> October departures sit inside hurricane season (ends Nov 30) — refundable plans and insurance bought BEFORE any storm is named.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.travelzoo.com/vacations/mexico/-649-Mexico-trip-Luxe-all-inclusive-suite-w-flights-3291664/", link:"Book it on Travelzoo ↗"},
+          {n:"El Dorado Seaside Palms — 4nt AI + flights", len:"short", lenLabel:"4 NIGHTS · LONG WEEKEND", img:"assets/img_898ef7631ea15d94.jpg", alt:"El Dorado Seaside Palms — beachfront palapas, Riviera Maya", log:"ORD→CUN nonstop · shared transfers plus the catamaran and cenote excursion are included · dates run Oct 2026–Sep 2027", d:"cancun", c:"Live package · Travelzoo · adults-only", live:true, ns:true, p:"$829", pn:829, u:"per person · true total ≈ $860 all-in", s:null, st:"BEATS DIY ≈ $1,550–1,850 PP", risk:true,
+           note:"4 nights Junior Suite all-inclusive + nonstop ORD→CUN flights + shared transfers + catamaran/snorkel excursion + cenote swim + Maroma Beach brunch, taxes and fees in. DIY runs $1,550–1,850/person — this beats street by a wide margin. Dates run Oct 2026–Sep 2027; the storm note applies to October departures.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.travelzoo.com/vacations/mexico/-679-All-inclusive-suite-w-flights-3290839/", link:"Book it on Travelzoo ↗"},
+          {n:"Ocean Riviera Paradise — 3nt AI + Frontier nonstop", len:"short", lenLabel:"3 NIGHTS · LONG WEEKEND", img:"assets/img_82f42699dab2c4c1.jpg", alt:"Ocean Riviera Paradise — resort pools, Playa del Carmen", log:"Frontier nonstop ORD→CUN · Amstar transfers included · bags are extra ($50–60+ each way) · departures Oct 25–Dec 16", d:"cancun", c:"Live package · Apple Vacations Steal of a Deal", live:true, ns:true, p:"$669", pn:669, u:"per person · true total ≈ $700 + bags", s:null, st:"CHEAPEST CHI–CANCÚN AI PACKAGE FOUND", risk:true,
+           note:"3 nights Junior Suite Waterpark Side all-inclusive + roundtrip nonstop Frontier flight + Amstar transfers + taxes/fees. The catch: Frontier bag fees are NOT included (budget $50–60+ each way). Departures 10/25–12/16 — limited two-week sale window; October dates carry the hurricane note.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://apv.www.vaxvacationaccess.com/supplier/current-sales/steal-of-a-deal/", link:"See Apple's Steal of a Deal ↗"},
+          {n:"Rincón Beach Resort — Thanksgiving week", len:"short", lenLabel:"3 NIGHTS · LONG WEEKEND", img:"assets/img_a6476aac70716aeb.jpg", alt:"Rincón Beach Resort — pool and grounds, Añasco", log:"Nonstop CHI→SJU in the package · a rental car is required — Rincón sits ~2.5 hrs from San Juan · Thanksgiving week", d:"pr", c:"Live package · Orbitz", live:true, ns:true, p:"$880", pn:880, u:"per person · 3nt + nonstop flights", s:null, st:"AT/BELOW STREET FOR THE PRICIEST WEEK", risk:false,
+           note:"Nov 26–29, 2026: 3 nights at a west-coast beach resort (Añasco) + roundtrip nonstop CHI→SJU. Thanksgiving-week flights alone run $450–600 — the package lands at/below full DIY. A rental car is effectively required (Rincón is ~2.5 hrs from San Juan). Late November: hurricane season effectively over, no storm note.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.orbitz.com/lp/theme-vacations/all-inclusive-vacations/148/Puerto-Rico", link:"Price it on Orbitz ↗"},
+          {n:"Carnival Celebration — Nov 29, 7nt Eastern Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_b5d5904c970121ff.jpg", alt:"Carnival Celebration sailing out of Miami", log:"Sails Miami · fly ORD/MDW→MIA or FLL and arrive a day early · $575pp all-in including taxes and gratuities", d:"cruises", c:"Live sailing · Excel class", live:true, p:"$575", pn:575, u:"per person · 7 nights all-in · $82/day", s:35, st:"35% BELOW THE SAME SHIP'S OTHER NOV SAILING", risk:false,
+           note:"Nassau → Amber Cove → Half Moon Cay → Celebration Key, from Miami. The math: $340 base + ~$116 taxes/fees + $119 gratuities = $575pp — $1,150 for two, all-in. The same ship's Nov 15 sailing bases at $447pp.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.Cruisecritic.com/find-a-cruise/itinerary/7-night-carnival-celebration-to-caribbean-on-november-29-2026?recId=7b780db2aeec27cc4e5db416c802621e&section=itinerary&toggle=dates", link:"See the sailing on Cruise Critic ↗"},
+          {n:"Princess balcony sailings — Caribbean 6–7nt", len:"long", lenLabel:"6–7 NIGHTS · FULL WEEK", img:"assets/img_e796f38933db54ec.jpg", alt:"Sky Princess — Princess Cruises", log:"Caribbean sailings from Florida ports · fly in a day early · taxes are in the fare, gratuities add $119pp", d:"cruises", c:"Live sailing · Travelzoo / PrestigeCruises", live:true, p:"$818", pn:818, u:"per person · 7nt balcony all-in · $117/day", s:null, st:"BALCONY AT INTERIOR-CABIN MONEY", risk:false,
+           note:"Sky / Regal / Crown / Caribbean / Sun / Star Princess, Nov 7–Dec 21, 2026 at $699–799pp with taxes & fees INCLUDED; Jan–Apr 2027 dates drop to $599pp. At $699: + $119 gratuities = $818pp all-in, plus $50 onboard credit per cabin and 3rd/4th guests free. Book via PrestigeCruises.com, code 11230, 1-800-758-5693. Princess direct typically runs $1,100–1,500pp for the same balcony.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.travelzoo.com/cruises/caribbean/-599-Balcony-cabin-on-a-Caribbean-cruise-3290005/", link:"Book it on Travelzoo ↗"},
+          {n:"MSC World America — Nov 14, 7nt Eastern Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_fbf4c0a3f00ee13d.jpg", alt:"MSC World America — MSC's newest flagship", log:"Sails Miami · ORD/MDW→MIA or FLL · balcony — estimated taxes plus $119 gratuities sit inside the ~$103/day", d:"cruises", c:"Live sailing · 2025 flagship", live:true, p:"~$724", pn:724, u:"per person · 7nt balcony all-in · ~$103/day", s:null, st:"~60% BELOW THE SAME SHIP'S CHRISTMAS SAILING", risk:false,
+           note:"Puerto Plata → San Juan → Ocean Cay, from Miami, on MSC's brand-new flagship. $465pp balcony + ~$140 taxes/fees (estimated) + $119 gratuities ≈ $724pp — about $1,448 for two. The Dec 26 sailing on the same ship bases at $1,531pp.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.travelagewest.com/Cruise/MSC-Cruises/MSC-World-America/Cruise-p61313387", link:"See the sailing ↗"},
+          {n:"Virgin Resilient Lady — Nov 1, 7nt Western Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_fbe622763002174e.jpg", alt:"Resilient Lady — Virgin Voyages", log:"Sails Miami · 70% off the 2nd sailor — book by Nov 2 · Wi-Fi, all 20+ restaurants and sodas are already in the fare", d:"cruises", c:"Live sailing · adults-only", live:true, p:"~$1,053", pn:1053, u:"per person · 7nt all-in, everything in · ~$150/day", s:null, st:"THE HONEST FARE BEATS CARNIVAL + DRINK PKG", risk:false,
+           note:"Grand Cayman → Ocho Rios → Bimini Beach Club, from Miami. $763pp Sail & Save rate + ~$150 taxes (est.) + $140 gratuities ≈ $1,053pp — Wi-Fi, all 20+ restaurants, sodas and fitness already in. The one-line test: Carnival Celebration ($82) + CHEERS! ($82.54/day) ≈ $165/day vs Virgin's $150 with everything included — the honest fare wins for a moderate drinker. 70% off the 2nd sailor stacks — book by Nov 2, 2026.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://vvinsider.com/book/", link:"Book direct with Virgin ↗"},
+          {n:"Golden Nugget — $199 two-night midweek package", len:"short", lenLabel:"2 NIGHTS · WEEKEND RUN", img:"assets/img_bc491c1de923e236.jpg", alt:"Golden Nugget Las Vegas — the Tank pool, downtown", log:"Nonstops ORD/MDW→LAS · downtown is ~15 min from the airport · Sun–Thu stays, code LLI26, book by Dec 28", d:"vegas", c:"Live hotel deal · code LLI26", live:true, p:"$199", pn:199, u:"2 nights · ≈ $63/night net with credits", s:null, st:"~40% UNDER THE IDENTICAL STREET STAY", risk:false,
+           note:"Sun–Thu stays, book through Dec 28, 2026, code LLI26 on goldennugget.com. Resort fee waived (normally $46/night), parking free, Rush Tower upgrade, 1pm checkout — plus $100 in dining credits ($50/night). True total ≈ $225.63 if the 13.38% tax lands at checkout (tax treatment unverified); the honest caveat: the value depends on actually using the dining credits.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://vegas-report.com/newswire/golden-nugget-las-vegas-launches-199-all-inclusive-hotel-package-85635/", link:"Deal details + code LLI26 ↗"},
+          {n:"Golden Nugget Showroom — Friday concerts BOGO", img:"assets/img_6d6c97a72514a724.jpg", alt:"A live concert stage — Friday nights at the Golden Nugget Showroom", log:"Pairs with a downtown stay · code ELLIS at checkout · the code ends Oct 29, 2026", d:"vegas", c:"Live code · ELLIS", live:true, p:"BOGO", pn:null, u:"buy one Friday concert ticket, second free", s:50, st:"50% OFF A PAIR BEFORE FEES", risk:false,
+           note:"Code ELLIS at checkout on goldennugget.com halves a pair of Friday-night Showroom tickets — checkout-tested, no timeshare pitch, no promoter list. Face prices vary by act (check the listing). Code ends Oct 29, 2026.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.dontpayfull.com/at/goldennugget.com", link:"Get the code ↗"},
+          {n:"Loews Ventana Canyon — Joy & Memories package", img:"assets/img_c067f6cf9a988abf.jpg", alt:"Loews Ventana Canyon Resort — Catalina foothills, Tucson", log:"Fly nonstop ORD→TUS (or PHX + a ~2 hr drive) · self-parking included · 2-night minimum, offer ends Dec 31", d:"southwest", c:"Live hotel deal · Tucson", live:true, p:"Fee waived", pn:null, u:"$39/night resort fee waived + $50/night dining credit", s:null, st:"≈ $110–117/NIGHT IN VALUE VS STANDARD RATE", risk:false,
+           note:"2-night minimum, offer ends Dec 31, 2026 — and it runs straight into Tucson's Dec–Mar peak season, when standard luxury rates start at $249+/night plus the $39 fee and $28 valet. The package strips the fee, includes self-parking and adds $50/night of dining credit. The room rate varies by date — check yours at the link.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.loewshotels.com/ventana-canyon/specials/joy-memories", link:"Check your dates at Loews ↗"},
+          {n:"Town and Country Resort — Fall package", img:"assets/img_024e860274635189.jpg", alt:"Town and Country Resort — pool deck, Mission Valley, San Diego", log:"Nonstop ORD/MDW→SAN · Mission Valley — the trolley reaches Old Town and the Gaslamp · stays thru Oct 31, 48-hr cancellation", d:"southwest", c:"Live hotel deal · San Diego", live:true, p:"$189", pn:189, u:"per night · ≈ $224 all-in (tax est.)", s:null, st:"KIDS EAT FREE ALL OCTOBER", risk:false,
+           note:"Resort fee waived, $15 self-parking, ~10.5% San Diego hotel tax (est.) — vs standard rates from $222/night plus the full fee stack. The October stack: kids 12 & under eat free breakfast at ARLO/MRKT per adult entrée. Stays through Oct 31, 2026; 48-hr cancellation.",
+           src:"Live hunt · verified Oct 22, 2026", url:"https://www.towncountry.com/fall/", link:"See the fall package ↗"},
+          {n:"Empress Hotel La Jolla — $159 midweek, fee waived", img:"assets/img_f26b53aa8232a9ac.jpg", alt:"Empress Hotel La Jolla at dusk — the hotel's name across the top floor", log:"Nonstop ORD/MDW→SAN, then ~20 min to La Jolla · 5-min walk to La Jolla Cove · parking at nearby public garages (extra)", d:"southwest", c:"Live hotel deal · Travelzoo", live:true, p:"$159", pn:159, u:"per night, Sun–Thu · ≈ $176 all-in (tax est.)", s:null, st:"LA JOLLA AT 40–44% UNDER STREET", risk:false,
+           note:"Most dates Nov 1, 2026–Feb 11, 2027 ($195 Fri–Sat; 2-night minimum Fri–Sat and Dec 24). The destination fee is waived (reg. $15 + tax/night) — and it covered daily hot breakfast, Wi-Fi, beach towels/chairs/umbrellas and afternoon refreshments, so that's real value handed back. La Jolla winter hotels run $250–350/night and the neighborhood rarely discounts at all. 1-night deposit, 72-hr cancellation; kids 12 & under free on existing bedding.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.travelzoo.com/hotel-booking/hotel/5166/empress-hotel-la-jolla/", link:"Book it on Travelzoo ↗"},
+          {n:"Virgin Hotels Las Vegas — 40% off + free parking", img:"assets/img_0aeb02e460023751.jpg", alt:"Virgin Hotels Las Vegas — the towers and pool deck", log:"Nonstops ORD/MDW→LAS · off-Strip at Paradise & Harmon · code FALLSAVINGS online or 800-693-7625 · book by Nov 12", d:"vegas", c:"Live hotel deal · direct · code FALLSAVINGS", live:true, p:"40% off", pn:null, u:"rates + free valet AND self-parking (≈ $25–35/day value)", s:null, st:"FREE PARKING STACKS ON THE 40%", risk:false,
+           note:"Book by Nov 12, 2026, for stays Sept 2026–Mar 2027. The honest caveats: the rate varies by night — check your dates — and there is NO resort-fee waiver on this offer; Virgin charges ~$45/night, so run the room through the calculator in §03 before you commit. The property: 1,500 rooms just off-Strip, Nobu and One Steakhouse inside, $5 Taco Tuesdays.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://virginhotelslv.com/", link:"Book direct with Virgin Hotels ↗"},
+          {n:"Omni Tucson National — 15% off, all of peak season", img:"assets/img_c7a463328ad91332.jpg", alt:"Omni Tucson National Resort — golf course under the Catalina foothills", log:"Nonstop ORD→TUS · two championship golf courses and a spa on site · book by Jan 3, 2027", d:"southwest", c:"Live hotel deal · direct · Magical Memories", live:true, p:"15% off", pn:null, u:"the getaway rate + $25 food & drink credit per stay", s:null, st:"A DISCOUNT INSIDE PEAK SEASON — TUCSON RARELY DOES THIS", risk:false,
+           note:"Stays Nov 14, 2026–Mar 31, 2027 — the entire Dec–Mar peak, when Tucson luxury runs $250–400/night and resorts almost never discount. 15% off the getaway rate plus a $25 food & drink credit per stay. The rate varies by date — check yours at the link.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.omnihotels.com/hotels/tucson-national/specials", link:"Check your dates at Omni ↗"},
+          {n:"Donny Osmond at Harrah's — up to 25% off, fees in", img:"assets/img_82cea56845cf591e.jpg", alt:"Donny Osmond live on stage at Harrah's Las Vegas", log:"Harrah's Showroom, center Strip · performances through Dec 12, 2026 · every fee already inside the listed price", d:"vegas", c:"Live show deal · Travelzoo", live:true, p:"$70.13", pn:70, u:"–$150.51 per ticket · all fees & taxes in", s:25, st:"25% OFF WITH NO FEE AMBUSH", risk:false,
+           note:"Regular prices run $89.07–$191.77 — this is a straight 25% cut, and the listed prices already factor in service fees and every mandatory charge, so the number you see is the number you pay. Book by Dec 12, 2026.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.travelzoo.com/entertainment/las-vegas/-71-up-Donny-Osmond-in-Vegas-up-to-25-off-3289512/", link:"Book it on Travelzoo ↗"},
+          {n:"Rockford → Vegas nonstop — RFD beats Chicago", img:"assets/img_e39530c54a83717e.jpg", alt:"An Allegiant Air jet on the ramp under a desert sky", log:"RFD is closer to Crystal Lake than O'Hare · Allegiant flies the route 2x weekly · bags and seat picks cost extra on Allegiant", d:"air", c:"Live fare intel · first dual-price card", live:true, ns:true, p:"$203–225", pn:203, u:"round trip per person · Allegiant nonstop RFD→LAS", s:null, st:"ROCKFORD WINS ON PRICE AND DRIVE TIME", risk:false,
+           dual:{win:["ROCKFORD (RFD) · ALLEGIANT NONSTOP","$203–225 RT"], other:["CHICAGO (MDW) · SOUTHWEST NONSTOP","$221–223 RT"], note:"Same trip, two airports, both priced — the board's first dual-price card. Rockford wins at the low end and it's the shorter drive from home."},
+           note:"November dates: Allegiant's RFD→LAS nonstop (3 hrs 43 min, 2x weekly) prices $203–225 round trip, against Southwest's MDW→LAS nonstop at $221–223. The honest framing: Allegiant charges extra for bags and seat selection, so a checked bag narrows the gap — fly carry-on only and Rockford wins outright.",
+           src:"Live hunt 2 · verified Oct 23, 2026"},
+          {n:"Hyatt Zilara Riviera Maya — 3nt AI + nonstop flights", len:"short", lenLabel:"3 NIGHTS · LONG WEEKEND", img:"assets/img_e22a2446823ffbb0.jpg", alt:"Hyatt Zilara Riviera Maya — pools and beach from the air", log:"Frontier NONSTOP ORD→CUN in the fare · add $15 Visitax and ~$12–15 env tax · Frontier bags extra ($50–60+ each way)", d:"cancun", c:"Live package · Funjet Steal of a Deal · adults-only 5★", live:true, ns:true, p:"$749", pn:749, u:"per person · true total ≈ $776 + bags", s:null, st:"BEATS DIY ≈ $1,500+ PP — ABOUT HALF OF STREET", risk:true,
+           note:"3 nights Junior Suite Tropical View all-inclusive (adults-only, 5-star) + roundtrip nonstop ORD→CUN Frontier Exclusive Nonstop Vacation Flights + hotel taxes/fees. Departures Oct 25, Oct 26, Nov 1, Nov 3, Nov 30, Dec 8, Dec 13, Dec 16. DIY runs $1,500+/person (Zilara rooms from ~$385/night, plus flights). Stackable: Funjet code BLKFRI26 takes 6% off the hotel portion — book by Nov 19. Oct/Nov departures sit inside hurricane season — refundable plans only, insurance bought BEFORE any storm is named.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.funjet.com/flights-by-city/flight-schedule-chicago/", link:"See Funjet's Chicago deals ↗"},
+          {n:"Dreams Aventuras Riviera Maya — 3nt AI + nonstop", len:"short", lenLabel:"3 NIGHTS · LONG WEEKEND", img:"assets/img_0dec4b7a8c5caa1b.jpg", alt:"Dreams Aventuras Riviera Maya — the family pool area from the air", log:"Frontier NONSTOP ORD→CUN in the fare · add $15 Visitax and ~$12–15 env tax · Frontier bags extra", d:"cancun", c:"Live package · Funjet · 5-star", live:true, ns:true, p:"$599", pn:599, u:"per person · true total ≈ $626 + bags", s:null, st:"CHEAPEST 5-STAR FLY-AND-STAY OF BOTH HUNTS", risk:false,
+           note:"3 nights all-inclusive at a 5-star + roundtrip nonstop ORD→CUN flights + taxes/fees. Departures Apr 9, 12, 13 and 16, 2027 — a '1 Week Only' promo, so it won't sit around. DIY runs $1,190–1,400/person. The timing is the quiet win: April is outside hurricane season and past the sargassum peak. Funjet code BLKFRI26 (6% off the hotel portion, book by Nov 19) stacks on top.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.funjet.com/flights-by-city/flight-schedule-chicago/", link:"See Funjet's Chicago deals ↗"},
+          {n:"Riu Palace Peninsula — 3nt AI + nonstop", len:"short", lenLabel:"3 NIGHTS · LONG WEEKEND", img:"assets/img_a20fcbbcae85e566.jpg", alt:"Riu Palace Peninsula — the arch tower over its beach, Cancún Hotel Zone", log:"Frontier NONSTOP ORD→CUN in the fare · best-priced departure Nov 30 · add $15 Visitax and ~$12–15 env tax · bags extra", d:"cancun", c:"Live package · Apple Vacations · 4.5-star", live:true, ns:true, p:"$910", pn:910, u:"per person · true total ≈ $937 + bags", s:null, st:"BEATS DIY ≈ $1,260–1,420 PP", risk:true,
+           note:"From $910/person: 3 nights all-inclusive + roundtrip nonstop ORD→CUN flights + taxes & fees. DIY runs $1,260–1,420/person. Frontier bag fees are not included. Nov 30 is hurricane season's final day — a light storm note: refundable plans, and insurance bought before any storm is named.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.applevacations.com/destinations/mexico/cancundfw/", link:"Price it at Apple Vacations ↗"},
+          {n:"Celebrity Constellation — Nov 28, 7nt Southern Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_9ef88886e39bc663.jpg", alt:"Celebrity Constellation at sea", log:"Sails roundtrip San Juan · ORD→SJU nonstops run ~$350–450 RT, booked separately · book via Cruises-n-More, 1-800-733-2048", d:"cruises", c:"Live sailing · from San Juan", live:true, p:"$741", pn:741, u:"per person · 7 nights all-in · ~$106/day", s:null, st:"30–40% UNDER TYPICAL CELEBRITY INTERIORS", risk:false,
+           note:"Tortola → St. Kitts → Dominica → St. Lucia → Barbados, roundtrip San Juan. The math: $611pp fare with taxes & fees INCLUDED + $129.50 gratuities ≈ $741pp — about $1,482 for two. Southern Caribbean sailings command a premium (typical Celebrity 7nt interiors run $900–1,200pp), and Cruises-n-More's onboard spending cash stacks on top. Terms verified Oct 12; the price is 'subject to change' — recheck before you book.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://blog.cruises-n-more.com/2026/10/celebrity-2026-and-2027-caribbean-deals-cnm-spending-cash/", link:"See the deal at Cruises-n-More ↗"},
+          {n:"MSC Grandiosa — Nov 28, 7nt Western Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_35a4872ada4ffc04.jpg", alt:"MSC Grandiosa at sea — her name across the bow", log:"Sails Port Canaveral · ORD→MCO nonstops ~$200–300 RT · fly in a day early", d:"cruises", c:"Live sailing · FLASH fare", live:true, p:"~$278", pn:278, u:"per person · 7 nights all-in · ~$40/day", s:null, st:"FLASH BASE ~85% BELOW NORMAL LEAD PRICING", risk:false,
+           note:"Nassau → Ocean Cay → Cozumel → Costa Maya, roundtrip Port Canaveral. The math: a $39pp flash interior base + ~$120 taxes/fees (est.) + $119 gratuities ≈ $278pp — about $556 for two. The honest caveat: flash lead rates move in hours, and cruises.com's generic listing shows $298 — verify live at booking before you fall in love. If it jumps, the backup is the Dec 12 sailing, interior from a $69 base.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.travelweekly.com/Cruise/MSC-Cruises/MSC-Grandiosa/Cruise-p61312343?id=343293", link:"See the sailing ↗"},
+          {n:"MSC World America — Dec 5, 7nt Western Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_fbf4c0a3f00ee13d.jpg", alt:"MSC World America — MSC's newest flagship", log:"Sails Miami · ORD→MIA nonstops ~$250–350 RT · interior cabin — the ship itself is the splurge", d:"cruises", c:"Live sailing · 2025 flagship", live:true, p:"~$520", pn:520, u:"per person · 7 nights all-in · ~$74/day", s:null, st:"FLAGSHIP HARDWARE AT BUDGET-LINE PRICING", risk:false,
+           note:"Roatán → Costa Maya → Cozumel → Ocean Cay, from Miami, on MSC's 2025 flagship. The math: $271pp interior + ~$130 taxes/fees (est.) + $119 gratuities ≈ $520pp — about $1,040 for two. World America interiors typically run $500–700pp before taxes and gratuities even land.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.travelweekly.com/Cruise/Cruise-Search?line=STR&sdt=8/2026&pg=15", link:"See the sailing search ↗"},
+          {n:"Norwegian Epic — Dec 6, 7nt Caribbean balcony", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_8e9f61f1b5ad3238.jpg", alt:"Norwegian Epic at sea", log:"Sails Port Canaveral · ORD→MCO nonstops · the ship was refurbished in 2025", d:"cruises", c:"Live sailing · Travelzoo", live:true, p:"$708", pn:708, u:"per person · 7nt balcony all-in · ~$101/day", s:null, st:"BALCONY — TRAVELZOO CITES ~$1,380 SAVINGS", risk:false,
+           note:"Dec 6–13, 2026: Great Stirrup Cay → Falmouth (Jamaica) → George Town (Grand Cayman) → Cozumel, roundtrip Port Canaveral. The math: $568pp balcony with taxes & fees INCLUDED + $140 gratuities = $708pp — about $1,416 for two, against typical Epic balconies at $900–1,200pp. The honest caveat: Free at Sea perks are NOT in this fare — want the drink package and the $28.50/day FAS gratuity runs on top.",
+           src:"Live hunt 2 · verified Oct 23, 2026", url:"https://www.travelzoo.com/ca/cruises/cruise-lines/-568-Caribbean-cruise-w-balcony-cabin-3291541/", link:"Book it on Travelzoo ↗"},
+          {n:"Fiesta Americana Condesa", img:"assets/img_3dcb0cd75d812c0e.jpg", alt:"Fiesta Americana Condesa — beachfront, Cancún Hotel Zone", log:"Price it as a nonstop ORD→CUN package — cross-check Costco plus the ALG trio · shared transfers run ~$18pp from CUN", d:"cancun", c:"All-inclusive", p:"$141", pn:141, u:"per night", s:null, st:"", risk:false,
+           note:"The budget king of the Cancún tiers: 4.5 stars across 7,922 reviews at a price the rest of the board has to beat.", src:"Cancún resort tiers dive · Oct 2026"},
+          {n:"Cancún in September", img:"assets/img_5e772d66fcfa0679.jpg", alt:"A Cancún beach resort from the air", log:"Refundable fares and refundable rooms only · insurance bought the day you book", img:"assets/img_6f9c7c5e309a7980.jpg", alt:"The Cancún Hotel Zone from the air", log:"ORD→CUN nonstop · refundable bookings only · insurance bought the day you book, before any storm is named", d:"cancun", c:"All-inclusive window", p:"40–60% off", pn:null, u:"vs peak pricing", s:50, st:"40–60% BELOW PEAK", risk:true,
+           note:"The cheapest month of the year — priced at the Sep 10 hurricane peak. Refundable bookings only, insurance bought the day you book, before any storm is named.", src:"Seasonal calendars + hurricane math dives"},
+          {n:"Finest Playa Mujeres", img:"assets/img_7b9da9a6f085e062.jpg", alt:"Finest Playa Mujeres — pool and beach, north Cancún", log:"ORD→CUN nonstop · Playa Mujeres is ~45 min from the airport — pre-book the transfer · clear-water bay in sargassum season", d:"cancun", c:"All-inclusive", p:"$300–400s", pn:350, u:"per night, low season", s:null, st:"", risk:false,
+           note:"Family luxury at low-season rates — the tiers dive calls it a steal. Playa Mujeres bay sits in the clear-water zone in a record sargassum year.", src:"Cancún resort tiers dive · Oct 2026"},
+          {n:"Excellence Riviera Cancún", img:"assets/img_2594179abc1863d7.jpg", alt:"Excellence Riviera Cancún — main pool and beach at sunset", log:"ORD→CUN nonstop · Puerto Morelos is ~25 min from the airport · adults-only", d:"cancun", c:"All-inclusive · adults-only", p:"85% play", pn:null, u:"of the flagship, for 85% of its price", s:null, st:"", risk:false,
+           note:"The value champion for couples: 85% of Excellence Playa Mujeres' experience at 85% of the price.", src:"Cancún resort tiers dive · Oct 2026"},
+          {n:"Costco Travel AI packages", img:"assets/img_5e772d66fcfa0679.jpg", alt:"A Cancún all-inclusive resort from the air — pools to beach", log:"Airfare bundles in — never sold standalone · pick the nonstop routing out of ORD/MDW at booking · transfers, taxes and gratuities in the package price · Executive 2% stacks on top", d:"cancun", c:"Package anchor", p:"$50–500+", pn:null, u:"Digital Shop Card back per trip", s:null, st:"", risk:false,
+           note:"The benchmark every Cancún package gets priced against: transfers, taxes and gratuities in, Shop Card after the trip, Executive 2% on top.", src:"Cancún booking dive · Oct 2026"},
+          {n:"Downtown Cancún food run", img:"assets/img_4d3db4d670990ffd.jpg", alt:"Tacos al pastor coming off the trompo", log:"Bus or taxi down from the Hotel Zone · go at locals' dinner hour · cash is king at the park stalls", d:"cancun", c:"Food", p:"~$1", pn:1, u:"tacos al pastor, El Centro", s:null, st:"70–80% CHEAPER THAN HOTEL ZONE", risk:false,
+           note:"Taquería Coapeñitos and the Las Palapas park stalls: the same city's food at a fifth of Hotel Zone prices. La Habichuela (since 1977) is the one splurge.", src:"Destination food maps dive · Oct 2026"},
+          {n:"Virgin Voyages — the honest fare", img:"assets/img_031e9049217b9b1d.jpg", alt:"Scarlet Lady — Virgin Voyages", log:"Sails Miami and San Juan · no add-on stack to model — Wi-Fi, dining and sodas are in the fare", d:"cruises", c:"Cruise line", p:"$55", pn:55, u:"add-ons per person / day", s:null, st:"LOWEST ADD-ON STACK", risk:false,
+           note:"$20 gratuity + ~$35 bar tab, Wi-Fi included, all 20+ restaurants in the fare. The couples-and-food verdict — and the stack every other line gets compared against in the comparator below.", src:"Cruise line showdown dive · 2026 fee stacks"},
+          {n:"Carnival Excel class", img:"assets/img_1552bf5d2f6d9bae.jpg", alt:"Carnival Mardi Gras — Excel class, docked", log:"Sails Miami, Port Canaveral and Galveston · fly in a day early · CHEERS! breaks even at roughly 5–7 drinks a day", d:"cruises", c:"Cruise line", p:"$123", pn:123, u:"add-ons per person / day", s:null, st:"BEST RAW VALUE", risk:false,
+           note:"Mardi Gras / Celebration / Jubilee. $17 gratuity + $82.54 CHEERS! + $23.80 Wi-Fi. Best first-timer ship and co-best with kids.", src:"Cruise line showdown dive · 2026 fee stacks"},
+          {n:"Repositioning cruises", img:"assets/img_13747fe2f2b8b508.jpg", alt:"A cruise ship under way — sea days are the itinerary", log:"One-way sailing: fly to the start port, home from the end · price both flights into the true total · Apr–May and Sep–Nov windows", d:"cruises", c:"Sailing window", p:"50–70% off", pn:null, u:"per day vs regular sailings", s:60, st:"50–70% CHEAPER PER DAY", risk:false,
+           note:"Apr–May and Sep–Nov, when ships move between seasons. More sea days, oddball itineraries — real value if the sea days are the point.", src:"Cruise mechanics dive · Oct 2026"},
+          {n:"MSC \u2014 kids 17 & under sail free", d:"cruises", c:"Cruise line \u00b7 family play", img:"assets/img_1c4a2ed5298d1999.jpg", alt:"MSC Seaside in Miami", log:"Sails Miami and Port Canaveral \u00b7 fly in a day early \u00b7 \u2018free\u2019 kids still owe taxes, fees and gratuities (~$200\u2013300 each)", p:"$90", pn:90, u:"add-ons per person / day", s:null, st:"PRICE LEADER FOR FAMILIES", risk:false,
+           note:"The family price leader: kids-17-and-under-free promos on select sailings, stacked on the leanest big-ship fee stack in the showdown — $17 gratuity + Easy Plus ~$61–64 + ~$10–14 Wi-Fi.", src:"Cruise line showdown dive · Oct 2026"},
+          {n:"Royal Caribbean Oasis / Icon", img:"assets/img_1729c41caaf7ddc8.jpg", alt:"Icon of the Seas — Royal Caribbean", log:"Sails Florida ports · fly in a day early · reprice before final payment — 72% of sailings dip after booking", d:"cruises", c:"Cruise line", p:"$145", pn:145, u:"add-ons per person / day", s:null, st:"BEST WITH KIDS", risk:false,
+           note:"The priciest stack ($18.50 grat + ~$97 drinks + ~$29 Wi-Fi) buys the best kids' ships afloat. Reprice before final payment — 72% of sailings dip 5%+ after booking.", src:"Cruise line showdown dive · 2026 fee stacks"},
+          {n:"Jockey Club — suites, no resort fee", img:"assets/img_f4f155bed7294701.jpg", alt:"Jockey Club suites — center Strip", log:"Center Strip, walkable to Bellagio and the Cosmo · no resort fee and free parking · kitchen suites suit the family-of-4 play", d:"vegas", c:"Hotel play", p:"$0", pn:0, u:"resort fee, free parking", s:null, st:"SKIPS $62.36/NIGHT IN FEES+TAX", risk:false,
+           note:"All-suite, on the Strip, no resort fee and free parking — the family play that dodges the $55-fee tier entirely.", src:"Vegas fee map · Sept 2026"},
+          {n:"Ellis Island steak special", img:"assets/img_a1fed8867700f57d.jpg", alt:"A sliced steak plate — the Ellis Island special is the famous one", log:"One block off-Strip on Koval Lane · a players club card plus $5 of play unlocks the $9.99 price", d:"vegas", c:"Food", p:"$9.99", pn:10, u:"steak special", s:null, st:"", risk:false,
+           note:"The most famous value plate in Vegas: players club card plus $5 of play unlocks the $9.99 steak.", src:"Destination food maps dive · Oct 2026"},
+          {n:"Las Vegas Advisor coupon book", img:"assets/img_390223417e5bb45a.jpg", alt:"The Fremont Street canopy at night, downtown Las Vegas", log:"Order before you fly — the book's coupons are date-sensitive · downtown bases pair with the $0-fee Four Queens and Binion's", d:"vegas", c:"Membership", p:"~$50", pn:50, u:"per year", s:null, st:"HIGHEST-ROI VEGAS FOLLOW", risk:false,
+           note:"Anthony Curtis's book routinely pays for itself in a single night. Thirty years the Strip's consumer advocate.", src:"Vegas voices dive · Oct 2026"},
+          {n:"Puerto Rico vacation rentals", img:"assets/img_cfd5d1be9984cff1.jpg", alt:"Condado beach and skyline, San Juan", log:"Nonstop ORD→SJU · no passport · Condado and Isla Verde keep you ~15 min from the airport", d:"pr", c:"Lodging", p:"$206", pn:206, u:"avg per night", s:38, st:"38% UNDER HOTELS ($332)", risk:false,
+           note:"Rentals average $206/night against $332 for hotels — the island's structural saving, before the mid-Apr–Jun value window (20–35% below winter) even starts.", src:"Puerto Rico dive · Oct 2026"},
+          {n:"Culebra / Vieques ferry", img:"assets/img_ec7c10e926c6096f.jpg", alt:"Flamenco Beach, Culebra", log:"Ferry from Ceiba ($2–2.25) after the flight into SJU plus the drive east · go early — the boats fill with day-trippers", d:"pr", c:"Island hop", p:"$2–2.25", pn:2, u:"public ferry, each way", s:null, st:"", risk:false,
+           note:"Two dollars to two of the Caribbean's best beaches. The cheapest island hop on this sheet by an order of magnitude.", src:"Puerto Rico dive · Oct 2026"},
+          {n:"Guavate — the Pork Highway", img:"assets/img_a404a773bf5ccdbb.jpg", alt:"Lechón roasting at a Guavate lechonera", log:"Sundays · PR-184 is ~45 min from San Juan — a rental-car day · lechón by the pound, cash-friendly", d:"pr", c:"Food", p:"$12–18", pn:15, u:"lechón by the pound", s:null, st:"", risk:false,
+           note:"PR-184, Sundays: 20+ lechoneras and the island's true social ritual (chinchorreo). Lechonera Los Pinos, Km 27.7, is the name to know.", src:"Destination food maps dive · Oct 2026"},
+          {n:"Saguaro National Park pass", img:"assets/img_a37f1f88db3a08ff.jpg", alt:"Saguaro forest at sunset", log:"Fly into TUS · one $25 vehicle pass covers both districts for 7 days · West district first", d:"southwest", c:"Sightseeing · Tucson", p:"$25", pn:25, u:"per vehicle · both districts · 7 days", s:null, st:"", risk:false,
+           note:"The cheapest headline act on the sheet. Go West first: Bajada Loop Drive and the Signal Hill petroglyphs.", src:"Tucson dive · Oct 2026"},
+          {n:"Güero Canelo Taco Tuesday", img:"assets/img_b93474f43386b386.jpg", alt:"Sonoran hot dogs, Tucson style", log:"Taco Tuesday pricing · El Sinaloense, the #1 Sonoran dog, is cash only · pairs with a TUS nonstop or the PHX drive", d:"southwest", c:"Food · Tucson", p:"$1.99", pn:2, u:"carne asada tacos, Tuesdays", s:null, st:"", risk:false,
+           note:"A UNESCO City of Gastronomy eating deal. For the #1 Sonoran dog, it's El Sinaloense — consensus pick, cash only.", src:"Destination food maps dive · Oct 2026"},
+          {n:"Tacos El Gordo — adobada", img:"assets/img_4d3db4d670990ffd.jpg", alt:"Adobada carved off the trompo — the Tacos El Gordo benchmark", log:"San Diego and Vegas locations · October stacks Kids Free San Diego onto the same trip · adobada runs ~$3.75–4.50", d:"southwest", c:"Food · San Diego", p:"$3.75–4.50", pn:4, u:"per taco, off the trompo", s:null, st:"", risk:false,
+           note:"The benchmark taco on two coasts (San Diego and Vegas both). Pair with October: Kids Free San Diego runs 100+ venues all month.", src:"Destination food maps dive · Oct 2026"},
+          {n:"Global Entry", img:"assets/img_74e64b35b910a112.jpg", alt:"An airport departures board", log:"Enroll at ORD Terminal 5 (Mon–Fri, by appointment) — or use Enrollment on Arrival when you land from Cancún", d:"air", c:"Airport play", p:"$120", pn:120, u:"5 years · PreCheck included", s:null, st:"THE CANCÚN FLYER'S PICK", risk:false,
+           note:"Skips the customs line on the way home — the real win. Enrollment on Arrival at ORD T5 skips the appointment wait.", src:"Airport plays dive · Oct 2026"},
+          {n:"ORD Lot G/H parking", img:"assets/img_7367801a79454357.jpg", alt:"O'Hare International from the air", log:"From Crystal Lake: 33 mi to ORD, 58 to MDW · Lot G/H at $16/day — 7 days parks for $112 vs $152+ in Ubers", d:"air", c:"Airport play", p:"$16", pn:16, u:"per day, cheapest official", s:null, st:"BEATS 2× $76–77 UBERS ON 7+ DAYS", risk:false,
+           note:"From Crystal Lake, drive-and-park wins week-long trips: $112 for 7 days vs $152+ in rideshares before tip.", src:"Airport plays dive · Oct 2026"},
+          {n:"Going Premium", img:"assets/img_150d0f159dd97ac5.jpg", alt:"Airplane wing above the clouds at sunset", log:"Alerts filtered to ORD/MDW · mistake fares: book direct within 2–4 hrs and buy nothing non-refundable until the ticket confirms", d:"air", c:"Fare alerts", p:"$49", pn:49, u:"per year", s:null, st:"MISTAKE FARES, ORD/MDW-FILTERED", risk:false,
+           note:"Vetted mistake fares filtered to your home airports — the alert layer that feeds the 4-hour protocol in §02.", src:"Flights dive · Oct 2026"}
+        ];
+        var DESTS = [["all","All destinations"],["vegas","🎲 Vegas"],["cancun","🏖 Cancún"],["cruises","🚢 Cruises"],["pr","🇵🇷 Puerto Rico"],["southwest","🌵 Southwest & West Coast"],["air","✈ Flights & Airports"]];
+        var huntState = {dest:"all", len:"all", q:"", sort:"featured"};
+        var LENS = [["all","Any length"],["short","🗓 Short — 2–4 nights"],["long","🗓 Full week — 5–7 nights"]];
+        var lenChips = document.getElementById("lenChips");
+        LENS.forEach(function(pair){
+          var b = document.createElement("button");
+          b.type = "button"; b.className = "chip"; b.textContent = pair[1];
+          b.setAttribute("aria-pressed", pair[0] === "all" ? "true" : "false");
+          b.addEventListener("click", function(){
+            huntState.len = pair[0];
+            Array.prototype.forEach.call(lenChips.children, function(ch){ ch.setAttribute("aria-pressed","false"); });
+            b.setAttribute("aria-pressed","true");
+            renderHunt();
+          });
+          lenChips.appendChild(b);
+        });
+        var huntGrid = document.getElementById("huntGrid"),
+            huntCount = document.getElementById("huntCount"),
+            huntEmpty = document.getElementById("huntEmpty"),
+            huntChips = document.getElementById("huntChips");
+
+        DESTS.forEach(function(pair){
+          var b = document.createElement("button");
+          b.type = "button"; b.className = "chip"; b.textContent = pair[1];
+          b.setAttribute("aria-pressed", pair[0] === "all" ? "true" : "false");
+          b.addEventListener("click", function(){
+            huntState.dest = pair[0];
+            Array.prototype.forEach.call(huntChips.children, function(ch){ ch.setAttribute("aria-pressed","false"); });
+            b.setAttribute("aria-pressed","true");
+            renderHunt();
+          });
+          huntChips.appendChild(b);
+        });
+        function destLabel(key){
+          for (var i=0;i<DESTS.length;i++) if (DESTS[i][0]===key) return DESTS[i][1];
+          return key;
+        }
+        function renderHunt(){
+          var rows = HUNT.filter(function(c){
+            if (huntState.dest !== "all" && c.d !== huntState.dest) return false;
+            if (huntState.q){
+              var hay = (c.n + " " + c.c + " " + c.note + " " + destLabel(c.d)).toLowerCase();
+              if (hay.indexOf(huntState.q) === -1) return false;
+            }
+            return true;
+          });
+          if (huntState.len !== "all"){
+            var byLen = rows.filter(function(c){ return c.len === huntState.len; });
+            if (byLen.length) rows = byLen; /* a length filter never empties a board that still has deals */
+          }
+          if (huntState.sort === "price"){
+            rows.sort(function(a,b){
+              if (a.pn === null && b.pn === null) return 0;
+              if (a.pn === null) return 1;
+              if (b.pn === null) return -1;
+              return a.pn - b.pn;
+            });
+          } else if (huntState.sort === "save"){
+            rows.sort(function(a,b){ return (b.s||0) - (a.s||0); });
+          }
+          huntGrid.innerHTML = "";
+          rows.forEach(function(c){
+            var el = document.createElement("article");
+            el.className = "hunt-card";
+            var tags = (c.live ? '<span class="tag good">Live hunt</span>' : '<span class="tag sample">Banked</span>') +
+              (c.ns ? '<span class="tag nonstop">✈ Nonstop</span>' : '') +
+              '<span class="tag info">' + destLabel(c.d) + '</span><span class="tag sample">' + c.c + '</span>' +
+              (c.risk ? '<span class="tag bad">Storm risk — read the note</span>' : '');
+            var lenBar = c.lenLabel ? '<div class="hc-len' + (c.img ? '' : ' solo') + '"><span>🗓 ' + c.lenLabel + '</span><span class="bucket">' + (c.len === "long" ? "FULL-WEEK TRIP" : "SHORT TRIP") + '</span></div>' : '';
+            var dual = '';
+            if (c.dual){
+              dual = '<div class="hc-dual">' +
+                '<div class="side win"><span class="dl2">' + c.dual.win[0] + '</span><span class="dp">' + c.dual.win[1] + '</span></div>' +
+                '<div class="side"><span class="dl2">' + c.dual.other[0] + '</span><span class="dp">' + c.dual.other[1] + '</span></div>' +
+                '<p class="dnote">' + c.dual.note + '</p></div>';
+            }
+            el.innerHTML =
+              (c.img ? '<div class="hc-photo"><img src="' + c.img + '" alt="' + (c.alt || '') + '" loading="lazy" />' + lenBar + '</div>' : lenBar) +
+              '<div class="hc-top">' + tags + '</div>' +
+              '<h3>' + c.n + '</h3>' +
+              '<div class="hc-price"><span class="amt">' + c.p + '</span><span class="unit">' + c.u + '</span>' +
+              (c.st ? '<span class="hc-save">' + c.st + '</span>' : '') + '</div>' +
+              dual +
+              '<p>' + c.note + '</p>' +
+              (c.log ? '<p class="hc-log"><b>Logistics · </b>' + c.log + '</p>' : '') +
+              (c.url ? '<a class="hc-link" href="' + c.url + '" target="_blank" rel="noopener">' + (c.link || 'Book / check it ↗') + '</a>' : '') +
+              '<p class="hc-src">SOURCE · ' + c.src + '</p>';
+            huntGrid.appendChild(el);
+          });
+          huntEmpty.hidden = rows.length > 0;
+          huntCount.textContent = "Showing " + rows.length + " of " + HUNT.length + " picks — 24 live hunt cards from two hunts + the banked plays";
+        }
+        document.getElementById("huntSearch").addEventListener("input", function(e){
+          huntState.q = e.target.value.trim().toLowerCase();
+          renderHunt();
+        });
+        document.getElementById("huntSort").addEventListener("change", function(e){
+          huntState.sort = e.target.value;
+          renderHunt();
+        });
+        renderHunt();
+
+        /* ================= CRUISE COMPARATOR ================= */
+        var STACKS = {
+          carnival:{label:"Carnival", grat:17, drink:82.54, wifi:23.80, drinkName:"CHEERS! drink package (gratuity incl.)", ship:"assets/img_1552bf5d2f6d9bae.jpg", shipCap:"CARNIVAL MARDI GRAS — EXCEL CLASS", shipAlt:"Carnival Mardi Gras — the Excel-class ship behind the Carnival stack"},
+          rc:{label:"Royal Caribbean", grat:18.50, drink:97, wifi:29, drinkName:"drink package", ship:"assets/img_1729c41caaf7ddc8.jpg", shipCap:"ICON OF THE SEAS — ROYAL CARIBBEAN", shipAlt:"Icon of the Seas — Royal Caribbean's Icon class"},
+          ncl:{label:"Norwegian", grat:20, drink:28.50, wifi:30, drinkName:"“free” drink package — this is its mandatory gratuity", ship:"assets/img_13747fe2f2b8b508.jpg", shipCap:"A BIG-SHIP CARIBBEAN SAILING, FROM THE AIR", shipAlt:"A large cruise ship under way in turquoise water"},
+          msc:{label:"MSC", grat:17, drink:62.50, wifi:12, drinkName:"Easy Plus drink package (gratuity incl.)", ship:"assets/img_fbf4c0a3f00ee13d.jpg", shipCap:"MSC WORLD AMERICA — MSC'S FLAGSHIP", shipAlt:"MSC World America — MSC's newest flagship"},
+          virgin:{label:"Virgin Voyages", grat:20, drink:35, wifi:0, drinkName:"bar tab (Wi-Fi already included in the fare)", ship:"assets/img_031e9049217b9b1d.jpg", shipCap:"SCARLET LADY — VIRGIN VOYAGES", shipAlt:"Scarlet Lady — Virgin Voyages"}
+        };
+        var crLine = document.getElementById("crLine"), crFare = document.getElementById("crFare"),
+            crNights = document.getElementById("crNights"), crGuests = document.getElementById("crGuests"),
+            crExtras = document.getElementById("crExtras");
+        function cruiseCalc(){
+          var s = STACKS[crLine.value];
+          var shipImg = document.getElementById("crShipImg"), shipCap = document.getElementById("crShipCap");
+          if (shipImg && s.ship){ shipImg.src = s.ship; shipImg.alt = s.shipAlt || ""; shipCap.textContent = s.shipCap; }
+          var fare = num(crFare, 0), n = Math.max(1, Math.round(num(crNights, 1))), g = Math.max(1, Math.round(num(crGuests, 1)));
+          var addDay = s.grat + (crExtras.value === "full" ? s.drink + s.wifi : 0);
+          var baseDay = n > 0 ? fare / n : 0;
+          var allDay = baseDay + addDay;
+          document.getElementById("crBaseDay").textContent = fmt(baseDay);
+          document.getElementById("crAddDay").textContent = fmt(addDay);
+          document.getElementById("crAllDay").textContent = fmt(allDay);
+          document.getElementById("crTrip").textContent = fmt(allDay * n * g);
+          var v = document.getElementById("crVerdict");
+          if (crExtras.value === "full"){
+            var virginDay = STACKS.virgin.grat + STACKS.virgin.drink + STACKS.virgin.wifi;
+            if (crLine.value === "virgin"){
+              v.innerHTML = "<strong>Virgin runs the leanest stack on the board</strong> — $" + virginDay.toFixed(2) + "/day of add-ons, Wi-Fi already in the fare. If you'd buy the drink package, Wi-Fi and specialty dining twice on another line, Virgin usually wins on the true total.";
+            } else {
+              var diff = addDay - virginDay;
+              v.innerHTML = "The stack: $" + s.grat.toFixed(2) + " gratuities + " + fmt(s.drink) + " " + s.drinkName + (s.wifi ? " + " + fmt(s.wifi) + " Wi-Fi" : "") +
+                " = <strong>" + fmt(addDay) + "/day</strong>. Virgin's stack runs " + fmt(diff) + "/day leaner — that's <strong>" + fmt(diff * n * g) + "</strong> over this trip for " + g + " guest" + (g>1?"s":"") + ", before port taxes. Worth it if the ships and itinerary earn it — now you can see the price of earning it.";
+            }
+          } else {
+            v.innerHTML = "Gratuities only: <strong>" + fmt(s.grat) + "/day</strong> is the floor under every fare on this line — it applies whether you drink or not. Pay-as-you-go beats the package below roughly 5–7 drinks a day.";
+          }
+        }
+        [crLine, crFare, crNights, crGuests, crExtras].forEach(function(el){
+          el.addEventListener("input", cruiseCalc);
+          el.addEventListener("change", cruiseCalc);
+        });
+        cruiseCalc();
+
+        /* ================= SEASONAL CALENDAR ================= */
+        var CAL = {
+          months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+          dests:[
+            {name:"Las Vegas", cells:[
+              ["value","Post-CES lull — cheap once CES (Jan 6–9) clears"],
+              ["value","5-Day Sale travel window (booked the prior September)"],
+              ["mid","CONEXPO (Mar 3–7, 2026) spikes rates"],
+              ["mid",""],["mid",""],["mid",""],
+              ["floor","Cheapest of the year — Strip averages ~$165–173"],
+              ["floor","Cheapest of the year — the heat empties the rooms"],
+              ["value","Sweet spot"],
+              ["peak","Priciest month (~$220 avg) — convention season"],
+              ["value","Early-Nov sweet spot; SEMA (Nov 3–6) and F1 spike their own weeks"],
+              ["peak","NYE premium"]]},
+            {name:"Cancún / Riviera Maya", cells:[
+              ["peak","Winter peak"],["peak","Winter peak"],
+              ["peak","Spring break — avoid"],
+              ["value","Late April: the sweet spot opens"],
+              ["value","The May loophole — floor prices, zero storm risk"],
+              ["risk","Hurricane season opens; sargassum builds (peaks Jun–Aug)"],
+              ["risk","Peak sargassum — check the beach report before booking"],
+              ["risk","Sargassum + storm season"],
+              ["risk","Cheapest month (40–60% below peak) at the Sep 10 hurricane peak — refundable only, insurance bought at booking"],
+              ["value","Storm-season tail; the early-Nov sweet spot is ahead"],
+              ["value","Early-Nov sweet spot"],
+              ["peak","Christmas week runs 100–200% above average — but early Dec (before ~the 15th) is the cheapest good-weather window of the year"]]},
+            {name:"Cruises (sailing prices)", cells:[
+              ["value","Wave season (book Jan–Mar) — and January sailings themselves run cheap"],
+              ["value","Wave season — the best booking window"],
+              ["value","Wave season closes"],
+              ["value","Repositioning: 50–70% cheaper per day"],
+              ["value","Repositioning window"],
+              ["mid",""],["mid",""],["mid",""],
+              ["floor","Cheapest sailings of the year"],
+              ["floor","Cheapest sailings"],
+              ["floor","Early-Nov cheap sailings"],
+              ["peak","Holiday sailings never drop — they climb"]]},
+            {name:"San Diego", cells:[
+              ["value","Cheapest stretch — Restaurant Week + Museum Month"],
+              ["value","Cheapest stretch — Museum Month"],
+              ["mid",""],["mid",""],["mid",""],["mid",""],
+              ["peak","Comic-Con (late Jul): downtown spikes — book 6+ months out or stay outside downtown"],
+              ["mid",""],
+              ["value","Sweet spot — low-mid 70s, thinner crowds, swimmable ocean"],
+              ["value","Sweet spot + Kids Free San Diego (100+ venues)"],
+              ["mid",""],["mid",""]]},
+            {name:"Tucson", cells:[
+              ["peak","Winter peak — priciest"],["peak","Winter peak"],["peak","Winter peak"],
+              ["value","Shoulder — value returns"],["value","Shoulder"],
+              ["floor","110°F+ empties the city — floor prices"],
+              ["floor","Floor prices"],["floor","Floor prices"],
+              ["mid",""],
+              ["value","Shoulder"],["value","Shoulder"],
+              ["peak","Winter peak"]]},
+            {name:"Puerto Rico", cells:[
+              ["peak","Winter peak — San Juan hotels $220–420"],
+              ["peak","Winter peak"],["peak","Winter peak"],
+              ["value","Value window opens mid-Apr — 20–35% below winter"],
+              ["value","Value window"],["value","Value window through June"],
+              ["mid",""],
+              ["risk","Hurricane season — book refundable"],
+              ["risk","Cheapest month ($130–220 hotels) at peak hurricane risk — insurance essential, refundable only"],
+              ["value","Hidden value — 25–35% below peak"],
+              ["mid",""],
+              ["peak","Winter peak"]]}
+          ]
+        };
+        var calMonth = new Date().getMonth();
+        var calMonthsEl = document.getElementById("calMonths"),
+            calRowsEl = document.getElementById("calRows"),
+            calReadout = document.getElementById("calReadout");
+        CAL.months.forEach(function(m, i){
+          var b = document.createElement("button");
+          b.type = "button"; b.className = "chip"; b.textContent = m;
+          b.setAttribute("aria-pressed", i === calMonth ? "true" : "false");
+          b.addEventListener("click", function(){ calMonth = i; renderCal(); });
+          calMonthsEl.appendChild(b);
+        });
+        function renderCal(){
+          Array.prototype.forEach.call(calMonthsEl.children, function(ch, i){
+            ch.setAttribute("aria-pressed", i === calMonth ? "true" : "false");
+          });
+          calRowsEl.innerHTML = "";
+          var notes = [];
+          CAL.dests.forEach(function(d){
+            var row = document.createElement("div");
+            row.className = "cal-row";
+            var chips = "";
+            d.cells.forEach(function(cell, i){
+              chips += '<span class="cal-chip cls-' + cell[0] + (i === calMonth ? " sel" : "") + '">' + CAL.months[i] + '</span>';
+            });
+            row.innerHTML = '<span class="cal-name">' + d.name + '</span><div class="cal-chips">' + chips + '</div>';
+            calRowsEl.appendChild(row);
+            var note = d.cells[calMonth][1];
+            if (note) notes.push("<li><strong>" + d.name + ":</strong> " + note + "</li>");
+          });
+          calReadout.innerHTML = "<b>" + CAL.months[calMonth] + " on the board</b>" +
+            (notes.length ? "<ul>" + notes.join("") + "</ul>" : "<p style='margin:6px 0 0;color:var(--ink-soft)'>No standout signal this month — normal pricing across the board.</p>");
+        }
+        renderCal();
+
+        /* ================= INSURANCE ADVISOR ================= */
+        var imType = document.getElementById("imType"), imCost = document.getElementById("imCost"), imWhen = document.getElementById("imWhen");
+        function insCalc(){
+          var t = imType.value, cost = num(imCost, 0), early = imWhen.value === "early";
+          var rec = document.getElementById("imRec"), prem = document.getElementById("imPrem"),
+              prov = document.getElementById("imProv"), v = document.getElementById("imVerdict");
+          var range = function(lo, hi){ return cost > 0 ? fmt(cost*lo) + " – " + fmt(cost*hi) : "—"; };
+          if (t === "cancun"){
+            rec.textContent = "BUY — third-party policy";
+            prem.textContent = range(0.05, 0.07) + " (5–7% of trip cost)";
+            prov.textContent = "Tin Leg Gold — $500k medical / $1M evac";
+            v.innerHTML = "<strong>Buy it.</strong> US health insurance covers nothing in Mexico — on a $" + cost.toLocaleString("en-US") + " prepaid all-inclusive, the medical and evacuation exposure is the whole argument. Hurricane addendum: for Sep–Oct travel the policy only counts if it was bought <em>before</em> NOAA names the storm.";
+          } else if (t === "cruise"){
+            rec.textContent = "BUY — always, third-party";
+            prem.textContent = range(0.05, 0.07) + " (5–7% of trip cost)";
+            prov.textContent = "IMG iTravelInsured LX (cruise medical max) · Tin Leg Gold";
+            v.innerHTML = "<strong>Buy it — and not from the cruise line.</strong> Line-sold cover caps medical at $10k–25k; third-party policies run $100k–500k with real evacuation. A ship doesn't wait, and a medevac doesn't discount.";
+          } else if (t === "domestic"){
+            rec.textContent = "SKIP — your health cover suffices";
+            prem.textContent = "$0";
+            prov.textContent = "Your own health insurance";
+            v.innerHTML = "<strong>Skip the standalone policy.</strong> Domestic medical is your normal health insurance, and a domestic itinerary is the easiest kind to rebook or absorb if plans move. Save the premium for the trips where a foreign hospital bill or a medevac is actually on the table.";
+          } else {
+            rec.textContent = "SKIP the medical angle";
+            prem.textContent = "$0 for medical";
+            prov.textContent = "Domestic US rules apply";
+            v.innerHTML = "<strong>Puerto Rico is domestic US for medical purposes</strong> — your health insurance works there. Trip-cost cover is a separate question: only worth pricing if the booking is non-refundable <em>and</em> lands in storm season (Aug–Oct).";
+          }
+          if (early && cost >= 2000 && t !== "domestic"){
+            v.innerHTML += " <strong>CFAR is still open to you</strong> (inside 14–21 days of first deposit): +40–60% on the premium, refunds 50–75% of prepaid costs (Allianz up to 80%), cancel 48+ hours out — but only if you insure 100% of the prepaid total.";
+          } else if (early && cost > 0 && cost < 2000 && t !== "domestic"){
+            v.innerHTML += " CFAR isn't worth it under $2,000 of prepaid costs — the upcharge eats the protection.";
+          }
+        }
+        [imType, imCost, imWhen].forEach(function(el){
+          el.addEventListener("input", insCalc);
+          el.addEventListener("change", insCalc);
+        });
+        insCalc();
+
+        /* ================= DART THROW ================= */
+        var DARTS = [
+          {n:"Tokyo, Japan", img:"assets/img_eb153b5e850cfef5.jpg", alt:"Tokyo spread out below Mount Fuji", log:"ORD→Tokyo NONSTOP — United's daily Narita flight starts Oct 24, 2026, alongside the existing Haneda service · American joins the same route Mar 27, 2027", k:"New nonstop + a four-decade-low yen", sec:"flights", secLabel:"§02 Flights",
+           why:"Two stories stack. The <strong>yen sits near a four-decade low</strong> (Going's 2026 budget file), so Japan's famously precise hotel-and-food scene prices like a mid-tier trip — and Chicago just got a fare war: <strong>United restores daily ORD→Narita on Oct 24, 2026</strong> next to its Haneda flights, and American enters the route in March 2027. Three nonstops, one weak yen.",
+           when:"Late Oct–Nov for fall color and new-route launch pricing; spring 2027, once American's entry starts biting fares.",
+           catch:"It's a ~13-hour flight — the longest pin in the pool that still lands nonstop. And the yen cuts both ways: Japan is busy precisely because it's cheap right now."},
+          {n:"Aruba — the ABC islands", img:"assets/img_bd6a2b7f2252a134.jpg", alt:"Eagle Beach, Aruba", log:"⚠ LAYOVER — no nonstop exists on ORD→AUA, so this is one of the routes where a stop is unavoidable · outside the hurricane belt · books like a normal Caribbean trip, minus the storm math", k:"Storm-season value, minus the storm", sec:"timing", secLabel:"§09 Timing",
+           why:"The safest fixed-date September bet in the Caribbean: roughly a <strong>2% chance of a serious storm in a season</strong> and no direct hit in 50+ years. You collect hurricane-season pricing without playing hurricane roulette.",
+           when:"September–October, while the rest of the Caribbean discounts for risk Aruba mostly doesn't carry.",
+           catch:"The layover, flagged plainly: no airline flies Chicago–Aruba nonstop, so a stop (usually Miami or Charlotte) is the price of this pin — it's the exception that proves the board's nonstop rule. Baseline prices also run higher than Cancún's — this is the sleep-at-night play, not the cheapest pin on the board."},
+          {n:"Brussels, Belgium", img:"assets/img_9aea8f4743967559.jpg", alt:"Brussels' Grand Place dressed for the Christmas market", log:"ORD→Brussels NONSTOP (United) · the Grand Place is the center of the Winter Wonders footprint · Bruges and Ghent are short train hops", k:"Christmas markets at a deal fare", sec:"flights", secLabel:"§02 Flights",
+           why:"Chicago's December deal board flags Brussels as Europe's strongest price-and-timing combo: a <strong>$432 round trip</strong> spotted for Dec 6–13 — dates that fall entirely inside <strong>Winter Wonders (Nov 27, 2026–Jan 3, 2027)</strong>, the Christmas-market takeover of the Grand Place.",
+           when:"Late Nov–early Jan, inside the Winter Wonders window — early December gets the markets without the Christmas-week fare spike.",
+           catch:"December in Belgium is cold and dark by 5 PM — that's the atmosphere you're buying, but pack for it. And the $432 was a spotted fare, not a promise: track it, don't assume it."},
+          {n:"Phu Quoc, Vietnam", img:"assets/img_c60ad7d7edb73c30.jpg", alt:"A Phu Quoc beach — palms, white sand, calm water", log:"⚠ CONNECTIONS — no nonstop exists from Chicago; routings run via a hub plus Ho Chi Minh City or Hanoi, then a short domestic hop · December is dry season", k:"49% under its typical fare", sec:"flights", secLabel:"§02 Flights",
+           why:"The single biggest fare gap on Chicago's December deal board: <strong>$1,131 round trip against a typical ~$2,218 — 49% below normal</strong> — landing in the middle of the island's dry season (Nov–Apr). On the ground, Vietnam runs $80–150/day for a comfortable mid-range trip (Going's budget file).",
+           when:"December–February: dry season, and the window the deal fare was spotted in.",
+           catch:"Flagged plainly: this is a two-stop, 24-hour-plus journey — the fare is the compensation. It's the exception that proves the nonstop rule, priced like an apology."},
+          {n:"Lisbon, Portugal", img:"assets/img_214ecd8b33df1ac4.jpg", alt:"A Lisbon tram climbing past tiled facades", log:"ORD→Lisbon NONSTOP (TAP) · a walkable-hills city — stay near a metro line if your knees vote no", k:"Europe at a third less", sec:"timing", secLabel:"§09 Timing",
+           why:"Portugal's cost base runs <strong>roughly one-third lower than the US</strong>, and the spring shoulder compresses flight prices on top of it — Europe's full old-world package (trams, tascas, custard tarts still warm from the oven) at a daily spend that feels like a domestic trip.",
+           when:"Spring shoulder (Mar–May) for the fare-plus-weather combo; early fall runs a close second.",
+           catch:"Lisbon's secret is out — the center is busy and its prices are drifting up. The value lives a few neighborhoods out, which is also where the better tascas are."},
+          {n:"George Town, Grand Cayman", img:"assets/img_648a152b9db5f667.jpg", alt:"Seven Mile Beach, Grand Cayman", log:"ORD→Grand Cayman nonstops run through the winter season · Seven Mile Beach is minutes from the airport", k:"$329 round trip, dry season", sec:"flights", secLabel:"§02 Flights",
+           why:"The cheapest fare on Chicago's December deal list: <strong>$329 return, 47% below typical</strong>, spotted for Dec 12–17 — the start of the Cayman dry season, on Seven Mile Beach. The short-haul warm pin: Caribbean water without the long-haul commitment.",
+           when:"December, as the dry season opens — the spotted dates are Dec 12–17.",
+           catch:"The flight is the deal; the island isn't. Grand Cayman prices hotels and dinners like a finance capital — the fare saving is real, and the on-island budget needs its own math."},
+          {n:"The Albanian Riviera", img:"assets/img_443d7cde08c10de1.jpg", alt:"Ksamil beach on the Albanian Riviera", log:"⚠ CONNECTIONS — no nonstop exists; fly into Tirana via a European hub, then drive or bus the coast road south · Corfu (Greece) sits a short ferry ride from Saranda", k:"Europe's beauty, half the bill", sec:"timing", secLabel:"§09 Timing",
+           why:"The budget files' verdict: Greece-and-Croatia scenery — turquoise water, Ottoman towns, mountain roads — at <strong>$35–55 a day</strong> (WeRoad's 2026 cheapest-countries table). Shoulder season is 'especially kind here, both to your bank account and your patience.'",
+           when:"May–June and September: warm sea, open businesses, none of the August crush.",
+           catch:"Flagged: no nonstop, and the infrastructure is still catching up with the scenery — basic in places, chaotic at the edges. That's the discount, stated honestly."},
+          {n:"Seoul, South Korea", img:"assets/img_9ea37a75db57aea2.jpg", alt:"Seoul — palace roofs against the modern skyline", log:"ORD→Seoul Incheon NONSTOP (Korean Air / Asiana) · the AREX express train runs airport-to-center in under an hour", k:"December deal-board regular", sec:"flights", secLabel:"§02 Flights",
+           why:"Seoul keeps surfacing on Chicago's December deal boards — a nonstop-served capital where the fare dips meet a food scene that never sleeps: palace mornings, market lunches, barbecue dinners. December averages run about −3°C at night to 4°C by day — proper winter, priced accordingly.",
+           when:"December for the deal fares and the winter-city version of Seoul; April–May if you'd rather have blossom season at standard fares.",
+           catch:"It's a 13–14 hour nonstop, with a real winter at the far end. The deal is the fare, not the weather."},
+          {n:"Cairo & Giza, Egypt", img:"assets/img_75987f4a14f982b3.jpg", alt:"The Giza necropolis — pyramids on the plateau", log:"⚠ CONNECTIONS — no ORD nonstop exists; routings run via European or Gulf hubs · the Grand Egyptian Museum sits right by the Giza plateau", k:"Devaluation + a brand-new museum", sec:"timing", secLabel:"§09 Timing",
+           why:"Two value events stacked: the <strong>Egyptian pound's devaluation</strong> made the country exceptionally affordable, and the <strong>Grand Egyptian Museum — the world's largest archaeological museum — opened in late 2025</strong> next to the pyramids. Bucket-list hardware at post-devaluation prices.",
+           when:"Oct–Feb, the cool season — also when the new museum's opening crowds thin out.",
+           catch:"Flagged: a connection each way, and the real cost here is hassle, not money — persistent touts at the major sites. Hiring a guide is the standard, worthwhile fix."},
+          {n:"Amsterdam + an Iceland stopover", img:"assets/img_461b91319e0b3cc7.jpg", alt:"Amsterdam's canal houses", log:"Icelandair's routing stops in Reykjavík — the stopover is the feature · United and KLM fly ORD→AMS nonstop if you'd rather skip it", k:"Two countries, one fare", sec:"flights", secLabel:"§02 Flights",
+           why:"Icelandair prices Chicago→Amsterdam <strong>from $714 round trip</strong> across the late-Nov/Dec window — and its Reykjavík stop can stretch into a proper Iceland stopover, so one fare buys the canals <em>and</em> a shot at the northern lights. If the stop doesn't appeal, ORD→AMS nonstops exist too.",
+           when:"Late Nov–Dec: Amsterdam's light-festival weeks and Iceland's aurora months, at shoulder fares.",
+           catch:"The $714 is Icelandair's Economy Light — bags and seat picks price on top, the usual light-fare math (§02). And a stopover is a connection, chosen on purpose this time."},
+          {n:"Chiang Mai, Thailand", img:"assets/img_4afddea6d896df5b.jpg", alt:"A Chiang Mai temple in golden light", log:"⚠ CONNECTIONS — via Bangkok, then a 1-hour domestic hop or the overnight train · a new 300-baht (~$9) tourist entry fee applies on air arrivals from 2026", k:"The value capital of Thailand", sec:"timing", secLabel:"§09 Timing",
+           why:"Thailand's islands run <strong>40–60% pricier than Chiang Mai</strong> (Going) — the north is where the country's value concentrates: temples, night markets and mountain air at backpacker math ($25–50/day), more for comfort. Shoulder months price well below the Nov–Mar high season.",
+           when:"May–June or Sep–Oct shoulders for price; Nov–Feb for the cool, dry classic season at higher rates.",
+           catch:"Flagged: two flights minimum — and Feb–Apr brings northern Thailand's smoky season, which the shoulder windows above dodge on purpose."},
+          {n:"Panama City, Panama", img:"assets/img_8cedd17a9cf59012.jpg", alt:"Panama City's skyline from Casco Viejo", log:"ORD→Panama City NONSTOP (Copa) · US dollars are the local currency · Casco Viejo, the old town, is the base", k:"The dollar goes far — literally", sec:"timing", secLabel:"§09 Timing",
+           why:"A shoulder-season bargain with a structural edge: Panama runs on the <strong>US dollar</strong> — no exchange math, no conversion haircut — pairing a modern skyline with Casco Viejo's colonial streets. Its Pensionado program even formalizes discounts on hotels, restaurants and transport for retirees.",
+           when:"Shoulder windows around the Dec–Apr dry season price best; the dry season itself is the safe-weather play.",
+           catch:"It's humid tropics — green-season rains are real. And the canal is a half-day trip, not the whole story; the old town and the food carry the rest."},
+          {n:"Marrakech, Morocco", img:"assets/img_337847489d8459cd.jpg", alt:"A Marrakech medina lane in warm light", log:"⚠ CONNECTIONS — no ORD nonstop exists; routings run via European hubs or Casablanca · the medina is a walking maze — riads send someone to meet you", k:"$35–60 days, sensory overload included", sec:"timing", secLabel:"§09 Timing",
+           why:"Morocco sits in the <strong>$35–60/day</strong> band on the 2026 cheapest-countries tables — for one of the world's great sensory cities: medina markets, desert-gate scenery, and dinners in Jemaa el-Fnaa's nightly open-air food fair.",
+           when:"Spring and fall shoulders — Marrakech summers are desert-hot, and winter nights in the medina run cold.",
+           catch:"Flagged: connections, plus haggling is the pricing system here, not a scam to dodge — agree the price before the service, every time."},
+          {n:"Sri Lanka — the tea-country loop", img:"assets/img_f74f2b4ed308592a.jpg", alt:"The hill-country train crossing Sri Lanka's tea fields", log:"⚠ LONG HAUL — no nonstop exists; routings run via Gulf or European hubs · the island is compact: temples, tea country, coast and safari inside short hops", k:"Weak rupee, huge density", sec:"timing", secLabel:"§09 Timing",
+           why:"Post-crisis, the <strong>weak rupee</strong> makes Sri Lanka exceptional value: meals around $3, budget guesthouses ~$25, and the <strong>Kandy-to-Ella train</strong> through the tea fields — ranked among the world's most scenic rail rides — for a few dollars. Maximum variety per mile of any pin on this board.",
+           when:"Dec–Mar, for the west and south coasts and the hill country at their driest.",
+           catch:"Flagged: the longest journey in the pool — two stops is normal from Chicago — and 'compact' still means slow roads. This pin rewards a 10-day trip, not a long weekend."}
+        ];
+        var dartBtn = document.getElementById("dartBtn"),
+            dartTicker = document.getElementById("dartTicker"),
+            dartPin = document.getElementById("dartPin"),
+            dartResult = document.getElementById("dartResult"),
+            dartLast = -1, dartThrowing = false;
+        function dartPickHTML(d, i){
+          return '<div class="dart-pick">' +
+            '<span class="tag info">Pin ' + (i + 1) + ' of 10 · ' + d.k + '</span>' +
+            '<h3>' + d.n + '</h3>' +
+            (d.img ? '<figure class="dart-photo"><img src="' + d.img + '" alt="' + (d.alt || '') + '" loading="lazy" /></figure>' : '') +
+            '<div class="drow"><span class="dl">Why right now</span><p>' + d.why + '</p></div>' +
+            '<div class="drow"><span class="dl">When to go</span><p>' + d.when + '</p></div>' +
+            (d.log ? '<div class="drow"><span class="dl">Logistics</span><p>' + d.log + '</p></div>' : '') +
+            '<div class="drow"><span class="dl">The honest catch</span><p>' + d.catch + '</p></div>' +
+            '<p style="margin:12px 0 0"><a href="#' + d.sec + '">Price the trip — ' + d.secLabel + ' ↓</a></p>' +
+            '</div>';
+        }
+        function renderDart(picks){
+          var html = '<p class="dart-count">🎯 TEN PINS ON THE BOARD — THE REST OF THE WORLD, DEALT FACE-UP</p>';
+          picks.forEach(function(d, i){ html += dartPickHTML(d, i); });
+          dartResult.innerHTML = html;
+          dartResult.hidden = false;
+        }
+        dartBtn.addEventListener("click", function(){
+          if (dartThrowing) return;
+          dartThrowing = true;
+          dartBtn.disabled = true;
+          dartResult.hidden = true;
+          dartPin.classList.remove("landed");
+          /* shuffle the worldwide pool, deal 10 distinct pins */
+          var pool = DARTS.slice();
+          for (var i = pool.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+          }
+          var picks = pool.slice(0, Math.min(10, pool.length));
+          var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          var finish = function(){
+            dartTicker.textContent = "🎯 Ten pins down — from " + picks[0].n + " to " + picks[picks.length - 1].n + ". The shortlist's below.";
+            dartPin.style.left = (50 + (Math.random() * 38 - 19)) + "%";
+            dartPin.style.top = (50 + (Math.random() * 38 - 19)) + "%";
+            dartPin.classList.add("landed");
+            renderDart(picks);
+            dartBtn.textContent = "🎯 Throw again — 10 fresh pins";
+            dartBtn.disabled = false;
+            dartThrowing = false;
+          };
+          if (reduced){ finish(); return; }
+          var ticks = 0;
+          var spin = setInterval(function(){
+            var r = DARTS[Math.floor(Math.random() * DARTS.length)];
+            dartTicker.textContent = "🎯 " + r.n + "…";
+            if (++ticks >= 11){ clearInterval(spin); finish(); }
+          }, 70);
+        });
+
+        /* ---- scrollspy ---- */
+        var links = Array.prototype.slice.call(document.querySelectorAll("#navLinks a"));
+        var byId = {};
+        links.forEach(function(a){ byId[a.getAttribute("href").slice(1)] = a; });
+        if ("IntersectionObserver" in window){
+          var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+              if (e.isIntersecting){
+                links.forEach(function(a){ a.classList.remove("active"); });
+                var a = byId[e.target.id];
+                if (a) a.classList.add("active");
+              }
+            });
+          }, { rootMargin: "-30% 0px -60% 0px" });
+          links.forEach(function(a){
+            var s = document.getElementById(a.getAttribute("href").slice(1));
+            if (s) obs.observe(s);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
