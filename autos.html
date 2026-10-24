@@ -127,11 +127,19 @@
       section.stretch-val .bigprice{color:var(--good)}
       /* price caps · cross-sheet nav · mileage flags */
       .cap{display:inline-block;font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:15px;letter-spacing:.05em;background:var(--accent);color:#fff;border-radius:var(--pill);padding:4px 14px}
-      .xnav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 12px}
-      .xnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14.5px;transition:border-color .2s ease,color .2s ease,background .2s ease}
-      .xnav a:hover{border-color:var(--accent);color:var(--accent)}
-      .xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
-      .xnav a.on:hover{color:#fff}
+      .xnav{display:flex;flex-wrap:wrap;gap:8px;padding:16px 0 12px;align-items:center}
+      .xnav a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:600;font-size:14.5px;letter-spacing:.01em;box-shadow:0 1px 2px rgba(18,26,34,.05);transition:border-color .18s ease,color .18s ease,background .18s ease,box-shadow .18s ease,translate .18s ease}
+      .xnav a::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .18s ease}
+      .xnav a:hover{border-color:var(--accent);color:var(--accent);translate:0 -1px;box-shadow:0 3px 10px rgba(18,26,34,.12)}
+      .xnav a:hover::before{background:var(--accent)}
+      .xnav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+      .xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(217,81,10,.35)}
+      .xnav a.on::before{background:#fff}
+      .xnav a.on:hover{color:#fff;translate:none}
+      @media (max-width:640px){
+        .xnav{gap:6px;padding:12px 0 10px}
+        .xnav a{padding:8px 13px;font-size:13.5px;min-height:38px}
+      }
       .mileflag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:var(--pill);margin-left:6px;vertical-align:1px;white-space:nowrap}
       .mileflag.ca{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
       .spec .mileflag{font-size:10px;letter-spacing:.03em;padding:1px 6px;margin-left:4px}
@@ -216,7 +224,7 @@
         <div class="hero-in">
           <span class="beta">BETA · SHEET 4</span>
           <h1>Never pay sticker.</h1>
-          <p>Used EVs, 2022 and newer · hard caps — <b>$35,000</b> max per pick, <b>$50,000</b> Exotic/Risky · Crystal Lake–area listings, researched <b>Oct 24, 2026</b> — <b>106 picks</b> across the four categories, plus a 10-car Spotlight that waives the EV rule. Every card’s big price is that listing’s researched asking price — confirm it at the source before you sign.</p>
+          <p>Used EVs, 2022 and newer · hard caps — <b>$35,000</b> max per pick, <b>$50,000</b> Exotic/Risky · Crystal Lake–area listings, researched <b>Oct 24, 2026</b> — <b>111 picks</b> across the four categories, plus a 10-car Spotlight that waives the EV rule. Every card’s big price is that listing’s researched asking price — confirm it at the source before you sign.</p>
         </div>
       </header>
 
@@ -230,7 +238,6 @@
         <a href="#ev">EV Watch</a>
         <a href="#chicago">Chicago Guide</a>
         <a href="#gear">Gear</a>
-        <a href="#voices">Trusted Voices</a>
       </nav>
 
       <section id="board" style="margin-top:10px">
@@ -665,6 +672,86 @@
         <p class="angle">Flagship EVs, 2022+, after the fall. The MSRP→now curve and the luxury tier lead — performance is still on every card.</p>
         <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Luxury + depreciation stretched here: $75k+ original MSRP · flagship trim · the saved-vs-MSRP figure is the headline number after the price.</span></div>
         <div class="grid">
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2024</span><span class="badge hot">Headline deal</span><span class="badge flag-audio">PREMIUM AUDIO · MCINTOSH 19-SPK</span></div>
+              <h3>Jeep Wagoneer S Launch Edition (Chicago)</h3>
+              <div class="bigprice num">$28,867<small>All-in price · $1,000 cut · 2024 · 24,116 mi</small></div>
+              <div class="luxrow"><span class="was num">$71,995</span><span class="now num">−$43,128</span><span class="drop">−60% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · JEEP</small></span><span class="hp">600<small>HP · 617 LB-FT · DUAL MOTOR</small></span></div>
+              <div class="danger"><b>DANGER ·</b> 6 NHTSA recalls cover 2024–25 Wagoneer S: headlight aim, a park-function rollaway risk, instrument-panel beam (2025s), trailer tow module, liftgate hinge cover, display software — confirm every recall and software update is completed before purchase. Early-2024 builds had software glitches and owner reliability reviews are mixed. Get a pre-purchase inspection + full VIN history check.</div>
+              <p class="luxline"><b>Launch Edition — the fully loaded first run, Diamond Black over the red/black interior.</b> 100.5 kWh · 303 mi EPA · AutoCheck: clean title, 1 owner, no accidents/damage, personal use, no open recalls. VIN 3C4RJNAK7RT177789.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●●</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$28,867 all-in</span></div><div><span class="k">Year</span><span class="v">2024</span></div><div><span class="k">Mileage</span><span class="v">24,116 mi</span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Charging</span><span class="v">203 KW PEAK DC · CCS1</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">OWNER REVIEWS MIXED</span></div><div><span class="k">Depreciation</span><span class="v">−60% vs MSRP</span></div><div><span class="k">Warranty</span><span class="v">8 YR/100K MI HV BATT · TRANSFERS</span></div><div><span class="k">Winter heat</span><span class="v unc">UNCONFIRMED · NO HEAT PUMP PER EVKX — PLAN RESISTIVE-LEVEL WINTER RANGE</span></div><div><span class="k">Driver assist</span><span class="v">ACTIVE DRIVING ASSIST · LANE-CENTERING + ACC</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cars.com/vehicledetail/43765071-3c20-4fe9-ab2b-d3936deb44c3/" target="_blank" rel="noopener">2024 Wagoneer S Launch Edition — $28,867 · 24,116 mi · Chrysler Dodge Jeep Ram of Chicago, Chicago, IL (~37 mi)</a> <span class="verdict deal">HEADLINE DEAL · verified live Oct 24 · all-in $28,867 ($28,499 + $368 doc) · advertised price requires financing through the dealer's partner lenders</span></div>
+              <div class="src">SOURCE · Cars.com listing (verified live) · Jeep · EVKX — read Oct 24, 2026</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2024</span><span class="badge good">Lifetime powertrain warranty</span><span class="badge flag-audio">PREMIUM AUDIO · MCINTOSH 19-SPK</span></div>
+              <h3>Jeep Wagoneer S Launch Edition (Highland IN)</h3>
+              <div class="bigprice num">$30,001<small>All-in price · 2024 · 22,111 mi</small></div>
+              <div class="luxrow"><span class="was num">$71,995</span><span class="now num">−$41,994</span><span class="drop">−58% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · JEEP</small></span><span class="hp">600<small>HP · 617 LB-FT · DUAL MOTOR</small></span></div>
+              <div class="danger"><b>DANGER ·</b> Same model risks as the Chicago car above: 6 NHTSA recalls on 2024–25 Wagoneer S (headlight aim, park-function rollaway risk, trailer tow module, liftgate hinge cover, display software) — confirm all are closed on this VIN. Early-2024 builds had software glitches; owner reliability reviews are mixed. Pre-purchase inspection + full VIN history check before money moves.</div>
+              <p class="luxline"><b>Launch Edition with a dealer free lifetime engine &amp; powertrain warranty stacked on the factory coverage.</b> 100.5 kWh · 303 mi EPA · AutoCheck: clean title, 1 owner, no accidents/damage, no open recalls. VIN 3C4RJNAK7RT177565.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$30,001 all-in</span></div><div><span class="k">Year</span><span class="v">2024</span></div><div><span class="k">Mileage</span><span class="v">22,111 mi</span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Charging</span><span class="v">203 KW PEAK DC · CCS1</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">OWNER REVIEWS MIXED</span></div><div><span class="k">Depreciation</span><span class="v">−58% vs MSRP</span></div><div><span class="k">Warranty</span><span class="v">8 YR/100K MI HV BATT · TRANSFERS · + DEALER LIFETIME POWERTRAIN</span></div><div><span class="k">Winter heat</span><span class="v unc">UNCONFIRMED · NO HEAT PUMP PER EVKX — PLAN RESISTIVE-LEVEL WINTER RANGE</span></div><div><span class="k">Driver assist</span><span class="v">ACTIVE DRIVING ASSIST · LANE-CENTERING + ACC</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cars.com/vehicledetail/bd01cbfe-761e-4b5b-aa0f-15f296784753/" target="_blank" rel="noopener">2024 Wagoneer S Launch Edition — $30,001 · 22,111 mi · Thomas Dodge Chrysler Jeep RAM of Highland, Highland, IN (~65 mi)</a> <span class="verdict deal">VERIFIED LIVE OCT 24 · all-in $30,001 · clean AutoCheck · dealer includes free lifetime engine &amp; powertrain warranty</span></div>
+              <div class="src">SOURCE · Cars.com listing (verified live) · Jeep · EVKX — read Oct 24, 2026</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2024</span><span class="badge good">Cars.com Great Deal</span><span class="badge warn">History report incomplete</span><span class="badge flag-audio">PREMIUM AUDIO · MCINTOSH 19-SPK</span></div>
+              <h3>Jeep Wagoneer S Launch Edition (Pontiac IL)</h3>
+              <div class="bigprice num">$31,375<small>All-in price · 2024 · 13,636 mi</small></div>
+              <div class="luxrow"><span class="was num">$71,995</span><span class="now num">−$40,620</span><span class="drop">−56% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · JEEP</small></span><span class="hp">600<small>HP · 617 LB-FT · DUAL MOTOR</small></span></div>
+              <div class="danger"><b>DANGER ·</b> The history report didn't fully load at research time — run a full VIN check before committing. Plus the model risks: 6 NHTSA recalls on 2024–25 Wagoneer S (headlight aim, park-function rollaway risk, trailer tow module, liftgate hinge cover, display software) — confirm all are closed. Early-2024 builds had software glitches; owner reliability reviews are mixed. Pre-purchase inspection before money moves.</div>
+              <p class="luxline"><b>Launch Edition — the lowest miles of the 2024s in this run.</b> 100.5 kWh · 303 mi EPA · Cars.com badges it a “Great Deal.”</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$31,375 all-in</span></div><div><span class="k">Year</span><span class="v">2024</span></div><div><span class="k">Mileage</span><span class="v">13,636 mi</span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Charging</span><span class="v">203 KW PEAK DC · CCS1</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">OWNER REVIEWS MIXED</span></div><div><span class="k">Depreciation</span><span class="v">−56% vs MSRP</span></div><div><span class="k">Warranty</span><span class="v">8 YR/100K MI HV BATT · TRANSFERS</span></div><div><span class="k">Winter heat</span><span class="v unc">UNCONFIRMED · NO HEAT PUMP PER EVKX — PLAN RESISTIVE-LEVEL WINTER RANGE</span></div><div><span class="k">Driver assist</span><span class="v">ACTIVE DRIVING ASSIST · LANE-CENTERING + ACC</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cars.com/vehicledetail/c18d906d-8c67-4cfb-b033-d7dd86d931e6/" target="_blank" rel="noopener">2024 Wagoneer S Launch Edition — $31,375 · 13,636 mi · Heller Motors, Pontiac, IL (~96 mi)</a> <span class="verdict deal">CARS.COM “GREAT DEAL” · verified live Oct 24 · all-in $31,375 · lowest miles of the 2024s</span></div>
+              <div class="src">SOURCE · Cars.com listing (verified live) · Jeep · EVKX — read Oct 24, 2026</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2024</span><span class="badge good">Certified · Blue Advantage</span><span class="badge flag-audio">PREMIUM AUDIO · MCINTOSH 19-SPK</span></div>
+              <h3>Jeep Wagoneer S Launch Edition (Huntley · Certified)</h3>
+              <div class="bigprice num">$32,857<small>Asking price · certified · 2024 · 20,853 mi</small></div>
+              <div class="luxrow"><span class="was num">$71,995</span><span class="now num">−$39,138</span><span class="drop">−54% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · JEEP</small></span><span class="hp">600<small>HP · 617 LB-FT · DUAL MOTOR</small></span></div>
+              <div class="danger"><b>DANGER ·</b> Same model risks: 6 NHTSA recalls on 2024–25 Wagoneer S (headlight aim, park-function rollaway risk, trailer tow module, liftgate hinge cover, display software) — a certification inspection is not a recall check, so confirm all are closed on this VIN. Early-2024 builds had software glitches; owner reliability reviews are mixed. Pre-purchase inspection + full VIN history check.</div>
+              <p class="luxline"><b>Launch Edition, Ford Blue Advantage Blue certified — the closest Wagoneer S on the sheet.</b> 100.5 kWh · 303 mi EPA · 139-point inspection, roadside assistance included. VIN 3C4RJNAK9RT178104.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$32,857</span></div><div><span class="k">Year</span><span class="v">2024</span></div><div><span class="k">Mileage</span><span class="v">20,853 mi</span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED · 139-PT CERT INSPECTION</span></div><div><span class="k">Charging</span><span class="v">203 KW PEAK DC · CCS1</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">OWNER REVIEWS MIXED</span></div><div><span class="k">Depreciation</span><span class="v">−54% vs MSRP</span></div><div><span class="k">Warranty</span><span class="v">8 YR/100K MI HV BATT · TRANSFERS · CERT 90-DAY/4K MI COMPREHENSIVE</span></div><div><span class="k">Winter heat</span><span class="v unc">UNCONFIRMED · NO HEAT PUMP PER EVKX — PLAN RESISTIVE-LEVEL WINTER RANGE</span></div><div><span class="k">Driver assist</span><span class="v">ACTIVE DRIVING ASSIST · LANE-CENTERING + ACC</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cars.com/vehicledetail/8fe9e92e-a2e8-441f-a211-7244afd2e319/" target="_blank" rel="noopener">2024 Wagoneer S Launch Edition (Certified) — $32,857 · 20,853 mi · Huntley Ford, Huntley, IL (~9 mi)</a> <span class="verdict deal">CERTIFIED · verified live Oct 24 · Ford Blue Advantage Blue: 139-point inspection · 90-day/4,000-mi comprehensive warranty · roadside assistance</span></div>
+              <div class="src">SOURCE · Cars.com listing (verified live) · Jeep · EVKX — read Oct 24, 2026</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2025</span><span class="badge warn">100–300 mi standout</span></div>
+              <h3>Jeep Wagoneer S Limited (Marshall MI)</h3>
+              <div class="bigprice num">$33,800<small>Asking price · $499 cut · 2025 · 4,944 mi</small></div>
+              <div class="luxrow"><span class="was num">$66,995</span><span class="now num">−$33,195</span><span class="drop">−50% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · JEEP</small></span><span class="hp">600<small>HP · 617 LB-FT · DUAL MOTOR</small></span></div>
+              <div class="danger"><b>DANGER ·</b> 2025s carry their own slice of the 6 NHTSA recalls — including the instrument-panel beam recall — plus headlight aim, park-function rollaway risk, trailer tow module, liftgate hinge cover and display software. Confirm all recall and software updates are completed before purchase. Early builds had software glitches; owner reliability reviews are mixed. Get a pre-purchase inspection + full VIN history check.</div>
+              <p class="luxline"><b>Limited — a model year newer at near-new miles, half off sticker in about a year.</b> 100.5 kWh · 303 mi EPA · no accidents per Autotrader. VIN 3C4RJNCK9ST583172.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●○○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$33,800</span></div><div><span class="k">Year</span><span class="v">2025</span></div><div><span class="k">Mileage</span><span class="v">4,944 mi</span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Charging</span><span class="v">203 KW PEAK DC · CCS1</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">OWNER REVIEWS MIXED</span></div><div><span class="k">Depreciation</span><span class="v">−50% vs MSRP</span></div><div><span class="k">Warranty</span><span class="v">6 YR/60K MI BATT PER LISTING · VERIFY</span></div><div><span class="k">Winter heat</span><span class="v unc">UNCONFIRMED · NO HEAT PUMP PER EVKX — PLAN RESISTIVE-LEVEL WINTER RANGE</span></div><div><span class="k">Driver assist</span><span class="v">ACTIVE DRIVING ASSIST · LANE-CENTERING + ACC</span></div></div>
+              <div class="listing"><span class="d far">100–300 MI</span><a href="https://www.autotrader.com/cars-for-sale/vehicle/782565211" target="_blank" rel="noopener">2025 Wagoneer S Limited — $33,800 · 4,944 mi · Cole Chrysler Dodge Jeep, Marshall, MI (~171 mi)</a> <span class="verdict deal">VERIFIED LIVE OCT 24 · no accidents per Autotrader · battery warranty stated as 6 yr/60k mi on the listing</span></div>
+              <div class="src">SOURCE · Autotrader listing (verified live) · Jeep · EVKX — read Oct 24, 2026</div>
+            </div>
+          </article>
 
                     <article class="card">
             <div class="body">
@@ -2274,6 +2361,7 @@
 
       <section id="gear">
         <div class="sec-head"><h2>Gear</h2><span class="tag">EARNS ITS TRUNK SPACE</span></div>
+        <p class="angle">The stuff that pays for itself the first bad week: dead 12V batteries, flat tires at −10°F, salt eating the carpet, and an EV that needs to charge while ComEd rates are cheap. Buy the good version once — the cheap version gets bought twice.</p>
         <div class="grid">
           <article class="card">
             <img src="assets/img_ffb6bf749f863e36.jpg" alt="Portable lithium jump starter pack with jumper clamps and USB cable on a white background" />
@@ -2294,6 +2382,24 @@
               <div class="src">SOURCE · lasfit.com · hddieselsupply.ca · eathealthy365.com — read Oct 24, 2026</div>
             </div>
           </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Buy once</span><span class="badge">Roadside</span></div>
+              <h3>VIAIR 88P portable compressor</h3>
+              <div class="price num">$100–105 <small>street, 2026</small></div>
+              <p>The buy-once upgrade over cigarette-lighter pumps: clamps straight to the battery, 120 PSI, fills tires up to 33″, 25-minute duty cycle and a 16-ft hose that reaches the rear tires on a truck. Cold snaps drop tire pressure ~1 PSI per 10°F — this turns the January TPMS light into a two-minute fix in your own driveway.</p>
+              <div class="src">SOURCE · truckspring.com · forestry-suppliers.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge hot">EV essential</span><span class="badge">Home charging</span></div>
+              <h3>Charge at home — Emporia Level 2, 48A</h3>
+              <div class="price num">$399–479 <small>street, 2026</small></div>
+              <p>11.5 kW hardwired (or 40A on a NEMA 14-50), Wi-Fi scheduling so the car charges on off-peak ComEd hours, UL-listed and ENERGY STAR certified, J1772 or NACS. <b>Alternatives:</b> ChargePoint Home Flex ~$549 (adjustable amperage, strongest app), Grizzl-E Ultimate 48 ~$480 (rugged IP67 box if it lives outdoors), Emporia Pro $599 (PowerSmart load management if the panel is full). Budget $500–1,500 for the electrician on top.</p>
+              <div class="src">SOURCE · shop.emporiaenergy.com · electrac.app · evchargerlab.com — read Oct 24, 2026</div>
+            </div>
+          </article>
         </div>
         <table style="margin-top:14px">
           <tr><th>Category</th><th>Pick</th><th class="r">Street price</th><th>Why</th></tr>
@@ -2305,11 +2411,39 @@
           <tr><td>Detailing</td><td><b>Meguiar's Hybrid Ceramic Wax</b></td><td class="r num">$15–22</td><td>Sacrificial layer against salt spray; microfiber packs $12–25, 3M headlight kit $20–35</td></tr>
           <tr><td>Roadside</td><td><b>Battery Tender Junior</b></td><td class="r num">$35–45</td><td>For cars that sit; Slime tire plug kit $8–16 rides along</td></tr>
           <tr><td>Interior rescue</td><td><b>Bissell Little Green</b></td><td class="r num">$90–130</td><td>Salt-stained carpet and kid damage, handled</td></tr>
+          <tr><td>Inflator — heavy duty</td><td><b>VIAIR 88P</b></td><td class="r num">$100–105</td><td>Battery-clamp power, 120 PSI — see the feature card above; the one you hand down, not throw out</td></tr>
+          <tr><td>EV charging — portable</td><td><b>Portable Level 2 EVSE (32–40A)</b></td><td class="r num">$200–300</td><td>Keep one in the trunk: dryer outlets and RV hookups become charge stops on road trips</td></tr>
+          <tr><td>EV charging — adapter</td><td><b>J1772 ↔ NACS adapter</b></td><td class="r num">$50–80</td><td>Whichever direction your car needs; unlocks the other network's Level 2 posts and destination chargers</td></tr>
+          <tr><td>Wiper blades</td><td><b>Bosch ICON</b></td><td class="r num">$45–60 pair</td><td>Beam blades don't pack with ice like framed ones — swap every fall before the first storm, not during it</td></tr>
+          <tr><td>Glass</td><td><b>Rain-X treatment + washer fluid</b></td><td class="r num">$8–15</td><td>Beads slush off at highway speed; pair with −30°F winter fluid, never the summer blue stuff</td></tr>
+          <tr><td>Snow brush</td><td><b>Hopkins SubZero extendable broom</b></td><td class="r num">$18–28</td><td>Reaches an SUV roof in one pass — Illinois law or not, the sheet-metal slab behind you isn't your problem to create</td></tr>
+          <tr><td>Traction</td><td><b>Folding traction mats (pair)</b></td><td class="r num">$25–40</td><td>Cheap insurance for unplowed McHenry County side streets and icy driveway aprons</td></tr>
+          <tr><td>Cargo</td><td><b>WeatherTech Cargo Liner</b></td><td class="r num">$120–190</td><td>Contains meltwater, salt and grocery spills before they reach the carpet; vehicle-specific fit</td></tr>
+          <tr><td>Phone mount</td><td><b>MagSafe vent / cup mount</b></td><td class="r num">$25–45</td><td>Illinois is hands-free — mount it before the trooper explains the fine</td></tr>
+          <tr><td>Car vacuum</td><td><b>Cordless handheld vacuum</b></td><td class="r num">$40–70</td><td>Salt gravel and kid crumbs weekly beats one heroic spring detail</td></tr>
         </table>
-        <div class="src" style="margin-top:8px">SOURCE · iamcarhacker.com · logix4u.net · partshaggler.com · carcaretotal.com — read Oct 24, 2026. Prices are 2026 street ranges from index-level research — confirm at the retailer.</div>
+        <div class="src" style="margin-top:8px">SOURCE · iamcarhacker.com · logix4u.net · partshaggler.com · carcaretotal.com · truckspring.com · electrac.app · evchargerlab.com — read Oct 24, 2026. Prices are 2026 street ranges from index-level research — confirm at the retailer.</div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">The winter trunk kit — build it once, forget it</h3>
+        <div class="grid">
+          <div>
+            <ul class="check">
+              <li><b>Jump pack + inflator</b> (above) — the two that turn a dead morning into a late one.</li>
+              <li><b>Collapsible shovel and traction mats:</b> dig out, mat under the drive wheels, walk out. Beats waiting on a tow in a county plow queue.</li>
+              <li><b>Wool or fleece blanket, spare gloves and a hat:</b> if you do have to wait, you wait warm. Rotate a couple of water bottles and protein bars in monthly.</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="check">
+              <li><b>Tow strap (no metal hooks)</b> and a flashlight with lithium batteries — alkalines die in the cold exactly when you need them.</li>
+              <li><b>EV note:</b> most EVs still run their screens, locks and hazards off a small 12V battery — when it dies the car is a brick even with a full pack. The jump pack works on it exactly like a gas car.</li>
+              <li><b>Spring reset:</b> pull the kit every April, recharge the jump pack, check the plug kit's plugs haven't dried out, restock what winter ate.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <section id="voices">
+      <section id="voices" hidden aria-hidden="true">
         <div class="sec-head"><h2>Trusted Voices</h2><span class="tag">SIGNAL, NOT SPONSORED FLUFF</span></div>
         <div class="voices">
           <div class="voice"><b>Your Auto Advocate</b><span>Ex-dealer. Fake-fee exposés and finance-office tactics.</span></div>
@@ -2358,7 +2492,7 @@
             }
           });
         },{rootMargin:"-30% 0px -60% 0px"});
-        ["board","zero60","luxury","exotic","boring","spotlight","used","ev","chicago","gear","voices"].forEach(function(id){
+        ["board","zero60","luxury","exotic","boring","spotlight","used","ev","chicago","gear"].forEach(function(id){
           var s=document.getElementById(id); if(s) io.observe(s);
         });
       })();

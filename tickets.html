@@ -39,15 +39,19 @@ a{color:var(--accent-ink)}
 .num,.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 
 /* cross-sheet nav */
-.xnav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 4px}
-.xnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:7px 14px;font-weight:600;font-size:14.5px;transition:border-color .2s ease,color .2s ease}
-.xnav a:hover{border-color:var(--accent);color:var(--accent)}
-.xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.xnav a.on:hover{color:#fff}
+.xnav{display:flex;flex-wrap:wrap;gap:9px;padding:16px 0 6px;align-items:center}
+.xnav a{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;text-decoration:none;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:10px 17px;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:.015em;box-shadow:0 1px 2px rgba(18,26,34,.05);transition:background .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease;-webkit-tap-highlight-color:transparent}
+.xnav a:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--accent-ink);background:color-mix(in srgb,var(--panel) 92%,var(--accent) 8%);box-shadow:var(--shadow);transform:translateY(-1px)}
+.xnav a:active{transform:translateY(0);box-shadow:none}
+.xnav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 38%,transparent),0 1px 3px rgba(18,26,34,.12);font-weight:700}
+.xnav a.on::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.22);flex:0 0 auto}
+.xnav a.on:hover{color:#fff;background:color-mix(in srgb,var(--accent) 92%,#000 8%);border-color:color-mix(in srgb,var(--accent) 92%,#000 8%);transform:translateY(-1px)}
+@media (max-width:560px){.xnav{gap:7px;padding:12px 0 4px}.xnav a{min-height:44px;padding:11px 15px;font-size:14px;flex:1 1 auto}}
 
 /* sticky section nav */
-nav.secnav{position:sticky;top:0;z-index:20;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25);padding:12px 0 10px;display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-nav.secnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:7px 14px;font-weight:600;font-size:14.5px;transition:border-color .2s ease,color .2s ease}
+nav.secnav{position:sticky;top:0;z-index:20;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25);padding:8px 0 6px;display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+nav.secnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:4px 11px;font-weight:600;font-size:13.5px;line-height:1.35;transition:border-color .2s ease,color .2s ease}
 nav.secnav a:hover{border-color:var(--accent);color:var(--accent)}
 
 /* hero */
@@ -104,6 +108,12 @@ section{margin-top:44px;scroll-margin-top:76px}
 .flag .xrefs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .flag .price{font-size:34px}
 
+/* events sub-headings */
+.subhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:36px 0 16px;padding-bottom:7px;border-bottom:1px solid var(--line);scroll-margin-top:76px}
+.subhead.first{margin-top:2px}
+.subhead h3{font-size:25px;line-height:1}
+.subhead .tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-left:auto;text-align:right}
+
 /* weekend rows */
 .wk{display:flex;flex-direction:column;gap:10px}
 .wkrow{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
@@ -150,14 +160,6 @@ section{margin-top:44px;scroll-margin-top:76px}
 .ufcplay b{color:var(--accent-ink)}
 .trow .pr .btn{margin-top:8px}
 
-/* boxing strip */
-.boxing{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
-.bx{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
-.bx .rk{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:12px;color:var(--accent);letter-spacing:.1em}
-.bx h3{font-size:18px;line-height:1.05;margin:2px 0}
-.bx p{margin:0;font-size:13.5px;color:var(--muted)}
-.bx .res{font-weight:700;color:var(--green)}
-
 
 footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:14px;color:var(--muted)}
 footer p{margin:0 0 8px;max-width:85ch}
@@ -175,38 +177,34 @@ footer p{margin:0 0 8px;max-width:85ch}
   </div>
 
   <nav class="secnav" aria-label="On this sheet">
-    <a href="#flagged">Big Time Flagged</a>
-    <a href="#weekend">This Weekend</a>
-    <a href="#hot">Hot Tickets</a>
-    <a href="#bears">Bears Tickets</a>
-    <a href="#onsale">On-Sale Watch</a>
-    <a href="#scene">The Scene</a>
-    <a href="#merch">Band Merch</a>
-    <a href="#cruises">Music Cruises &amp; Festival Travel</a>
-    <a href="#ticketed">Ticketed Events</a>
-    <a href="#brunch">Brunch</a>
-    <a href="#newyear">New Year's</a>
-    <a href="#mothersday">Mother's Day</a>
-    <a href="#ufc">UFC Fight Tickets</a>
-    <a href="#boxing">Boxing Top 10</a>
+    <a href="#flagged">Flagged</a>
+    <a href="#weekend">Weekend</a>
+    <a href="#hot">Hot</a>
+    <a href="#bears">Bears</a>
+    <a href="#onsale">On Sale</a>
+    <a href="#scene">Scene</a>
+    <a href="#merch">Merch</a>
+    <a href="#cruises">Cruises</a>
+    <a href="#events">Events</a>
+    <a href="#ufc">UFC</a>
   </nav>
 
   <header class="hero">
     <div class="date">Friday · October 23, 2026 · Chicago + McHenry County</div>
     <h1><span class="s5">Sheet 5</span> — Tickets</h1>
-    <p>The night-out sheet — shows, fights, merch, and music travel, tuned to your library: TOOL, A Perfect Circle, Puscifer, Linkin Park, Dirty Heads, and the reggae rock circuit. No country. Ever.</p>
+    <p>The night-out sheet — shows, fights, merch, and music travel for Chicago and McHenry County. No country. Ever.</p>
   </header>
 
   <!-- ============ BIG TIME FLAGGED ============ -->
   <section id="flagged">
-    <div class="sec-head"><h2>🚩 Big Time Flagged</h2><span class="tag">Your artists · your turf</span></div>
+    <div class="sec-head"><h2>🚩 Big Time Flagged</h2><span class="tag">Chicago + driving distance</span></div>
     <div class="flag-wrap">
 
       <article class="flag">
-        <div class="flagtag">🚩 Your artist is coming to Chicago</div>
+        <div class="flagtag">🚩 Q101 Twisted Xmas · Aragon Ballroom</div>
         <h3>Dirty Heads</h3>
         <div class="meta">Tue · Dec 8, 2026 · Byline Bank Aragon Ballroom · Chicago</div>
-        <p>Q101 Twisted Xmas with Slightly Stoopid — two of your reggae rock staples on one bill, in Uptown's legendary old room (4,500 cap).</p>
+        <p>Q101 Twisted Xmas with Slightly Stoopid — two reggae rock staples on one bill, in Uptown's legendary old room (4,500 cap).</p>
         <div class="price">$111 <small>from · on sale now</small></div>
         <div class="playbook"><b>The play</b> Aragon holiday shows hold their price — this is a radio-station tentpole, not a fire-sale candidate. Buy on the primary market now rather than gambling on a December slide; if you wait, compare all-in totals on TickPick (no-fee) before StubHub.</div>
         <div class="xrefs">
@@ -217,10 +215,10 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
       <article class="flag">
-        <div class="flagtag">🚩 Your artist · driving distance · on sale today</div>
+        <div class="flagtag">🚩 On sale today · Grand Rapids road trip</div>
         <h3>Stick Figure</h3>
         <div class="meta">Fri · Jun 11, 2027 · Acrisure Amphitheater · Grand Rapids, MI</div>
-        <p>Enjoy the Ride Tour, outdoor amphitheater, ~2.5 hours up I-94/196 — an easy summer road trip for a top-of-your-playlist act. Tickets went on sale today (Oct 23), so the primary-market floor is as cheap as it gets.</p>
+        <p>Enjoy the Ride Tour, outdoor amphitheater, ~2.5 hours up I-94/196 — an easy summer road trip. Tickets went on sale today (Oct 23), so the primary-market floor is as cheap as it gets.</p>
         <div class="price">$45 <small>from · on sale now</small></div>
         <div class="playbook"><b>The play</b> On-sale day is the one time face value beats the slide — lawn and lower-bowl at face won't be cheaper later for a June Friday. Travel angle: Grand Rapids is a straight shot from McHenry County; no flight, no hotel math required unless you make a weekend of it.</div>
         <div class="xrefs">
@@ -230,7 +228,21 @@ footer p{margin:0 0 8px;max-width:85ch}
         <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
       </article>
 
+<article class="flag">
+        <div class="flagtag">🚩 Aragon Ballroom · With Soul Coughing</div>
+        <h3>Sublime</h3>
+        <div class="meta">Sat · Dec 12, 2026 · Byline Bank Aragon Ballroom · Chicago</div>
+        <p>The reunited Sublime — Jakob Nowell up front — with Soul Coughing, four nights after Twisted Xmas in the same room. Note the billing: this is Sublime, not Sublime With Rome — that band's farewell run ended in 2024.</p>
+        <div class="playbook"><b>The play</b> The SeatGeek listing doesn't post a get-in price yet, so there's nothing to chase — buy primary when pricing posts instead of feeding early resale. December makes the Aragon your home venue: this is the second flagged show there in five days.</div>
+        <div class="xrefs">
+          <a class="btn" href="https://seatgeek.com/sublime-tickets" target="_blank" rel="noopener">Tickets — SeatGeek</a>
+          <a class="btn ghost" href="#cruises">Also sailing: Reef Madness Cruise ↓</a>
+        </div>
+        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Date &amp; venue via SeatGeek / Songkick · checked Oct 24, 2026</p>
+      </article>
+
     </div>
+
   </section>
 
   <!-- ============ THIS WEEKEND ============ -->
@@ -598,7 +610,7 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
       <article class="card">
-        <div class="top"><span class="pill acc">Your artist headlining</span><span class="pill">Reggae rock</span></div>
+        <div class="top"><span class="pill acc">Dirty Heads headlining</span><span class="pill">Reggae rock</span></div>
         <h3>Holidaze Festival 2026 — Boca Raton, FL</h3>
         <div class="meta">Nov 14–15, 2026 · Sunset Cove Amphitheater · Reggae Rise Up presents</div>
         <div class="price">$52.50 <small>from · GA ticket</small></div>
@@ -609,7 +621,7 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
       <article class="card">
-        <div class="top"><span class="pill acc">Your artist</span><span class="pill">Reggae rock cruise</span></div>
+        <div class="top"><span class="pill acc">Sublime's own cruise</span><span class="pill">Reggae rock cruise</span></div>
         <h3>Sublime — Reef Madness Cruise</h3>
         <div class="meta">Nov 15–19, 2026 · Miami → Great Stirrup Cay, Bahamas · Norwegian Jewel</div>
         <div class="price">$1,445 <small>per person · from</small></div>
@@ -620,7 +632,7 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
       <article class="card">
-        <div class="top"><span class="pill acc">Your artists</span><span class="pill">All-inclusive resort festival</span></div>
+        <div class="top"><span class="pill acc">Stick Figure + Slightly Stoopid</span><span class="pill">All-inclusive resort festival</span></div>
         <h3>Closer to the Sun — Riviera Maya, Mexico</h3>
         <div class="meta">Jan 9–13, 2027 · Hard Rock Hotel Riviera Maya · All-inclusive</div>
         <div class="price">$250 <small>per person deposit to reserve</small></div>
@@ -675,7 +687,7 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
       <article class="card">
-        <div class="top"><span class="pill out">Sold out</span><span class="pill acc">Your artist</span></div>
+        <div class="top"><span class="pill out">Sold out</span><span class="pill acc">311's own cruise</span></div>
         <h3>311 Caribbean Cruise</h3>
         <div class="meta">Mar 10–15, 2027 · Miami → Ocho Rios → Grand Cayman · Norwegian Jewel</div>
         <div class="price">Sold out</div>
@@ -743,9 +755,10 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
   </section>
 
-  <!-- ============ TICKETED EVENTS ============ -->
-  <section id="ticketed">
-    <div class="sec-head"><h2>Ticketed Events</h2><span class="tag">One-offs, exhibitions &amp; seasonal specials · Chicago + McHenry County</span></div>
+  <!-- ============ EVENTS ============ -->
+  <section id="events">
+    <div class="sec-head"><h2>Events</h2><span class="tag">Ticketed one-offs · brunch · holidays · Chicago + McHenry County</span></div>
+    <div class="subhead first" id="ticketed"><h3>Ticketed Events</h3><span class="tag">One-offs, exhibitions &amp; seasonal specials</span></div>
     <div class="grid">
 
       <article class="card">
@@ -789,11 +802,8 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
     </div>
-  </section>
 
-  <!-- ============ BRUNCH ============ -->
-  <section id="brunch">
-    <div class="sec-head"><h2>Brunch</h2><span class="tag">Good ass brunches · Chicago + McHenry County · everyday spots &amp; ticketed events</span></div>
+    <div class="subhead" id="brunch"><h3>Brunch</h3><span class="tag">Good ass brunches · everyday spots &amp; ticketed events</span></div>
     <div class="grid">
 
       <article class="card">
@@ -897,11 +907,8 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
     </div>
-  </section>
 
-  <!-- ============ NEW YEAR'S ============ -->
-  <section id="newyear">
-    <div class="sec-head"><h2>🎆 New Year's</h2><span class="tag">NYE parties, concerts &amp; dinners · NYD recovery · Thu Dec 31 – Fri Jan 1</span></div>
+    <div class="subhead" id="newyear"><h3>🎆 New Year's</h3><span class="tag">NYE parties, concerts &amp; dinners · NYD recovery · Thu Dec 31 – Fri Jan 1</span></div>
     <div class="grid">
 
       <article class="card">
@@ -995,11 +1002,8 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
     </div>
-  </section>
 
-  <!-- ============ MOTHER'S DAY ============ -->
-  <section id="mothersday">
-    <div class="sec-head"><h2>💐 Mother's Day</h2><span class="tag">Sun · May 9, 2027 · brunches, dinners &amp; ticketed events · 2026 pricing shown — 2027 reservations open in spring</span></div>
+    <div class="subhead" id="mothersday"><h3>💐 Mother's Day</h3><span class="tag">Sun · May 9, 2027 · brunches, dinners &amp; ticketed events · 2026 pricing shown — 2027 reservations open in spring</span></div>
     <div class="grid">
 
       <article class="card">
@@ -1065,7 +1069,7 @@ footer p{margin:0 0 8px;max-width:85ch}
       <article class="card">
         <div class="top"><span class="pill deal">Local</span><span class="meta">McHenry · 10 AM – 3 PM</span></div>
         <h3>Addison's Steakhouse</h3>
-        <div class="meta">355 Front St · McHenry</div>
+        <div class="meta">McHenry</div>
         <div class="price">$$ <small>special menu · reservations</small></div>
         <p>A steakhouse Mother's Day brunch on Front Street in McHenry — a dedicated Mother's Day menu from the kitchen that handles the riverfront's special occasions. The local move when Crystal Lake books out.</p>
         <a class="btn" href="https://mchenrylife.com/events/food-drink-events/mchenry/mothers-day-brunch-at-addisons-steakhouse/" target="_blank" rel="noopener">Event — McHenry Life</a>
@@ -1153,27 +1157,9 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
   </section>
 
-  <!-- ============ BOXING TOP 10 ============ -->
-  <section id="boxing">
-    <div class="sec-head"><h2>Boxing Top 10</h2><span class="tag">Rolling 12-month window · results + the biggest fights ahead</span></div>
-    <div class="boxing">
-      <div class="bx"><div class="rk">#1</div><h3>Fury vs Joshua</h3><p>Vacant WBA Super heavyweight title · Fri Dec 11 · Principality Stadium, Cardiff · Netflix. The biggest British fight ever made, finally.</p></div>
-      <div class="bx"><div class="rk">#2</div><h3>Canelo vs M'Billi</h3><p>WBC super-middleweight · Sat Oct 31 · Riyadh · DAZN PPV. Proceeding as scheduled.</p></div>
-      <div class="bx"><div class="rk">#3</div><h3>Navarrete vs Foster</h3><p>130-lb unification (WBO/IBF vs WBC) · Tomorrow, Oct 24 · San Antonio · DAZN. Foster -200 / Navarrete +155 (DraftKings).</p></div>
-      <div class="bx"><div class="rk">#4</div><h3>Benavidez vs Cieslak</h3><p>Three-belt cruiserweight unification · Sat Dec 5 · Phoenix. Announced Oct 22.</p></div>
-      <div class="bx"><div class="rk">#5</div><h3>Dubois vs Wardley</h3><p class="res">Result: Dubois TKO2 · Oct 17, O2 London</p><p>Retained the WBO heavyweight title. Hrgovic faced off post-fight — a March unification is the ask.</p></div>
-      <div class="bx"><div class="rk">#6</div><h3>Kabayel vs Hysa</h3><p>WBC heavyweight · Sat Nov 28 · Düsseldorf · DAZN.</p></div>
-      <div class="bx"><div class="rk">#7</div><h3>Bivol vs Callum Smith</h3><p>WBA/IBF/WBO light-heavyweight · Sat Dec 12 · Yekaterinburg. Single-source listing — treat the date as provisional.</p></div>
-      <div class="bx"><div class="rk">#8</div><h3>Baumgardner vs Turhan</h3><p>IBF women's lightweight · Sun Nov 8 · Arlington, TX · ESPN.</p></div>
-      <div class="bx"><div class="rk">#9</div><h3>Dalton Smith vs Puello</h3><p>WBC super-lightweight · Tomorrow, Oct 24 · Sheffield · DAZN.</p></div>
-      <div class="bx"><div class="rk">#10</div><h3>Cacace vs Ball</h3><p>WBA super-featherweight · Sat Dec 19 · Belfast · DAZN. Single-source listing.</p></div>
-    </div>
-    <p style="margin:12px 2px 0;font-size:14.5px;color:var(--muted)">Developing: a Garcia–Mayweather “agreement” is being claimed (Oct 21–23) but is unconfirmed by either camp. Pacquiao is reported on the Fury–Joshua undercard (The Sun). Sources: Reuters, ESPN, Boxing News · Oct 2026.</p>
-  </section>
-
   <footer>
     <p><b>Sheet 5 — Tickets.</b> Friday, October 23, 2026. Ticket prices were checked Oct 22–24 and move fast — re-check before you buy.</p>
-    <p>Sources: TixTracer, Ticketmaster, Vivid Seats, SeatGeek, USA Today, Raue Center, venue calendars, official artist stores (TOOL, Linkin Park/Warner Records, 311, Iration, Puscifer, Veeps, Pelagic), Sixthman and event official sites, TickPick, UFC.com, Visit Qatar, McHenry Life, Reuters, ESPN.</p>
+    <p>Sources: TixTracer, Ticketmaster, Vivid Seats, SeatGeek, JamBase, USA Today, Raue Center, venue calendars, official artist stores (TOOL, Linkin Park/Warner Records, 311, Iration, Puscifer, Veeps, Pelagic), Sixthman and event official sites, TickPick, UFC.com, Visit Qatar, McHenry Life, Reuters, ESPN.</p>
   </footer>
 
 </div>

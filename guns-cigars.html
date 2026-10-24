@@ -37,12 +37,25 @@
       .backbar .tag{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em}
 
       /* cross-sheet nav */
-      nav.xnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-      nav.xnav a{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:7px 13px;border-radius:999px;white-space:nowrap}
-      nav.xnav a:hover{border-color:var(--accent);color:var(--accent)}
-      nav.xnav a.active{background:var(--deal);border-color:var(--deal);color:var(--deal-ink);font-weight:700}
-      nav.xnav a.active:hover{color:var(--deal-ink)}
-      @media (max-width:640px){.backbar .tag{display:none}}
+      nav.xnav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:4px;border:1px solid var(--line);border-radius:999px;background:rgba(22,26,23,.72)}
+      nav.xnav a{display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:background .2s ease,color .2s ease,box-shadow .2s ease}
+      nav.xnav a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.35;flex:0 0 auto;transition:opacity .2s ease}
+      nav.xnav a:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+      nav.xnav a:hover::before{opacity:.7}
+      nav.xnav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+      nav.xnav a.active{background:var(--deal);color:var(--deal-ink);font-weight:700;box-shadow:0 2px 10px rgba(0,230,118,.28),inset 0 1px 0 rgba(255,255,255,.25)}
+      nav.xnav a.active::before{background:var(--deal-ink);opacity:.85}
+      nav.xnav a.active:hover{background:var(--deal);color:var(--deal-ink)}
+      @media (max-width:640px){
+        .backbar .tag{display:none}
+        nav.xnav{gap:4px;padding:3px}
+        nav.xnav a{font-size:12.5px;padding:7px 11px;gap:6px}
+      }
+      @media (hover:none){
+        nav.xnav a:hover{background:transparent;color:var(--muted)}
+        nav.xnav a:hover::before{opacity:.35}
+        nav.xnav a.active:hover{background:var(--deal);color:var(--deal-ink)}
+      }
 
       header.masthead{padding:30px 0 6px}
       h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:clamp(44px,9vw,84px);line-height:.95;margin:0;letter-spacing:.01em;text-transform:uppercase}
@@ -653,6 +666,7 @@
         <div class="grid">
 
           <article class="card">
+            <div class="media fit"><img src="assets/img_6418bb632c58ac44.png" alt="Beretta 92FS Inox 9mm pistol in full stainless with black polymer grips" /></div>
             <div class="body">
               <div class="badges"><span class="badge rebate">$100 Rebate</span><span class="badge deal">Best value of the six</span></div>
               <h3>Beretta 92FS Inox 9mm</h3>
@@ -666,6 +680,7 @@
           </article>
 
           <article class="card">
+            <div class="media fit"><img src="assets/img_ed1197398367c867.png" alt="Kimber Next Gen Custom Two-Tone .45 ACP 1911 with black slide, stainless frame, and walnut grips" /></div>
             <div class="body">
               <div class="badges"><span class="badge deal">Beats street</span></div>
               <h3>Kimber Next Gen Custom Two-Tone .45 ACP 1911</h3>
@@ -678,6 +693,7 @@
           </article>
 
           <article class="card">
+            <div class="media fit"><img src="assets/img_e2828f33a4c1c703.jpg" alt="Kimber Stainless II .45 ACP 1911 in satin stainless with black double-diamond grips" /></div>
             <div class="body">
               <div class="badges"><span class="badge deal">Low end of street</span></div>
               <h3>Kimber Stainless II .45 ACP 1911</h3>
@@ -690,6 +706,7 @@
           </article>
 
           <article class="card">
+            <div class="media fit"><img src="assets/img_244fac6ed94f2e0c.webp" alt="Colt Python 4.25-inch .357 Magnum revolver in polished blued finish with walnut grips" /></div>
             <div class="body">
               <h3>Colt Python 4.25″ .357 Magnum</h3>
               <p class="spec">SEMI-BRIGHT STAINLESS · VENT RIB BARREL · WALNUT GRIPS WITH COLT MEDALLION · 4.25″ BARREL</p>
@@ -701,6 +718,7 @@
           </article>
 
           <article class="card">
+            <div class="media fit"><img src="assets/img_8c690552eed458e5.webp" alt="Smith &amp; Wesson 686 Plus Deluxe 6-inch .357 Magnum revolver in stainless with wood grips" /></div>
             <div class="body">
               <div class="badges"><span class="badge deal">Fair street price</span></div>
               <h3>Smith &amp; Wesson 686 Plus Deluxe 6″ .357 Magnum</h3>
@@ -713,6 +731,7 @@
           </article>
 
           <article class="card">
+            <div class="media fit"><img src="assets/img_cca45b0b263d047b.jpg" alt="Henry Golden Boy Texas Rangers Bicentennial Edition .22 LR lever-action rifle with engraved nickel receiver and Texas Rangers star on the stock" /></div>
             <div class="body">
               <div class="badges"><span class="badge box">Limited · 1,823 units</span></div>
               <h3>Henry Golden Boy Texas Rangers Bicentennial Edition .22 LR</h3>
@@ -1467,8 +1486,8 @@
           <div class="code-row">
             <div class="code-main"><span class="code-text">B7MW5F9G</span><span class="badge trusted">Trusted</span></div>
             <div class="code-info">
-              <p><b>$4.50 off</b> Tipmile Slim RFID Blocking Leather Wallet &mdash; <b>$5.49</b> (was $9.99). That product only. Expires Oct 26.</p>
-              <p class="code-meta">SOURCE: <a href="https://www.dealnews.com/" target="_blank" rel="noopener">DealNews &rarr;</a></p>
+              <p><b>45% off</b> Tipmile Men's Slim RFID Leather Wallet &mdash; <b>$5.49</b> (was $9.99). That product only. Expires Oct 25.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/tipmile/" target="_blank" rel="noopener">Struggleville &rarr;</a> + DealNews</p>
             </div>
             <button type="button" class="copy-btn" data-code="B7MW5F9G">Copy code</button>
           </div>
@@ -1480,15 +1499,6 @@
               <p class="code-meta">SOURCE: <a href="https://www.dealnews.com/" target="_blank" rel="noopener">DealNews &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="T87L736U">Copy code</button>
-          </div>
-
-          <div class="code-row">
-            <div class="code-main"><span class="code-text">GLY9YX8K</span><span class="badge trusted">Trusted</span></div>
-            <div class="code-info">
-              <p><b>$4 off</b> Fukkuda Electric Arc Candle Lighter &mdash; <b>$5.99</b> (was $9.99). That product only. Expires Oct 24.</p>
-              <p class="code-meta">SOURCE: <a href="https://www.dealnews.com/" target="_blank" rel="noopener">DealNews &rarr;</a></p>
-            </div>
-            <button type="button" class="copy-btn" data-code="GLY9YX8K">Copy code</button>
           </div>
 
           <div class="code-row">
@@ -1528,15 +1538,6 @@
           </div>
 
           <div class="code-row">
-            <div class="code-main"><span class="code-text">64IUJA8V</span><span class="badge trusted">Trusted</span></div>
-            <div class="code-info">
-              <p><b>$59.99 off</b> Air Compression Leg Massager &mdash; <b>$40</b> (was $99.99). That product only. Expires Oct 24.</p>
-              <p class="code-meta">SOURCE: <a href="https://www.dealnews.com/" target="_blank" rel="noopener">DealNews &rarr;</a></p>
-            </div>
-            <button type="button" class="copy-btn" data-code="64IUJA8V">Copy code</button>
-          </div>
-
-          <div class="code-row">
             <div class="code-main"><span class="code-text">LCRPVHJ0</span><span class="badge trusted">Trusted</span></div>
             <div class="code-info">
               <p><b>$22.28 off</b> Ibeed AI Drawing Robot for Kids &mdash; <b>$67.40</b> (was $89.68). That product only. Expires Oct 31.</p>
@@ -1561,6 +1562,33 @@
               <p class="code-meta">SOURCE: <a href="https://www.dealsofamerica.com/" target="_blank" rel="noopener">Rossen Reports + Deals of America &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="RINE6CAT">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">F3UECZ91</span><span class="badge trusted">Trusted</span></div>
+            <div class="code-info">
+              <p><b>$10.49 off</b> AstroAI 150PSI Digital Tire Pressure Gauge (Silver) &mdash; <b>$2.50</b> (was $12.99). That product only. Expires Oct 26, while supplies last.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/astroai-pressure-gauge-2/" target="_blank" rel="noopener">Struggleville &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="F3UECZ91">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">J19MB5U6</span><span class="badge trusted">Trusted</span></div>
+            <div class="code-info">
+              <p><b>$35.39</b> TREKURE 8000A 26800mAh Car Battery Jump Starter &mdash; with clip coupon + code (<b>$41.99</b> code-only; was $89.99). That product only. Expires Oct 27.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.dealsofamerica.com/trekure-jump-stater/844921.htm" target="_blank" rel="noopener">Deals of America &rarr;</a> + Southern Savers</p>
+            </div>
+            <button type="button" class="copy-btn" data-code="J19MB5U6">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">2WUV5II5</span><span class="badge trusted">Trusted</span></div>
+            <div class="code-info">
+              <p><b>$5.99 off</b> AstroAI Stainless Pencil Tire Pressure Gauge 2-Pack (10&ndash;75 PSI) &mdash; <b>$2.00</b> (was $7.99). That product only. Expires Oct 28.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.dealsofamerica.com/astroai-gl-1203-tire-pressure-gauge/844437.htm" target="_blank" rel="noopener">Deals of America &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="2WUV5II5">Copy code</button>
           </div>
 
           <div class="code-row">
@@ -1792,7 +1820,7 @@
             <div class="code-main"><span class="code-text">DDDD4999</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>52% off</b> portable power station &mdash; <b>$49.99</b> (was $103.99). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: ROSSEN REPORTS (STILL LIVE TODAY)</p>
+              <p class="code-meta">SOURCE: <a href="https://rossenreports.substack.com/p/we-found-new-amazon-promo-codes-up-829" target="_blank" rel="noopener">Rossen Reports (Oct 21) &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="DDDD4999">Copy code</button>
           </div>
@@ -1801,7 +1829,7 @@
             <div class="code-main"><span class="code-text">0BV0YZVZ</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>55% off</b> USB fast charger &mdash; <b>$8.99</b> (was $19.99). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: ROSSEN REPORTS (STILL LIVE TODAY)</p>
+              <p class="code-meta">SOURCE: <a href="https://rossenreports.substack.com/p/we-found-new-amazon-promo-codes-up-829" target="_blank" rel="noopener">Rossen Reports (Oct 21) &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="0BV0YZVZ">Copy code</button>
           </div>
@@ -1810,7 +1838,7 @@
             <div class="code-main"><span class="code-text">GHLMO2O8</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>50% off</b> instant camera &mdash; <b>$16.99</b> (was $33.99). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: ROSSEN REPORTS (STILL LIVE TODAY)</p>
+              <p class="code-meta">SOURCE: <a href="https://rossenreports.substack.com/p/we-found-new-amazon-promo-codes-up-829" target="_blank" rel="noopener">Rossen Reports (Oct 21) &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="GHLMO2O8">Copy code</button>
           </div>
@@ -1828,7 +1856,7 @@
             <div class="code-main"><span class="code-text">H57NCAX8</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>50% off</b> cordless vacuum cleaner &mdash; <b>$58.50</b> (was $116.99). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: ROSSEN REPORTS (STILL LIVE TODAY)</p>
+              <p class="code-meta">SOURCE: <a href="https://rossenreports.substack.com/p/we-found-new-amazon-promo-codes-up-829" target="_blank" rel="noopener">Rossen Reports (Oct 21) &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="H57NCAX8">Copy code</button>
           </div>
@@ -1852,15 +1880,6 @@
           </div>
 
           <div class="code-row">
-            <div class="code-main"><span class="code-text">RQA7Y0GJ</span><span class="badge unverified">[Unverified]</span></div>
-            <div class="code-info">
-              <p><b>$44 off</b> Baseus Picogo 10000mAh MagSafe Wireless Power Bank &mdash; <b>$25.99</b> (was $69.99). That product only. Expires Oct 23.</p>
-              <p class="code-meta">SOURCE: <a href="https://www.dealsofamerica.com/" target="_blank" rel="noopener">Deals of America &rarr;</a></p>
-            </div>
-            <button type="button" class="copy-btn" data-code="RQA7Y0GJ">Copy code</button>
-          </div>
-
-          <div class="code-row">
             <div class="code-main"><span class="code-text">EQI8QOZU</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>$70 off</b> Toguardgo 9&#8243; Portable Touchscreen Wireless CarPlay display &mdash; <b>$59.99</b> (was $129.99). That product only. Expires Oct 27.</p>
@@ -1876,15 +1895,6 @@
               <p class="code-meta">SOURCE: <a href="https://www.dealsofamerica.com/" target="_blank" rel="noopener">Deals of America &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="RZ7WU6ZV">Copy code</button>
-          </div>
-
-          <div class="code-row">
-            <div class="code-main"><span class="code-text">J19MB5U6</span><span class="badge unverified">[Unverified]</span></div>
-            <div class="code-info">
-              <p><b>$54.60 off</b> Trekure 8000A 26800mAh Car Jump Starter &mdash; <b>$35.39</b> (was $89.99). Clip on-page coupon + code. Expires Oct 27.</p>
-              <p class="code-meta">SOURCE: <a href="https://www.dealsofamerica.com/" target="_blank" rel="noopener">Deals of America &rarr;</a></p>
-            </div>
-            <button type="button" class="copy-btn" data-code="J19MB5U6">Copy code</button>
           </div>
 
           <div class="code-row">
@@ -1944,8 +1954,8 @@
           <div class="code-row">
             <div class="code-main"><span class="code-text">H2SAAP03</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
-              <p><b>$70 off</b> Provirtec Air Purifier &mdash; <b>$129.99</b> (was $199.99). That product only. Expires Oct 27.</p>
-              <p class="code-meta">SOURCE: GLITCHNDEALZ (SOURCE PAGE CONFIRMS)</p>
+              <p><b>$70 off</b> Provirtec Pet Air Purifier (H13 HEPA) &mdash; <b>$129.99</b> (was $199.99). That product only. Expires Oct 27.</p>
+              <p class="code-meta">SOURCE: <a href="https://glitchndealz.com/2026/10/70-off-provirtec-air-purifier-with-free-shipping-at-amazon.html" target="_blank" rel="noopener">GlitchnDealz &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="H2SAAP03">Copy code</button>
           </div>
@@ -1953,8 +1963,8 @@
           <div class="code-row">
             <div class="code-main"><span class="code-text">JFG2D967</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
-              <p><b>$9 off</b> G Gradual Men's Sweatpants (black) &mdash; <b>$16.99</b> (was $25.99). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: FREESTUFFFINDER (POSTED ~OCT 19)</p>
+              <p><b>$16.99</b> G Gradual Men's Sweatpants (Black) &mdash; was $29.99, extra 35% off with code. That product only. Posted Oct 20.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.freestufffinder.com/mens-sweatpants-16-99-at-amazon/" target="_blank" rel="noopener">FreeStuffFinder &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="JFG2D967">Copy code</button>
           </div>
@@ -1972,7 +1982,7 @@
             <div class="code-main"><span class="code-text">CAP11A</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>30% off</b> BEVA CAP11A 150PSI Tire Inflator + Jump Starter w/ air compressor &mdash; <b>$34.99</b> (was $49.99). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: BENSBARGAINS (POSTED ~OCT 14)</p>
+              <p class="code-meta">SOURCE: <a href="https://bensbargains.com/bargain/beva-cap11a-150psi-tire-inflator-jump-starter-w-air-compressor-1088070/?utm_source=facebook" target="_blank" rel="noopener">Ben's Bargains (posted Oct 15) &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="CAP11A">Copy code</button>
           </div>
@@ -1981,7 +1991,7 @@
             <div class="code-main"><span class="code-text">6MR1G5N3</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>$18 off</b> Ceoutdoor Men's Plaid Flannel Sherpa-Lined Zip-Up Hoodie &mdash; <b>$20</b> (was $38). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: BENSBARGAINS (POSTED ~OCT 14)</p>
+              <p class="code-meta">SOURCE: <a href="https://bensbargains.com/bargain/ceoutdoor-men-s-plaid-flannel-sherpa-lined-zip-up-hoodie-jacket-1088127/?utm_source=facebook" target="_blank" rel="noopener">Ben's Bargains (posted Oct 15) &rarr;</a></p>
             </div>
             <button type="button" class="copy-btn" data-code="6MR1G5N3">Copy code</button>
           </div>
@@ -2050,15 +2060,6 @@
           </div>
 
           <div class="code-row">
-            <div class="code-main"><span class="code-text">PKLRJQB6</span><span class="badge unverified">[Unverified]</span></div>
-            <div class="code-info">
-              <p><b>Promo code</b> SEHMUA Wireless Outdoor Home Security Camera System &mdash; enter the code at checkout (no discount/price published by source). That product only. No stated expiry.</p>
-              <p class="code-meta">SOURCE: GLITCHNDEALZ (UPDATED OCT 21)</p>
-            </div>
-            <button type="button" class="copy-btn" data-code="PKLRJQB6">Copy code</button>
-          </div>
-
-          <div class="code-row">
             <div class="code-main"><span class="code-text">PX6WRBE4</span><span class="badge unverified">[Unverified]</span></div>
             <div class="code-info">
               <p><b>40% off</b> FBEE Rechargeable Hand Warmer. That product only. Expires Oct 30.</p>
@@ -2074,6 +2075,123 @@
               <p class="code-meta">SOURCE: ONECUTECOUPONER</p>
             </div>
             <button type="button" class="copy-btn" data-code="VPN9PDZ2">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">79R5OOF3</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>46% off</b> SeeSii 1600W Car Buffer Polisher. That product only. Expires Oct 25.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/seesii-2/" target="_blank" rel="noopener">Struggleville &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="79R5OOF3">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">YG026H01</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>70% off</b> CINCOM Cordless Hand Massager with Heat. That product only. Expires Oct 25.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/cincom/" target="_blank" rel="noopener">Struggleville &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="YG026H01">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">TNK2FC76</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>40% off</b> Blackview 10.1&Prime; Digital Family Calendar. That product only. Expires Oct 25.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/blackview/" target="_blank" rel="noopener">Struggleville &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="TNK2FC76">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">UT7Q3GJ7</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>50% off</b> LKADRIM 50FT Garden Hose. That product only. Expires Oct 25.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/lkadrim/" target="_blank" rel="noopener">Struggleville &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="UT7Q3GJ7">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">XPXOBO6Q</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>50% off</b> LETOUR Magnetic Work Light. That product only. Expires Oct 30.</p>
+              <p class="code-meta">SOURCE: <a href="https://struggleville.net/letour/" target="_blank" rel="noopener">Struggleville &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="XPXOBO6Q">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">DEALSOFAMERICA</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>$42.43 off</b> Xteink X4 Classic 16GB E-Ink eReader &mdash; <b>$66.57</b> (was $109.00). That product only. Expires Oct 31.</p>
+              <p class="code-meta">SOURCE: <a href="https://dealsofamerica.com/" target="_blank" rel="noopener">Deals of America &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="DEALSOFAMERICA">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">40EFV3V3</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>$17.60 off</b> BTFBM Women's Faux Suede Jacket &mdash; <b>$26.39</b> (was $43.99). That product only. Posted Oct 23.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.southernsavers.com/top-amazon-promo-codes-to-grab-today/" target="_blank" rel="noopener">Southern Savers &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="40EFV3V3">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">OM4Q42EP</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>BEDELITE Chenille Waffle Knit Blanket</b> &mdash; <b>$14.99&ndash;$21.99</b> (was $29.99&ndash;$43.99). That product only. Posted Oct 23.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.southernsavers.com/top-amazon-promo-codes-to-grab-today/" target="_blank" rel="noopener">Southern Savers &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="OM4Q42EP">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">ZPCDIQQ3</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>$20 off</b> EMOMAS 8-Pack Clear Moving Bags &mdash; <b>$19.99</b> (was $39.99). That product only. Posted Oct 23.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.southernsavers.com/top-amazon-promo-codes-to-grab-today/" target="_blank" rel="noopener">Southern Savers &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="ZPCDIQQ3">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">8HABBNDA</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>$16 off</b> FORIOUS Double Marble Toilet Paper Holder with Phone Shelf &mdash; <b>$17.99</b> (was $33.99). That product only. Posted Oct 23.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.southernsavers.com/top-amazon-promo-codes-to-grab-today/" target="_blank" rel="noopener">Southern Savers &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="8HABBNDA">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">OFRQNVXJ</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>55% off</b> Cordless Water Dental Flosser (White) &mdash; <b>$8.99</b> (was $19.99). That product only. Posted Oct 21.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.freestufffinder.com/cordless-water-dental-flosser-9-99-at-amazon/" target="_blank" rel="noopener">FreeStuffFinder &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="OFRQNVXJ">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">CBVN0WN7</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>50% off</b> Halloween Skeleton Stand Kit + Solar String Lights &mdash; <b>$14.99</b> (was $29.99). That product only. Posted Oct 21.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.freestufffinder.com/halloween-skeleton-stand-with-lights-16-at-amazon/" target="_blank" rel="noopener">FreeStuffFinder &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="CBVN0WN7">Copy code</button>
+          </div>
+
+          <div class="code-row">
+            <div class="code-main"><span class="code-text">27CYGMMF</span><span class="badge unverified">[Unverified]</span></div>
+            <div class="code-info">
+              <p><b>50% off</b> Halloween Advent Calendar (15 Horror Rubber Ducks) &mdash; <b>$11.99</b> (was $23.99). That product only. Posted Oct 21.</p>
+              <p class="code-meta">SOURCE: <a href="https://www.freestufffinder.com/halloween-advent-calendar-12-99-reg-26-at-amazon/" target="_blank" rel="noopener">FreeStuffFinder &rarr;</a></p>
+            </div>
+            <button type="button" class="copy-btn" data-code="27CYGMMF">Copy code</button>
           </div>
 
         </div>
