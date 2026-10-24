@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Sheet 5 — Tickets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#edf0f3; --panel:#ffffff; --panel2:#e3e9ee; --ink:#121a22; --muted:#54646f;
+  --line:#c9d3db; --accent:#c2410c; --accent-ink:#9a3412;
+  --green:#15803d; --green-bg:#dcfce7; --gold:#b45309; --gold-bg:#fef3c7;
+  --red:#b91c1c; --red-bg:#fee2e2; --chip:#e3e9ee;
+  --pill:999px; --radius:14px;
+  --shadow:0 1px 2px rgba(18,26,34,.06),0 4px 14px rgba(18,26,34,.05);
+  --shadow-lift:0 4px 8px rgba(18,26,34,.08),0 14px 30px rgba(18,26,34,.13);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0a0e13; --panel:#131a22; --panel2:#1a232e; --ink:#e9eff5; --muted:#93a5b5;
+    --line:#26313d; --accent:#fb923c; --accent-ink:#fdba74;
+    --green:#4ade80; --green-bg:#14532d; --gold:#fbbf24; --gold-bg:#451a03;
+    --red:#f87171; --red-bg:#450a0a; --chip:#1a232e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+    --shadow-lift:0 4px 8px rgba(0,0,0,.45),0 14px 30px rgba(0,0,0,.5);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,sans-serif;font-size:16.5px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px 64px}
+h1,h2,h3{font-family:"Barlow Condensed","Barlow",sans-serif;text-transform:uppercase;letter-spacing:.01em;margin:0;font-weight:700}
+a{color:var(--accent-ink)}
+.num,.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+
+/* cross-sheet nav */
+.xnav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 4px}
+.xnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:7px 14px;font-weight:600;font-size:14.5px;transition:border-color .2s ease,color .2s ease}
+.xnav a:hover{border-color:var(--accent);color:var(--accent)}
+.xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.xnav a.on:hover{color:#fff}
+
+/* sticky section nav */
+nav.secnav{position:sticky;top:0;z-index:20;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25);padding:12px 0 10px;display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+nav.secnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:7px 14px;font-weight:600;font-size:14.5px;transition:border-color .2s ease,color .2s ease}
+nav.secnav a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* hero */
+.hero{padding:26px 0 6px}
+.hero .date{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-size:clamp(40px,7vw,64px);line-height:.98;margin:6px 0 8px}
+.hero h1 .s5{color:var(--accent)}
+.hero p{margin:0;max-width:70ch;color:var(--muted);font-size:17px}
+.hero p b{color:var(--ink)}
+
+/* section headers */
+section{margin-top:44px;scroll-margin-top:76px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(26px,4vw,34px);line-height:1}
+.sec-head .tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-left:auto;text-align:right}
+
+/* pills */
+.pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:var(--pill);text-transform:uppercase;white-space:nowrap;background:var(--chip);color:var(--ink)}
+.pill.deal{background:var(--green-bg);color:var(--green)}
+.pill.heat{background:var(--red-bg);color:var(--red)}
+.pill.gold{background:var(--gold-bg);color:var(--gold)}
+.pill.acc{background:var(--accent);color:#fff}
+.pill.out{opacity:.75}
+
+/* generic card grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.card h3{font-size:23px;line-height:1.05}
+.card .meta{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+.card p{margin:0;font-size:15.5px}
+.card .note{font-size:14.5px;color:var(--muted)}
+.card .src{margin-top:auto;padding-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+.card .top{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.price{font-weight:700;font-size:27px;letter-spacing:-.015em;line-height:1.1}
+.price small{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
+.btn{display:inline-block;margin-top:4px;text-decoration:none;background:var(--ink);color:var(--bg);font-weight:700;font-size:14.5px;padding:9px 16px;border-radius:10px;text-align:center;transition:background .2s ease}
+.btn:hover{background:var(--accent);color:#fff}
+.btn.ghost{background:var(--panel2);color:var(--ink)}
+.btn.ghost:hover{background:var(--accent);color:#fff}
+
+/* flagged spotlight */
+.flag-wrap{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:900px){ .flag-wrap{grid-template-columns:1fr 1fr} }
+.flag{position:relative;background:var(--panel);border:2px solid var(--accent);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.flag:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.flag::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--accent)}
+.flag .flagtag{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+.flag h3{font-size:clamp(30px,4.5vw,40px);line-height:.98;margin:6px 0 4px}
+.flag .meta{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.flag p{font-size:16px;margin:8px 0 0}
+.flag .playbook{background:var(--panel2);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:15px}
+.flag .playbook b{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--accent-ink)}
+.flag .xrefs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.flag .price{font-size:34px}
+
+/* weekend rows */
+.wk{display:flex;flex-direction:column;gap:10px}
+.wkrow{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
+.wkrow:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+.daybadge{flex:0 0 auto;text-align:center;background:var(--ink);color:var(--bg);border-radius:10px;padding:8px 0;width:58px}
+.daybadge .d{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;line-height:1;text-transform:uppercase}
+.daybadge .n{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
+.wkrow .body{flex:1;min-width:0}
+.wkrow h3{font-size:21px;line-height:1.05}
+.wkrow p{margin:2px 0 0;font-size:15px;color:var(--muted)}
+.wkrow .right{flex:0 0 auto;text-align:right}
+@media (max-width:560px){ .wkrow{flex-direction:column} .wkrow .daybadge{width:auto;display:flex;gap:8px;align-items:baseline;padding:6px 12px;align-self:flex-start} .wkrow .right{text-align:left} }
+
+/* ticket rows */
+.trow{display:grid;grid-template-columns:1fr auto;gap:6px 18px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin-bottom:12px;transition:transform .18s ease,box-shadow .18s ease}
+.trow:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+.trow h3{font-size:23px;line-height:1.05}
+.trow .meta{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.trow .judge{grid-column:1/-1;font-size:15.5px;margin:0}
+.trow .judge b{color:var(--accent-ink)}
+.trow .pr{text-align:right}
+.trow .src{grid-column:1/-1;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+@media (max-width:560px){ .trow{grid-template-columns:1fr} .trow .pr{text-align:left} }
+
+/* culture piece */
+.culture{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px clamp(18px,4vw,38px)}
+.culture h3{font-size:clamp(28px,4.4vw,38px);line-height:1;margin-bottom:6px}
+.culture .deck{font-size:18px;color:var(--muted);margin:0 0 14px}
+.culture p{font-size:16.5px;margin:0 0 12px;max-width:78ch}
+.culture p:last-child{margin-bottom:0}
+.culture .stat{font-family:"IBM Plex Mono",monospace;font-weight:700;color:var(--accent-ink)}
+
+/* merch */
+.merch .artist{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-ink)}
+
+/* cruises */
+.cruise .per{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* ufc tickets */
+.ufcplay{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin-top:14px}
+.ufcplay h3{font-size:20px;margin-bottom:6px}
+.ufcplay p{margin:0 0 8px;font-size:15px}
+.ufcplay p:last-child{margin-bottom:0}
+.ufcplay b{color:var(--accent-ink)}
+.trow .pr .btn{margin-top:8px}
+
+/* boxing strip */
+.boxing{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.bx{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+.bx .rk{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:12px;color:var(--accent);letter-spacing:.1em}
+.bx h3{font-size:18px;line-height:1.05;margin:2px 0}
+.bx p{margin:0;font-size:13.5px;color:var(--muted)}
+.bx .res{font-weight:700;color:var(--green)}
+
+
+footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:14px;color:var(--muted)}
+footer p{margin:0 0 8px;max-width:85ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="xnav" role="navigation" aria-label="All sheets">
+    <a href="index.html">Dupe Cheat Sheet</a>
+    <a href="guns-cigars.html">Guns n Subs</a>
+    <a href="travel.html">Travel</a>
+    <a href="autos.html">Autos</a>
+    <a href="tickets.html" class="on" aria-current="page">Tickets</a>
+  </div>
+
+  <nav class="secnav" aria-label="On this sheet">
+    <a href="#flagged">Big Time Flagged</a>
+    <a href="#weekend">This Weekend</a>
+    <a href="#hot">Hot Tickets</a>
+    <a href="#bears">Bears Tickets</a>
+    <a href="#onsale">On-Sale Watch</a>
+    <a href="#scene">The Scene</a>
+    <a href="#merch">Band Merch</a>
+    <a href="#cruises">Music Cruises &amp; Festival Travel</a>
+    <a href="#ticketed">Ticketed Events</a>
+    <a href="#brunch">Brunch</a>
+    <a href="#newyear">New Year's</a>
+    <a href="#mothersday">Mother's Day</a>
+    <a href="#ufc">UFC Fight Tickets</a>
+    <a href="#boxing">Boxing Top 10</a>
+  </nav>
+
+  <header class="hero">
+    <div class="date">Friday · October 23, 2026 · Chicago + McHenry County</div>
+    <h1><span class="s5">Sheet 5</span> — Tickets</h1>
+    <p>The night-out sheet — shows, fights, merch, and music travel, tuned to your library: TOOL, A Perfect Circle, Puscifer, Linkin Park, Dirty Heads, and the reggae rock circuit. No country. Ever.</p>
+  </header>
+
+  <!-- ============ BIG TIME FLAGGED ============ -->
+  <section id="flagged">
+    <div class="sec-head"><h2>🚩 Big Time Flagged</h2><span class="tag">Your artists · your turf</span></div>
+    <div class="flag-wrap">
+
+      <article class="flag">
+        <div class="flagtag">🚩 Your artist is coming to Chicago</div>
+        <h3>Dirty Heads</h3>
+        <div class="meta">Tue · Dec 8, 2026 · Byline Bank Aragon Ballroom · Chicago</div>
+        <p>Q101 Twisted Xmas with Slightly Stoopid — two of your reggae rock staples on one bill, in Uptown's legendary old room (4,500 cap).</p>
+        <div class="price">$111 <small>from · on sale now</small></div>
+        <div class="playbook"><b>The play</b> Aragon holiday shows hold their price — this is a radio-station tentpole, not a fire-sale candidate. Buy on the primary market now rather than gambling on a December slide; if you wait, compare all-in totals on TickPick (no-fee) before StubHub.</div>
+        <div class="xrefs">
+          <a class="btn" href="https://www.ticketmaster.com/dirty-heads-tickets/artist/1419273" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+          <a class="btn ghost" href="#merch">Fresh merch: “7 Seas” blue vinyl ↓</a>
+        </div>
+        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
+      </article>
+
+      <article class="flag">
+        <div class="flagtag">🚩 Your artist · driving distance · on sale today</div>
+        <h3>Stick Figure</h3>
+        <div class="meta">Fri · Jun 11, 2027 · Acrisure Amphitheater · Grand Rapids, MI</div>
+        <p>Enjoy the Ride Tour, outdoor amphitheater, ~2.5 hours up I-94/196 — an easy summer road trip for a top-of-your-playlist act. Tickets went on sale today (Oct 23), so the primary-market floor is as cheap as it gets.</p>
+        <div class="price">$45 <small>from · on sale now</small></div>
+        <div class="playbook"><b>The play</b> On-sale day is the one time face value beats the slide — lawn and lower-bowl at face won't be cheaper later for a June Friday. Travel angle: Grand Rapids is a straight shot from McHenry County; no flight, no hotel math required unless you make a weekend of it.</div>
+        <div class="xrefs">
+          <a class="btn" href="https://www.ticketmaster.com/stick-figure-tickets/artist/1764984" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+          <a class="btn ghost" href="#cruises">Also sailing: Closer to the Sun ↓</a>
+        </div>
+        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ THIS WEEKEND ============ -->
+  <section id="weekend">
+    <div class="sec-head"><h2>This Weekend</h2><span class="tag">Fri Oct 23 – Sun Oct 25 · what’s actually worth leaving the house for</span></div>
+    <div class="wk">
+      <div class="wkrow">
+        <div class="daybadge"><div class="d">Fri</div><div class="n">10/23</div></div>
+        <div class="body">
+          <div class="top" style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill heat">Tonight</span><span class="pill gold">Local</span></div>
+          <h3>Grunge Fest — The Vixen, McHenry</h3>
+          <p>Stone Temple Pilots (“Creep”) + Alice in Chains (“Hollow”) tributes with Mick Blankenship. The venue itself is warning sellout. Face value only at vixenmchenry.com/etix — the Vixen rejects third-party tickets, so ignore the $87+ resale listings.</p>
+        </div>
+        <div class="right"><span class="pill">Venue direct only</span></div>
+      </div>
+      <div class="wkrow">
+        <div class="daybadge"><div class="d">Fri</div><div class="n">10/23</div></div>
+        <div class="body">
+          <h3>Tedeschi Trucks Band — Chicago Theatre</h3>
+          <p>Night one of a four-night stand (Oct 23, 24, 26, 27). Multi-night runs slide on the later weeknights — if Friday's floor is rich, Monday and Tuesday are the value nights in a room with no bad seat.</p>
+        </div>
+        <div class="right"><span class="pill">4-night run</span></div>
+      </div>
+      <div class="wkrow">
+        <div class="daybadge"><div class="d">Fri</div><div class="n">10/23</div></div>
+        <div class="body">
+          <div class="top" style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill gold">Local</span></div>
+          <h3>Dancing Queen: An ABBA Salute — Woodstock Opera House</h3>
+          <p>7:30pm in the 1889 Opera House — no bad seat in the building. Face pricing couldn't be confirmed through the venue's ticket wall this week, so check the listing same-day before you go; don't pay resale markup on a tribute night.</p>
+        </div>
+        <div class="right"><span class="pill">Check listing</span></div>
+      </div>
+      <div class="wkrow">
+        <div class="daybadge"><div class="d">Sat</div><div class="n">10/24</div></div>
+        <div class="body">
+          <div class="top" style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill gold">Local</span></div>
+          <h3>Boy Band Review — The Vixen, McHenry</h3>
+          <p>The county's loud room follows Friday's Grunge Fest with a boy-band tribute night — *NSYNC, Backstreet, the whole TRL era. Same rule as every Vixen show: face value only at vixenmchenry.com/etix; the venue rejects third-party tickets.</p>
+        </div>
+        <div class="right"><span class="pill">Venue direct only</span></div>
+      </div>
+      <div class="wkrow">
+        <div class="daybadge"><div class="d">Sat</div><div class="n">10/24</div></div>
+        <div class="body">
+          <h3>UFC 333 — Volkanovski vs Evloev · Yan vs Dvalishvili 3</h3>
+          <p>Two title fights out of Abu Dhabi, main card 2pm ET — a daytime PPV, done before dinner.</p>
+        </div>
+        <div class="right"><a class="btn ghost" href="#ufc">UFC Fight Tickets ↓</a></div>
+      </div>
+      <div class="wkrow">
+        <div class="daybadge"><div class="d">Sat</div><div class="n">10/24</div></div>
+        <div class="body">
+          <div class="top" style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill gold">Local</span></div>
+          <h3>Down Pour (AC/DC tribute) — Sideouts, Island Lake</h3>
+          <p>The county's cheapest legit night out — Sideouts GA runs $5–10. Note: Sideouts kills online ticket sales early, so plan on the door.</p>
+        </div>
+        <div class="right"><div class="price" style="font-size:23px">$5–10 <small>GA</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOT TICKETS ============ -->
+  <section id="hot">
+    <div class="sec-head"><h2>Hot Tickets</h2><span class="tag">Chicago + McHenry County · prices checked Oct 22–23, 2026</span></div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Heat</span></div>
+        <h3>Bears vs Buccaneers — Sunday Night Football</h3>
+        <div class="meta">Sun · Nov 8 · Soldier Field · Primetime</div>
+      </div>
+      <div class="pr"><div class="price">$336</div><div class="meta">incl. fees · affiliate lane</div></div>
+      <p class="judge">Primetime breaks the usual rules: the open-market floor has <b>climbed 24% in five days to $401</b> and won't slide into kickoff. The TixTracer / TicketNetwork 25%-off lane sits at <b>$336 all-in (list $448)</b> — repriced up from $210 on Oct 22, and still the cheapest way in against the floor and SeatGeek's ~$362 get-in. Buy the lane, not the floor. Full home slate in <a href="#bears">Bears Tickets ↓</a></p>
+      <div class="src">TixTracer / TicketNetwork · SeatGeek · as of Oct 23–24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Heat</span></div>
+        <h3>Stevie Wonder — Songs in the Key of Life, 50th Anniversary</h3>
+        <div class="meta">Sat · Nov 21 · United Center · 6-date US run</div>
+      </div>
+      <div class="pr"><div class="price">$412</div><div class="meta">get-in</div></div>
+      <p class="judge">A legend on a six-date victory lap — and <b>Chicago is the cheapest date in America</b>: MSG runs $1,200+, DC $703. When a legacy act prices cities this far apart, the Chicago number is the play. It won't get cheaper; NYC and DC are nearly sold out.</p>
+      <div class="src">USA Today tour pricing roundup · as of Oct 22, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Deal</span></div>
+        <h3>John Summit — United Center, 2 Nights</h3>
+        <div class="meta">Tue Nov 24 · Wed Nov 25 · United Center · Hometown show</div>
+      </div>
+      <div class="pr"><div class="price">$65</div><div class="meta">Wed · all-in · Tue $80</div></div>
+      <p class="judge">Chicago's own, house music's biggest name, two nights at the UC. The multi-night slide is holding again: <b>Wednesday runs ~$15 under Tuesday</b>. Hometown-hero EDM at $65 all-in is the best value play in the building this season.</p>
+      <div class="src">Vivid Seats grids · as of Oct 22, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Deal</span></div>
+        <h3>MANÁ — Allstate Arena</h3>
+        <div class="meta">Fri · Oct 30 · Allstate Arena, Rosemont</div>
+      </div>
+      <div class="pr"><div class="price">$55</div><div class="meta">from · incl. fees</div></div>
+      <p class="judge">The biggest Spanish-language rock band on earth, one night in Rosemont, get-in under sixty bucks all-in. Allstate's exit is a parking-lot patience test — the price more than covers it.</p>
+      <div class="src">TixTracer Chicago page · as of Oct 23, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Deal</span></div>
+        <h3>Blackhawks vs Kings — United Center</h3>
+        <div class="meta">Tue · Oct 27 · United Center · Rebuilding-year pricing</div>
+      </div>
+      <div class="pr"><div class="price">$34</div><div class="meta">all-in</div></div>
+      <p class="judge">A rebuilding Hawks team means soft Tuesday matchups cluster at <b>$32–35 all-in</b> all season (Sabres Nov 12: $32, Avalanche Nov 2: $34). Cheap UC nights whenever you want one.</p>
+      <div class="src">TheKingOfTickets · as of Oct 22, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill gold">Local</span><span class="pill deal">Deal</span></div>
+        <h3>Anthem's Grand Illusion — Styx Tribute · Raue Center</h3>
+        <div class="meta">Fri · Oct 30 · Raue Center for the Arts · Crystal Lake</div>
+      </div>
+      <div class="pr"><div class="price">$39</div><div class="meta">starts · ~$27.30 w/ RaueNOW</div></div>
+      <p class="judge">Raue's tribute Saturdays are the county's bread and butter, and the math is the story: tickets start at $39, and the <b>RaueNOW membership (30% off)</b> pays for itself in about two shows. Fifteen minutes from home beats a Metra ride downtown.</p>
+      <div class="src">Raue Center venue calendar · as of Oct 18–22, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill gold">Local</span></div>
+        <h3>The Rocky Horror Picture Show — Woodstock Opera House</h3>
+        <div class="meta">Sat · Oct 31 · Halloween night · Woodstock</div>
+      </div>
+      <div class="pr"><div class="price">$27.03</div><div class="meta">via gotickets</div></div>
+      <p class="judge">Halloween night, Rocky Horror, in the 1889 Opera House on the Square where Groundhog Day was filmed. Some nights out sell themselves — this is the county's best Halloween plan that doesn't involve a bar tab.</p>
+      <div class="src">gotickets listing · as of Oct 23, 2026</div>
+    </div>
+  </section>
+
+  <!-- ============ BEARS TICKETS ============ -->
+  <section id="bears">
+    <div class="sec-head"><h2>🐻 Bears Tickets</h2><span class="tag">Remaining home games · Soldier Field · prices checked Oct 23–24, 2026</span></div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Sunday Night Football</span><span class="pill">Primetime</span></div>
+        <h3>Bears vs Buccaneers</h3>
+        <div class="meta">Sun · Nov 8, 2026 · 7:20 PM CT · Soldier Field</div>
+      </div>
+      <div class="pr"><div class="price">$336</div><div class="meta">get-in incl. fees · affiliate lane</div><a class="btn" href="https://www.ticketmaster.com/chicago-bears-tickets/artist/805912" target="_blank" rel="noopener">Tickets — Ticketmaster</a> <a class="btn ghost" href="https://tixtracer.com/tickets/chicago-bears" target="_blank" rel="noopener">TixTracer lane</a></div>
+      <p class="judge">Primetime doesn't slide. The open-market floor has climbed to ~$401 and SeatGeek's get-in sits ~$362 — the <b>TixTracer / TicketNetwork 25%-off lane at $336 all-in (list $448)</b> is the cheapest way in, and this matchup only gets hotter from here.</p>
+      <div class="src">TixTracer / TicketNetwork · SeatGeek · checked Oct 23–24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Sunday matinee</span></div>
+        <h3>Bears vs Saints</h3>
+        <div class="meta">Sun · Nov 22, 2026 · 12:00 PM CT · Soldier Field</div>
+      </div>
+      <div class="pr"><div class="price">$288</div><div class="meta">get-in incl. fees · affiliate lane</div><a class="btn" href="https://www.ticketmaster.com/chicago-bears-tickets/artist/805912" target="_blank" rel="noopener">Tickets — Ticketmaster</a> <a class="btn ghost" href="https://nightout.com/events/v/new-orleans-saints-at-chicago-bears-soldier-field-chicago-2026-11-22/tickets" target="_blank" rel="noopener">Nightout</a></div>
+      <p class="judge">The quietest name on the remaining home slate — but it's already moving: one all-in tracker jumped <b>56% in three days ($256 → $400)</b>. The affiliate lane at $288 all-in (list $383) beats SeatGeek's ~$352 get-in. Don't wait around for a slide that isn't coming.</p>
+      <div class="src">TixTracer / TicketNetwork · SeatGeek · Nightout · checked Oct 23–24, 2026</div>
+    </div>
+
+    <div class="flag-wrap" style="margin-bottom:12px">
+      <article class="flag" style="grid-column:1/-1">
+        <div class="flagtag">🐻 Christmas Day · The Revenge Game</div>
+        <h3>Bears vs Packers</h3>
+        <div class="meta">Fri · Dec 25, 2026 · 12:00 PM CT · Soldier Field</div>
+        <p>Christmas Day, at home, against <i>them</i> — the single hottest ticket left on the home schedule, and it's not close. Every other lane starts $100+ higher (SeatGeek ~$466, Vivid Seats ~$474); the affiliate lane is the play, and it will not survive December.</p>
+        <div class="price">$349 <small>all-in · affiliate lane (list $465)</small></div>
+        <div class="xrefs">
+          <a class="btn" href="https://www.ticketmaster.com/chicago-bears-tickets/artist/805912" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+          <a class="btn ghost" href="https://tixtracer.com/tickets/chicago-bears" target="_blank" rel="noopener">TixTracer lane</a>
+          <a class="btn ghost" href="https://www.vividseats.com/chicago-bears-tickets-chicago-soldier-field-3-2-2026/production/6488762" target="_blank" rel="noopener">Vivid Seats</a>
+        </div>
+        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">TixTracer / TicketNetwork · SeatGeek · Vivid Seats · checked Oct 23–24, 2026</p>
+      </article>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Season finale</span><span class="pill gold">Date TBC</span></div>
+        <h3>Bears vs Lions</h3>
+        <div class="meta">Sun · Jan 3, 2027 · 3:25 PM CT · Soldier Field · subject to flex scheduling</div>
+      </div>
+      <div class="pr"><div class="price">$174</div><div class="meta">get-in incl. fees · affiliate lane</div><a class="btn" href="https://www.ticketmaster.com/chicago-bears-tickets/artist/805912" target="_blank" rel="noopener">Tickets — Ticketmaster</a> <a class="btn ghost" href="https://www.vividseats.com/chicago-bears-tickets-chicago-soldier-field-3-1-2026/production/6488759" target="_blank" rel="noopener">Vivid Seats</a></div>
+      <p class="judge">The cheapest home get-in left — January at Soldier Field prices the weather as much as the matchup. If the division is on the line in Week 18, this number triples; at <b>$174 all-in (list $232)</b> it's a cheap option on a meaningful game. SeatGeek's get-in runs ~$229.</p>
+      <div class="src">TixTracer / TicketNetwork · SeatGeek · Vivid Seats · checked Oct 23–24, 2026</div>
+    </div>
+  </section>
+
+  <!-- ============ ON-SALE WATCH ============ -->
+  <section id="onsale">
+    <div class="sec-head"><h2>On-Sale Watch</h2><span class="tag">Announced this week · windows that close fast</span></div>
+    <div class="grid">
+      <article class="card">
+        <div class="top"><span class="pill heat">On sale Fri Oct 30 · 10am</span></div>
+        <h3>Bon Jovi — Forever Tour 2027, Chicago</h3>
+        <p>Announced Oct 20; presale signups are open this week and the public on-sale hits <b>Friday, Oct 30 at 10am</b>. Legacy-act lane: be in the presale or you're buying resale from day one.</p>
+        <p class="src">Secret Chicago announcement · Oct 20, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span></div>
+        <h3>Calvin Harris — First-Ever North American Tour</h3>
+        <p>After 18 years of one-off US shows, Harris announced his first full NA arena tour — 20 dates with a United Center stop, spring 2027. Public on-sale opened Oct 22 after the Spotify → artist presale sequence.</p>
+        <p class="src">Tour announcement coverage · Oct 22, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span></div>
+        <h3>Cleo Sol — United Center, Apr 21, 2027</h3>
+        <p>The SAULT voice on her first North American arena tour: MSG Apr 13 → Toronto Apr 19 → Chicago Apr 21 → LA May 1. Watch the Chicago-vs-MSG spread the same way Stevie Wonder's played out — the middle dates usually price softest.</p>
+        <p class="src">Exclaim! tour announcement · Oct 22, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill">Dec tentpole</span></div>
+        <h3>103.5 KISS FM Jingle Ball — Allstate Arena, Dec 7</h3>
+        <p>Raye, OneRepublic, Ludacris. The holiday arena tentpole — floor seats price-check pending; radio-station shows dump sponsor holds late, so a price alert beats refreshing.</p>
+        <p class="src">Event listing · Oct 23, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill acc">Presale live</span></div>
+        <h3>Riot Fest 2027 — Douglass Park, Sep 17–19</h3>
+        <p>Presale is live now at riotfest.org. 2026's bill (Tool, Alanis, Iggy, Morrissey) set the bar; festival passes follow the 13-days-out sweet spot for resale, but presale is the cheapest face-value tier there is.</p>
+        <p class="src">riotfest.org · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill">Milwaukee hedge</span></div>
+        <h3>SOMBR — Fiserv Forum Nov 3 / United Center Nov 4</h3>
+        <p>The Milwaukee-the-night-before pattern again: if the UC floor runs tight, Fiserv Forum an hour and change up I-94 is the pressure valve. Same show, usually a softer room price.</p>
+        <p class="src">Ticketmaster / Fiserv Forum listings · Oct 23, 2026</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ THE SCENE ============ -->
+  <section id="scene">
+    <div class="sec-head"><h2>The Scene</h2><span class="tag">Weekly Chicago culture read · Oct 23, 2026</span></div>
+    <div class="culture">
+      <h3>The Slide Is Real — Except When It Isn't</h3>
+      <p class="deck">Every ticket in Chicago is falling in price right up until the moment it isn't. Knowing which show is which is the whole game.</p>
+      <p>The data says wait. Across thousands of resale purchases, day-of tickets average <span class="stat">33% below</span> the average price and day-before <span class="stat">27% below</span>, with the slide starting two to four weeks out as sellers get anxious. Festival passes bottom out around <span class="stat">13 days out, ~30% under</span>. Multi-night runs slide on the later nights — John Summit's Wednesday at the United Center is sitting $15 under his Tuesday right now, same show, same room.</p>
+      <p>Then there's primetime. Bears–Patriots on Thursday night didn't slide — the open-market floor <span class="stat">rose 23% in two days</span> into kickoff, and Bears–Bucs on Sunday night is doing it again, up 24% in five days with 17 days still to go. The 2–4-week rule is a regular-show rule. Rivalry games, Christmas games (Bears–Packers, Dec 25 — start watching that one now), and anything with a kickoff time in the title play by different math: the crowd isn't getting anxious, it's getting bigger.</p>
+      <p>The third pattern is the legacy spread. Stevie Wonder plays six American dates this fall and Chicago is the cheapest seat in the country — $412 against $1,200+ at MSG. That's not a pricing error; it's demand geography, and it's repeatable. Cleo Sol's first arena tour routes MSG → Toronto → Chicago next April, and the middle-of-the-run Chicago date is exactly where that same softness tends to land. When a legend or a first-timer routes through here mid-run, Chicago is the value date. Buy like it.</p>
+    </div>
+  </section>
+
+  <!-- ============ BAND MERCH ============ -->
+  <section id="merch">
+    <div class="sec-head"><h2>Band Merch</h2><span class="tag">Newest drops from your artists · limited &amp; numbered flagged</span></div>
+    <div class="grid merch">
+      <article class="card">
+        <div class="artist">TOOL</div>
+        <div class="top"><span class="pill gold">Limited</span><span class="pill heat">Pre-order closes Oct 31</span></div>
+        <h3>Adi Granov “Desolation” Poster</h3>
+        <div class="price">$100.00</div>
+        <p>Lead piece of TOOL's new limited-edition drop — the pre-order window closes Halloween. The same drop adds a windbreaker ($89.99), zip hoodie ($79.99), and tie-dye sweatshirt ($74.99) in the official store.</p>
+        <a class="btn" href="https://store.toolband.com/" target="_blank" rel="noopener">Official TOOL store</a>
+        <p class="src">store.toolband.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Linkin Park</div>
+        <div class="top"><span class="pill gold">Limited · 5,000 US copies</span><span class="pill">Out Nov 20</span></div>
+        <h3>LIVING THINGS — Red Smoke Vinyl LP</h3>
+        <div class="price">$27.98</div>
+        <p>Red smoke pressing of the 2012 album, capped at 5,000 US copies, announced Oct 8. Numbered-run Linkin Park vinyl doesn't sit around — this is the pre-order, not the restock.</p>
+        <a class="btn" href="https://linkinpark.warnerrecords.com/products/living-things-red-smoke-vinyl-lp" target="_blank" rel="noopener">Warner Records store</a>
+        <p class="src">linkinpark.warnerrecords.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Iration</div>
+        <div class="top"><span class="pill gold">Limited · 750 total</span></div>
+        <h3>“Where It All Began” Vinyl — Lava Orange Translucent</h3>
+        <div class="price">$39.99</div>
+        <p>Direct-to-fan color pressing of the May 2026 album, 750 copies total. The smallest edition size on this page — when it's gone, it's a Discogs conversation.</p>
+        <a class="btn" href="https://store.irationmusic.com/products/where-it-all-began-vinyl-lava-orange-translucent-pre-order" target="_blank" rel="noopener">Iration official store</a>
+        <p class="src">store.irationmusic.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Sublime</div>
+        <div class="top"><span class="pill heat">Low stock</span></div>
+        <h3>“Until The Sun Explodes” 2LP — Blue Gray</h3>
+        <div class="price">$37.99</div>
+        <p>The first Sublime album in 30 years (Jakob Nowell up front), on blue-gray wax and already flagged low stock. Also announced Sep 26: a limited “Paddle Out” liquid-filled 2LP 30th-anniversary reissue, Sound of Vinyl exclusive — price not yet posted.</p>
+        <a class="btn" href="https://shop.veeps.com/products/sublime-until-the-sun-explodes-2lp-blue-gray-vinyl?_pos=1&_psq=sublime&_ss=e&_v=1.0" target="_blank" rel="noopener">Veeps shop</a>
+        <p class="src">shop.veeps.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Rebelution</div>
+        <div class="top"><span class="pill gold">Limited edition</span></div>
+        <h3>“Live in St. Augustine” LP — Magenta Splatter Vinyl</h3>
+        <div class="price">$44.98</div>
+        <p>Live album on magenta splatter, sold as a limited edition through the official store. Live reggae rock pressings in color variants are the circuit's most reliable sellouts.</p>
+        <a class="btn" href="https://shop.app/products/6878010179639/live-in-st-augustine-lp-limited-edition-magenta-splatter-vinyl?variantId=40377576423479" target="_blank" rel="noopener">Rebelution official store</a>
+        <p class="src">Official store via Shop · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">311</div>
+        <div class="top"><span class="pill gold">Numbered</span></div>
+        <h3>Numbered Baseball Jersey</h3>
+        <div class="price">$80.00</div>
+        <p>Individually numbered jersey in the official store — edition size isn't stated, which usually means the run is what it is until it isn't. 311 merch with numbers on it moves.</p>
+        <a class="btn" href="https://store.311.com/" target="_blank" rel="noopener">Official 311 store</a>
+        <p class="src">store.311.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Puscifer</div>
+        <div class="top"><span class="pill">New album vinyl</span></div>
+        <h3>“Normal Isn't” — Black 2LP</h3>
+        <div class="price">$47.00</div>
+        <p>The 2026 Puscifer album (out Feb 6) on double vinyl from the official store. Not a stated limited run — this is the standard pressing of the current record.</p>
+        <a class="btn" href="https://puscifer.tmstor.es/product/normal-isnt-double-vinyl" target="_blank" rel="noopener">Puscifer official store</a>
+        <p class="src">puscifer.tmstor.es · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Dirty Heads</div>
+        <div class="top"><span class="pill">New album vinyl</span><span class="pill acc">See them Dec 8 ↓ Aragon</span></div>
+        <h3>“7 Seas” LP — Blue Vinyl</h3>
+        <div class="price">$29.99</div>
+        <p>The ninth Dirty Heads album (out June 12) on blue vinyl, in stock now. Pair it with the Twisted Xmas date up top — new record in hand before the Aragon show.</p>
+        <a class="btn" href="https://shop.veeps.com/products/dirty-heads-7-seas-lp-blue-vinyl" target="_blank" rel="noopener">Veeps shop</a>
+        <p class="src">shop.veeps.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">Stick Figure</div>
+        <div class="top"><span class="pill gold">Collab · Pelagic</span></div>
+        <h3>Freespool Hooded Islander</h3>
+        <div class="price">$60</div>
+        <p>Stick Figure × Pelagic fishing-gear collab — a hooded Islander built for the boat, sold through Pelagic rather than the band store. The reggae rock circuit's crossover merch done right.</p>
+        <a class="btn" href="https://pelagicgear.com/products/freespool-hooded-sf-islander-black" target="_blank" rel="noopener">Pelagic Gear</a>
+        <p class="src">pelagicgear.com · Oct 2026</p>
+      </article>
+      <article class="card">
+        <div class="artist">A Perfect Circle</div>
+        <div class="top"><span class="pill gold">Foil-numbered · 1,000 per color</span><span class="pill out">Out of stock — restock watch</span></div>
+        <h3>“Starless” 7″ Vinyl — Exclusive Colors</h3>
+        <div class="price">$15.99</div>
+        <p>Two exclusive color variants, foil-numbered, 1,000 copies each, released Sep 18 — already gone. This one's a restock and secondary-market watch now; numbered APC vinyl at $15.99 retail was never going to last.</p>
+        <a class="btn ghost" href="https://shop.veeps.com/products/a-perfect-circle-starless-7-exclusive-various-color-vinyl" target="_blank" rel="noopener">Product page — Veeps</a>
+        <p class="src">shop.veeps.com · released Sep 18, 2026</p>
+      </article>
+    </div>
+    <p style="margin:14px 2px 0;font-size:14.5px;color:var(--muted)">Pepper: no new 2026 drop yet — the official store's newest pieces are still the Cali Vibes 2025 tee ($40) and the Konatown 20-year jersey ($60). A limited Alpine Hemp hat collab was announced on X with no price posted.</p>
+  </section>
+
+  <!-- ============ MUSIC CRUISES & FESTIVAL TRAVEL ============ -->
+  <section id="cruises">
+    <div class="sec-head"><h2>Music Cruises &amp; Festival Travel</h2><span class="tag">Per-person pricing · these sell out a year out</span></div>
+    <div class="grid cruise">
+
+      <article class="card">
+        <div class="top"><span class="pill heat">Sails in 7 days</span><span class="pill">Metal</span></div>
+        <h3>Headbangers Boat 2026</h3>
+        <div class="meta">Oct 30 – Nov 3, 2026 · Miami → Great Stirrup Cay · Norwegian Jewel</div>
+        <div class="price">$1,600 <small>per person</small></div>
+        <p class="per">Double occupancy · includes $320 taxes/fees · cheapest tiers already sold out</p>
+        <p>Lamb of God hosts: Zakk Sabbath, The Dillinger Escape Plan, In Flames, GWAR, Death Angel, Kylesa. Hosted-by-a-band metal cruise, Sixthman-run. If you want on, the remaining cabins are the decision — interiors at $1,470–1,550 are gone.</p>
+        <a class="btn" href="https://www.headbangersboat.com/prices/" target="_blank" rel="noopener">headbangersboat.com</a>
+        <p class="src">Official pricing page · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Your artist headlining</span><span class="pill">Reggae rock</span></div>
+        <h3>Holidaze Festival 2026 — Boca Raton, FL</h3>
+        <div class="meta">Nov 14–15, 2026 · Sunset Cove Amphitheater · Reggae Rise Up presents</div>
+        <div class="price">$52.50 <small>from · GA ticket</small></div>
+        <p class="per">Hotel + pass vacation packages via Jampack · package pricing on the official page</p>
+        <p><b>Dirty Heads headline Saturday</b>, with Wiz Khalifa, Steel Pulse, Collie Buddz, Matisyahu, Fortunate Youth, and ROME. A Florida weekend built around your #1 reggae rock act, three weeks out.</p>
+        <a class="btn" href="https://reggaeriseup.com/florida/holidaze/lineup/" target="_blank" rel="noopener">reggaeriseup.com</a>
+        <p class="src">Official lineup page · ticket from-price via Groupon · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Your artist</span><span class="pill">Reggae rock cruise</span></div>
+        <h3>Sublime — Reef Madness Cruise</h3>
+        <div class="meta">Nov 15–19, 2026 · Miami → Great Stirrup Cay, Bahamas · Norwegian Jewel</div>
+        <div class="price">$1,445 <small>per person · from</small></div>
+        <p class="per">Cruise package · on sale now</p>
+        <p>Four nights with Sublime on their own boat — the band, the Bahamas, and a ship full of the faithful. Fly-and-sail out of Miami, and it leaves in three weeks.</p>
+        <a class="btn" href="https://www.sublimecruise.com/" target="_blank" rel="noopener">sublimecruise.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Your artists</span><span class="pill">All-inclusive resort festival</span></div>
+        <h3>Closer to the Sun — Riviera Maya, Mexico</h3>
+        <div class="meta">Jan 9–13, 2027 · Hard Rock Hotel Riviera Maya · All-inclusive</div>
+        <div class="price">$250 <small>per person deposit to reserve</small></div>
+        <p class="per">Full package priced per person by room category at closertothesun.com · $500 pp deposit for Rock/Estancia suites · kids 4–12 $699</p>
+        <p><b>Stick Figure and Slightly Stoopid headline</b>, with Iration, SOJA, The Movement, Tribal Seeds, Little Stranger, and Wiz Khalifa — four nights (Jan 9–12) of music, unlimited food and drink, 24-hour room service, all in the package. The reggae rock circuit's destination flagship, on the beach.</p>
+        <a class="btn" href="https://closertothesun.com/info/experience/" target="_blank" rel="noopener">closertothesun.com — what's included</a>
+        <p class="src">Official event site (terms + experience pages) · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Prog / metal</span></div>
+        <h3>70000 Tons of Metal 2027</h3>
+        <div class="meta">Jan 14–18, 2027 · Miami → Puerto Plata, DR · Freedom of the Seas</div>
+        <div class="price">On sale <small>since Sep 7</small></div>
+        <p class="per">Per-person pricing not published — cabin pricing on the official site</p>
+        <p>The original metal cruise: Evergrey, Obscura, Atheist, Scar Symmetry, Vintersorg, and Origin carry the prog/tech end of a 60-band bill (Arch Enemy, Exodus, Moonspell, Rhapsody's final shows). The closest thing at sea to your prog-metal shelf.</p>
+        <a class="btn" href="https://70000tons.com" target="_blank" rel="noopener">70000tons.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Alt / metalcore</span><span class="pill heat">Interiors sold out</span></div>
+        <h3>Emo's Not Dead Cruise 2027</h3>
+        <div class="meta">Jan 22–26, 2027 · Miami → Great Stirrup Cay · Norwegian Joy</div>
+        <div class="price">$2,355 <small>per person · balcony, from</small></div>
+        <p class="per">Double occupancy · includes $355 taxes/fees · interiors at $1,615 pp sold out</p>
+        <p>The heavy end of the bill is the draw here: Dance Gavin Dance, The Ghost Inside, letlive., Blessthefall, Enter Shikari, The Fall of Troy — post-hardcore at sea, with Yellowcard and Silverstein for the singalong deck.</p>
+        <a class="btn" href="https://endcruise.com" target="_blank" rel="noopener">endcruise.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill out">Sold out</span><span class="pill">Waitlist open</span></div>
+        <h3>ShipRocked 2027</h3>
+        <div class="meta">Jan 24–30, 2027 · Miami → Roatán → Cozumel · Carnival Horizon</div>
+        <div class="price">Waitlist <small>$150 deposit per cabin</small></div>
+        <p class="per">Priority waitlist only · per-person pricing not published</p>
+        <p>Papa Roach, Nothing More, Of Mice & Men, Ice Nine Kills, Highly Suspect — six nights and it's already gone. The waitlist is real (cabins shake loose), but it costs a refundable-position deposit to stand in line.</p>
+        <a class="btn ghost" href="https://www.shiprocked.com" target="_blank" rel="noopener">shiprocked.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill heat">Fewer than 40 cabins left</span><span class="pill">Jam / reggae</span></div>
+        <h3>Jam Cruise 23</h3>
+        <div class="meta">Feb 4–10, 2027 · Miami → Ocho Rios → Grand Cayman → Cozumel · MSC Poesia</div>
+        <div class="price">On sale <small>· nearly gone</small></div>
+        <p class="per">Per-person pricing not published — cabin pricing on the official site</p>
+        <p>Stephen Marley flies the reggae flag on a jam-band institution — moe., Lettuce, P-Funk, Chali 2na, Mihali. Six nights, three countries, and the cabin count is in the double digits.</p>
+        <a class="btn" href="https://jamcruise.com/lineup/" target="_blank" rel="noopener">jamcruise.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill out">Sold out</span><span class="pill acc">Your artist</span></div>
+        <h3>311 Caribbean Cruise</h3>
+        <div class="meta">Mar 10–15, 2027 · Miami → Ocho Rios → Grand Cayman · Norwegian Jewel</div>
+        <div class="price">Sold out</div>
+        <p class="per">Booked out</p>
+        <p>311's own cruise with their own crowd — gone. It sells out every edition; the play for 2028 is being on the announcement list when cabins open, not shopping resale.</p>
+        <a class="btn ghost" href="https://www.311cruise.com" target="_blank" rel="noopener">311cruise.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Reggae rock festival</span></div>
+        <h3>Reggae Rise Up Florida 2027</h3>
+        <div class="meta">Mar 12–14, 2027 · Vinoy Park · St. Petersburg, FL</div>
+        <div class="price">$340+ <small>3-day pass</small></div>
+        <p class="per">Festival pass pricing · hotel packages via the official site</p>
+        <p><b>Dirty Heads and Stick Figure</b> anchor the Florida edition of the circuit's flagship festival. St. Pete in March, three days, waterfront park — the domestic version of the Mexico trip.</p>
+        <a class="btn" href="https://reggaeriseup.com" target="_blank" rel="noopener">reggaeriseup.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Prog metal</span></div>
+        <h3>Cruise to the Edge 2027</h3>
+        <div class="meta">Apr 2–8, 2027 · Miami → Cozumel → Harvest Caye → Costa Maya · Norwegian Jewel</div>
+        <div class="price">$1,499 <small>per person · from</small></div>
+        <p class="per">Double occupancy · taxes/fees extra</p>
+        <p>The prog cruise, and the modern end of the bill is yours: Haken, Caligula's Horse, Temic, Rendezvous Point, Thank You Scientist — under headliners Kansas, Steve Hackett, and Asia. Six nights of odd time signatures.</p>
+        <a class="btn" href="https://cruisetotheedge.com" target="_blank" rel="noopener">cruisetotheedge.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Reggae rock festival</span><span class="pill">Lineup TBA</span></div>
+        <h3>Reggae Rise Up Arizona 2027</h3>
+        <div class="meta">Apr 2–4, 2027 · Tempe Beach Park · Tempe, AZ</div>
+        <div class="price">$281 <small>3-day pass · single days $212</small></div>
+        <p class="per">Hotel + pass vacation packages via Jampack</p>
+        <p>The 2027 lineup isn't announced yet — flagged because the 2026 edition ran Dirty Heads, SOJA, Slightly Stoopid, and Rebelution in the desert. Buy the pass when the lineup drops, not before.</p>
+        <a class="btn" href="https://reggaeriseup.com" target="_blank" rel="noopener">reggaeriseup.com</a>
+        <p class="src">Pass pricing via Vivid Seats · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Nu-metal / alt-rock</span><span class="pill heat">All interiors sold out</span></div>
+        <h3>Summer of '99 &amp; Beyond Cruise 2027</h3>
+        <div class="meta">Apr 17–21, 2027 · Miami → Great Stirrup Cay · Norwegian Joy</div>
+        <div class="price">$1,745+ <small>per person · interiors were</small></div>
+        <p class="per">Interior tiers sold out (were $1,745–1,855 pp incl. $345 fees) · remaining categories unconfirmed</p>
+        <p>Creed headlines, but the undercard is the nu-metal/alt-rock shelf: Breaking Benjamin, Sevendust, Drowning Pool, Hoobastank, Fuel. Effectively near-sold-out — what's left is the expensive end of the ship.</p>
+        <a class="btn" href="http://www.summerof99cruise.com/prices/" target="_blank" rel="noopener">summerof99cruise.com</a>
+        <p class="src">Official pricing page · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Prog metal on board</span><span class="pill">Metal</span></div>
+        <h3>Monsters of Rock Cruise 2027</h3>
+        <div class="meta">May 6–11, 2027 · Los Angeles → Ensenada, Mexico · Norwegian Joy</div>
+        <div class="price">$2,099 <small>per person · from</small></div>
+        <p class="per">Double occupancy · taxes/fees extra · 45+ artists</p>
+        <p>Queensrÿche carries the prog-metal flag on a 45-band hard rock bill — KK's Priest, Armored Saint, Tesla, Extreme, Sebastian Bach, Loudness. West Coast sailing, so it's a fly-to-LA trip, not a Miami one.</p>
+        <a class="btn" href="https://monstersofrockcruise.com/lineup/" target="_blank" rel="noopener">monstersofrockcruise.com</a>
+        <p class="src">Official event site · Oct 2026</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ TICKETED EVENTS ============ -->
+  <section id="ticketed">
+    <div class="sec-head"><h2>Ticketed Events</h2><span class="tag">One-offs, exhibitions &amp; seasonal specials · Chicago + McHenry County</span></div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span><span class="meta">Nov 20 – Jan 3</span></div>
+        <h3>ZooLights — Lincoln Park Zoo</h3>
+        <div class="meta">Lincoln Park Zoo · Chicago</div>
+        <div class="price">$7–12 <small>fixed date · $20 flexible</small></div>
+        <p>Three million lights across the zoo grounds, 4:30–9pm nightly — plus a 65-foot Ferris wheel, fire pits and s'mores, and separately ticketed Adults Night Out evenings. Mondays are free with advance registration and go fast.</p>
+        <a class="btn" href="https://theskydeck.com/lincoln-park-zoolights-chicago/" target="_blank" rel="noopener">Dates &amp; tickets</a>
+        <p class="src">Lincoln Park Zoo via Skydeck guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span><span class="meta">Nov 13 – Jan 3</span></div>
+        <h3>Lightscape — Chicago Botanic Garden</h3>
+        <div class="meta">Glencoe · ~35 min from McHenry County</div>
+        <div class="price">$29 <small>from · adult nonmember</small></div>
+        <p>The 1.3-mile illuminated trail returns with 80%+ new installations — a walk-through snow globe, lasers over the water, fire and music. Members from $26; parking $18 in advance ($25 on arrival), so buy both ahead.</p>
+        <a class="btn" href="https://www.chicagobotanic.org/lightscape/video" target="_blank" rel="noopener">Tickets — Botanic Garden</a>
+        <p class="src">Chicago Botanic Garden · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">One night</span><span class="meta">Sat · Dec 5, 2026</span></div>
+        <h3>Godfrey Holiday Cocktail Fest</h3>
+        <div class="meta">I|O Godfrey Rooftop · River North</div>
+        <div class="price">$25–48 <small>tasting tickets</small></div>
+        <p>A rooftop cocktail-tasting night above River North — seasonal pours from one of the city's best-looking winter rooftops, igloos and skyline included. The cheap end of a December night out downtown.</p>
+        <a class="btn" href="https://allevents.in/chicago/holiday?ref=category-buckets" target="_blank" rel="noopener">Tickets — AllEvents</a>
+        <p class="src">AllEvents Chicago holiday listings · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">February 2027</span><span class="meta">Dates TBA</span></div>
+        <h3>Chicago Theatre Week 2027</h3>
+        <div class="meta">200+ theatres · citywide</div>
+        <div class="price">$15 / $30 <small>every ticket, every show</small></div>
+        <p>The annual February takeover: value-priced seats at 200+ Chicago theatres — Lyric, Steppenwolf, Goodman and the storefront scene alike — all at $30, $15, or less. Dates and the on-sale drop get announced in January; the good seats go in the first days.</p>
+        <a class="btn" href="https://leagueofchicagotheatres.org/chicagotheatreweek/" target="_blank" rel="noopener">League of Chicago Theatres</a>
+        <p class="src">League of Chicago Theatres · Oct 2026</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ BRUNCH ============ -->
+  <section id="brunch">
+    <div class="sec-head"><h2>Brunch</h2><span class="tag">Good ass brunches · Chicago + McHenry County · everyday spots &amp; ticketed events</span></div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="top"><span class="pill heat">The splurge</span><span class="meta">Sundays</span></div>
+        <h3>The Publican</h3>
+        <div class="meta">Fulton Market · Chicago</div>
+        <div class="price">$40–65 <small>per person</small></div>
+        <p>Paul Kahan's beer hall does the most celebrated Sunday brunch in the West Loop — pork rinds with apple butter, house pastries, whole-animal cooking, and the city's best Belgian beer list before noon. Book on OpenTable, 2–3 weeks out for weekends.</p>
+        <a class="btn" href="https://www.traveltourister.com/articles/best-restaurants-in-chicago/" target="_blank" rel="noopener">The case for it</a>
+        <p class="src">Chicago dining guides · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Unlimited</span><span class="meta">Sat–Sun · 10 AM – 3:30 PM</span></div>
+        <h3>Ambar</h3>
+        <div class="meta">River North · Chicago</div>
+        <div class="price">$37 <small>unlimited plates · drinks +$15</small></div>
+        <p>Balkan small plates, dine-without-limits style: unlimited brunch dishes for $37, and unlimited drinks starting at $15 more. The best per-dollar brunch math in River North — reservations highly recommended.</p>
+        <a class="btn" href="https://www.deanteamchicago.com/restaurant-review-unlimited-brunch-lunch-and-dinner-river-norths-ambar-excels-in-balkan-delights/" target="_blank" rel="noopener">Full review</a>
+        <p class="src">Dean's Team Chicago review · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">Boozy</span><span class="meta">Sat–Sun · from 11 AM</span></div>
+        <h3>Bub City</h3>
+        <div class="meta">River North + Rosemont</div>
+        <div class="price">$35 <small>bottomless mimosas</small></div>
+        <p>Southern comfort brunch — chicken &amp; waffles, cinnamon pull-apart sticky buns, the Daybreaker Burrito — with $35 bottomless mimosas, and $6 mimosas and espresso martinis from 11 AM–1 PM. The Rosemont room is the easy McHenry-side drive.</p>
+        <a class="btn" href="https://www.lettuce.com/blog/where-to-brunch-this-weekend-chicago/" target="_blank" rel="noopener">Menus &amp; reservations — Lettuce</a>
+        <p class="src">Lettuce Entertain You brunch guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Mediterranean</span><span class="meta">Sat–Sun · 10 AM – 3 PM</span></div>
+        <h3>Aba</h3>
+        <div class="meta">Fulton Market · Chicago</div>
+        <div class="price">$$ <small>menu-priced</small></div>
+        <p>Chocolate babka French toast, short rib shakshuka, khachapuri, kefta &amp; eggs — the Mediterranean brunch that made Fulton Market a morning destination. Rooftop-adjacent energy, reservation strongly advised.</p>
+        <a class="btn" href="https://www.lettuce.com/blog/where-to-brunch-this-weekend-chicago/" target="_blank" rel="noopener">Menus &amp; reservations — Lettuce</a>
+        <p class="src">Lettuce Entertain You brunch guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">The institution</span><span class="meta">No reservations</span></div>
+        <h3>Lula Cafe</h3>
+        <div class="meta">Logan Square · Chicago</div>
+        <div class="price">$$ <small>menu-priced</small></div>
+        <p>The farm-to-table original — people wait an hour-plus and call it worth it. Honeynut squash and ricotta omelet, a serious Bloody Mary, local everything. No reservations taken: go early, put your name in, and walk Logan Boulevard.</p>
+        <a class="btn" href="https://www.cozymeal.com/magazine/logan-square-restaurant" target="_blank" rel="noopener">Logan Square guide</a>
+        <p class="src">Cozymeal neighborhood guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Ticketed</span><span class="meta">Sundays · 10 AM &amp; 12:30 PM</span></div>
+        <h3>Gospel Brunch — House of Blues</h3>
+        <div class="meta">River North · Chicago</div>
+        <div class="price">$73–100 <small>ticket incl. buffet</small></div>
+        <p>The ticketed brunch institution: a full Southern buffet under live gospel choirs, two seatings every Sunday. Next dates up: Sun Nov 22 and the holiday edition Sun Dec 27 — the December seating sells like a concert, because it is one.</p>
+        <a class="btn" href="https://nightout.com/events/v/gospel-brunch-house-of-blues-chicago-chicago-2026-11-22/tickets" target="_blank" rel="noopener">Tickets — Nov 22 (Nightout)</a>
+        <p class="src">Nightout / TicketSmarter / Vivid Seats · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">Holiday · Ticketed</span><span class="meta">Sat · Dec 5 · 8:30 AM</span></div>
+        <h3>Breakfast with Santa — Neiman Marcus</h3>
+        <div class="meta">Mag Mile · Chicago</div>
+        <div class="price">$70 <small>adults · $55 kids 3–12 · under 3 free</small></div>
+        <p>The fancy way to do Santa: brioche French toast, herbed crème fraîche eggs, bacon and sausage at 737 N. Michigan, with live entertainment, activities, and a mimosa for the adults built into the ticket. Sells out every year.</p>
+        <a class="btn" href="https://happeningnext.com/event/breakfast-with-santa-neiman-marcus-chicago-saturday-december-5-8-30am-eid1ef0l75rmdqa" target="_blank" rel="noopener">Tickets — Eventbrite listing</a>
+        <p class="src">Neiman Marcus via HappeningNext · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">Local</span><span class="meta">Downtown Crystal Lake</span></div>
+        <h3>Benedict's La Strata</h3>
+        <div class="meta">40 N. Williams St · Crystal Lake</div>
+        <div class="price">$$ <small>menu-priced</small></div>
+        <p>McHenry County's creative-brunch flagship — inventive stratas and benedicts in a cozy house just off the downtown strip, and the room every local names first. Weekend waits are real; reservations recommended whenever they'll take them.</p>
+        <a class="btn" href="https://www.giftly.com/breakfast-brunch-gift-cards/crystal-lake-il" target="_blank" rel="noopener">Crystal Lake brunch listings</a>
+        <p class="src">Local listings · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">Local</span><span class="meta">Woodstock Square · Daily 7 AM – 2 PM</span></div>
+        <h3>Corner Square Cafe</h3>
+        <div class="meta">117 E. Van Buren St · Woodstock</div>
+        <div class="price">$ <small>inexpensive</small></div>
+        <p>On the Square, doing the classics right: banana Nutella French toast, white chocolate pancakes, a traditional Irish breakfast, and the Good Ole Boy skillet — at diner prices, seven days a week. The county's best cheap brunch.</p>
+        <a class="btn" href="https://thedoubleyolkcafe.com/" target="_blank" rel="noopener">thedoubleyolkcafe.com</a>
+        <p class="src">Venue site / local listings · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">Local</span><span class="pill gold">Bottomless</span></div>
+        <h3>Cooper's Hawk</h3>
+        <div class="meta">Randall Rd · Algonquin</div>
+        <div class="price">$$ <small>menu-priced</small></div>
+        <p>The winery-restaurant's Algonquin room runs a bottomless brunch (per OpenTable) — the polished, reserve-ahead option on the Randall Road corridor, with the tasting room attached for after. Book on OpenTable.</p>
+        <a class="btn" href="https://www.opentable.com/neighborhood/il/algonquin-restaurants" target="_blank" rel="noopener">Reserve — OpenTable Algonquin</a>
+        <p class="src">OpenTable Algonquin listings · Oct 2026</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ NEW YEAR'S ============ -->
+  <section id="newyear">
+    <div class="sec-head"><h2>🎆 New Year's</h2><span class="tag">NYE parties, concerts &amp; dinners · NYD recovery · Thu Dec 31 – Fri Jan 1</span></div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="top"><span class="pill heat">NYE · Concert</span><span class="meta">Thu · Dec 31 · 7 PM</span></div>
+        <h3>Whethan — Aon Grand Ballroom</h3>
+        <div class="meta">Navy Pier · Chicago</div>
+        <div class="price">$100 <small>from</small></div>
+        <p>The big-room NYE concert on the Pier: Chicago's own Whethan turns the Grand Ballroom into the city's loudest countdown, with the midnight fireworks right outside the windows when the set lets out.</p>
+        <a class="btn" href="https://www.etickets.com/concerts/techno-electronic/whethan/chicago-il/103127-46750/d" target="_blank" rel="noopener">Tickets — eTickets</a>
+        <p class="src">eTickets listing · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill heat">NYE · Party</span><span class="meta">Thu · Dec 31 · 9 PM – 1:30 AM</span></div>
+        <h3>New Year On The Pier — Bar Sol</h3>
+        <div class="meta">Navy Pier · Chicago</div>
+        <div class="price">$109 <small>from · VIP to $521</small></div>
+        <p>A multifloor party mid-Pier with the fireworks show as the backdrop — GA gets you in from ~$109, VIP tiers stack on lamb lollipops and lobster rolls. Dress-to-impress dress code, 21+.</p>
+        <a class="btn" href="https://stayhappening.com/e/new-year-on-the-pier-nye-2026-at-bar-sol-E118S8YIDNRHJ" target="_blank" rel="noopener">Tickets — StayHappening</a>
+        <p class="src">Green Curtain Events via StayHappening · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill heat">NYE · Cruise</span><span class="meta">Thu · Dec 31 · Evening</span></div>
+        <h3>NYE Fireworks Cruise — Anita Dee II</h3>
+        <div class="meta">Burnham Harbor · Chicago</div>
+        <div class="price">$99–165 <small>all-inclusive</small></div>
+        <p>Ring it in on the water: an all-inclusive cruise parked in front of the Navy Pier fireworks at midnight. The sunset sailing earlier in the evening runs cheaper ($20–42) if you want the skyline without the countdown.</p>
+        <a class="btn" href="https://allevents.in/chicago/skyline?page=2" target="_blank" rel="noopener">Tickets — AllEvents</a>
+        <p class="src">AllEvents Chicago listings · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill heat">NYE · 94 floors up</span><span class="meta">Thu · Dec 31</span></div>
+        <h3>NYE at 360 CHICAGO</h3>
+        <div class="meta">875 N. Michigan Ave · Chicago</div>
+        <div class="price">$100 <small>GA from</small></div>
+        <p>The observatory party 1,303 feet up: champagne in hand, a live DJ, unlimited TILT rides over the Magnificent Mile, and every fireworks show on the lakefront visible at once. VIP table packages above GA.</p>
+        <a class="btn" href="https://www.enjoyillinois.com/plan-your-trip/seasonal-adventures/holiday-season/new-years-eve-in-chicago/" target="_blank" rel="noopener">Event details — Enjoy Illinois</a>
+        <p class="src">Enjoy Illinois NYE guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">NYE · Dinner</span><span class="meta">Thu · Dec 31 · from 5 PM</span></div>
+        <h3>Tortoise Supper Club</h3>
+        <div class="meta">350 N. State St · River North</div>
+        <div class="price">$100 <small>per-person minimum + $15 entertainment</small></div>
+        <p>The grown-up NYE dinner: special à la carte menu and live jazz early, flapper-era flair and Polaroid keepsakes at the table, then a DJ and a live midnight countdown for dancing. Reserve direct — it's a minimum-spend night, not a ticket.</p>
+        <a class="btn" href="https://tortoisesupperclub.com/holidays-at-tortoise/new-years/" target="_blank" rel="noopener">Reserve — Tortoise Supper Club</a>
+        <p class="src">Venue NYE page · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">NYE · Local</span><span class="meta">Thu · Dec 31 · 7:30 PM</span></div>
+        <h3>American English — Raue Center</h3>
+        <div class="meta">Crystal Lake · McHenry County</div>
+        <div class="price">$59 <small>from · RaueNOW members save 30%</small></div>
+        <p>The county's NYE: the Beatles tribute that owns this room closes the year in the restored 1920s theatre — four eras of costumes and visuals, sing-alongs to midnight's doorstep, and a five-minute drive home instead of a Metra adventure.</p>
+        <a class="btn" href="https://www.broadwayworld.com/chicago/regionalshows/RAUE-CENTER-FOR-THE-ARTS" target="_blank" rel="noopener">Raue Center listings</a>
+        <p class="src">BroadwayWorld / Raue Center · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">NYE · Free</span><span class="meta">Thu · Dec 31 · 11:59 PM</span></div>
+        <h3>Navy Pier Midnight Fireworks</h3>
+        <div class="meta">Navy Pier · Chicago</div>
+        <div class="price">Free <small>no ticket</small></div>
+        <p>The city's official hello to 2027: a 10-minute fireworks show over the lake, synced to music, free from anywhere on the Pier or the lakefront. Pair it with the Whethan show or Bar Sol and you're already in position.</p>
+        <a class="btn" href="https://www.choosechicago.com/event/new-years-eve-fireworks-at-navy-pier/" target="_blank" rel="noopener">Event details — Choose Chicago</a>
+        <p class="src">Choose Chicago · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">NYD · Brunch</span><span class="meta">Fri · Jan 1 · 7 AM – 3:30 PM</span></div>
+        <h3>Venteux Recovery Brunch</h3>
+        <div class="meta">Pendry Chicago · Michigan Ave</div>
+        <div class="price">$29 <small>entrée + drink included</small></div>
+        <p>The official Jan 1 repair job: one entrée (Venteux burger, harissa chicken sandwich, or French toast) plus a Bloody Mary, mimosa, or beer, served café-style or full-service from 7 AM. The smartest $29 on New Year's Day.</p>
+        <a class="btn" href="https://www.venteuxchicago.com/news-item/new-years-day-recovery-brunch-venteux-chicago/" target="_blank" rel="noopener">Details — Venteux</a>
+        <p class="src">Venteux Chicago · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">NYD · Still glowing</span><span class="meta">Fri · Jan 1</span></div>
+        <h3>Lights, New Year's Day</h3>
+        <div class="meta">Lincoln Park + Glencoe</div>
+        <div class="price">$7–29 <small>see Ticketed Events</small></div>
+        <p>Both big light trails run on New Year's Day — ZooLights in the city and Lightscape at the Botanic Garden — and Jan 1 is the locals' night: the crowds thin, the lights don't. Full pricing in Ticketed Events above.</p>
+        <a class="btn" href="#ticketed">Ticketed Events ↑</a>
+        <p class="src">Venue calendars · Oct 2026</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ MOTHER'S DAY ============ -->
+  <section id="mothersday">
+    <div class="sec-head"><h2>💐 Mother's Day</h2><span class="tag">Sun · May 9, 2027 · brunches, dinners &amp; ticketed events · 2026 pricing shown — 2027 reservations open in spring</span></div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="top"><span class="pill heat">The splurge</span><span class="meta">Four Seasons · Gold Coast</span></div>
+        <h3>Adorn — Mother's Day Brunch</h3>
+        <div class="meta">120 E. Delaware Pl · Chicago</div>
+        <div class="price">$275 <small>adults · $95 kids 12 &amp; under</small></div>
+        <p>The top of the market: a full buffet at the Four Seasons' Adorn with a sparkling welcome drink, seasonal specialties and the dessert spread — plus a flower cart where Mom builds her own bouquet. 12:30–4:30 PM seatings; this is the first reservation in the city to disappear.</p>
+        <a class="btn" href="https://press.fourseasons.com/chicago/trending-now/mothers-day/" target="_blank" rel="noopener">Four Seasons Mother's Day</a>
+        <p class="src">Four Seasons Chicago / 2026 dining guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill">Classic buffet</span><span class="meta">9 AM – 4 PM</span></div>
+        <h3>The Bellevue</h3>
+        <div class="meta">1031 N. Rush St · Gold Coast</div>
+        <div class="price">$125 <small>adults · $40 kids 5–12</small></div>
+        <p>The Gold Coast buffet done completely: mimosa bar, omelet and carving stations, chilled seafood, bagels with lox, and dessert — served across the whole day, so you can book around Mom's schedule instead of the restaurant's.</p>
+        <a class="btn" href="https://www.diningandcooking.com/2627421/mothers-day-2026-dining-guide/" target="_blank" rel="noopener">2026 dining guide</a>
+        <p class="src">Chicago Mother's Day dining guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill acc">Ticketed</span><span class="meta">Three seatings · 8 AM / 10:30 AM / 1 PM</span></div>
+        <h3>Mother's Day Brunch — Lincoln Park Zoo</h3>
+        <div class="meta">Café Brauer · Lincoln Park</div>
+        <div class="price">$44–45 <small>adults · $20 kids · under 2 free</small></div>
+        <p>Brunch inside landmark Café Brauer, gardens and the Nature Boardwalk outside: a full buffet with an omelet station and smoked salmon, live music, and a drink included for the grown-ups — then the zoo (always free) for the afternoon. The 10:30 seating sells out first, every year.</p>
+        <a class="btn" href="https://www.lpzoo.org/visit/" target="_blank" rel="noopener">Tickets via lpzoo.org (spring)</a>
+        <p class="src">Lincoln Park Zoo via Do312 · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">The value play</span><span class="meta">11 AM – 2 PM</span></div>
+        <h3>The Albert</h3>
+        <div class="meta">228 E. Ontario St · Streeterville</div>
+        <div class="price">$60 <small>per person</small></div>
+        <p>Downtown polish without the hotel-ballroom price: your pick of entrée (eggs Benedict, herb-crusted ribeye) plus an antipasti buffet and a sweets table, in the Hotel EMC2's dining room. The smart-money downtown reservation.</p>
+        <a class="btn" href="https://www.diningandcooking.com/2627421/mothers-day-2026-dining-guide/" target="_blank" rel="noopener">2026 dining guide</a>
+        <p class="src">Chicago Mother's Day dining guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill gold">Dinner</span><span class="meta">11 AM – 7 PM</span></div>
+        <h3>Asador Bastian</h3>
+        <div class="meta">214 W. Erie St · River North</div>
+        <div class="price">$200 <small>special menu</small></div>
+        <p>If Mom would rather do dinner: the Basque-inspired chophouse runs a one-day special menu — caviar churros, sole with artichoke fried rice, asparagus and crab salad — from late morning through evening. Chicago's best Mother's Day table after dark.</p>
+        <a class="btn" href="https://www.diningandcooking.com/2627421/mothers-day-2026-dining-guide/" target="_blank" rel="noopener">2026 dining guide</a>
+        <p class="src">Chicago Mother's Day dining guide · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">Local</span><span class="meta">Crystal Lake · 7 AM – 2:30 PM</span></div>
+        <h3>Benedict's La Strata</h3>
+        <div class="meta">40 N. Williams St · Crystal Lake</div>
+        <div class="price">$$ <small>menu-priced · reservations essential</small></div>
+        <p>The hometown pick: McHenry County's favorite brunch room does a dedicated Mother's Day service on Williams Street. No ticket, no buffet line — a special brunch menu at the local institution, fifteen minutes from home. Book the moment reservations open; this room fills first in the county.</p>
+        <a class="btn" href="https://mchenrylife.com/events/food-drink-events/crystal-lake/mothers-day-brunch-at-benedicts-la-strata/" target="_blank" rel="noopener">Event — McHenry Life</a>
+        <p class="src">McHenry Life · Oct 2026</p>
+      </article>
+
+      <article class="card">
+        <div class="top"><span class="pill deal">Local</span><span class="meta">McHenry · 10 AM – 3 PM</span></div>
+        <h3>Addison's Steakhouse</h3>
+        <div class="meta">355 Front St · McHenry</div>
+        <div class="price">$$ <small>special menu · reservations</small></div>
+        <p>A steakhouse Mother's Day brunch on Front Street in McHenry — a dedicated Mother's Day menu from the kitchen that handles the riverfront's special occasions. The local move when Crystal Lake books out.</p>
+        <a class="btn" href="https://mchenrylife.com/events/food-drink-events/mchenry/mothers-day-brunch-at-addisons-steakhouse/" target="_blank" rel="noopener">Event — McHenry Life</a>
+        <p class="src">McHenry Life · Oct 2026</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ UFC FIGHT TICKETS ============ -->
+  <section id="ufc">
+    <div class="sec-head"><h2>UFC Fight Tickets</h2><span class="tag">Numbered PPVs + Fight Nights · prices checked Oct 23–24, 2026</span></div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Fight Night</span><span class="pill gold">Next up</span></div>
+        <h3>UFC Fight Night — Moicano vs Nolan</h3>
+        <div class="meta">Sat · Oct 31, 2026 · Meta APEX · Las Vegas, NV</div>
+      </div>
+      <div class="pr"><div class="price">$250</div><div class="meta">get-in · no-fee lane</div><a class="btn" href="https://app.tickpick.com/mixed-martial-arts/ufc-ultimate-fighting-championship-tickets/" target="_blank" rel="noopener">Tickets — TickPick</a></div>
+      <p class="judge">Halloween night at the APEX — the UFC's own micro-venue, where most of the room is hospitality inventory and public seats are scarce. A <b>$250 get-in</b> is the softest seat on the fall slate; if a Vegas weekend is already on the table, this is the cheap way into a live card.</p>
+      <div class="src">TickPick · checked Oct 23, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Fight Night</span></div>
+        <h3>UFC Fight Night — Bonfim vs Brady</h3>
+        <div class="meta">Sat · Nov 7, 2026 · Meta APEX · Las Vegas, NV</div>
+      </div>
+      <div class="pr"><div class="price">$385–637</div><div class="meta">get-in range by lane</div><a class="btn" href="https://fight.tickets/ufc/" target="_blank" rel="noopener">Tickets — Fight.Tickets</a></div>
+      <p class="judge">Second straight APEX Saturday, and the inventory is thinner — one marketplace showed <b>just 18 tickets left</b>, with get-ins running $385–$637 depending on the lane. Compare all-in totals before biting; at these counts, prices move on single sales.</p>
+      <div class="src">TickPick / Fight.Tickets · checked Oct 23, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">PPV</span><span class="pill">Two title fights</span></div>
+        <h3>UFC 334 — Gane vs Hokit</h3>
+        <div class="meta">Sat · Nov 14, 2026 · Madison Square Garden · New York, NY</div>
+      </div>
+      <div class="pr"><div class="price">$382</div><div class="meta">get-in all-in · avg resale ~$1,335</div><a class="btn" href="https://www.tickpick.com/mixed-martial-arts/ufc-334-tickets/" target="_blank" rel="noopener">Tickets — TickPick</a> <a class="btn ghost" href="https://seatgeek.com/ufc-tickets?expanded" target="_blank" rel="noopener">SeatGeek</a></div>
+      <p class="judge">The fall's big room: the heavyweight title on top, Harrison vs Nunes underneath, and MSG pricing to match. For once <b>resale beats the box office</b> — the no-fee get-in sits at $382 all-in while the cheapest primary standard seat was $496 at last count. Upper bowl is the value play; MSG has no bad sightline to the Octagon.</p>
+      <div class="src">TickPick / SeatGeek / WrestleTix via F4W · checked Oct 20–23, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Fight Night</span><span class="pill gold">Travel pick</span></div>
+        <h3>UFC Fight Night — Prochazka vs Stirling</h3>
+        <div class="meta">Sat · Nov 21, 2026 · ABHA Arena · Doha, Qatar</div>
+      </div>
+      <div class="pr"><div class="price">$51</div><div class="meta">from · resale</div><a class="btn" href="https://visitqatar.com/ufc-tickets" target="_blank" rel="noopener">Tickets — Visit Qatar (official)</a></div>
+      <p class="judge">The year's best UFC travel excuse: a former champion headlining in Doha, <b>official face-value tickets through Visit Qatar</b>, and resale spotted from ~$51. Last year's Doha debut sold the building out — buy official early and treat it as a trip, not a ticket.</p>
+      <div class="src">Visit Qatar / Gigsberg · checked Oct 23, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">PPV</span><span class="pill">BMF title</span></div>
+        <h3>UFC 335 — Oliveira vs Lopes</h3>
+        <div class="meta">Sat · Dec 12, 2026 · T-Mobile Arena · Las Vegas, NV</div>
+      </div>
+      <div class="pr"><div class="price">$263</div><div class="meta">from · avg resale ~$1,622</div><a class="btn" href="https://nightout.com/events/v/ufc-335-t-mobile-arena-las-vegas-2026-12-12/tickets" target="_blank" rel="noopener">Tickets — Nightout</a> <a class="btn ghost" href="https://fight.tickets/events/ufc-335/" target="_blank" rel="noopener">Fight.Tickets</a></div>
+      <p class="judge">The year-end Vegas card, Oliveira vs Lopes for the BMF strap. Get-ins start at $263, but one tracker has the cheapest all-in seat <b>up ~20% in two weeks to $386</b> — this one is heating up, not cooling off. If you're going, earlier beats later; the sub-$400 seats are upper-deck.</p>
+      <div class="src">Fight.Tickets / Nightout · checked Oct 23, 2026</div>
+    </div>
+
+    <div class="trow">
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">PPV</span><span class="pill acc">On sale Nov 20</span></div>
+        <h3>UFC 336 — card TBA</h3>
+        <div class="meta">Sat · Jan 30, 2027 · Scotiabank Arena · Toronto, ON</div>
+      </div>
+      <div class="pr"><div class="price">$636</div><div class="meta">resale from · face on sale Nov 20</div><a class="btn" href="https://ticketsonsale.com/sports/ufc?pid=1905&rid=92" target="_blank" rel="noopener">Tickets — TicketsOnSale</a></div>
+      <p class="judge">No fights announced yet — which is exactly why you <b>buy at face on on-sale day</b>: public sale is Fri Nov 20, 10am ET via Ticketmaster Canada (Fight Club presale Nov 18, newsletter presale Nov 19), while resale is already asking ~$636 for a card with zero bouts on it. The closest numbered event to Chicago on the calendar — an easy flight, or a long weekend drive.</p>
+      <div class="src">UFC announcement via Combat Press / TicketsOnSale · checked Oct 23, 2026</div>
+    </div>
+
+    <div class="ufcplay">
+      <h3>How UFC tickets price</h3>
+      <p><b>When to buy:</b> numbered events — face value at on-sale is the floor for lower-bowl; upper-bowl resale often drifts down in the final week, except MSG and year-end Vegas cards, which hold their price. International Fight Nights sell at face through the local platform and can sell out — buy those early.</p>
+      <p><b>Where the fees hide:</b> Ticketmaster and StubHub add service fees at the last checkout step — on a $300 seat the gap can top $60. TickPick and TicketIQ quote all-in, no-fee prices. Always compare the final total, never the list price.</p>
+      <p><b>The APEX exception:</b> APEX Fight Nights aren't normal inventory — the room is mostly VIP and hospitality, public listings are thin, and get-ins start where arena uppers end. Treat $250–$400 as the going rate, and expect VIP packages, not discounts, as the upgrade path.</p>
+    </div>
+  </section>
+
+  <!-- ============ BOXING TOP 10 ============ -->
+  <section id="boxing">
+    <div class="sec-head"><h2>Boxing Top 10</h2><span class="tag">Rolling 12-month window · results + the biggest fights ahead</span></div>
+    <div class="boxing">
+      <div class="bx"><div class="rk">#1</div><h3>Fury vs Joshua</h3><p>Vacant WBA Super heavyweight title · Fri Dec 11 · Principality Stadium, Cardiff · Netflix. The biggest British fight ever made, finally.</p></div>
+      <div class="bx"><div class="rk">#2</div><h3>Canelo vs M'Billi</h3><p>WBC super-middleweight · Sat Oct 31 · Riyadh · DAZN PPV. Proceeding as scheduled.</p></div>
+      <div class="bx"><div class="rk">#3</div><h3>Navarrete vs Foster</h3><p>130-lb unification (WBO/IBF vs WBC) · Tomorrow, Oct 24 · San Antonio · DAZN. Foster -200 / Navarrete +155 (DraftKings).</p></div>
+      <div class="bx"><div class="rk">#4</div><h3>Benavidez vs Cieslak</h3><p>Three-belt cruiserweight unification · Sat Dec 5 · Phoenix. Announced Oct 22.</p></div>
+      <div class="bx"><div class="rk">#5</div><h3>Dubois vs Wardley</h3><p class="res">Result: Dubois TKO2 · Oct 17, O2 London</p><p>Retained the WBO heavyweight title. Hrgovic faced off post-fight — a March unification is the ask.</p></div>
+      <div class="bx"><div class="rk">#6</div><h3>Kabayel vs Hysa</h3><p>WBC heavyweight · Sat Nov 28 · Düsseldorf · DAZN.</p></div>
+      <div class="bx"><div class="rk">#7</div><h3>Bivol vs Callum Smith</h3><p>WBA/IBF/WBO light-heavyweight · Sat Dec 12 · Yekaterinburg. Single-source listing — treat the date as provisional.</p></div>
+      <div class="bx"><div class="rk">#8</div><h3>Baumgardner vs Turhan</h3><p>IBF women's lightweight · Sun Nov 8 · Arlington, TX · ESPN.</p></div>
+      <div class="bx"><div class="rk">#9</div><h3>Dalton Smith vs Puello</h3><p>WBC super-lightweight · Tomorrow, Oct 24 · Sheffield · DAZN.</p></div>
+      <div class="bx"><div class="rk">#10</div><h3>Cacace vs Ball</h3><p>WBA super-featherweight · Sat Dec 19 · Belfast · DAZN. Single-source listing.</p></div>
+    </div>
+    <p style="margin:12px 2px 0;font-size:14.5px;color:var(--muted)">Developing: a Garcia–Mayweather “agreement” is being claimed (Oct 21–23) but is unconfirmed by either camp. Pacquiao is reported on the Fury–Joshua undercard (The Sun). Sources: Reuters, ESPN, Boxing News · Oct 2026.</p>
+  </section>
+
+  <footer>
+    <p><b>Sheet 5 — Tickets.</b> Friday, October 23, 2026. Ticket prices were checked Oct 22–24 and move fast — re-check before you buy.</p>
+    <p>Sources: TixTracer, Ticketmaster, Vivid Seats, SeatGeek, USA Today, Raue Center, venue calendars, official artist stores (TOOL, Linkin Park/Warner Records, 311, Iration, Puscifer, Veeps, Pelagic), Sixthman and event official sites, TickPick, UFC.com, Visit Qatar, McHenry Life, Reuters, ESPN.</p>
+  </footer>
+
+</div>
+</body>
+</html>
