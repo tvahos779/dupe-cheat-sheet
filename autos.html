@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Sheet 4 Draft — Autos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#edf0f3; --panel:#ffffff; --panel2:#e3e9ee; --ink:#121a22; --muted:#54646f;
+        --line:#ccd6de; --accent:#d9510a; --accent-soft:#fbe9dc; --good:#0d7a3e; --good-soft:#dff2e6;
+        --warn:#9a6206; --warn-soft:#fbf0d3; --dead:#b3261e; --dead-soft:#fbe3e1;
+        --chip:#dde5ec; --shadow:0 1px 3px rgba(18,26,34,.10),0 6px 18px rgba(18,26,34,.06);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0a0e13; --panel:#131a22; --panel2:#1a232e; --ink:#e9eff5; --muted:#93a5b5;
+          --line:#26313d; --accent:#ff7a1a; --accent-soft:#3a2412; --good:#3ecf7a; --good-soft:#123324;
+          --warn:#f2b544; --warn-soft:#38300f; --dead:#ff7a6e; --dead-soft:#3d1a17;
+          --chip:#1f2a36; --shadow:0 1px 3px rgba(0,0,0,.5),0 6px 18px rgba(0,0,0,.35);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,sans-serif;font-size:16.5px;line-height:1.5}
+      .wrap{max-width:1060px;margin:0 auto;padding:0 18px 64px}
+      h1,h2,h3{font-family:"Barlow Condensed","Barlow",sans-serif;text-transform:uppercase;letter-spacing:.01em;margin:0}
+      .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+      a{color:var(--accent)}
+      /* hero */
+      .hero{position:relative;margin:0 -18px;min-height:340px;display:flex;align-items:flex-end;overflow:hidden;background:#0a0e13}
+      .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%}
+      .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,14,.18) 30%,rgba(6,10,14,.88) 88%)}
+      .hero-in{position:relative;z-index:1;padding:26px 22px 22px;width:100%}
+      .beta{display:inline-block;background:var(--accent);color:#fff;font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.14em;padding:4px 10px;border-radius:3px}
+      .hero h1{color:#fff;font-size:clamp(40px,8.5vw,72px);line-height:.95;font-weight:700;margin:12px 0 8px;max-width:12em}
+      .hero p{color:#d7e1ea;margin:0;font-size:clamp(15px,2.6vw,18px);max-width:34em}
+      .hero p b{color:#fff}
+      /* nav */
+      nav{position:sticky;top:0;z-index:20;background:var(--bg);padding:12px 0 10px;display:flex;flex-wrap:wrap;gap:8px}
+      nav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14.5px}
+      nav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+      /* snapshot */
+      .snap{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:6px 0 8px}
+      .snap .cell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+      .snap .k{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+      .snap .v{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:clamp(21px,3.4vw,27px);margin:2px 0}
+      .snap .s{font-size:12.5px;color:var(--muted)}
+      /* sections */
+      section{margin-top:38px;scroll-margin-top:76px}
+      .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:3px solid var(--ink);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap}
+      .sec-head h2{font-size:clamp(27px,5vw,36px);font-weight:700}
+      .sec-head .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.06em}
+      .angle{font-size:17.5px;font-weight:600;margin:0 0 10px;max-width:46em}
+      .goodbar{display:flex;gap:10px;align-items:baseline;background:var(--ink);color:var(--bg);border-radius:10px;padding:10px 14px;font-size:15px;margin-bottom:16px;flex-wrap:wrap}
+      .goodbar b{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:700;letter-spacing:.1em;color:var(--accent);white-space:nowrap}
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+      .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+      .card img{width:100%;height:172px;object-fit:cover;display:block}
+      .card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+      .badges{display:flex;flex-wrap:wrap;gap:6px}
+      .badge{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 8px;border-radius:3px;background:var(--chip);color:var(--ink);text-transform:uppercase}
+      .badge.hot{background:var(--accent);color:#fff}
+      .badge.good{background:var(--good-soft);color:var(--good)}
+      .badge.warn{background:var(--warn-soft);color:var(--warn)}
+      .badge.dead{background:var(--dead-soft);color:var(--dead)}
+      .card h3{font-size:23px;font-weight:600;line-height:1.05}
+      .price{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:26px}
+      .price small{font-size:13px;color:var(--muted);font-weight:500}
+      .card p{margin:0;font-size:15.5px}
+      .card .note{background:var(--panel2);border-radius:8px;padding:9px 12px;font-size:14.5px}
+      .card .note b{font-weight:700}
+      .src{margin-top:auto;padding-top:6px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+      .src a{color:var(--muted)}
+      .wide{grid-column:1/-1}
+      /* vehicle pick cards: performance & luxury first, biggest */
+      .perf{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:8px 0}
+      .perf .z{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:46px;line-height:.95}
+      .perf .z small{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.05em}
+      .perf .hp{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:21px}
+      .perf .hp small{display:block;font-family:"Barlow",sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+      .luxrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+      .luxrow .was{font-family:"IBM Plex Mono",monospace;font-size:14.5px;color:var(--muted);text-decoration:line-through}
+      .luxrow .now{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:27px}
+      .luxrow .drop{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;color:var(--good)}
+      .luxline{font-size:14.5px;color:var(--muted)}
+      .luxline b{color:var(--ink)}
+      .spec{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;font-size:14px}
+      .spec>div{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0 8px;border-bottom:1px dashed var(--line);padding:4px 0;min-width:0}
+      .spec .k{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+      .spec .v{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13.5px;text-align:right;margin-left:auto;min-width:0;overflow-wrap:break-word}
+      .spec .v.unc{color:var(--warn);font-size:12.5px;letter-spacing:.03em}
+      .listing{border:1.5px dashed var(--accent);background:var(--accent-soft);border-radius:10px;padding:9px 12px;font-size:14.5px}
+      .listing a{font-weight:700}
+      .listing .d{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.08em;background:var(--accent);color:#fff;border-radius:3px;padding:2px 7px;margin-right:6px}
+      .listing .d.far{background:var(--ink)}
+      .listing .verdict{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:700}
+      .listing .verdict.deal{color:var(--good)}
+      .listing .verdict.unv{color:var(--warn)}
+      .danger{background:var(--dead-soft);border:1px solid var(--dead);border-radius:8px;padding:9px 12px;font-size:14.5px}
+      .danger b{color:var(--dead)}
+      /* EV rebuild: one big price per card + equal-factor scores */
+      .bigprice{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:40px;line-height:1.02;letter-spacing:-.01em}
+      .bigprice small{display:block;font-family:"Barlow",sans-serif;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+      .scoreline{margin-top:10px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;box-shadow:var(--shadow)}
+      .scoreline b{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+      .scores{display:flex;gap:6px;flex-wrap:wrap}
+      .score{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.05em;background:var(--chip);color:var(--ink);border-radius:3px;padding:3px 8px}
+      .score.lead{background:var(--accent);color:#fff}
+      section.stretch-perf .perf .z{font-size:58px}
+      section.stretch-lux .luxrow .now{font-size:35px}
+      section.stretch-lux .luxrow .drop{font-size:13.5px}
+      section.stretch-ex .danger{border-width:2px;font-size:15px}
+      section.stretch-val .bigprice{color:var(--good)}
+      /* price caps · cross-sheet nav · mileage flags */
+      .cap{display:inline-block;font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:15px;letter-spacing:.05em;background:var(--accent);color:#fff;border-radius:4px;padding:4px 12px}
+      .xnav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 12px}
+      .xnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14.5px}
+      .xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+      .mileflag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+      .mileflag.ca{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
+      .mileflag.hi{background:var(--dead);color:#fff;border:1px solid var(--dead)}
+      @media (max-width:640px){ .bigprice{font-size:33px} section.stretch-perf .perf .z{font-size:46px} }
+      /* tables */
+      table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+      th,td{padding:10px 14px;text-align:left;vertical-align:top;font-size:15px}
+      th{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:14px;background:var(--panel2);border-bottom:2px solid var(--line)}
+      tr+tr td{border-top:1px solid var(--line)}
+      td.r,th.r{text-align:right}
+      .ladder{counter-reset:step;display:grid;gap:10px}
+      .rung{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 58px;position:relative;box-shadow:var(--shadow)}
+      .rung::before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:10px;font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:22px;color:var(--accent)}
+      .rung b{font-weight:700}
+      .rung p{margin:2px 0 0;font-size:15px;color:var(--muted)}
+      .callout{border-radius:12px;padding:16px 18px;margin:14px 0;border:1px solid var(--line)}
+      .callout.red{background:var(--dead-soft);border-color:var(--dead)}
+      .callout.amber{background:var(--warn-soft)}
+      .callout h3{font-size:24px;margin-bottom:4px}
+      .callout p{margin:0;font-size:15.5px}
+      .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;counter-reset:st}
+      .step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow);font-size:15px}
+      .step::before{counter-increment:st;content:"STEP " counter(st);display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--accent);margin-bottom:4px}
+      .check{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+      .check li{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 14px 11px 40px;position:relative;font-size:15.5px;box-shadow:var(--shadow)}
+      .check li::before{content:"";position:absolute;left:14px;top:15px;width:11px;height:11px;border:2.5px solid var(--accent);border-radius:2px}
+      .check li b{font-weight:700}
+      /* calculator */
+      .calc{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px}
+      .calc .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+      .calc label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+      .calc input,.calc select{width:100%;font-family:"IBM Plex Mono",monospace;font-size:17px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+      .calc .out{margin-top:16px;border-top:2px dashed var(--line);padding-top:12px;display:grid;gap:4px;font-size:15.5px}
+      .calc .out .row{display:flex;justify-content:space-between;gap:14px}
+      .calc .out .total{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:24px;border-top:2px solid var(--ink);margin-top:6px;padding-top:8px}
+      .voices{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+      .voice{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow);font-size:15px}
+      .voice b{display:block;font-size:16.5px}
+      .voice span{color:var(--muted);font-size:14px}
+      footer{margin-top:46px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:13.5px}
+      @media (max-width:640px){
+        th,td{padding:8px 10px;font-size:14px}
+        .card img{height:158px}
+        .spec{grid-template-columns:1fr}
+        .perf .z{font-size:38px}
+      }
+      @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <div class="xnav" role="navigation" aria-label="All sheets">
+        <a href="index.html">Dupe Cheat Sheet</a>
+        <a href="guns-cigars.html">Guns n Subs</a>
+        <a href="travel.html">Travel</a>
+        <a href="autos.html" class="on" aria-current="page">Autos</a>
+      </div>
+
+      <header class="hero">
+        <img src="assets/img_0a6587f8ca570433.jpg" alt="Chicago skyline at dusk in winter, traffic streaming along a snow-lined Lake Shore Drive" />
+        <div class="hero-in">
+          <span class="beta">BETA · SHEET 4</span>
+          <h1>Never pay sticker in Cook County.</h1>
+          <p>Used EVs, 2022 and newer · hard caps — <b>$35,000</b> max per pick, <b>$50,000</b> Exotic/Risky · Crystal Lake–area listings, researched <b>Oct 24, 2026</b>. Every card’s big price is that listing’s researched asking price — confirm it at the source before you sign.</p>
+        </div>
+      </header>
+
+      <nav id="nav">
+        <a href="#zero60">0–60</a>
+        <a href="#luxury">Luxury Depreciated</a>
+        <a href="#exotic">Exotic / Risky</a>
+        <a href="#boring">Boring But Gotta Look</a>
+        <a href="#used">Used Deals</a>
+        <a href="#new">New-Car Playbook</a>
+        <a href="#ev">EV Watch</a>
+        <a href="#chicago">Chicago Guide</a>
+        <a href="#gear">Gear</a>
+        <a href="#voices">Trusted Voices</a>
+      </nav>
+
+      <section id="board" style="margin-top:10px">
+        <div class="snap">
+          <div class="cell"><div class="k">Avg new-car price paid</div><div class="v num">$50,562</div><div class="s">KBB, Sept 2026 — $52 under the all-time record</div></div>
+          <div class="cell"><div class="k">Avg incentive / car</div><div class="v num">$3,359</div><div class="s">6.6% of transaction price, KBB Sept 2026</div></div>
+          <div class="cell"><div class="k">Cook County tax</div><div class="v num">~10.25%</div><div class="s">On price minus trade-in — among the highest in the US</div></div>
+          <div class="cell"><div class="k">IL doc fee cap <span class="badge warn" style="vertical-align:1px">Unconfirmed</span></div><div class="v num">$377.63</div><div class="s">Reported 2026 CPI-adjusted max — sources conflict; see Chicago Guide</div></div>
+          <div class="cell"><div class="k">Avg used EV listing</div><div class="v num">$37,441</div><div class="s">Cox Automotive, Aug 2026 — 39% of used EVs list under $25k</div></div>
+        </div>
+              <div class="scoreline"><b>HOW EVERY PICK IS SCORED</b> &nbsp;Depreciation · Luxury · Performance — equal weight, ● marks on every card. Each section stretches its namesake factor. Battery health + EPA range sit in every spec block.</div>
+      </section>
+
+      <section id="zero60" class="stretch-perf">
+        <div class="sec-head"><h2>0–60</h2><span class="tag">SPEED PER DOLLAR · ELECTRIC</span><span class="cap">CAP $35,000</span></div>
+        <p class="angle">Used EVs, 2022+. 0–60 leads — depreciation and luxury are scored on every card.</p>
+        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Performance stretched here: sub-3.5s to 60 · 480+ hp. Scored equally on every card: depreciation · luxury · performance.</span></div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>Tesla Model 3 Performance</h3>
+              <div class="bigprice num">$27,999<small>Asking price · 2022 · 44,432 mi</small></div>
+              <div class="perf"><span class="z">3.1<small> S · 0–60 · TESLA / MOTORTREND</small></span><span class="hp">~450<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$64,190</span><span class="now num">−$36,191</span><span class="drop">−56% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Top Tesla trim.</b> ~82 kWh pack — Tesla publishes no kWh figure.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●○○○</span><span class="score lead">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$27,999</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">44,432 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">315 mi EPA</span></div><div><span class="k">Battery</span><span class="v">88.9% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">EVX 767/1000 J.D. Power</span></div><div><span class="k">Depreciation</span><span class="v">−56% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-tesla-model-3/sedan-black-in-chicago-il" target="_blank" rel="noopener">2022 Model 3 Performance — $27,999 · 44,432 mi · Countryside Nissan, IL (~14 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown at source · index ~50 days old</span></div>
+              <div class="src">SOURCE · Capital One listing · KBB MSRP · MotorTrend · AVILOO · J.D. Power EVX — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>Tesla Model Y Performance</h3>
+              <div class="bigprice num">$29,658<small>Asking price · 2022 · 65,753 mi</small></div>
+              <div class="perf"><span class="z">3.5<small> S · 0–60 · TESLA / C&amp;D</small></span><span class="hp">~455<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$69,990</span><span class="now num">−$40,332</span><span class="drop">−58% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Performance is the top Model Y trim.</b> ~82 kWh pack — Tesla publishes no kWh figure.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●○○○</span><span class="score lead">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$29,658</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">65,753 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−58% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-tesla-model-y/performance-in-highland-park-il" target="_blank" rel="noopener">2022 Model Y Performance — $29,658 · 65,753 mi · Golf Mill Chevrolet, Niles, IL (~35 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · search page, not a single-car page</span></div><div class="listing"><span class="d ">≤100 MI</span><a href="https://www.iSeecars.com/used_cars-t5698-2022-tesla-model-y-for-sale" target="_blank" rel="noopener">2022 Model Y Performance — $27,683 · 58,658 mi · Willowbrook, IL (~35 mi)</a> <span class="verdict unv">COMP · cheaper, fewer miles · [UNVERIFIED] index-only</span></div>
+              <div class="src">SOURCE · Capital One + iSeeCars listings · Tesla · Car and Driver — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Kia EV6 GT</h3>
+              <div class="bigprice num">$25,997<small>Asking price · 2023 · 46,489 mi</small></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · KIA</small></span><span class="hp">576<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$62,695</span><span class="now num">−$36,698</span><span class="drop">−59% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>GT is the top EV6 trim.</b> 77.4 kWh · 206 mi EPA is the price of 576 hp.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●●○○</span><span class="score lead">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$25,997</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">46,489 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">206 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">JDP Q&amp;R 76/100</span></div><div><span class="k">Depreciation</span><span class="v">−59% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-kia-ev6/gt-in-chicago-il" target="_blank" rel="noopener">2023 EV6 GT — $25,997 · 46,489 mi · Old Orchard Nissan, IL (~13 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown · price moved $25,555–$26,111 between index crawls — confirm</span></div>
+              <div class="src">SOURCE · Capital One listing · MotorAuthority · J.D. Power — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Hyundai Ioniq 5 Limited AWD</h3>
+              <div class="bigprice num">$29,889<small>Asking price · 2023 · 33,415 mi</small></div>
+              <div class="perf"><span class="z">4.5<small> S · 0–60 · CAR AND DRIVER TEST</small></span><span class="hp">320<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$56,500</span><span class="now num">−$26,611</span><span class="drop">−47% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Limited is the top Ioniq 5 trim.</b> 77.4 kWh · dual-motor AWD.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●●○○</span><span class="score lead">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$29,889</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">33,415 mi</span></div><div><span class="k">Range</span><span class="v">266 mi EPA</span></div><div><span class="k">Battery</span><span class="v">92.8% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">JDP Q&amp;R 78/100</span></div><div><span class="k">Depreciation</span><span class="v">−47% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.autolist.com/hyundai-ioniq+5-2023" target="_blank" rel="noopener">2023 Ioniq 5 Limited AWD — $29,889 · 33,415 mi · Huntley Ford, Huntley, IL (~15 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · 106 days on market — confirm price</span></div>
+              <div class="src">SOURCE · Autolist listing · Hyundai · Car and Driver · AVILOO · J.D. Power — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge warn">Trim comp — specs are Perf Ed</span></div>
+              <h3>Ford Mustang Mach-E GT</h3>
+              <div class="bigprice num">$27,494<small>Asking price · 2022 · 62,345 mi</small></div>
+              <div class="perf"><span class="z">3.5<small> S · 0–60 · GT PERF ED · FORD</small></span><span class="hp">480<small>HP · GT PERF ED FIGURE</small></span></div>
+              <div class="luxrow"><span class="was num">$61,995</span><span class="now num">−$34,501</span><span class="drop">−56% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Listing is the GT, not the Performance Edition</b> — the 0–60 / hp / range figures shown are the Perf Ed’s; this unit’s pack is unconfirmed.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●●○○</span><span class="score lead">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$27,494</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">62,345 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">260 mi EPA · Perf Ed</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">eAWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">#2 · 2022 EVs (TopSpeed)</span></div><div><span class="k">Depreciation</span><span class="v">−56% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.comvoy.com/vehicles/used/ford/mustang-mach-e/illinois/west-chicago-wtd5" target="_blank" rel="noopener">2022 Mustang Mach-E GT — $27,494 · 62,345 mi · Zeigler Ford of North Riverside, IL (~20 mi)</a> <span class="verdict unv">COMP · GT trim, not GT Performance Edition · [UNVERIFIED]</span></div>
+              <div class="src">SOURCE · Comvoy listing · FordAuthority MSRP · Ford · TopSpeed — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge">Performance Pack</span></div>
+              <h3>Polestar 2 Dual Motor Performance</h3>
+              <div class="bigprice num">$23,795<small>Asking price · 2022 · 25,015 mi</small></div>
+              <div class="perf"><span class="z">4.5<small> S · 0–60 · POLESTAR CLAIM</small></span><span class="hp">408<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$56,500</span><span class="now num">−$32,705</span><span class="drop">−58% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Long Range Dual Motor + the $5,000 Performance Pack.</b> 78 kWh · Öhlins dampers and Brembo brakes ride along.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●●○○</span><span class="score lead">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$23,795</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">25,015 mi</span></div><div><span class="k">Range</span><span class="v">249 mi EPA</span></div><div><span class="k">Battery</span><span class="v">Edmunds: Excellent score</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−58% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.edmunds.com/used-2022-polestar-2-naperville-il/" target="_blank" rel="noopener">2022 Polestar 2 LR Dual Motor Performance Pack — $23,795 · 25,015 mi · Jidd Motors Mitsubishi, Des Plaines, IL (~20 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · dealer page may be stale — confirm the car is still there</span></div>
+              <div class="src">SOURCE · Edmunds listing · Polestar — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge warn">Verify the price</span></div>
+              <h3>Kia EV6 Wind AWD</h3>
+              <div class="bigprice num">$20,000<small>Asking price · 2022 · 54,089 mi</small></div>
+              <div class="perf"><span class="z">4.6<small> S · 0–60 · CAR AND DRIVER</small></span><span class="hp">320<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$50,900</span><span class="now num">−$30,900</span><span class="drop">−61% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Wind AWD, the mid EV6.</b> 77.4 kWh · same dual-motor hardware as the GT-Line.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●○○○</span><span class="score lead">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$20,000</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">54,089 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">274 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">JDP Q&amp;R 76/100</span></div><div><span class="k">Depreciation</span><span class="v">−61% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.TrueCar.com/used-cars-for-sale/listings/kia/ev6/year-2022/location-west-chicago-il/" target="_blank" rel="noopener">2022 EV6 Wind AWD — $20,000 · 54,089 mi · Napleton's Valley Hyundai, Aurora, IL (~35 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · price is far below market — check for an error or trim mislabel before traveling</span></div>
+              <div class="src">SOURCE · TrueCar listing · Kia · Car and Driver · J.D. Power — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Tesla Model 3 Performance (2023)</h3>
+              <div class="bigprice num">$31,700<small>Asking price · 2023 · ~14,315 mi</small></div>
+              <div class="perf"><span class="z">3.1<small> S · 0–60 · TESLA / MOTORTREND</small></span><span class="hp">~455<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$53,990</span><span class="now num">−$22,290</span><span class="drop">−41% VS ORIG. MSRP</span></div>
+              <p class="luxline"><b>Top Tesla trim, a model year newer than the 2022 above.</b> ~82 kWh pack · 14k mi is barely broken in.</p>
+              <div class="scores"><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●○○○</span><span class="score lead">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$31,700</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">~14,315 mi</span></div><div><span class="k">Range</span><span class="v">315 mi EPA</span></div><div><span class="k">Battery</span><span class="v">88.9% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">EVX 767/1000 J.D. Power</span></div><div><span class="k">Depreciation</span><span class="v">−41% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.truecar.com/used-cars-for-sale/listings/tesla/model-3/year-2023/location-riverside-il/?trim=performance" target="_blank" rel="noopener">2023 Model 3 Performance — $31,700 · ~14,315 mi · Honda Libertyville, Libertyville, IL (~25 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · price moved $31,700–$32,101 between crawls — confirm</span></div>
+              <div class="src">SOURCE · TrueCar listing · Tesla · MotorTrend · AVILOO · J.D. Power EVX — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="luxury" class="stretch-lux">
+        <div class="sec-head"><h2>Luxury Depreciated</h2><span class="tag">FALLEN-FLAG LUXURY · ELECTRIC</span><span class="cap">CAP $35,000</span></div>
+        <p class="angle">Flagship EVs, 2022+, after the fall. The MSRP→now curve and the luxury tier lead — performance is still on every card.</p>
+        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Luxury + depreciation stretched here: $75k+ original MSRP · flagship trim · the saved-vs-MSRP figure is the headline number after the price.</span></div>
+        <div class="grid">
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge hot">Poster child</span><span class="badge good">CPO</span></div>
+              <h3>Audi e-tron Premium Plus</h3>
+              <div class="bigprice num">$31,931<small>Asking price · 2022 · 6,633 mi</small></div>
+              <div class="luxrow"><span class="was num">$74,800</span><span class="now num">−$42,869</span><span class="drop">−57% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">5.5<small> S · 0–60</small></span><span class="hp">355<small>HP · 402 ON BOOST</small></span></div>
+              <p class="luxline"><b>Premium Plus, Audi certified pre-owned.</b> 95 kWh · the Q8 e-tron's pre-rename twin — same car, earlier badge. 6,633 mi is barely used.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$31,931</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">6,633 mi</span></div><div><span class="k">Range</span><span class="v">222 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED · CPO inspected</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−57% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.carfax.com/vehicle/WA12AAGE7NB019521" target="_blank" rel="noopener">2022 e-tron Premium Plus (CPO) — $31,931 · 6,633 mi · Audi dealer, Chicago, IL (~50 mi)</a> <span class="verdict deal">DEAL · $3,839 below CARFAX value · no accidents · 1-owner · verified live Oct 24</span></div>
+              <div class="src">SOURCE · CARFAX listing (verified live) · Audi — read Oct 24, 2026</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge warn">National — no IL unit under cap</span></div>
+              <h3>Mercedes-Benz EQS 450+</h3>
+              <div class="bigprice num">$32,995<small>Asking price · 2022 · 60,278 mi</small></div>
+              <div class="luxrow"><span class="was num">$102,310</span><span class="now num">−$69,315</span><span class="drop">−68% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">5.9<small> S · 0–60 · MERCEDES</small></span><span class="hp">329<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>The electric S-Class.</b> 107.8 kWh · 350 mi EPA — the longest legs in this section.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●●</span><span class="score lead">LUXURY ●●●●●</span><span class="score">PERFORMANCE ●●○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$32,995</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">60,278 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">350 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">RWD · single motor</span></div><div><span class="k">Reliability</span><span class="v">JDP Q&amp;R 74/100</span></div><div><span class="k">Depreciation</span><span class="v">−68% vs MSRP</span></div></div>
+              <div class="listing"><span class="d far">NATIONAL</span><a href="https://www.ebay.com/itm/168441466184" target="_blank" rel="noopener">2022 EQS 450+ — $32,995 · 60,278 mi · Ultimate Motorsports Inc, Houston, TX</a> <span class="verdict unv">NATIONAL · the only unit at/under the cap — Chicago units listed $35,900 (over cap) or carried a buyback flag · [UNVERIFIED] index-only</span></div>
+              <div class="src">SOURCE · eBay listing · Mercedes-Benz · MotorTrend · J.D. Power — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span><span class="badge warn">National</span></div>
+              <h3>Lucid Air Pure AWD</h3>
+              <div class="bigprice num">$33,795<small>Asking price incl. fees · 2023 · 17,150 mi</small></div>
+              <div class="luxrow"><span class="was num">$82,400</span><span class="now num">−$48,605</span><span class="drop">−59% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.8<small> S · 0–60 · LUCID</small></span><span class="hp">480<small>HP · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>Pure AWD — the entry Lucid is still a 480-hp luxury sedan.</b> 92 kWh · ~384 mi EPA.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$33,795</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">17,150 mi</span></div><div><span class="k">Range</span><span class="v">~384 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−59% vs MSRP</span></div></div>
+              <div class="listing"><span class="d far">NATIONAL</span><a href="https://www.carfax.com/vehicle/50EA1PFA2PA008529" target="_blank" rel="noopener">2023 Air Pure AWD — $33,795 · 17,150 mi · Lux Auto Sales of NJ, Plainfield, NJ</a> <span class="verdict deal">VERIFIED LIVE · no accidents · 1-owner · price includes fees · national — no IL unit under cap found</span></div>
+              <div class="src">SOURCE · CARFAX listing (verified live) · Lucid — read Oct 24, 2026</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>BMW iX xDrive50</h3>
+              <div class="bigprice num">$34,265<small>From · 2022 · 3 units · mileage varies</small></div>
+              <div class="luxrow"><span class="was num">$84,100</span><span class="now num">−$49,835</span><span class="drop">−59% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">4.4<small> S · 0–60 · BMW</small></span><span class="hp">516<small>HP · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>xDrive50.</b> 111.5 kWh · J.D. Power EVX #1 overall (790/1000).</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">from $34,265</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Range</span><span class="v">324 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">EVX 790/1000 · #1 overall</span></div><div><span class="k">Depreciation</span><span class="v">−59% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.edmunds.com/used-bmw-ix-lake-in-the-hills-il/" target="_blank" rel="noopener">2022 iX xDrive50 — from $34,265 · 3 units · Lake in the Hills, IL (~15 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · per-unit mileage not captured — confirm the under-cap unit's miles before traveling</span></div>
+              <div class="src">SOURCE · Edmunds listings · BMW · J.D. Power EVX — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span><span class="badge warn">Stale index</span></div>
+              <h3>Genesis Electrified G80</h3>
+              <div class="bigprice num">$27,999<small>Asking price · 2023 · 52,785 mi</small></div>
+              <div class="luxrow"><span class="was num">$79,825</span><span class="now num">−$51,826</span><span class="drop">−65% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">4.9<small> S · 0–60 · GENESIS R&amp;D</small></span><span class="hp">365<small>HP · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>Genesis flagship sedan, electric.</b> 87.2 kWh · 516 lb-ft.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●●</span><span class="score lead">LUXURY ●●●●●</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$27,999</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">52,785 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">282 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−65% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.truecar.com/used-cars-for-sale/listings/genesis/electrified-g80/location-chicago-heights-il/" target="_blank" rel="noopener">2023 Electrified G80 — $27,999 · 52,785 mi · Elgin Hyundai, Bartlett, IL (~35 mi)</a> <span class="verdict deal">DEAL · TrueCar “Excellent price” · index 306 days old — recheck before traveling</span></div>
+              <div class="src">SOURCE · TrueCar listing · InsideEVs MSRP · AAA — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Genesis GV60 Performance</h3>
+              <div class="bigprice num">$27,887<small>Asking price · 2023 · 63,503 mi</small></div>
+              <div class="luxrow"><span class="was num">$68,290</span><span class="now num">−$40,403</span><span class="drop">−59% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">3.6<small> S · 0–60 · MOTORTREND · BOOST</small></span><span class="hp">429<small>HP · 483 ON BOOST</small></span></div>
+              <p class="luxline"><b>Performance trim.</b> 77.4 kWh · E-GMP platform — check ICCU recall status before buying.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$27,887</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">63,503 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">235 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−59% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-genesis-gv60/performance-bluetooth-in-chicago-il" target="_blank" rel="noopener">2023 GV60 Performance — $27,887 · 63,503 mi · Old Orchard Nissan, IL (~13 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown</span></div>
+              <div class="src">SOURCE · Capital One listing · SlashGear MSRP · MotorTrend — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Jaguar I-Pace HSE</h3>
+              <div class="bigprice num">$27,076<small>Asking price · 2023 · 39,652 mi</small></div>
+              <div class="luxrow"><span class="was num">$71,300</span><span class="now num">−$44,224</span><span class="drop">−62% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">4.5<small> S · 0–60 · JAGUAR</small></span><span class="hp">394<small>HP · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>HSE, the top trim.</b> 90 kWh · 512 lb-ft.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●●●</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$27,076</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">39,652 mi</span></div><div><span class="k">Range</span><span class="v">246 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">Owners 5★ · 72% (Edmunds)</span></div><div><span class="k">Depreciation</span><span class="v">−62% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cargurus.com/Cars/l-Used-Jaguar-I-PACE-Chicago-d2672_L7510" target="_blank" rel="noopener">2023 I-Pace HSE — $27,076 · 39,652 mi · Gurnee, IL (~45 mi)</a> <span class="verdict unv">[UNVERIFIED] · CarGurus rates this listing “Uncertain”</span></div>
+              <div class="src">SOURCE · CarGurus listing + research · Jaguar · Edmunds — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Cadillac Lyriq Luxury RWD</h3>
+              <div class="bigprice num">$31,899<small>Asking price · 2023 · 46,531 mi</small></div>
+              <div class="luxrow"><span class="was num">$62,990</span><span class="now num">−$31,091</span><span class="drop">−49% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">~5.9<small> S · 0–60 · EST · MOTORAUTHORITY</small></span><span class="hp">340<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>Luxury RWD trim.</b> 102 kWh Ultium · 312 mi EPA.</p>
+              <div class="scores"><span class="score lead">DEPRECIATION ●●●○○</span><span class="score lead">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$31,899</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">46,531 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">312 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">RWD · single motor</span></div><div><span class="k">Reliability</span><span class="v">EVX 717/1000 J.D. Power</span></div><div><span class="k">Depreciation</span><span class="v">−49% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cargurus.com/Cars/l-Used-2023-Cadillac-LYRIQ-Luxury-RWD-t101788" target="_blank" rel="noopener">2023 Lyriq Luxury RWD — $31,899 · 46,531 mi · Gurnee, IL (~45 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown</span></div>
+              <div class="src">SOURCE · CarGurus listing · MotorWeek MSRP · MotorAuthority · J.D. Power EVX — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="exotic" class="stretch-ex">
+        <div class="sec-head"><h2>Exotic / Risky</h2><span class="tag">TEMPTING BUT DANGEROUS · ELECTRIC + HYBRID BEASTS</span><span class="cap">CAP $50,000</span></div>
+        <p class="angle">Exotic EVs and hybrid performance beasts, 2022+. The exotic factor leads — the danger is printed beside it, on every card.</p>
+        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Exotic factor stretched here: halo cars, 650+ hp. Non-negotiable: upkeep cost + the failure that bites, up front on every card.</span></div>
+        <div class="grid">
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge dead">Danger flagged</span><span class="badge warn">National · auction</span></div>
+              <h3>Porsche Taycan 4 Cross Turismo</h3>
+              <div class="bigprice num">$49,985<small>Asking price · 2022 · 28,316 mi · national</small></div>
+              <div class="perf"><span class="z">4.8<small> S · 0–60 · PORSCHE</small></span><span class="hp">375<small>HP · 469 ON LAUNCH</small></span></div>
+              <div class="luxrow"><span class="was num">$103,800</span><span class="now num">−$53,815</span><span class="drop">−52% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Upkeep $1,500–$2,500/yr all-in (HOUSE Automotive guide); Porsche's prepaid plan runs $1,800 per 2 years. Known failure: NHTSA recalls 24V215 / 24V217 — high-voltage battery modules can short-circuit and catch fire; owners were told to cap charging at 80% until the dealer replaces the modules.</div>
+              <p class="luxline"><b>Cross Turismo wagon.</b> 93.4 kWh · the cheapest way into a Taycan under the cap — and it's an auction listing, so the number can move.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●●○</span><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$49,985</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">28,316 mi</span></div><div><span class="k">Range</span><span class="v">~235 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−52% vs MSRP</span></div></div>
+              <div class="listing"><span class="d far">NATIONAL</span><a href="https://www.ebay.com/itm/157895797935" target="_blank" rel="noopener">2022 Taycan 4 Cross Turismo — $49,985 · 28,316 mi · Da Vinci Automotive, Jacksonville, FL</a> <span class="verdict unv">NATIONAL · eBay listing is auction-style — $49,985 may be the current bid, not a buy price · [UNVERIFIED]</span></div>
+              <div class="src">SOURCE · eBay listing · Porsche · NHTSA · HOUSE Automotive — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge dead">Danger flagged</span></div>
+              <h3>Audi e-tron GT Premium Plus</h3>
+              <div class="bigprice num">$41,519<small>Asking price · 2022 · 41,406 mi</small></div>
+              <div class="perf"><span class="z">3.9<small> S · 0–60 · AUDI</small></span><span class="hp">469<small>HP · 522 ON BOOST</small></span></div>
+              <div class="luxrow"><span class="was num">$102,400</span><span class="now num">−$60,881</span><span class="drop">−59% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Upkeep: shares the J1 platform with the Taycan — budget $1,500–$2,500/yr. Known failure: Oct 2024 recall — 6,499 e-tron GT / RS e-tron GT recalled for the same high-voltage battery short-circuit fire defect as the Taycan.</div>
+              <p class="luxline"><b>Premium Plus — the base GT, not the RS.</b> 93.4 kWh · Taycan bones, Audi badge, $60k off sticker.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●●○</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$41,519</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">41,406 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">238 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">RepairPal brand 3.0/5</span></div><div><span class="k">Depreciation</span><span class="v">−59% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.cargurus.com/Cars/l-Used-2022-Audi-e-tron-GT-Chicago-c31200_L7510" target="_blank" rel="noopener">2022 e-tron GT Premium Plus — $41,519 · 41,406 mi · Willowbrook, IL (~35 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · dealer name not shown at source</span></div>
+              <div class="src">SOURCE · CarGurus listing · Audi · SlashGear — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span><span class="badge hot">Orphan brand</span><span class="badge dead">Danger flagged</span></div>
+              <h3>Fisker Ocean One</h3>
+              <div class="bigprice num">$16,795<small>Asking price · 2023 · 20,060 mi</small></div>
+              <div class="perf"><span class="z">3.7<small> S · 0–60 · FISKER CLAIM</small></span><span class="hp">564<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$68,999</span><span class="now num">−$52,204</span><span class="drop">−76% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Fisker filed Chapter 11 in June 2024 — no warranty, no OTA updates, no connected services, no factory service network. Support runs through the Fisker Owners Association and independents. Insurance reported ~$2,100/yr; NHTSA complaints include battery failures, glitchy software, key-fob and door-handle faults. The steepest drop on this sheet buys the riskiest car on this sheet.</div>
+              <p class="luxline"><b>Ocean One launch edition.</b> 113 kWh · 360 mi EPA · priced like the orphan it is.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●●○</span><span class="score">DEPRECIATION ●●●●●</span><span class="score">LUXURY ●●●○○</span><span class="score">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$16,795</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">20,060 mi</span></div><div><span class="k">Range</span><span class="v">360 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED · no factory support</span></div><div><span class="k">Depreciation</span><span class="v">−76% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.jdpower.com/inventory/2023/fisker/ocean/des-plaines-il/vcf1zbu29pg005281?dealercode=15116" target="_blank" rel="noopener">2023 Ocean One — $16,795 · 20,060 mi · Jidd Motors Mitsubishi, Des Plaines, IL (~20 mi)</a> <span class="verdict unv">[UNVERIFIED] · index crawl ~306 days old — re-verify the car exists before traveling</span></div>
+              <div class="src">SOURCE · J.D. Power listing · Fisker · Electrek · EV Wire — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span><span class="badge dead">Danger flagged</span><span class="badge warn">National comp</span></div>
+              <h3>Lucid Air Touring</h3>
+              <div class="bigprice num">$37,986<small>Asking price · 2023 · mileage unconfirmed · national</small></div>
+              <div class="perf"><span class="z">3.4<small> S · 0–60 · LUCID</small></span><span class="hp">620<small>HP · DUAL MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$104,400</span><span class="now num">−$66,414</span><span class="drop">−64% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Known failure: Sept 2026 recall of 27,185 Airs (2022–2026) — a software eFuse fault tied to exterior-lighting fire risk, 3 fires reported; NHTSA park-outside advisory, fixed via OTA update 2.10.0. No published annual upkeep figure — and Lucid is still a cash-burning startup, so the service network stays thin outside major metros.</div>
+              <p class="luxline"><b>Touring AWD.</b> 92 kWh · 620 hp · up to 425 mi EPA on 19-in wheels — this unit rides 20s, so expect less.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●●○</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●●●●</span><span class="score">PERFORMANCE ●●●●○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$37,986</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Range</span><span class="v">384–425 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−64% vs MSRP</span></div></div>
+              <div class="listing"><span class="d far">NATIONAL COMP</span><a href="https://www.carfax.com/Used-2023-Lucid-Air_z39308" target="_blank" rel="noopener">2023 Air Touring — $37,986 · via Carfax nationwide search</a> <span class="verdict unv">COMP · NATIONAL · dealer, location and mileage not shown at source · [UNVERIFIED]</span></div>
+              <div class="src">SOURCE · Carfax search · Lucid · Notebookcheck — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge dead">Danger flagged</span><span class="badge">Pickup</span></div>
+              <h3>Rivian R1T Launch Edition</h3>
+              <div class="bigprice num">$45,495<small>Asking price · 2022 · 79,830 mi</small></div>
+              <div class="perf"><span class="z">3.0<small> S · 0–60 · RIVIAN</small></span><span class="hp">835<small>HP · QUAD MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$79,000</span><span class="now num">−$33,505</span><span class="drop">−42% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Upkeep ≈ $785/yr maintenance (CarBuzz) — but insurance ≈ $2,758/yr. Known failures on Gen 1 trucks: 12V battery faults, infotainment freezes, front half-shaft / control-arm complaints at higher miles. The service network is sparse, so parts and body repairs can mean long waits.</div>
+              <p class="luxline"><b>Launch Edition quad-motor.</b> 135 kWh Large pack · 908 lb-ft.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●○○</span><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●●○○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$45,495</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">79,830 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">314 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · quad motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−42% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-rivian-r1t/pickup-awd-in-chicago-il" target="_blank" rel="noopener">2022 R1T Launch Edition Quad-Motor — $45,495 · 79,830 mi · Baha Auto of Palos Hills, IL (~45 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · one search page covers both R1T cards in this section</span></div>
+              <div class="src">SOURCE · Capital One listing · Rivian · CarBuzz · Recurrent — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge dead">Danger flagged</span><span class="badge">Pickup</span></div>
+              <h3>Rivian R1T Adventure</h3>
+              <div class="bigprice num">$47,072<small>Asking price · 2022 · 67,425 mi</small></div>
+              <div class="perf"><span class="z">3.0<small> S · 0–60 · RIVIAN</small></span><span class="hp">835<small>HP · QUAD MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$79,500</span><span class="now num">−$32,428</span><span class="drop">−41% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Same Gen 1 Rivian risks as the Launch Edition above: 12V battery faults, half-shaft / control-arm wear at miles, a sparse service network, and ≈ $2,758/yr insurance (SmartFinancial via CarBuzz).</div>
+              <p class="luxline"><b>Adventure quad-motor.</b> 135 kWh Large pack · the second R1T under the cap — 12k fewer miles for $1.6k more than the Launch Edition.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●○○</span><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●●○○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$47,072</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">67,425 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">314 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · quad motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−41% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-rivian-r1t/pickup-awd-in-chicago-il" target="_blank" rel="noopener">2022 R1T Adventure Quad-Motor — $47,072 · 67,425 mi · Audi Westmont, Westmont, IL (~40 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · one search page covers both R1T cards in this section</span></div>
+              <div class="src">SOURCE · Capital One listing · Rivian · CarBuzz · Recurrent — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge dead">Danger flagged</span></div>
+              <h3>Tesla Model X Plaid</h3>
+              <div class="bigprice num">$49,480<small>Asking price · 2022 · 49,332 mi</small></div>
+              <div class="perf"><span class="z">2.5<small> S · 0–60 · TESLA</small></span><span class="hp">1,020<small>HP · TRI-MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$138,990</span><span class="now num">−$89,510</span><span class="drop">−64% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> The most expensive Tesla to service — upkeep ≈ €1,100–€1,900/yr (EU data). Known failure: falcon-wing doors — ultrasonic sensor / actuator failures strand doors mid-travel on false obstacle readings; actuator module €1,200–€2,000 per door, fitted.</div>
+              <p class="luxline"><b>Plaid tri-motor.</b> Falcon-wing doors are the luxury flex and the danger, in one part.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●●○</span><span class="score">DEPRECIATION ●●●●●</span><span class="score">LUXURY ●●●○○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$49,480</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">49,332 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">333 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · tri-motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−64% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-tesla-model-x/plaid-in-highland-park-il" target="_blank" rel="noopener">2022 Model X Plaid — $49,480 · 49,332 mi · McGrath Lexus of Chicago, IL (~20 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown</span></div>
+              <div class="src">SOURCE · Capital One listing · CarGurus research MSRP · carchecker.pro — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+                    <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge dead">Danger flagged</span></div>
+              <h3>Tesla Model S Plaid</h3>
+              <div class="bigprice num">$47,459<small>Asking price · 2022 · 105,113 mi</small></div>
+              <div class="perf"><span class="z">1.99<small> S · 0–60 · TESLA</small></span><span class="hp">1,020<small>HP · TRI-MOTOR</small></span></div>
+              <div class="luxrow"><span class="was num">$129,990</span><span class="now num">−$82,531</span><span class="drop">−63% VS ORIG. MSRP</span></div>
+              <div class="danger"><b>DANGER ·</b> Known failure: front upper control arms fail early on Model S/X — Reuters documented ~120,000 replaced globally in 2021–22; one owner was quoted ~$4,000 out of warranty, and Tesla labor runs $200+/hr. At 105k mi, budget for suspension work and tires. No published annual upkeep figure.</div>
+              <p class="luxline"><b>Plaid tri-motor.</b> ~100 kWh · Edmunds flags an excellent battery score on this car — the miles are the price of admission under the cap.</p>
+              <div class="scores"><span class="score lead">EXOTIC ●●●●○</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●●●○</span><span class="score">PERFORMANCE ●●●●●</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$47,459</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">105,113 mi <span class="mileflag hi">60K+ HIGH MILES</span></span></div><div><span class="k">Range</span><span class="v">348 mi EPA</span></div><div><span class="k">Battery</span><span class="v">Edmunds: Excellent score</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · tri-motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−63% vs MSRP</span></div></div>
+              <div class="listing"><span class="d far">101–300 MI</span><a href="https://www.edmunds.com/used-2022-tesla-model-s-peoria-il/" target="_blank" rel="noopener">2022 Model S Plaid — $47,459 · 105,113 mi · Ferndale, MI (~280 mi)</a> <span class="verdict unv">[UNVERIFIED] · index-only · dealer name not shown at source</span></div>
+              <div class="src">SOURCE · Edmunds listing · Tesla · Reuters · OEMDTC — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="boring" class="stretch-val">
+        <div class="sec-head"><h2>Boring But Gotta Look</h2><span class="tag">THE VALUE FLOOR · ELECTRIC</span><span class="cap">CAP $35,000</span></div>
+        <p class="angle">The electric appliances. The value case leads: price, EPA range and battery health — the drop vs MSRP is still scored.</p>
+        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Value stretched here: under $28k · 220+ mi EPA · documented battery health where it exists. Slow is fine. Undocumented packs are not.</span></div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge good">The benchmark</span></div>
+              <h3>Tesla Model Y Long Range</h3>
+              <div class="bigprice num">$27,995<small>Asking price · 2022 · 52,953 mi</small></div>
+              <div class="luxrow"><span class="was num">$65,990</span><span class="now num">−$37,995</span><span class="drop">−58% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">4.8<small> S · 0–60 · KBB</small></span><span class="hp">~447<small>HP · EST · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>The default EV.</b> AVILOO median battery health 90.3% at ≈93k mi — the best-documented pack in this section.</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●○</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●○○○</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$27,995</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">52,953 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">330 mi EPA</span></div><div><span class="k">Battery</span><span class="v">90.3% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−58% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-tesla-model-y/long-range-in-chicago-il" target="_blank" rel="noopener">2022 Model Y Long Range — $27,995 · 52,953 mi · Blue Sky Auto Sales, IL (~6 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown</span></div>
+              <div class="src">SOURCE · Capital One listing · KBB · AVILOO via eleport.com — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>Tesla Model 3 Long Range</h3>
+              <div class="bigprice num">$24,995<small>Asking price · 2022 · 47,202 mi</small></div>
+              <div class="luxrow"><span class="was num">$57,190</span><span class="now num">−$32,195</span><span class="drop">−56% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">4.2<small> S · 0–60</small></span><span class="hp">~444<small>HP · EST · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>358 mi EPA — the longest range per dollar in this section.</b> iSeeCars calls this exact car a great deal.</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●●</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●○○○</span><span class="score">PERFORMANCE ●●●○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$24,995</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">47,202 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">358 mi EPA</span></div><div><span class="k">Battery</span><span class="v">88.9% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v">EVX 767/1000 (Model 3)</span></div><div><span class="k">Depreciation</span><span class="v">−56% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.iseecars.com/used_cars-t10341-tesla-model-3-chicago-il" target="_blank" rel="noopener">2022 Model 3 Long Range — $24,995 · 47,202 mi · Willowbrook, IL (~15 mi)</a> <span class="verdict deal">DEAL · iSeeCars “GREAT DEAL” — $2,831 below market value of $27,826</span></div>
+              <div class="src">SOURCE · iSeeCars listing · KBB MSRP · AVILOO · J.D. Power EVX — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>Hyundai Ioniq 5 SEL</h3>
+              <div class="bigprice num">$23,890<small>Asking price · 2022 · 9,494 mi</small></div>
+              <div class="luxrow"><span class="was num">$45,900</span><span class="now num">−$22,010</span><span class="drop">−48% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">5.2<small> S · 0–62 MPH</small></span><span class="hp">225<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>SEL mid-trim.</b> 9,494 mi is nearly new · Ioniq 5 line median battery health 92.8% (AVILOO).</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●○</span><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●○○○</span><span class="score">PERFORMANCE ●●○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$23,890</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">9,494 mi</span></div><div><span class="k">Range</span><span class="v">303 mi EPA</span></div><div><span class="k">Battery</span><span class="v">92.8% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">RWD · single motor</span></div><div><span class="k">Reliability</span><span class="v">JDP Q&amp;R 78/100</span></div><div><span class="k">Depreciation</span><span class="v">−48% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.iSeecars.com/used_cars-t5698-2022-hyundai-ioniq-5-for-sale" target="_blank" rel="noopener">2022 Ioniq 5 SEL — $23,890 · 9,494 mi · Highland Park, IL (~25 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown · 2-hour crawl</span></div>
+              <div class="src">SOURCE · iSeeCars listing · CarsDirect · AVILOO · J.D. Power — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>Volkswagen ID.4 Pro</h3>
+              <div class="bigprice num">$22,495<small>Asking price · 2022 · 26,837 mi</small></div>
+              <div class="luxrow"><span class="was num">$40,760</span><span class="now num">−$18,265</span><span class="drop">−45% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">7.7<small> S · 0–60 · VW</small></span><span class="hp">201<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>Pro trim, 82 kWh pack.</b> ID.4 line median battery health 90.6% (AVILOO).</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●○</span><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●●○○○</span><span class="score">PERFORMANCE ●○○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$22,495</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">26,837 mi</span></div><div><span class="k">Range</span><span class="v">280 mi EPA</span></div><div><span class="k">Battery</span><span class="v">90.6% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">RWD · single motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−45% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-volkswagen-id-4/pro-white-in-chicago-il" target="_blank" rel="noopener">2022 ID.4 Pro — $22,495 · 26,837 mi · S&amp;M Motor Sports, IL (~7 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown</span></div>
+              <div class="src">SOURCE · Capital One listing · Electrek MSRP · AVILOO — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span><span class="badge warn">Stale index</span></div>
+              <h3>Chevrolet Bolt EUV</h3>
+              <div class="bigprice num">$18,085<small>Asking price · 2022 LT · ~31,000 mi</small></div>
+              <div class="luxrow"><span class="was num">$33,995</span><span class="now num">−$15,910</span><span class="drop">−47% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">7.2<small> S · 0–60 · MOTORWEEK TEST</small></span><span class="hp">200<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>LT at $18,085 · Premier at $18,995.</b> 2022s sold after the LG recall carry replacement packs — verify the pack paperwork.</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●●</span><span class="score">DEPRECIATION ●●●○○</span><span class="score">LUXURY ●○○○○</span><span class="score">PERFORMANCE ●○○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$18,085</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">~31,000 mi</span></div><div><span class="k">Range</span><span class="v">247 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED · post-recall packs</span></div><div><span class="k">Drivetrain</span><span class="v">FWD · single motor</span></div><div><span class="k">Reliability</span><span class="v">#7 · 2022 EVs (TopSpeed)</span></div><div><span class="k">Depreciation</span><span class="v">−47% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span>CarEdge index (250-day crawl — stale): LT $18,085 · 31K mi · Advantage Chevrolet, Hodgkins, IL (~14 mi) · Premier $18,995 · 26K mi · Chicago, IL. No direct listing link captured. <span class="verdict unv">[UNVERIFIED] · stale index — treat as directional</span></div>
+              <div class="src">SOURCE · CarEdge index · GM Authority MSRP · MotorTrend · MotorWeek · TopSpeed — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span></div>
+              <h3>Nissan Leaf SV Plus</h3>
+              <div class="bigprice num">$16,951<small>Asking price · 2023 · 29,052 mi</small></div>
+              <div class="luxrow"><span class="was num">$36,895</span><span class="now num">−$19,944</span><span class="drop">−54% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">7.1<small> S · 0–60 · MOTORWEEK · SAME POWERTRAIN</small></span><span class="hp">214<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>SV Plus = the big-battery Leaf.</b> 60 kWh · no active thermal management — health is climate-sensitive (AVILOO median 86.3%).</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●○</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●○○○○</span><span class="score">PERFORMANCE ●○○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$16,951</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">29,052 mi</span></div><div><span class="k">Range</span><span class="v">212 mi EPA</span></div><div><span class="k">Battery</span><span class="v">86.3% median @ ~93k mi (AVILOO)</span></div><div><span class="k">Drivetrain</span><span class="v">FWD · single motor</span></div><div><span class="k">Reliability</span><span class="v">78/100 (goodcar)</span></div><div><span class="k">Depreciation</span><span class="v">−54% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.iseecars.com/used_cars-t10341-nissan-leaf-chicago-il" target="_blank" rel="noopener">2023 Leaf SV Plus — $16,951 · 29,052 mi · Willowbrook, IL (~15 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown · 10-hour crawl</span></div>
+              <div class="src">SOURCE · iSeeCars listing · Green Car Reports MSRP · KBB · AVILOO via eleport.com — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2022</span></div>
+              <h3>Kia Niro EV EX</h3>
+              <div class="bigprice num">$14,995<small>Asking price · 2022 EX · 57,519 mi</small></div>
+              <div class="luxrow"><span class="was num">$39,990</span><span class="now num">−$24,995</span><span class="drop">−63% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">7.5<small> S · 0–60 · INSIDEEVS</small></span><span class="hp">201<small>HP · SINGLE MOTOR</small></span></div>
+              <p class="luxline"><b>EX trim.</b> 64 kWh · TopSpeed ranked the Niro EV the most reliable 2022 EV · cheapest card on the sheet.</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●●</span><span class="score">DEPRECIATION ●●●●●</span><span class="score">LUXURY ●○○○○</span><span class="score">PERFORMANCE ●○○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$14,995</span></div><div><span class="k">Year</span><span class="v">2022</span></div><div><span class="k">Mileage</span><span class="v">57,519 mi <span class="mileflag ca">40K+ CAUTION</span></span></div><div><span class="k">Range</span><span class="v">239 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">FWD · single motor</span></div><div><span class="k">Reliability</span><span class="v">JDP Q&amp;R 74/100</span></div><div><span class="k">Depreciation</span><span class="v">−63% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-2022-kia-niro-ev" target="_blank" rel="noopener">2022 Niro EV — from $14,299 · 4 units near Chicago (Capital One)</a> <span class="verdict unv">[UNVERIFIED] · the $14,995 EX (57,519 mi, ~6 mi) surfaced via J.D. Power with no dealer name captured</span></div>
+              <div class="src">SOURCE · Capital One + J.D. Power listings · Kia MSRP · Edmunds · TopSpeed — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">EV</span><span class="badge">2023</span><span class="badge good">CPO</span></div>
+              <h3>Subaru Solterra Limited</h3>
+              <div class="bigprice num">$21,210<small>Asking price · 2023 · 21,353 mi · CPO</small></div>
+              <div class="luxrow"><span class="was num">$48,495</span><span class="now num">−$27,285</span><span class="drop">−56% VS ORIG. MSRP</span></div>
+              <div class="perf"><span class="z">6.5<small> S · 0–60 · SUBARU CLAIM</small></span><span class="hp">215<small>HP · DUAL MOTOR</small></span></div>
+              <p class="luxline"><b>Limited, Subaru CPO.</b> 72.8 kWh · standard AWD for McHenry County winters.</p>
+              <div class="scores"><span class="score lead">VALUE ●●●●○</span><span class="score">DEPRECIATION ●●●●○</span><span class="score">LUXURY ●●○○○</span><span class="score">PERFORMANCE ●○○○○</span></div>
+              <div class="spec"><div><span class="k">Price</span><span class="v">$21,210</span></div><div><span class="k">Year</span><span class="v">2023</span></div><div><span class="k">Mileage</span><span class="v">21,353 mi</span></div><div><span class="k">Range</span><span class="v">222 mi EPA</span></div><div><span class="k">Battery</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Drivetrain</span><span class="v">AWD · dual motor</span></div><div><span class="k">Reliability</span><span class="v unc">UNCONFIRMED</span></div><div><span class="k">Depreciation</span><span class="v">−56% vs MSRP</span></div></div>
+              <div class="listing"><span class="d ">≤100 MI</span><a href="https://www.capitalone.com/cars/used-subaru-solterra/limited-white-in-chicago-il" target="_blank" rel="noopener">2023 Solterra Limited AWD (CPO) — $21,210 · 21,353 mi · McGrath Evanston Subaru, IL (~10 mi)</a> <span class="verdict unv">[UNVERIFIED] · no benchmark shown</span></div>
+              <div class="src">SOURCE · Capital One listing · InsideEVs MSRP — read Oct 24, 2026 (index)</div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="used">
+        <div class="sec-head"><h2>Used Deals</h2><span class="tag">WHERE THE MONEY HIDES</span></div>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/img_ddae92e1fb492576.webp" alt="Aerial view of rows of new and used cars parked on a dealer lot" />
+            <div class="body">
+              <div class="badges"><span class="badge hot">Home base</span><span class="badge">Dealer + private</span></div>
+              <h3>CarGurus</h3>
+              <p>Every listing rated Great / Good / Fair / Overpriced vs Instant Market Value, refreshed daily. Price-drop alerts do the watching.</p>
+              <div class="src">SOURCE · provincheck.com · smartupworld.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Aggregator</span></div>
+              <h3>AutoTempest</h3>
+              <p>Searches every major site at once. Autotrader &amp; Cars.com are the biggest ponds (~3M+ listings) — start broad, filter hard.</p>
+              <div class="src">SOURCE · provincheck.com · accio.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge good">Cheapest</span><span class="badge warn">Zero protection</span></div>
+              <h3>Facebook Marketplace &amp; Craigslist</h3>
+              <p>Cheapest local cash deals, zero safety net. Best under $10k. Verify the title name matches the seller's ID. Daylight meets only.</p>
+              <div class="src">SOURCE · provincheck.com · sellcaradvisor.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Benchmark, not a deal</span></div>
+              <h3>CarMax &amp; Carvana</h3>
+              <p>No-haggle = at or above market. Yardstick, not store. A Carvana instant offer runs 10–25% under private-sale value — that's your floor, not your price.</p>
+              <div class="src">SOURCE · comparethecarrier.com · listmycar.ai — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">CPO</span></div>
+              <h3>Dealer certified pre-owned</h3>
+              <p>Factory warranty + inspection at a premium. Price the premium against a standalone warranty quote before paying it.</p>
+              <div class="src">SOURCE · buyer's-guide research, Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="assets/img_bdf7e4583ce7c965.jpg" alt="Gray Toyota RAV4 compact SUV parked on rocky ground near the coast" />
+            <div class="body">
+              <div class="badges"><span class="badge good">Segment signal</span></div>
+              <h3>Compact SUVs: the soft spot</h3>
+              <p>Only major segment with prices down year over year — avg <span class="num">$37,614</span> new (Sept 2026), incentives at 9.4% of price. The pressure leaks into used RAV4/CR-V pricing.</p>
+              <div class="src">SOURCE · Kelley Blue Book Sept 2026, via fi-magazine.com — Oct 14, 2026</div>
+            </div>
+          </article>
+        </div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">The benchmark ladder — trust in this order</h3>
+        <div class="ladder">
+          <div class="rung"><b>CarGurus Instant Market Value</b><p>Daily refresh. Best answer to "cheap right now?"</p></div>
+          <div class="rung"><b>Edmunds True Market Value</b><p>Closest to real cash offers in 2026 testing.</p></div>
+          <div class="rung"><b>KBB</b><p>The baseline. Dealers offer ~85–90% of KBB trade-in; private-party skews high.</p></div>
+          <div class="rung"><b>Live local comps + a Carvana/CarMax offer</b><p>The floor. 2018 Accord EX-L, 62k mi: KBB private party $20,982 · Edmunds trade-in $17,095 · J.D. Power $15,775 · Carvana offer $17,400 · dealer via CarGurus $18,350.</p></div>
+        </div>
+        <div class="src" style="margin-top:8px">SOURCE · accio.com · eathealthy365.com · sellcaradvisor.com · homeaddict.io — read Oct 24, 2026</div>
+
+        <div class="callout amber">
+          <h3>Timing: January is the used-car month</h3>
+          <p>iSeeCars (40M+ sales): January surfaces <b>55.6% more</b> deals at 10%+ below market than an average month · February +36.2% · December +15.2% · June worst (−22.8%).</p>
+          <div class="src">SOURCE · iSeeCars via dontpayfull.com · carwhere.com — read Oct 24, 2026</div>
+        </div>
+      </section>
+
+      <section id="new">
+        <div class="sec-head"><h2>New-Car Playbook</h2><span class="tag">INVOICE IS THEATER</span></div>
+
+        <div class="grid">
+          <article class="card wide">
+            <div class="body">
+              <div class="badges"><span class="badge hot">The real math</span></div>
+              <h3>What a $32,000 RAV4 actually costs the dealer</h3>
+              <table>
+                <tr><th>Line</th><th class="r">Amount</th></tr>
+                <tr><td>MSRP (sticker)</td><td class="r num">$32,000</td></tr>
+                <tr><td>Invoice (what they show you)</td><td class="r num">$29,800</td></tr>
+                <tr><td>Holdback — 3% of MSRP, paid back to the dealer after the sale</td><td class="r num">−$960</td></tr>
+                <tr><td>Regional advertising credits</td><td class="r num">−$1,200</td></tr>
+                <tr><td>Manufacturer-to-dealer incentive</td><td class="r num">−$1,500</td></tr>
+                <tr><td><b>True dealer cost</b></td><td class="r num"><b>≈ $26,140</b></td></tr>
+              </table>
+              <p>Targets: <b>1–3% over invoice</b> = good deal. <b>8–12% off MSRP</b> = ceiling, high-inventory or year-end only. A $28,500 sale still clears the dealer $2,360.</p>
+              <div class="src">SOURCE · michaelryanmoney.com · engineerfix.com · eathealthy365.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+        </div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">Negotiate the out-the-door number. Only that number.</h3>
+        <div class="steps">
+          <div class="step">Before contact: pull invoice, regional average-paid, and current incentives (Edmunds / KBB / TrueCar).</div>
+          <div class="step">Find the exact stock number and its days-on-lot on the dealer's own site. 90+ days = floorplan interest = motivated seller.</div>
+          <div class="step">Email three dealers within 100 miles for written out-the-door quotes. Cascade the quotes against each other.</div>
+          <div class="step">Settle the vehicle price first. Rebates come off after — they're the automaker's money, not the dealer's discount.</div>
+          <div class="step">Never negotiate the monthly payment or the "MSRP discount." One number: OTD.</div>
+          <div class="step">Walk away freely. The call-back is real — Tue–Thu, last week of the month, quota pressure peaks.</div>
+        </div>
+        <div class="src" style="margin-top:8px">SOURCE · michaelryanmoney.com · aceshowbiz.com — read Oct 24, 2026</div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">October 2026 incentive climate</h3>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/img_957b2c35f84012aa.jpg" alt="Silver Ford F-150 crew cab pickup truck on grass under a cloudy sky" />
+            <div class="body">
+              <div class="badges"><span class="badge hot">Trucks</span><span class="badge warn">Ended Nov 2</span></div>
+              <h3>RAM 1500 — 12% off MSRP</h3>
+              <div class="price num">~$10,500 <small>avg off, national</small></div>
+              <p>Not stackable with other offers. Full-size trucks average 8.4% of transaction price in incentives — the fattest in the industry.</p>
+              <div class="src">SOURCE · carsdirect.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge hot">Biggest % off</span><span class="badge warn">Ended Nov 2</span></div>
+              <h3>2026 Kia Niro EV — 35.7% off MSRP</h3>
+              <div class="price num">$14,592 <small>off sticker</small></div>
+              <p>Plus 0% APR for 72 months. Post-credit EVs are where the factory money went.</p>
+              <div class="src">SOURCE · carced.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Luxury EV</span><span class="badge warn">Ended Nov 2</span></div>
+              <h3>Audi RS e-tron GT — up to $37,500 off</h3>
+              <div class="price num">~$135k <small>from $171,895 MSRP</small></div>
+              <p>$20,000 customer credit + $17,500 unadvertised marketing credit. The biggest money is never on the banner.</p>
+              <div class="src">SOURCE · autoblog.com, published Oct 8, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Also live this fall</span></div>
+              <h3>Lexus, Hyundai, Ford</h3>
+              <p><b>Lexus RZ:</b> 29.2% off ($16,104). <b>Lexus ES:</b> 28.8% off. <b>Mitsubishi Outlander:</b> 29.0% off. <b>Hyundai Santa Fe:</b> $3,000 bonus cash (Oct 1–Nov 2). <b>Ford Bronco:</b> $2,000 cash back (Oct 22–Jan 4).</p>
+              <div class="src">SOURCE · carced.com · bramanmiamihyundai.com · themooreautogroup.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+        </div>
+        <div class="callout amber">
+          <h3>Season check</h3>
+          <p>October–December is the best new-car window of the year — deepest in the last days of December. You're standing in it right now.</p>
+          <div class="src">SOURCE · Edmunds historical data via carwhere.com — read Oct 24, 2026</div>
+        </div>
+      </section>
+
+      <section id="ev">
+        <div class="sec-head"><h2>EV Watch</h2><span class="tag">THE CREDIT IS DEAD. THE DEALS MOVED.</span></div>
+
+        <div class="callout red">
+          <h3>Federal EV tax credits: gone</h3>
+          <p>Killed for vehicles acquired after <b>Sept 30, 2025</b> (OBBBA, PL 119-21) — no $7,500 new (§30D), no $4,000 used (§25E), no lease pass-through (§45W). Any dealer still advertising the $7,500 credit on a 2026 purchase is wrong; claiming it invites back tax, interest, penalties. The factory money moved into rebates — see the Niro EV above.</p>
+          <div class="src">SOURCE · legalclarity.org · reedcorp.tax — read Oct 24, 2026</div>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <img src="assets/img_5c3cd80ddb6d7e9a.webp" alt="White Tesla Model Y electric crossover parked on paving stones" />
+            <div class="body">
+              <div class="badges"><span class="badge good">The sweet spot</span><span class="badge">Used</span></div>
+              <h3>Tesla Model 3 / Model Y, used</h3>
+              <p>Used Tesla prices <b>rose</b> ~4.3% in early 2026 while non-Tesla EVs fell ~3.6%. 2017–2023 Model 3s sit under $30k at ~93–95% battery health (62k mi). Best 5-year retention of any mainstream EV: 54.6% loss.</p>
+              <div class="src">SOURCE · thechargeport.com · chargecostlab.com · dagens.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge hot">Depreciation crater</span><span class="badge">Used · Illinois</span></div>
+              <h3>Audi Q8 e-tron, two years old</h3>
+              <div class="price num">$39,006 <small>IL avg asking, mid-Oct 2026</small></div>
+              <p>Down 71.9% over five years. 473 Illinois listings on CarGurus, 47.4% rated good or great deals. Full card up top in Luxury Depreciated.</p>
+              <div class="src">SOURCE · cargurus.com (Illinois) · caredge.com · evdances.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Market shape</span></div>
+              <h3>Used EV curves, 2026</h3>
+              <p>Split market: under-$40k EVs gaining (+5.1% Jan–Jun, Recurrent); $55k+ cars fell ~3.3%. Five-year depreciation: EVs 57.2% vs 41.8% average vs ~35% hybrids. 39% of used EVs sell under $25,000.</p>
+              <div class="src">SOURCE · thechargeport.com · chargecostlab.com (iSeeCars 2026) — read Oct 24, 2026</div>
+            </div>
+          </article>
+        </div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">Battery health is the new odometer</h3>
+        <div class="grid">
+          <article class="card wide">
+            <div class="body">
+              <p>AVILOO, Sept 2026 — 500,000+ independent battery tests. Median state of health at ~93,000 miles:</p>
+              <table>
+                <tr><th>Model</th><th class="r">Median battery health @ ~93k mi</th></tr>
+                <tr><td>Hyundai Ioniq 5</td><td class="r num">92.8%</td></tr>
+                <tr><td>VW ID.4</td><td class="r num">90.6%</td></tr>
+                <tr><td>Tesla Model Y</td><td class="r num">90.3%</td></tr>
+                <tr><td>Tesla Model 3</td><td class="r num">88.9%</td></tr>
+                <tr><td>Nissan Leaf (ZE1)</td><td class="r num">86.3%</td></tr>
+              </table>
+              <p>Within one model, health spreads up to <b>13.5 points</b> — mileage alone doesn't predict it. <b>Never buy a used EV without a battery-health report</b> (Recurrent, or an AVILOO flash test). Rule of thumb: ~2.3% degradation/yr, ~81.6% capacity at 8 years (Geotab).</p>
+              <div class="src">SOURCE · whichev.net · getcarnews.com · thedriven.io · electrive.com — Sept 2026 study</div>
+            </div>
+          </article>
+        </div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">Illinois money that still exists</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge good">State rebate</span><span class="badge warn">Funding left — unconfirmed</span></div>
+              <h3>IL EPA EV rebate — $2,000 / $4,000</h3>
+              <p>Cycle: Aug 1 – Dec 31, 2026. <b>$2,000</b> new or used BEV · <b>$4,000</b> low-income · $1,500 e-motorcycle. IL dealer only · no leases · price ≤ $80,000 · income ≤ 500% FPL · one per person per 10 years · paper application within 180 days. $14M pot, first-come — remaining funds <b>unconfirmed</b>; check IL EPA before counting on it.</p>
+              <div class="src">SOURCE · epa.illinois.gov EV Rebate FAQ · nprillinois.org (Jul 22, 2026) — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge good">Utility rebate</span><span class="badge warn">Availability — unconfirmed</span></div>
+              <h3>ComEd home charger — up to $2,500</h3>
+              <p>Level 2 charger + install, $70M 2026 program. 99% of funds flowed to low-income / equity areas — remaining residential money <b>unconfirmed</b>; check ComEd first.</p>
+              <div class="src">SOURCE · evinfrastructurenews.com · stocktitan.net — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="body">
+              <div class="badges"><span class="badge">Running cost</span></div>
+              <h3>Chicago charging math</h3>
+              <p>ComEd hourly pricing, overnight: ≈ <span class="num">$0.064/kWh</span> ≈ <span class="num">$0.024/mile</span> vs gas <span class="num">$0.125/mile</span> ($3.75/gal, 30 mpg). Offset: IL EV registration surcharge <span class="num">$248/yr</span> — highest in the US.</p>
+              <div class="src">SOURCE · driveeconomics.com · caroutthedoor.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="chicago">
+        <div class="sec-head"><h2>Chicago Buying Guide</h2><span class="tag">TAX, FEES &amp; SALT</span></div>
+
+        <div class="grid">
+          <article class="card wide">
+            <div class="body">
+              <div class="badges"><span class="badge hot">Know before you sign</span></div>
+              <h3>The Illinois fee stack</h3>
+              <table>
+                <tr><th>Item</th><th class="r">Amount</th><th>Note</th></tr>
+                <tr><td>State sales tax</td><td class="r num">6.25%</td><td>On price <b>minus trade-in</b> — Illinois gives full trade-in credit</td></tr>
+                <tr><td>Chicago / Cook County combined</td><td class="r num">~10.25%</td><td>Statewide average ~8.25%. On a $35,000 car the Cook premium is ~$700 — an OTD quote from just outside the county can pay</td></tr>
+                <tr><td>Doc fee cap <span class="badge warn">Unconfirmed</span></td><td class="r num">$377.63</td><td>2026 CPI-adjusted cap per 815 ILCS 375/11.1 (ridecheckpro.com · vknowscars.com) — caroutthedoor.com says Illinois has <b>no statutory cap</b>. Sources conflict; figure unconfirmed. Doc fee is taxable in IL. CarEdge Oct 2026 average across 829 IL dealers: $369.</td></tr>
+                <tr><td>Title</td><td class="r num">$150</td><td>Among the highest title fees in the country</td></tr>
+                <tr><td>Registration (new plates)</td><td class="r num">$151</td><td>Plate transfer $25 · lien $5 · EVs add the $248/yr surcharge</td></tr>
+                <tr><td>Private-party tax</td><td class="r num">Flat fee</td><td>Form RUT-50 schedule by price and age — older, cheaper cars pay far less than the percentage rate</td></tr>
+                <tr><td>Chicago city sticker</td><td class="r num">Varies</td><td>Paid to the City, not the Secretary of State; depends on vehicle type</td></tr>
+              </table>
+              <div class="src">SOURCE · caroutthedoor.com · ridecheckpro.com · cal67.calculator.city · caredge.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+        </div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">Out-the-door calculator</h3>
+        <div class="calc" id="calc">
+          <div class="fields">
+            <div><label for="c-price">Vehicle price $</label><input id="c-price" type="number" inputmode="numeric" value="35000" min="0" /></div>
+            <div><label for="c-trade">Trade-in $</label><input id="c-trade" type="number" inputmode="numeric" value="8000" min="0" /></div>
+            <div><label for="c-rate">Tax rate</label>
+              <select id="c-rate">
+                <option value="0.1025" selected>Cook County ~10.25%</option>
+                <option value="0.0825">IL average ~8.25%</option>
+                <option value="0.0625">State base 6.25%</option>
+              </select></div>
+            <div><label for="c-doc">Doc fee $</label><input id="c-doc" type="number" inputmode="numeric" value="377.63" min="0" step="0.01" /></div>
+          </div>
+          <div class="out">
+            <div class="row"><span>Taxable amount (price − trade-in)</span><span class="num" id="o-taxable">—</span></div>
+            <div class="row"><span>Vehicle price</span><span class="num" id="o-price">—</span></div>
+            <div class="row"><span>Less trade-in credit</span><span class="num" id="o-trade">—</span></div>
+            <div class="row"><span>Sales tax</span><span class="num" id="o-tax">—</span></div>
+            <div class="row"><span>Doc fee (taxable in IL — included above)</span><span class="num" id="o-doc">—</span></div>
+            <div class="row"><span>Title $150 + registration $151</span><span class="num">$301</span></div>
+            <div class="row total"><span>Out the door</span><span id="o-total">—</span></div>
+          </div>
+          <p style="margin:12px 0 0;font-size:13.5px;color:var(--muted)">Tax applies to price + doc fee, minus trade-in. Excludes city sticker, plate transfer, EV surcharge. Verify against the dealer's written quote.</p>
+        </div>
+
+        <h3 style="font-size:24px;margin:22px 0 10px">Salt-belt rust inspection — non-negotiable</h3>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/img_cbe3b1296373fd3c.webp" alt="Mechanic inspecting the underside of a used car raised on a lift in a workshop" />
+            <div class="body">
+              <p>Rust can cut <b>20–40%</b> of a car's value; frame/suspension repairs run $2,000–5,000+ vs $300–500 for prevention. Clean body panels can hide structural rot. Get the car on a lift before money moves. No lift, no deal.</p>
+              <div class="src">SOURCE · carbuzz.com · thegarageguru.net · thehealthyattitude.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <div>
+            <ul class="check">
+              <li><b>On the lift:</b> frame rails, subframe and suspension mounts, floor pans, rocker panels and pinch welds.</li>
+              <li><b>Brake and fuel lines:</b> corroded lines are a safety hazard, not a cosmetic note — budget or walk.</li>
+              <li><b>Key test:</b> tap suspect metal with a key. Dense thunk = solid. Hollow or papery = compromised.</li>
+              <li><b>Feel behind wheel-well liners</b> for crunchy, flaky material; check hood/trunk seam welds, trunk lips, door jambs and seams.</li>
+              <li><b>History check:</b> pull CARFAX/AutoCheck for where the car lived. A 5-year-old Vermont car can be rustier than a 15-year-old New Mexico car — prefer Southern / dry-state cars.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="gear">
+        <div class="sec-head"><h2>Gear</h2><span class="tag">EARNS ITS TRUNK SPACE</span></div>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/img_ffb6bf749f863e36.jpg" alt="Portable lithium jump starter pack with jumper clamps and USB cable on a white background" />
+            <div class="body">
+              <div class="badges"><span class="badge hot">First buy</span><span class="badge">Winter kit</span></div>
+              <h3>NOCO Boost GB40 jump starter</h3>
+              <div class="price num">$80–125 <small>street, 2026</small></div>
+              <p>1000A. Turns a −10°F McHenry County morning from a tow bill into a non-event. Pair: <b>AstroAI L7</b> inflator ($25–40), <b>Etenwolf T300</b> gauge ($8–15). October Prime Big Deal Days cut jump packs 31–53%.</p>
+              <div class="src">SOURCE · partshaggler.com · thedrive.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="assets/img_d3aa92a53118ee24.png" alt="Close-up of a winter tire tread packed with snow on a snowy road" />
+            <div class="body">
+              <div class="badges"><span class="badge">Chicago winter</span></div>
+              <h3>Mats that survive a Chicago winter</h3>
+              <p><b>Value:</b> Lasfit TPE, <span class="num">$139–149</span>. <b>Rugged:</b> Husky WeatherBeater, <span class="num">$134–170</span>, lifetime warranty. <b>Premium:</b> WeatherTech FloorLiner, <span class="num">$201–228</span> (Bolingbrook, IL). <b>Max coverage:</b> TuxMat, <span class="num">$229–318</span>.</p>
+              <div class="src">SOURCE · lasfit.com · hddieselsupply.ca · eathealthy365.com — read Oct 24, 2026</div>
+            </div>
+          </article>
+        </div>
+        <table style="margin-top:14px">
+          <tr><th>Category</th><th>Pick</th><th class="r">Street price</th><th>Why</th></tr>
+          <tr><td>OBD scanner — budget</td><td><b>ANCEL AD310</b></td><td class="r num">$25–40</td><td>Reads/clears codes on anything 1996+. Plug it in before you negotiate</td></tr>
+          <tr><td>OBD scanner — best</td><td><b>BlueDriver</b></td><td class="r num">~$120</td><td>No subscription, full-system diagnostics, repair reports</td></tr>
+          <tr><td>OBD scanner — enthusiast</td><td><b>OBDLink MX+</b></td><td class="r num">~$140</td><td>Fast Bluetooth, coding support, third-party apps</td></tr>
+          <tr><td>Dash cam — value</td><td><b>REDTIGER F7N</b></td><td class="r num">$90–160</td><td>The value pick; ROVE R2-4K Dual PRO hit $190 (46% off) at October Prime Day</td></tr>
+          <tr><td>Dash cam — premium</td><td><b>Vantrue N4 Pro S</b></td><td class="r num">—</td><td>4K, 3-channel coverage</td></tr>
+          <tr><td>Detailing</td><td><b>Meguiar's Hybrid Ceramic Wax</b></td><td class="r num">$15–22</td><td>Sacrificial layer against salt spray; microfiber packs $12–25, 3M headlight kit $20–35</td></tr>
+          <tr><td>Roadside</td><td><b>Battery Tender Junior</b></td><td class="r num">$35–45</td><td>For cars that sit; Slime tire plug kit $8–16 rides along</td></tr>
+          <tr><td>Interior rescue</td><td><b>Bissell Little Green</b></td><td class="r num">$90–130</td><td>Salt-stained carpet and kid damage, handled</td></tr>
+        </table>
+        <div class="src" style="margin-top:8px">SOURCE · iamcarhacker.com · logix4u.net · partshaggler.com · carcaretotal.com — read Oct 24, 2026. Prices are 2026 street ranges from index-level research — confirm at the retailer.</div>
+      </section>
+
+      <section id="voices">
+        <div class="sec-head"><h2>Trusted Voices</h2><span class="tag">SIGNAL, NOT SPONSORED FLUFF</span></div>
+        <div class="voices">
+          <div class="voice"><b>Your Auto Advocate</b><span>Ex-dealer. Fake-fee exposés and finance-office tactics.</span></div>
+          <div class="voice"><b>Kevin Hunter — The Homework Guy</b><span>Dealer fee and tactic breakdowns; a forum favorite for a reason.</span></div>
+          <div class="voice"><b>DealershipMath</b><span>28 years inside dealerships — quotas, timing, and how the desk actually makes money.</span></div>
+          <div class="voice"><b>SavageGeese</b><span>The enthusiast gold standard: on a lift, into reliability and maintenance, not just 0–60.</span></div>
+          <div class="voice"><b>Engineering Explained</b><span>The physics behind the marketing claims.</span></div>
+          <div class="voice"><b>The Motor Ledger</b><span>Ownership-cost analysis from CarEdge / Edmunds / iSeeCars / NHTSA data.</span></div>
+          <div class="voice"><b>r/askcarsales · r/usedcars</b><span>Actual salespeople answering pricing questions; salt-belt wisdom in r/MechanicAdvice.</span></div>
+          <div class="voice"><b>LeaseHackr</b><span>Lease structure and deal data — less central since the credit died, still useful.</span></div>
+        </div>
+        <div class="src" style="margin-top:8px">SOURCE · aboutcarsreviews.com · dealerrater.com · youtube.com — read Oct 24, 2026</div>
+      </section>
+
+      <footer>
+        Sheet 4 (Autos) — beta. Pick lists rebuilt Oct 24, 2026 to the electric hunt: used EVs, model year 2022+, hybrid performance beasts the only exception. Price caps enforced — $35,000 max per pick, $50,000 Exotic/Risky; over-cap picks were replaced with researched under-cap listings, each flagged with its verification level. All figures from Oct 24, 2026 research (search-index level, not live-page verified). Listings move — confirm price, mileage and battery health at the source before you sign. Anything marked UNCONFIRMED was unresolved in the research itself.
+      </footer>
+    </div>
+
+    <script>
+      (function(){
+        var fmt = function(n){ return "$" + n.toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); };
+        var price=document.getElementById("c-price"), trade=document.getElementById("c-trade"),
+            rate=document.getElementById("c-rate"), doc=document.getElementById("c-doc");
+        function calc(){
+          var p=parseFloat(price.value)||0, t=parseFloat(trade.value)||0,
+              r=parseFloat(rate.value)||0, d=parseFloat(doc.value)||0;
+          var taxable=Math.max(p + d - t, 0), tax=taxable*r, total=p - t + tax + d + 301;
+          document.getElementById("o-taxable").textContent=fmt(taxable);
+          document.getElementById("o-price").textContent=fmt(p);
+          document.getElementById("o-trade").textContent="−"+fmt(t);
+          document.getElementById("o-tax").textContent=fmt(tax);
+          document.getElementById("o-doc").textContent=fmt(d);
+          document.getElementById("o-total").textContent=fmt(total);
+        }
+        [price,trade,rate,doc].forEach(function(el){ el.addEventListener("input",calc); el.addEventListener("change",calc); });
+        calc();
+        // scrollspy
+        var links={}, nav=document.getElementById("nav");
+        Array.prototype.forEach.call(nav.querySelectorAll("a"),function(a){ links[a.getAttribute("href").slice(1)]=a; });
+        var io=new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){
+              Array.prototype.forEach.call(nav.querySelectorAll("a"),function(a){a.classList.remove("on");});
+              var a=links[e.target.id]; if(a) a.classList.add("on");
+            }
+          });
+        },{rootMargin:"-30% 0px -60% 0px"});
+        ["board","zero60","luxury","exotic","boring","used","new","ev","chicago","gear","voices"].forEach(function(id){
+          var s=document.getElementById(id); if(s) io.observe(s);
+        });
+      })();
+    </script>
+  </body>
+</html>

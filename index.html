@@ -681,7 +681,7 @@
     .accordion-toggle[hidden]{display:none}
     .accordion-hidden{display:none!important}
     .audience-hidden{display:none!important}
-    .mobile-tabs{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
+    .mobile-tabs{position:relative;display:grid;grid-template-columns:repeat(7,1fr);margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
     .mobile-tabs a{display:flex;min-width:0;min-height:50px;align-items:center;justify-content:center;flex-direction:column;gap:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-decoration:none;border-radius:7px;text-align:center;line-height:1.2;padding:4px 2px}
     .mobile-tabs a span{font-size:17px;line-height:1;color:var(--accent-ink)}
     .mobile-tabs a:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:-2px}
@@ -689,6 +689,8 @@
     .mobile-tabs a.guns-cigars-nav:hover{background:var(--accent-soft)}
     .mobile-tabs a.travel-nav{background:color-mix(in srgb,var(--accent-soft) 55%,transparent);color:var(--accent-ink)}
     .mobile-tabs a.travel-nav:hover{background:var(--accent-soft)}
+    .mobile-tabs a.autos-nav{background:color-mix(in srgb,var(--accent-soft) 55%,transparent);color:var(--accent-ink)}
+    .mobile-tabs a.autos-nav:hover{background:var(--accent-soft)}
     .filter,.listing,.food-source,.deal-code{min-height:44px}
     .filter{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px}
     .listing,.food-source{display:inline-flex;align-items:center}
@@ -741,7 +743,7 @@
       .audience-segment{min-height:44px;padding:7px 9px}
       .filters{gap:8px;margin-top:8px;padding:2px;scroll-margin-top:150px}
       .filter{min-height:44px;padding:8px 13px;font-size:12px}
-      .mobile-tabs{position:sticky;display:grid;grid-template-columns:repeat(6,1fr);top:0;z-index:50;margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
+      .mobile-tabs{position:sticky;display:grid;grid-template-columns:repeat(7,1fr);top:0;z-index:50;margin:0 0 14px;padding:5px;background:color-mix(in srgb,var(--panel) 97%,transparent);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(12,18,14,.12)}
       .mobile-tabs a{display:flex;min-width:0;min-height:50px;align-items:center;justify-content:center;flex-direction:column;gap:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-decoration:none;border-radius:7px}
       .mobile-tabs a span{font-size:17px;line-height:1;color:var(--accent-ink)}
       .mobile-tabs a:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:-2px}
@@ -1211,6 +1213,7 @@
       <a href="#black-friday-watchlist" data-tab="black-friday"><span aria-hidden="true">◆</span>Black Friday</a>
       <a href="guns-cigars.html" class="guns-cigars-nav" data-tab="guns-cigars"><span aria-hidden="true">◎</span>Guns n Subs</a>
       <a href="travel.html" class="travel-nav" data-tab="travel"><span aria-hidden="true">✈</span>Travel (beta)</a>
+      <a href="autos.html" class="autos-nav" data-tab="autos"><span aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>Autos Beta</a>
     </nav>
     <!-- PINNED TOP ORDER — do not change: quick nav → Bud's Lunch → This Weekend banner → everything else. Bud's Lunch sits directly below the quick nav (the true top of the sheet) and the This Weekend banner sits directly below Bud's Lunch. The load script enforces this order on every page load. -->
     <section class="bud-lunch" aria-labelledby="bud-lunch-title">

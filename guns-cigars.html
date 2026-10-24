@@ -32,6 +32,14 @@
       .back-btn:active{transform:translateY(1px)}
       .backbar .tag{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em}
 
+      /* cross-sheet nav */
+      nav.xnav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+      nav.xnav a{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:7px 13px;border-radius:999px;white-space:nowrap}
+      nav.xnav a:hover{border-color:var(--accent);color:var(--accent)}
+      nav.xnav a.active{background:var(--deal);border-color:var(--deal);color:var(--deal-ink);font-weight:700}
+      nav.xnav a.active:hover{color:var(--deal-ink)}
+      @media (max-width:640px){.backbar .tag{display:none}}
+
       header.masthead{padding:30px 0 6px}
       h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:clamp(44px,9vw,84px);line-height:.95;margin:0;letter-spacing:.01em;text-transform:uppercase}
       h1 .amp{color:var(--gold)}
@@ -162,7 +170,12 @@
   <body>
     <div class="backbar">
       <div class="backbar-in">
-        <a class="back-btn" href="index.html">← Back to the Dupe Cheat Sheet</a>
+        <nav class="xnav" aria-label="Sheets">
+          <a href="index.html">Dupe Cheat Sheet</a>
+          <a href="guns-cigars.html" class="active" aria-current="page">Guns n Subs</a>
+          <a href="travel.html">Travel</a>
+          <a href="autos.html">Autos</a>
+        </nav>
         <span class="tag">SISTER SHEET · GUNS, KNIVES, SUBS &amp; CIGARS</span>
       </div>
     </div>
