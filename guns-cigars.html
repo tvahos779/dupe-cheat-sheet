@@ -38,9 +38,9 @@
 
       /* cross-sheet nav */
       nav.xnav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:4px;border:1px solid var(--line);border-radius:999px;background:rgba(22,26,23,.72)}
-      nav.xnav a{display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:background .2s ease,color .2s ease,box-shadow .2s ease}
+      nav.xnav a{display:inline-flex;align-items:center;gap:7px;min-height:44px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease}
       nav.xnav a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.35;flex:0 0 auto;transition:opacity .2s ease}
-      nav.xnav a:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+      nav.xnav a:hover{background:rgba(255,255,255,.06);color:var(--ink);transform:translateY(-1px)}
       nav.xnav a:hover::before{opacity:.7}
       nav.xnav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       nav.xnav a.active{background:var(--deal);color:var(--deal-ink);font-weight:700;box-shadow:0 2px 10px rgba(0,230,118,.28),inset 0 1px 0 rgba(255,255,255,.25)}
@@ -52,7 +52,7 @@
         nav.xnav a{font-size:12.5px;padding:7px 11px;gap:6px}
       }
       @media (hover:none){
-        nav.xnav a:hover{background:transparent;color:var(--muted)}
+        nav.xnav a:hover{background:transparent;color:var(--muted);transform:none}
         nav.xnav a:hover::before{opacity:.35}
         nav.xnav a.active:hover{background:var(--deal);color:var(--deal-ink)}
       }
@@ -61,16 +61,10 @@
       h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:clamp(44px,9vw,84px);line-height:.95;margin:0;letter-spacing:.01em;text-transform:uppercase}
       h1 .amp{color:var(--gold)}
       .lede{color:var(--muted);font-size:17px;max-width:66ch;margin:12px 0 0}
-      .checked{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--faint);margin-top:12px;letter-spacing:.03em}
-      .checked b{color:var(--accent);font-weight:600}
-
-      /* editorial freshness ticker */
-      .feature-ticker{display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:.03em;border:1px solid var(--line);background:var(--panel);padding:4px 10px;border-radius:999px}
-      .feature-ticker .ft-date{color:var(--faint)}
       .new-badge{display:inline-block;vertical-align:2px;margin-left:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.14em;color:#1a1200;background:var(--gold);padding:2px 8px;border-radius:999px;text-transform:uppercase}
 
       nav.chips{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
-      nav.chips a{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:999px}
+      nav.chips a{display:inline-flex;align-items:center;min-height:44px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:999px}
       nav.chips a:hover{border-color:var(--accent);color:var(--accent)}
 
       /* prominent promo codes jump button */
@@ -111,7 +105,7 @@
       .was{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--faint);text-decoration:line-through;font-variant-numeric:tabular-nums}
       .netline{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--gold);font-variant-numeric:tabular-nums}
       .seller{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;font-variant-numeric:tabular-nums}
-      .go{margin-top:6px;display:block;text-align:center;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:14.5px;text-decoration:none;padding:10px;border-radius:8px}
+      .go{margin-top:6px;display:flex;align-items:center;justify-content:center;min-height:44px;text-align:center;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:14.5px;text-decoration:none;padding:10px;border-radius:8px}
       .go:hover{background:var(--accent);color:var(--deal-ink)}
 
       /* hero spotlight card */
@@ -177,14 +171,13 @@
       .code-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint);letter-spacing:.02em;margin-top:7px}
       .code-meta a{color:var(--faint);text-decoration:underline;text-underline-offset:2px}
       .code-meta a:hover{color:var(--accent)}
-      .copy-btn{flex:0 0 auto;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
+      .copy-btn{flex:0 0 auto;min-height:44px;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
       .copy-btn:hover{background:var(--accent);color:var(--deal-ink)}
       .copy-btn.copied{background:var(--deal);border-color:var(--deal);color:var(--deal-ink)}
 
       footer{margin-top:56px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:14px}
       footer .big{font-family:'Anton',Impact,sans-serif;font-size:22px;color:var(--ink);text-transform:uppercase;margin:0 0 8px}
       footer a{font-weight:600}
-      .fineprint{font-size:12.5px;color:var(--faint);margin-top:14px;max-width:80ch}
       @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 
       /* ==== visual polish pass (CSS only) ==== */
@@ -207,6 +200,19 @@
       @media (prefers-reduced-motion: reduce){
         .card,.spot,.card .media img,.spot .media img{transition:none}
       }
+
+      /* ==== polish pass: focus rings, anchor offset, motion ==== */
+      /* same focus ring as the cross-sheet nav, on every other control */
+      nav.chips a:focus-visible,.go:focus-visible,.copy-btn:focus-visible,.promo-cta:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+      /* on phones the nav wraps to two rows, so the sticky bar is taller —
+         keep anchored section heads clear of it */
+      @media (max-width:640px){
+        section[id]{scroll-margin-top:132px}
+      }
+      @media (prefers-reduced-motion: reduce){
+        nav.xnav a{transition:none}
+        nav.xnav a:hover{transform:none}
+      }
     </style>
   </head>
   <body>
@@ -226,9 +232,7 @@
     <div class="wrap">
       <header class="masthead">
         <h1>Guns <span class="amp">n</span> Subs</h1>
-        <p class="lede">The armory annex of the Dupe Cheat Sheet — guns, rifles, knives, gun accessories, car audio, and the humidor, all in one place. Every firearm, knife, and speaker below is <b style="color:var(--ink)">new</b> — never used, never refurbished — and every cigar is genuine ACID by Drew Estate. Real prices, checked against the street, with the buying guides to match.</p>
-        <p class="checked">PRICES &amp; STOCK CHECKED <b>WED, OCT 21, 2026</b> · PRICES MOVE — THE LISTING PAGE IS THE FINAL WORD</p>
-        <div class="feature-ticker" data-next-refresh="2026-11-04"><span>✒️ Fresh commentary</span> <span class="ft-date"></span></div>
+        <p class="lede">The armory annex of the Dupe Cheat Sheet — guns, rifles, knives, gun accessories, car audio, and the humidor, all in one place — plus the buying guides to match.</p>
         <div class="promo-cta-row">
           <a class="promo-cta" href="#amazon-codes">Amazon Promo Codes <span class="cta-arrow" aria-hidden="true">↓</span></a>
         </div>
@@ -240,10 +244,12 @@
           <a href="#guide-9mm">9MM GUIDE</a>
           <a href="#guide-ffl">FFL BASICS</a>
           <a href="#accessories">ACCESSORIES</a>
+          <a href="#range-kit">RANGE KIT</a>
           <a href="#knives">KNIVES</a>
           <a href="#audio">CAR AUDIO</a>
           <a href="#man-cave">THE MAN CAVE</a>
           <a href="#cigars">CIGARS</a>
+          <a href="#cigar-accessories">CIGAR ACCESSORIES</a>
           <a href="#guide-cigars">CIGAR GUIDE</a>
           <a href="#amazon-codes">AMAZON PROMO CODES</a>
         </nav>
@@ -287,7 +293,7 @@
               <div class="rule" aria-hidden="true"></div>
               <blockquote>&ldquo;Cry once, at the register. Never again at the range.&rdquo;</blockquote>
             </div>
-            <p>The picks below aren't the fanciest guns. They're the ones that run. New, from reputable sellers, at prices that beat street — because overpaying for reliability is its own kind of failure. Cry once, at the register. Never again at the range.</p>
+            <p>The picks below aren't the fanciest guns. They're the ones that run — because overpaying for reliability is its own kind of failure. Cry once, at the register. Never again at the range.</p>
           </div>
         </article>
 
@@ -584,7 +590,7 @@
             <div class="mini">
               <h4 class="gold">Mossberg vs. Benelli</h4>
               <p><b>Mossberg</b> — The 500 is the everyman pump: aluminum receiver keeps it light and cheap, controls are the best in the class (top tang safety, slide release behind the trigger guard), and parts grow on trees. The <b>590A1</b> is the same gun overbuilt to a military spec — heavier barrel, metal where the 500 uses polymer. It's the one you hand down.</p>
-              <p><b>Benelli</b> — The Nova/SuperNova are polymer-over-steel pumps chambered for 3.5″ shells with the ComforTech stock chewing up recoil — the duck-blind and bad-weather choice, starting at $749 MSRP per Benelli USA. The <b>M4</b> is the semi-auto benchmark the Marines carry; street prices hover near $1,900 and it's worth it only if you'll actually run it hard. No verifiable Benelli deal exists today.</p>
+              <p><b>Benelli</b> — The Nova/SuperNova are polymer-over-steel pumps chambered for 3.5″ shells with the ComforTech stock chewing up recoil — the duck-blind and bad-weather choice, starting at $749 MSRP per Benelli USA. The <b>M4</b> is the semi-auto benchmark the Marines carry; street prices hover near $1,900 and it's worth it only if you'll actually run it hard.</p>
             </div>
           </div>
           <p class="takeline"><b>Load note:</b> for home defense, pattern #4 or 00 buckshot at your actual in-home distances — every shotgun patterns differently, and "birdshot is for birds" is the whole rule.</p>
@@ -661,7 +667,7 @@
       <section id="pretty-guns">
         <div class="sec-head">
           <h2>Pretty Guns</h2>
-          <p>Six picks bought with the eyes first — mirror stainless, black-on-silver two-tone, engraved nickel with gold. All new, all Illinois-legal, every price verified against a live product page. The looks are the point; the verdicts stay honest.</p>
+          <p>Six picks bought with the eyes first — mirror stainless, black-on-silver two-tone, engraved nickel with gold. All new, all Illinois-legal. The looks are the point; the verdicts stay honest.</p>
         </div>
         <div class="grid">
 
@@ -706,7 +712,7 @@
           </article>
 
           <article class="card">
-            <div class="media fit"><img src="assets/img_244fac6ed94f2e0c.webp" alt="Colt Python 4.25-inch .357 Magnum revolver in polished blued finish with walnut grips" /></div>
+            <div class="media fit"><img src="assets/img_73101a4e7da901cd.webp" alt="Colt Python 4.25-inch .357 Magnum revolver in polished semi-bright stainless finish with walnut grips" /></div>
             <div class="body">
               <h3>Colt Python 4.25″ .357 Magnum</h3>
               <p class="spec">SEMI-BRIGHT STAINLESS · VENT RIB BARREL · WALNUT GRIPS WITH COLT MEDALLION · 4.25″ BARREL</p>
@@ -750,7 +756,7 @@
       <section id="accessories">
         <div class="sec-head">
           <h2>Gun Accessories</h2>
-          <p>Eleven verified deals — holsters, red dots, a weapon light, magazines, slings, a range bag, an LPVO scope, and cleaning kits. The TLR-7 X Sub below is $18 under Brownells. Holosun dots and gun safes are MAP-locked at identical prices everywhere — no daylight, no card; the safes buying guide below covers what to do when a gap opens.</p>
+          <p>Eleven deals — holsters, red dots, a weapon light, magazines, slings, a range bag, an LPVO scope, and cleaning kits. The TLR-7 X Sub below is $18 under Brownells. The safes buying guide below covers quick-access boxes and long-gun safes.</p>
         </div>
         <div class="grid">
 
@@ -909,11 +915,64 @@
         </div>
       </section>
 
+      <!-- ============ RANGE KIT ============ -->
+      <section id="range-kit">
+        <div class="sec-head">
+          <h2>Range Kit</h2>
+          <p>Ears, eyes, and the cleaning bench — the gear that makes range day work, priced against the other sellers carrying the same kit.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_e5a6fe7feb96bc1f.webp" alt="Walker's Razor Slim Patriot electronic earmuffs in Flat Dark Earth with flag patch" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Cheapest of 3 sellers</span></div>
+              <h3>Walker's Razor Slim Patriot — Flat Dark Earth</h3>
+              <p class="spec">23 DB NRR · ELECTRONIC · SOUND-ACTIVATED COMPRESSION · SLIM LOW-PROFILE CUPS</p>
+              <p class="note">The classic budget electronic muff: 23 dB NRR with sound-activated compression, so gunshots get clipped while range commands and conversation come through without lifting the muffs. The slim cups clear a rifle stock instead of fighting it. The comparison prices are sibling Patriot variants — Battle Brown at KY Gun Co, Right To Bare Arms at Pyramyd Air — same Patriot series, same 23 dB NRR.</p>
+              <div class="pricerow"><span class="price">$39.99</span></div>
+              <span class="netline">KY Gun Co wants $43.57 · Pyramyd Air $52.60 for Patriot variants</span>
+              <span class="seller">MidwayUSA · In stock · New</span>
+              <a class="go" href="https://www.midwayusa.com/product/1018596572" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_a51fe34db690260e.jpg" alt="Wiley X Saber Advanced shooting glasses, clear lens with black frame, Model 303" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$11 under direct</span></div>
+              <h3>Wiley X Saber Advanced — Clear / Black (303)</h3>
+              <p class="spec">MIL-PRF-32432 BALLISTIC · ANSI Z87.1+ · INTERCHANGEABLE LENSES · FOAM INSERT</p>
+              <p class="note">Real ballistic eye pro, not range-store plastic: the Saber carries MIL-PRF-32432 and ANSI Z87.1+ ratings — the same ballistic rating class as $175+ Oakley SI frames, at about a quarter of the price. Lenses swap in seconds for light changes, the foam insert seals out dust, and the clear lens is the indoor and low-light workhorse. GunMag Warehouse matches this $46.99 street price exactly.</p>
+              <div class="pricerow"><span class="price">$46.99</span></div>
+              <span class="netline">Wiley X direct charges $58.00 for this frame (Smoke Grey)</span>
+              <span class="seller">Sportsman's Warehouse · In stock · New</span>
+              <a class="go" href="https://www.sportsmans.com/shooting-gear-gun-supplies/shooting-equipment/eye-protection/wiley-x-saber-advanced-shooting-glasses-clearblack/p/302742" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_019bfa66c55d57d8.webp" alt="Hoppe's 62-piece universal gun cleaning kit open in its black blow-molded case" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$25 under Cabela's</span></div>
+              <h3>Hoppe's 62-Piece Universal Cleaning Kit (62108)</h3>
+              <p class="spec">RIFLE · PISTOL · SHOTGUN · 14 BRONZE BRUSHES · BRASS RODS · NO. 9 + OIL · BLOW-MOLDED CASE</p>
+              <p class="note">One box that cleans everything you own: 14 bronze brushes, jags, mops and brass rods covering rifle, pistol and shotgun, with Hoppe's No. 9 solvent and lubricating oil riding in the case. The blow-molded case keeps every piece in its own slot instead of rattling loose in the range bag — the full-kit answer next to the quick-clean kits in Accessories above.</p>
+              <div class="pricerow"><span class="price">$64.99</span></div>
+              <span class="netline">Cabela's charges $89.99 for this exact kit</span>
+              <span class="seller">KYGUNCO · In stock · New</span>
+              <a class="go" href="https://www.kygunco.com/product/hoppes-62108-cleaning-kit-no9-cleaner-oil-62pc-blk-blow-molded" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
       <!-- ============ ACCESSORIES GUIDE ============ -->
       <section id="guide-accessories">
         <div class="guide">
           <h3>Accessories: What Actually Matters</h3>
-          <p class="sub">The gun gets the glory, but these are the parts that decide whether your setup actually works when you pick it up. The same rules we card by.</p>
+          <p class="sub">The gun gets the glory, but these are the parts that decide whether your setup actually works when you pick it up.</p>
           <div class="cols">
             <div class="mini">
               <h4>Holsters: fit is retention</h4>
@@ -948,10 +1007,6 @@
               <p><b>Quick-access boxes</b> (Vaultek, Hornady RAPiD class) are for the one gun you might need at 3 a.m.: biometric or RFID entry that opens in about a second, in the nightstand, <b>bolted down</b> — unbolted, it's just a convenient carrying case for whoever grabs it. This is a kid-and-accident barrier, not burglary protection.</p>
               <p><b>Long-gun safes</b> protect the collection. Buy by real steel (12-gauge door/body or thicker), a genuine fire rating, and weight — and know that most sub-$500 "safes" are technically residential security containers: fine against curious kids and smash-and-grab, not against fire or a pro with time and a pry bar. Buy one size bigger than you think; everyone does eventually.</p>
             </div>
-            <div class="mini">
-              <h4 class="gold">Why there's no safe card (yet)</h4>
-              <p>We priced Vaultek's line and the Hornady RAPiD hard on Oct 21: pricing is <b>MAP-controlled</b> — the same number at every reputable seller, which means there is no honest deal to card. Same story for Holosun's red dots and most direct-only holster brands (Vedder, CrossBreed sell at fixed prices from their own stores). When a retailer breaks ranks on any of them, it gets a card the same day. Until then, buy the quick-access box that fits your gun and your nightstand, from whoever throws in free shipping.</p>
-            </div>
           </div>
           <p class="takeline"><b>The 10-second version:</b> ALS holster if the gun is carried openly, a 7075 dot with Shake Awake and a yearly battery swap, OEM-or-Magpul magazines only for serious guns — and never let a $20 no-name magazine be the reason a $600 pistol chokes.</p>
         </div>
@@ -961,7 +1016,7 @@
       <section id="knives">
         <div class="sec-head">
           <h2>Knives — Folding &amp; EDC</h2>
-          <p>Four live deals, all new. KYGUNCO quietly undercuts everyone on Civivi — the Elementum below is $19.62 under KnifeCenter for the exact same knife. Spyderco is price-matched to the penny across dealers, Benchmade is MAP-locked, and the Para 3 Lightweight and Mini Bugout sit at one price everywhere.</p>
+          <p>Four live deals, all new. KYGUNCO quietly undercuts everyone on Civivi — the Elementum below is $19.62 under KnifeCenter for the exact same knife.</p>
         </div>
         <div class="grid">
 
@@ -1304,6 +1359,73 @@
         </div>
       </section>
 
+      <!-- ============ CIGAR ACCESSORIES ============ -->
+      <section id="cigar-accessories">
+        <div class="sec-head">
+          <h2>Cigar Accessories</h2>
+          <p>The gear around the cigars — the cutter, the fire, and the storage that keep the boxes above smoking right.</p>
+        </div>
+        <div class="grid">
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_8f5d220028066e70.webp" alt="Xikar XK1 angled single jet-flame lighter in black" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$11 under direct</span></div>
+              <h3>Xikar XK1 Angled Single Jet Lighter — Black</h3>
+              <p class="spec">ANGLED SINGLE JET FLAME · TRAP-DOOR LID · LARGE FUEL WINDOW + ADJUSTER · LIFETIME WARRANTY</p>
+              <p class="note">The jet angles away from the body, so you watch the foot toast evenly instead of guessing — and the trap-door lid keeps pocket lint out of the burner between lights. Big fuel window, easy flame adjuster, and Xikar's lifetime warranty behind it. One honest flag: a Famous Smoke reviewer reports an ignition complaint — the lifetime warranty is exactly the mitigant there.</p>
+              <div class="pricerow"><span class="price">$38.99</span></div>
+              <span class="netline">Xikar direct charges $49.99 for this exact lighter</span>
+              <span class="seller">Famous Smoke Shop · In stock · New</span>
+              <a class="go" href="https://www.famous-smoke.com/xikar-xk1-black?pid=67391" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_aa29cd3254bdf3c1.jpg" alt="Xikar Xi1 double guillotine cigar cutter in black" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">Under street</span></div>
+              <h3>Xikar Xi1 Double Guillotine Cutter — Black</h3>
+              <p class="spec">440 STAINLESS BLADES · HRC 57 · CUTS 54 RG (58 ON A CAP CUT) · SPRING-LOADED TEARDROP · LIFETIME WARRANTY</p>
+              <p class="note">The benchmark cutter every other cutter gets measured against: 440 stainless blades hardened to HRC 57 in Xikar's spring-loaded teardrop body — squeeze, and both blades snap through the cap clean instead of tearing it. Handles a full 54 ring gauge, up to 58 on a cap cut, and it's covered for life.</p>
+              <div class="pricerow"><span class="price">$63.99</span></div>
+              <span class="netline">KnifeCenter charges $69.95 for the silver variant</span>
+              <span class="seller">Famous Smoke Shop · In stock · New</span>
+              <a class="go" href="https://www.famous-smoke.com/xikar-xi1-black" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_411f99f2193ccb8b.webp" alt="Zebra 50-cigar desktop humidor with woodgrain finish" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">$11 under Cigar.com</span></div>
+              <h3>Zebra Humidor — 50-Cigar Desktop</h3>
+              <p class="spec">50-CIGAR CAPACITY · WOODGRAIN FINISH · HYGROMETER + HUMIDIFIER INCLUDED</p>
+              <p class="note">Right-sized storage: a 50-count desktop that swallows two ACID boxes with room to grow into, instead of the 20-count starter you'll outgrow in a month. Hygrometer and humidifier are in the box — season it, load it, done. One honest note from a Cigars International reviewer: the finish reads satin/matte in person, not piano-gloss, so expect handsome woodgrain rather than a mirror shine.</p>
+              <div class="pricerow"><span class="price">$103.99</span></div>
+              <span class="netline">Cigar.com charges $114.99 for this exact humidor (HUM50ZEB)</span>
+              <span class="seller">Cigars International · In stock · New</span>
+              <a class="go" href="https://www.cigarsinternational.com/p/zebra-humidor/2007270/" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media fit"><img src="assets/img_4553497b48a1a29d.webp" alt="Cigar Caddy 10-count travel humidor in black, open, showing foam trays and humidifier" /></div>
+            <div class="body">
+              <div class="badges"><span class="badge deal">24% off MSRP</span><span class="badge deal">Lowest found by far</span></div>
+              <h3>Cigar Caddy 10-Count Travel Humidor — Black (3240)</h3>
+              <p class="spec">HOLDS 10 CHURCHILLS · CRUSHPROOF · WATERTIGHT · HUMIDIFIER INCLUDED · LIFETIME GUARANTEE</p>
+              <p class="note">The golf-bag and road-trip case that actually protects sticks: a crushproof, watertight hard case with foam trays for 10 Churchills and a humidifier in the lid. Toss it in the truck, the boat, or the checked bag and forget about it. The next seller found wants $33 — and Refined Traditions an eye-watering $59.99 for the same case.</p>
+              <div class="pricerow"><span class="price">$24.95</span><span class="was">$32.99</span></div>
+              <span class="netline">Luxury Cigar Club charges $33.00 for this exact case</span>
+              <span class="seller">Neptune Cigar · In stock · New</span>
+              <a class="go" href="https://www.neptunecigar.com/cigars/cigar-caddy" target="_blank" rel="noopener">View listing →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
       <!-- ============ CIGAR GUIDE ============ -->
       <section id="guide-cigars">
         <div class="guide">
@@ -1355,7 +1477,7 @@
       <section id="audio">
         <div class="sec-head">
           <h2>Car Audio — Subs, Speakers &amp; Head Units</h2>
-          <p>Four verified deals, all new. No soundbars, ever. Judge power in <b>RMS watts</b>, never the "peak/max" number on the box — peak is marketing, RMS is what the gear actually does all day.</p>
+          <p>Four deals, all new. No soundbars, ever. Judge power in <b>RMS watts</b>, never the "peak/max" number on the box — peak is marketing, RMS is what the gear actually does all day.</p>
         </div>
 
         <article class="feature" data-published="2026-10-21" aria-label="Featured article: Bass Is a Feeling">
@@ -1443,7 +1565,7 @@
           <div class="cols">
             <div class="mini">
               <h4>RMS is real, "peak" is fiction</h4>
-              <p><b>Every card on this sheet carries a one-line expert rationale, and every power figure we print is RMS</b> — continuous watts the gear handles all day. "Peak" or "max" power is a momentary number measured under conditions you'll never reproduce; a "$40 amp, 2,000 watts!" is making maybe 80 honest watts. Match amp RMS to sub RMS at the same impedance: a 400W RMS sub wants a ~400W RMS mono amp wired to the right ohm load — underpowering a sub and cranking the gain to compensate is how voice coils die (clipping kills, not wattage).</p>
+              <p><b>RMS is continuous power</b> — the watts the gear handles all day. "Peak" or "max" power is a momentary number measured under conditions you'll never reproduce; a "$40 amp, 2,000 watts!" is making maybe 80 honest watts. Match amp RMS to sub RMS at the same impedance: a 400W RMS sub wants a ~400W RMS mono amp wired to the right ohm load — underpowering a sub and cranking the gain to compensate is how voice coils die (clipping kills, not wattage).</p>
               <h4 style="margin-top:14px">The box is half the sub</h4>
               <p>A subwoofer in the wrong box is a different, worse subwoofer. <b>Enclosure volume must match the maker's spec</b> (JBL publishes it for the Club 122) — too small strangles low end, too big lets the cone flop and bottom out. Sealed boxes are tight and accurate; ported boxes play louder and lower but must be tuned to the sub. Budget for the right box the way you budget for the sub itself.</p>
             </div>
@@ -1459,7 +1581,6 @@
             </div>
           </div>
           <p class="takeline"><b>The 10-second version:</b> Start with the Sony head unit and the Club 622 doors on factory power — that alone transforms most cars. Then the Club 122 in a spec box on a matched 400W RMS mono amp when you're ready for bass.</p>
-          <p class="takeline"><b>Amplifier watch (re-checked Oct 21):</b> still no amp card, on purpose. Every amplifier we priced across the full lineup — Kicker CXA800.1 and CXA360.4, JBL Club A600, Rockford Punch, Alpine S-series — came back at the identical price at every authorized dealer. Car-audio MAP is total right now, and a card that pretends $299.99 = $299.99 is a "deal" would be lying to you. The moment a real amp gap opens, it gets carded the same day.</p>
         </div>
       </section>
 
@@ -1470,7 +1591,7 @@
         </figure>
         <div class="sec-head">
           <h2>Amazon Promo Codes</h2>
-          <p>Real Amazon codes are product-specific — issued by the seller, for that product. No code takes 30% off your whole cart; anything claiming that is fake. Codes marked TRUSTED are confirmed across multiple sources. [UNVERIFIED] codes are fresh from deal sites but single-sourced — try them at checkout; if one fails, it fails, nothing lost.</p>
+          <p>Real Amazon codes are product-specific — issued by the seller, for that product. No code takes 30% off your whole cart; anything claiming that is fake. Try a code at checkout — if it fails, it fails, nothing lost.</p>
         </div>
         <div class="code-list">
 
@@ -2201,7 +2322,6 @@
       <footer>
         <p class="big">Guns n Subs</p>
         <p>Guns, knives, subs, and cigars — the annex of the <a href="index.html">Dupe Cheat Sheet</a> — watches, jewelry, food deals, tickets, and everything else live over there. <a href="index.html">← Head back to the main sheet</a></p>
-        <p class="fineprint">*Beretta consumer rebate: purchase a qualifying APX A1, M9, or Px4 Storm by Nov 30, 2026 and claim by Dec 31, 2026 for $100 back (prepaid card; some models offer a higher-value Beretta gift card instead — see the claim site for your model's options). All firearms listed are new and must transfer through a licensed FFL dealer; know your state and local laws before ordering. Cigars ship only where legal and to adults of legal smoking age. Magazine capacity is restricted in some states and cities — including parts of Illinois — so confirm your local rules before ordering magazines or drums. Prices and stock were verified Wed, Oct 21, 2026 and can change or sell out at any time — the retailer's listing page is the final word.</p>
       </footer>
     </div>
     <script>
@@ -2215,19 +2335,6 @@
           return new Date(d.getFullYear(), d.getMonth(), d.getDate());
         }
         var today = startOfDay(new Date());
-
-        /* ticker countdown */
-        var ticker = document.querySelector('.feature-ticker');
-        if (ticker) {
-          var next = parseDay(ticker.getAttribute('data-next-refresh'));
-          var out = ticker.querySelector('.ft-date');
-          if (next && out) {
-            var days = Math.round((startOfDay(next) - today) / 86400000);
-            if (days <= 0) out.textContent = '· dropping now';
-            else if (days === 1) out.textContent = '· tomorrow';
-            else out.textContent = '· in ' + days + ' days';
-          }
-        }
 
         /* copy promo codes */
         document.querySelectorAll('.copy-btn').forEach(function (btn) {

@@ -48,6 +48,7 @@
       nav{position:sticky;top:0;z-index:20;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25);padding:12px 0 10px;display:flex;flex-wrap:wrap;gap:8px}
       nav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14.5px;transition:border-color .2s ease,color .2s ease,background .2s ease}
       nav a:hover{border-color:var(--accent);color:var(--accent)}
+      nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       nav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
       nav a.on:hover{color:#fff}
       /* snapshot */
@@ -179,7 +180,7 @@
       .calc{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px}
       .calc .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
       .calc label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-      .calc input,.calc select{width:100%;font-family:"IBM Plex Mono",monospace;font-size:17px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+      .calc input,.calc select{width:100%;min-height:44px;font-family:"IBM Plex Mono",monospace;font-size:17px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
       .calc .out{margin-top:16px;border-top:2px dashed var(--line);padding-top:12px;display:grid;gap:4px;font-size:15.5px}
       .calc .out .row{display:flex;justify-content:space-between;gap:14px}
       .calc .out .total{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:24px;border-top:2px solid var(--ink);margin-top:6px;padding-top:8px}
@@ -193,6 +194,8 @@
         .card img{height:158px}
         .spec{grid-template-columns:1fr}
         .perf .z{font-size:38px}
+        nav{gap:7px}
+        nav a{display:inline-flex;align-items:center;min-height:44px;padding:10px 15px}
       }
       /* scroll entrances — CSS only, progressive enhancement. Rise only, no opacity:
          content stays visible and reachable before, during and after entry. */
@@ -248,13 +251,11 @@
           <div class="cell"><div class="k">IL doc fee cap <span class="badge warn" style="vertical-align:1px">Unconfirmed</span></div><div class="v num">$377.63</div><div class="s">Reported 2026 CPI-adjusted max — sources conflict; see Chicago Guide</div></div>
           <div class="cell"><div class="k">Avg used EV listing</div><div class="v num">$37,441</div><div class="s">Cox Automotive, Aug 2026 — 39% of used EVs list under $25k</div></div>
         </div>
-              <div class="scoreline"><b>HOW EVERY PICK IS SCORED</b> &nbsp;Depreciation · Luxury · Performance — equal weight, ● marks on every card. Each section stretches its namesake factor. Battery health, EPA range, charging, warranty status, winter heat and driver assist sit in every spec block. Premium-audio and performance-package flags print only when confirmed.</div>
       </section>
 
       <section id="zero60" class="stretch-perf">
         <div class="sec-head"><h2>0–60</h2><span class="tag">SPEED PER DOLLAR · ELECTRIC</span><span class="cap">CAP $35,000</span></div>
-        <p class="angle">Used EVs, 2022+. 0–60 leads — depreciation and luxury are scored on every card.</p>
-        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Performance stretched here: sub-3.5s to 60 · 480+ hp. Scored equally on every card: depreciation · luxury · performance.</span></div>
+        <p class="angle">Used EVs, 2022+. 0–60 leads.</p>
         <div class="grid">
 
           <article class="card">
@@ -669,8 +670,7 @@
 
       <section id="luxury" class="stretch-lux">
         <div class="sec-head"><h2>Luxury Depreciated</h2><span class="tag">FALLEN-FLAG LUXURY · ELECTRIC</span><span class="cap">CAP $35,000</span></div>
-        <p class="angle">Flagship EVs, 2022+, after the fall. The MSRP→now curve and the luxury tier lead — performance is still on every card.</p>
-        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Luxury + depreciation stretched here: $75k+ original MSRP · flagship trim · the saved-vs-MSRP figure is the headline number after the price.</span></div>
+        <p class="angle">Flagship EVs, 2022+, after the fall. The MSRP→now curve and the luxury tier lead.</p>
         <div class="grid">
 
                     <article class="card">
@@ -1178,8 +1178,8 @@
 
       <section id="exotic" class="stretch-ex">
         <div class="sec-head"><h2>Exotic / Risky</h2><span class="tag">TEMPTING BUT DANGEROUS · ELECTRIC + HYBRID BEASTS</span><span class="cap">CAP $50,000</span></div>
-        <p class="angle">Exotic EVs and hybrid performance beasts, 2022+. The exotic factor leads — the danger is printed beside it, on every card.</p>
-        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Exotic factor stretched here: halo cars, 650+ hp. Non-negotiable: upkeep cost + the failure that bites, up front on every card.</span></div>
+        <p class="angle">Exotic EVs and hybrid performance beasts, 2022+. The danger is printed beside it, on every card.</p>
+        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Upkeep cost + the failure that bites, up front on every card.</span></div>
         <div class="grid">
 
                     <article class="card">
@@ -1574,8 +1574,7 @@
 
       <section id="boring" class="stretch-val">
         <div class="sec-head"><h2>Boring But Gotta Look</h2><span class="tag">THE VALUE FLOOR · ELECTRIC</span><span class="cap">CAP $35,000</span></div>
-        <p class="angle">The electric appliances. The value case leads: price, EPA range and battery health — the drop vs MSRP is still scored.</p>
-        <div class="goodbar"><b>WHAT GOOD LOOKS LIKE</b><span>Value stretched here: under $28k · 220+ mi EPA · documented battery health where it exists. The 7.0s floor applies here too — only full-size trucks and SUVs are exempt. Undocumented packs are not.</span></div>
+        <p class="angle">The electric appliances. The value case leads: price, EPA range and battery health.</p>
         <div class="grid">
 
           <article class="card">

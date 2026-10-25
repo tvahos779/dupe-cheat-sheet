@@ -38,21 +38,25 @@ h1,h2,h3{font-family:"Barlow Condensed","Barlow",sans-serif;text-transform:upper
 a{color:var(--accent-ink)}
 .num,.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 
-/* cross-sheet nav */
-.xnav{display:flex;flex-wrap:wrap;gap:9px;padding:16px 0 6px;align-items:center}
-.xnav a{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;text-decoration:none;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:10px 17px;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:.015em;box-shadow:0 1px 2px rgba(18,26,34,.05);transition:background .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease;-webkit-tap-highlight-color:transparent}
-.xnav a:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--accent-ink);background:color-mix(in srgb,var(--panel) 92%,var(--accent) 8%);box-shadow:var(--shadow);transform:translateY(-1px)}
-.xnav a:active{transform:translateY(0);box-shadow:none}
+/* cross-sheet nav — contained segmented bar */
+.xnav{display:flex;flex-wrap:wrap;gap:4px;padding:4px;margin-top:14px;align-items:center;border:1px solid var(--line);border-radius:var(--pill);background:color-mix(in srgb,var(--panel) 78%,transparent);box-shadow:var(--shadow)}
+.xnav a{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;text-decoration:none;color:var(--muted);background:transparent;border:1px solid transparent;border-radius:var(--pill);padding:9px 16px;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:.015em;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease;-webkit-tap-highlight-color:transparent}
+.xnav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--line);flex:0 0 auto;transition:background .2s ease}
+.xnav a:hover{color:var(--accent-ink);background:color-mix(in srgb,var(--accent) 10%,transparent);transform:translateY(-1px)}
+.xnav a:hover::before{background:var(--accent)}
+.xnav a:active{transform:translateY(0)}
 .xnav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .xnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 38%,transparent),0 1px 3px rgba(18,26,34,.12);font-weight:700}
-.xnav a.on::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.22);flex:0 0 auto}
+.xnav a.on::before{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.22)}
 .xnav a.on:hover{color:#fff;background:color-mix(in srgb,var(--accent) 92%,#000 8%);border-color:color-mix(in srgb,var(--accent) 92%,#000 8%);transform:translateY(-1px)}
-@media (max-width:560px){.xnav{gap:7px;padding:12px 0 4px}.xnav a{min-height:44px;padding:11px 15px;font-size:14px;flex:1 1 auto}}
+@media (max-width:560px){.xnav{gap:3px;padding:3px;margin-top:12px;border-radius:22px}.xnav a{min-height:44px;padding:11px 13px;font-size:14px;flex:1 1 auto}}
 
 /* sticky section nav */
 nav.secnav{position:sticky;top:0;z-index:20;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25);padding:8px 0 6px;display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 nav.secnav a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:var(--pill);padding:4px 11px;font-weight:600;font-size:13.5px;line-height:1.35;transition:border-color .2s ease,color .2s ease}
 nav.secnav a:hover{border-color:var(--accent);color:var(--accent)}
+nav.secnav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){nav.secnav a{min-height:44px;display:inline-flex;align-items:center;padding:10px 13px}section,.subhead{scroll-margin-top:168px}}
 
 /* hero */
 .hero{padding:26px 0 6px}
@@ -77,7 +81,7 @@ section{margin-top:44px;scroll-margin-top:76px}
 .pill.out{opacity:.75}
 
 /* generic card grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;transition:transform .18s ease,box-shadow .18s ease}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
 .card h3{font-size:23px;line-height:1.05}
@@ -88,14 +92,14 @@ section{margin-top:44px;scroll-margin-top:76px}
 .card .top{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .price{font-weight:700;font-size:27px;letter-spacing:-.015em;line-height:1.1}
 .price small{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
-.btn{display:inline-block;margin-top:4px;text-decoration:none;background:var(--ink);color:var(--bg);font-weight:700;font-size:14.5px;padding:9px 16px;border-radius:10px;text-align:center;transition:background .2s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:4px;text-decoration:none;background:var(--ink);color:var(--bg);font-weight:700;font-size:14.5px;padding:9px 16px;border-radius:10px;text-align:center;transition:background .2s ease}
 .btn:hover{background:var(--accent);color:#fff}
 .btn.ghost{background:var(--panel2);color:var(--ink)}
 .btn.ghost:hover{background:var(--accent);color:#fff}
 
 /* flagged spotlight */
 .flag-wrap{display:grid;grid-template-columns:1fr;gap:16px}
-@media (min-width:900px){ .flag-wrap{grid-template-columns:1fr 1fr} }
+@media (min-width:900px){ .flag-wrap{grid-template-columns:1fr 1fr} .flag-wrap>.flag:last-child:nth-child(odd){grid-column:1/-1} }
 .flag{position:relative;background:var(--panel);border:2px solid var(--accent);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
 .flag:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
 .flag::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--accent)}
@@ -107,9 +111,10 @@ section{margin-top:44px;scroll-margin-top:76px}
 .flag .playbook b{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--accent-ink)}
 .flag .xrefs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .flag .price{font-size:34px}
+.flag .src{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);margin:12px 0 0}
 
 /* events sub-headings */
-.subhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:36px 0 16px;padding-bottom:7px;border-bottom:1px solid var(--line);scroll-margin-top:76px}
+.subhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:40px 0 16px;padding-bottom:7px;border-bottom:1px solid var(--line);scroll-margin-top:76px}
 .subhead.first{margin-top:2px}
 .subhead h3{font-size:25px;line-height:1}
 .subhead .tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.13em;text-transform:uppercase;margin-left:auto;text-align:right}
@@ -128,7 +133,7 @@ section{margin-top:44px;scroll-margin-top:76px}
 @media (max-width:560px){ .wkrow{flex-direction:column} .wkrow .daybadge{width:auto;display:flex;gap:8px;align-items:baseline;padding:6px 12px;align-self:flex-start} .wkrow .right{text-align:left} }
 
 /* ticket rows */
-.trow{display:grid;grid-template-columns:1fr auto;gap:6px 18px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin-bottom:12px;transition:transform .18s ease,box-shadow .18s ease}
+.trow{display:grid;grid-template-columns:1fr auto;gap:6px 18px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin-bottom:16px;transition:transform .18s ease,box-shadow .18s ease}
 .trow:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
 .trow h3{font-size:23px;line-height:1.05}
 .trow .meta{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
@@ -160,6 +165,16 @@ section{margin-top:44px;scroll-margin-top:76px}
 .ufcplay b{color:var(--accent-ink)}
 .trow .pr .btn{margin-top:8px}
 
+/* card photos — one 16:9 crop everywhere */
+.cardpic{display:block;line-height:0}
+.cardpic img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:var(--panel2)}
+.trow>.cardpic{grid-column:1/-1}
+.flag>.cardpic{margin-bottom:14px}
+.cardpic img{animation:cardfade .5s ease-out both}
+@keyframes cardfade{from{opacity:0}to{opacity:1}}
+@media print{ .cardpic img{animation:none} }
+@media (prefers-reduced-motion: reduce){ .cardpic img{animation:none !important} .card:hover,.flag:hover,.trow:hover,.wkrow:hover{transform:none !important} }
+
 
 footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:14px;color:var(--muted)}
 footer p{margin:0 0 8px;max-width:85ch}
@@ -180,6 +195,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     <a href="#flagged">Flagged</a>
     <a href="#weekend">Weekend</a>
     <a href="#hot">Hot</a>
+    <a href="#comedy">Comedy</a>
     <a href="#bears">Bears</a>
     <a href="#onsale">On Sale</a>
     <a href="#scene">Scene</a>
@@ -201,6 +217,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     <div class="flag-wrap">
 
       <article class="flag">
+        <picture class="cardpic"><source srcset="assets/img_8500dac2f2d4a893.webp" type="image/webp"><img src="assets/img_9fec30e8f1f1c08f.jpg" alt="Dirty Heads performing live" width="960" height="540" decoding="async"></picture>
         <div class="flagtag">🚩 Q101 Twisted Xmas · Aragon Ballroom</div>
         <h3>Dirty Heads</h3>
         <div class="meta">Tue · Dec 8, 2026 · Byline Bank Aragon Ballroom · Chicago</div>
@@ -211,10 +228,11 @@ footer p{margin:0 0 8px;max-width:85ch}
           <a class="btn" href="https://www.ticketmaster.com/dirty-heads-tickets/artist/1419273" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
           <a class="btn ghost" href="#merch">Fresh merch: “7 Seas” blue vinyl ↓</a>
         </div>
-        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
+        <p class="src">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
       </article>
 
       <article class="flag">
+        <picture class="cardpic"><source srcset="assets/img_97c822f3abf7ff4f.webp" type="image/webp"><img src="assets/img_5e18b017bfe52284.jpg" alt="Stick Figure performing live" width="960" height="540" loading="lazy" decoding="async"></picture>
         <div class="flagtag">🚩 On sale today · Grand Rapids road trip</div>
         <h3>Stick Figure</h3>
         <div class="meta">Fri · Jun 11, 2027 · Acrisure Amphitheater · Grand Rapids, MI</div>
@@ -225,10 +243,11 @@ footer p{margin:0 0 8px;max-width:85ch}
           <a class="btn" href="https://www.ticketmaster.com/stick-figure-tickets/artist/1764984" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
           <a class="btn ghost" href="#cruises">Also sailing: Closer to the Sun ↓</a>
         </div>
-        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
+        <p class="src">Price via Ticketmaster artist page · checked Oct 23, 2026</p>
       </article>
 
 <article class="flag">
+        <picture class="cardpic"><source srcset="assets/img_a36b1bf8b99e327c.webp" type="image/webp"><img src="assets/img_80c734862e6fdcb3.jpg" alt="Sublime performing live with Jakob Nowell" width="960" height="540" loading="lazy" decoding="async"></picture>
         <div class="flagtag">🚩 Aragon Ballroom · With Soul Coughing</div>
         <h3>Sublime</h3>
         <div class="meta">Sat · Dec 12, 2026 · Byline Bank Aragon Ballroom · Chicago</div>
@@ -238,7 +257,21 @@ footer p{margin:0 0 8px;max-width:85ch}
           <a class="btn" href="https://seatgeek.com/sublime-tickets" target="_blank" rel="noopener">Tickets — SeatGeek</a>
           <a class="btn ghost" href="#cruises">Also sailing: Reef Madness Cruise ↓</a>
         </div>
-        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">Date &amp; venue via SeatGeek / Songkick · checked Oct 24, 2026</p>
+        <p class="src">Date &amp; venue via SeatGeek / Songkick · checked Oct 24, 2026</p>
+      </article>
+
+      <article class="flag">
+        <picture class="cardpic"><source srcset="assets/img_1e4d2de4e1f28a32.webp" type="image/webp"><img src="assets/img_db98a9479cb4fe0e.jpg" alt="G Herbo performing live" width="960" height="540" loading="lazy" decoding="async"></picture>
+        <div class="flagtag">🚩 United Center · One night, eight names</div>
+        <h3>Swerv &amp; Friends Part 2</h3>
+        <div class="meta">Fri · Nov 6, 2026 · 8:00 PM · United Center · Chicago</div>
+        <p>G Herbo's hometown arena night, stacked top to bottom: Yung Miami, Young Thug, GloRilla, YTB Fatt, Fabolous, Belly Gang Kushington, and Peezy all on one bill — one ticket covers the whole lineup.</p>
+        <div class="price">$107 <small>from · all-in, fees included</small></div>
+        <div class="playbook"><b>The play</b> Eight names at $107 all-in beats any single-headliner date this fall on per-act math alone. Stacked arena bills hold their floor — buy primary now; if you're price-hunting, the upper bowl at the get-in price is the value seat, not a compromise.</div>
+        <div class="xrefs">
+          <a class="btn" href="https://www.ticketmaster.com/swerv-friends-part-2-chicago-illinois-11-06-2026/event/04006535E5572951" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+        </div>
+        <p class="src">Price via Ticketmaster event page · checked Oct 24, 2026</p>
       </article>
 
     </div>
@@ -309,6 +342,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     <div class="sec-head"><h2>Hot Tickets</h2><span class="tag">Chicago + McHenry County · prices checked Oct 22–23, 2026</span></div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_f1d5128668834b3d.webp" type="image/webp"><img src="assets/img_4383e8471f90c71d.jpg" alt="Soldier Field during a Bears game" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Heat</span></div>
         <h3>Bears vs Buccaneers — Sunday Night Football</h3>
@@ -320,6 +354,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_0de2eac6d3b0354c.webp" type="image/webp"><img src="assets/img_fd54aad0017b5430.jpg" alt="Stevie Wonder performing live" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Heat</span></div>
         <h3>Stevie Wonder — Songs in the Key of Life, 50th Anniversary</h3>
@@ -331,6 +366,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_65b31627d9da7809.webp" type="image/webp"><img src="assets/img_a135c0f084c44bf4.jpg" alt="John Summit performing live" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Deal</span></div>
         <h3>John Summit — United Center, 2 Nights</h3>
@@ -342,6 +378,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_4fbc0b025c88ea50.webp" type="image/webp"><img src="assets/img_28fc0e9be7a2b117.jpg" alt="MANÁ performing live" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Deal</span></div>
         <h3>MANÁ — Allstate Arena</h3>
@@ -353,6 +390,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_1f5ffe35206456f4.webp" type="image/webp"><img src="assets/img_e10adff892a9dd71.jpg" alt="Blackhawks game at the United Center" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Deal</span></div>
         <h3>Blackhawks vs Kings — United Center</h3>
@@ -364,6 +402,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_57bd767dc55fcad2.webp" type="image/webp"><img src="assets/img_5773888566865fca.jpg" alt="Raue Center for the Arts auditorium, Crystal Lake" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill gold">Local</span><span class="pill deal">Deal</span></div>
         <h3>Anthem's Grand Illusion — Styx Tribute · Raue Center</h3>
@@ -386,11 +425,163 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
   </section>
 
+  <!-- ============ COVER CHARGE ============ -->
+  <section id="cover">
+    <div class="sec-head"><h2>Cover Charge</h2><span class="tag">No ticket, just the door · Chicago blues &amp; jazz rooms · checked Oct 24, 2026</span></div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_f5cc9294f6cad53b.webp" type="image/webp"><img src="assets/img_9e1728146d30a87f.jpg" alt="Inside the Green Mill jazz club, Chicago" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill acc">Cover</span></div>
+        <h3>Soul Message Band — The Green Mill</h3>
+        <div class="meta">Sun · Oct 25 · 8:00pm–midnight · 4802 N Broadway, Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$10</div><div class="meta">cover · at the door</div></div>
+      <p class="judge">Chris Foreman on Hammond B-3, Lee Rothenberg on guitar, Greg Rockingham on drums — the Green Mill's Sunday-night organ trio is an institution, and a ten spot at the door is all it takes. <b>Cash-only room, so bring cash</b>; seats are first-come, first-served, so arrive early.</p>
+      <div class="src">Delmark event listing · Green Mill (greenmilljazz.com) · as of Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_571f45c5334e1415.webp" type="image/webp"><img src="assets/img_60fafa639f7d88a0.jpg" alt="Rosa's Lounge blues club, Chicago" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill acc">Cover</span></div>
+        <h3>Lil Ed Williams — Rosa's Lounge</h3>
+        <div class="meta">Thu · Oct 29 · 9:30pm show · 3420 W Armitage Ave, Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$20</div><div class="meta">at the door</div></div>
+      <p class="judge">Electrifying, raucous pure Chicago blues from Lil Ed of the Blues Imperials, with an all-star band including Sumito Ariyoshi on piano. Doors at 8pm, first-come shared-table seating — <b>get there 8–9pm to secure a seat</b>. Door purchase available if not sold out; advance purchase recommended. <b>Tip:</b> the 11pm Rosa's After Hours late set is just $10 at the door.</p>
+      <div class="src">Rosa's Lounge event page (rosaslounge.com/events/142895) · Rosa's calendar · as of Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_488bc8c5e4128a1a.webp" type="image/webp"><img src="assets/img_9bce19501d423b45.jpg" alt="Buddy Guy's Legends blues club, Chicago — Buddy Guy performing on its stage" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill acc">Cover</span></div>
+        <h3>Cash Box Kings — Buddy Guy's Legends</h3>
+        <div class="meta">Sun · Nov 1 · Evening show · 700 S Wabash Ave, Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$15</div><div class="meta">cover · at the door</div></div>
+      <p class="judge">One of the best blues bands in the land — 25 Blues Music Award nominations, Blues Band of the Year 2023 — carrying classic Chicago blues with new vocalist Cameron Webb. <b>21+ after 8pm with valid photo ID</b>; cover is payable at the door the night of the show, and seating is first-come, first-served, so arrive early.</p>
+      <div class="src">Bandsintown event page · Buddy Guy's Legends FAQ (buddyguy.com/faq) · as of Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_3439d33904518a5a.webp" type="image/webp"><img src="assets/img_178fd15fe60fc72a.jpg" alt="Sideouts Sports Tavern outdoor stage, Island Lake" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill acc">Cover</span><span class="pill gold">Local</span></div>
+        <h3>My Metal Heart — Sideouts Sports Tavern</h3>
+        <div class="meta">Sat · Nov 7 · 8:30pm · Island Lake</div>
+      </div>
+      <div class="pr"><div class="price" style="font-size:20px">Cover: unknown</div><div class="meta">not posted online</div></div>
+      <p class="judge">A local night out in Island Lake — metal covers close to home instead of the run downtown. The cover price and door terms for this show aren't posted anywhere we could verify, so <b>check with the venue before going</b> rather than counting on a number.</p>
+      <div class="src">Sideouts event listing · cover &amp; door terms not published · as of Oct 24, 2026</div>
+    </div>
+  </section>
+
+  <!-- ============ COMEDY SHOWS ============ -->
+  <section id="comedy">
+    <div class="sec-head"><h2>Comedy Shows</h2><span class="tag">Stand-up &amp; improv · Chicago + McHenry County · prices checked Oct 24, 2026</span></div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_8fdf8d28cf5f5525.webp" type="image/webp"><img src="assets/img_79c4c14be311987f.jpg" alt="Brett Goldstein performing stand-up" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Tomorrow night</span></div>
+        <h3>Brett Goldstein — Sex, Death &amp; Small Talk</h3>
+        <div class="meta">Sun · Oct 25, 2026 · 7:00 PM · The Chicago Theatre · Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$100.55</div><div class="meta">from · per ticket · all-in, fees included</div><a class="btn" href="https://www.ticketmaster.com/brett-goldstein-sex-death-small-talk-chicago-illinois-10-25-2026/event/0700650EA6B35BAA" target="_blank" rel="noopener">Tickets — Ticketmaster</a></div>
+      <p class="judge">Ted Lasso's Roy Kent doing stand-up in a landmark room — and it's <b>tomorrow night</b>. The priciest ticket in this section, but a TV name in a 3,600-seat theatre is exactly the kind of show that doesn't come back around at this size.</p>
+      <div class="src">Ticketmaster · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_45724679ce72ccb1.webp" type="image/webp"><img src="assets/img_99d75ca1f89ff279.jpg" alt="Joey Diaz performing stand-up" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <h3>Joey Diaz — 62 &amp; Still Slinging</h3>
+        <div class="meta">Thu · Nov 5, 2026 · 8:00 PM · The Chicago Theatre · Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$66.35</div><div class="meta">from · per ticket · all-in, balcony</div><a class="btn" href="https://www.ticketmaster.com/joey-diaz-62-still-slinging-chicago-illinois-11-05-2026/event/070064C49E4B482E" target="_blank" rel="noopener">Tickets — Ticketmaster</a></div>
+      <p class="judge">Unfiltered, story-driven hour from Uncle Joey. The all-in breaks down to <b>$49.50 face + $16.85 service fee</b> — the fee is a third of the ticket, which is the Chicago Theatre tax, not a resale markup.</p>
+      <div class="src">Ticketmaster · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_d882c7b69b146fc8.webp" type="image/webp"><img src="assets/img_d64862e8a19c668d.jpg" alt="Bert Kreischer performing stand-up" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <h3>Bert Kreischer — Permission to Party</h3>
+        <div class="meta">Fri · Nov 6, 2026 · 7:00 PM · The Chicago Theatre · Chicago · also Sat Nov 7</div>
+      </div>
+      <div class="pr"><div class="price">$58.65</div><div class="meta">from · per ticket · all-in, balcony</div><a class="btn" href="https://www.ticketmaster.com/bert-kreischer-permission-to-party-chicago-illinois-11-06-2026/event/0700647FBB075CC2" target="_blank" rel="noopener">Tickets — Ticketmaster</a></div>
+      <p class="judge">An arena-level party comic in a theatre — Kreischer usually plays rooms three times this size, so the Chicago Theatre dates are the close-up version. Two nights on the books; Friday's balcony is the get-in.</p>
+      <div class="src">Ticketmaster · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_637b06299d5a1661.webp" type="image/webp"><img src="assets/img_5ac660656d656c4b.jpg" alt="Ron White performing stand-up" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill deal">Best value</span></div>
+        <h3>Ron White</h3>
+        <div class="meta">Sun · Nov 8, 2026 · 7:00 PM · The Chicago Theatre · Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$39.55</div><div class="meta">from · per ticket · all-in, balcony · main floor $52.95</div><a class="btn" href="https://www.ticketmaster.com/ron-white-chicago-illinois-11-08-2026/event/070064C4DA187D04" target="_blank" rel="noopener">Tickets — Ticketmaster</a></div>
+      <p class="judge">Blue Collar veteran, scotch-and-cigar storytelling, Sunday night. <b>The best value big-room ticket in this section</b> — under forty bucks all-in for a name comic at the Chicago Theatre doesn't happen often.</p>
+      <div class="src">Ticketmaster · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_57bd767dc55fcad2.webp" type="image/webp"><img src="assets/img_5773888566865fca.jpg" alt="Raue Center for the Arts auditorium, Crystal Lake" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill gold">Local</span></div>
+        <h3>Lucy's Comedy — Brian Noonan</h3>
+        <div class="meta">Fri · Nov 13, 2026 · 8:00 PM · Raue Center for the Arts · Crystal Lake</div>
+      </div>
+      <div class="pr"><div class="price">$37</div><div class="meta">from · per ticket · all-in online</div><a class="btn" href="https://events.rauecenter.org/event-genres/comedy/" target="_blank" rel="noopener">Tickets — Raue Center</a></div>
+      <p class="judge">The best stand-up in the burbs at a local price, no trip downtown. Brian Noonan headlines, Catherine Strauss features, Brian Williams hosts. The $29 ticket already includes the $4 box-office fee; add the <b>$8 order fee</b> and one ticket online is $37. The $8 is per order, not per ticket — two tickets online cost $66 total ($33 each). At the box-office window, one ticket is $29, no order fee.</p>
+      <div class="src">Raue Center comedy listings · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_57bd767dc55fcad2.webp" type="image/webp"><img src="assets/img_5773888566865fca.jpg" alt="Raue Center for the Arts auditorium, Crystal Lake" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill gold">Local</span></div>
+        <h3>Greenroom Improv</h3>
+        <div class="meta">Sat · Nov 14, 2026 · 7:00 PM · Raue Center for the Arts · Crystal Lake</div>
+      </div>
+      <div class="pr"><div class="price">$32</div><div class="meta">adult · $25 student · per ticket, all-in online</div><a class="btn" href="https://events.rauecenter.org/event-genres/comedy/" target="_blank" rel="noopener">Tickets — Raue Center</a></div>
+      <p class="judge">20+ years of unscripted improv in Crystal Lake — the troupe knows this room and this crowd. The $24 adult ticket already includes the $4 box-office fee; add the <b>$8 order fee</b> and one adult ticket online is $32 (student: $17 + $8 = $25). The $8 is per order, not per ticket — two adult tickets online cost $56 total ($28 each); two student tickets cost $42 total ($21 each). At the box-office window, one ticket is $24 adult / $17 student, no order fee. The cheapest full night out in the county.</p>
+      <div class="src">Raue Center comedy listings · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_2482d9a6d7f6ee87.webp" type="image/webp"><img src="assets/img_29e1bf7d96e27b9a.jpg" alt="George Lopez performing stand-up" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <h3>George Lopez</h3>
+        <div class="meta">Sat · Nov 21, 2026 · 7:00 PM · The Chicago Theatre · Chicago</div>
+      </div>
+      <div class="pr"><div class="price">$53.25</div><div class="meta">from · per ticket · all-in, balcony/box · main floor $66.65</div><a class="btn" href="https://www.ticketmaster.com/george-lopez-chicago-illinois-11-21-2026/event/070064B3A59D32D9" target="_blank" rel="noopener">Tickets — Ticketmaster</a></div>
+      <p class="judge">A sitcom legend on a Saturday night — the only weekend-prime slot in the Chicago Theatre run, and the balcony/box get-in is still in the low fifties all-in.</p>
+      <div class="src">Ticketmaster · checked Oct 24, 2026</div>
+    </div>
+
+    <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_57bd767dc55fcad2.webp" type="image/webp"><img src="assets/img_5773888566865fca.jpg" alt="Raue Center for the Arts auditorium, Crystal Lake" width="960" height="540" loading="lazy" decoding="async"></picture>
+      <div>
+        <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill gold">Local</span><span class="pill">Holiday</span></div>
+        <h3>Jingle Belles Comedy</h3>
+        <div class="meta">Thu · Dec 10, 2026 · 7:00 PM · Raue Center for the Arts · Crystal Lake</div>
+      </div>
+      <div class="pr"><div class="price">$47</div><div class="meta">from · per ticket · all-in online</div><a class="btn" href="https://events.rauecenter.org/event-genres/comedy/" target="_blank" rel="noopener">Tickets — Raue Center</a></div>
+      <p class="judge">Holiday-themed stand-up with recognizable Chicago media names — Ana Belaval, Andrea Darlas, and Miriam Naponelli, hosted by John DaCosse. The $39 ticket already includes the $4 box-office fee; add the <b>$8 order fee</b> and one ticket online is $47. The $8 is per order, not per ticket — two tickets online cost $86 total ($43 each). At the box-office window, one ticket is $39, no order fee.</p>
+      <div class="src">Raue Center comedy listings · checked Oct 24, 2026</div>
+    </div>
+  </section>
+
   <!-- ============ BEARS TICKETS ============ -->
   <section id="bears">
     <div class="sec-head"><h2>🐻 Bears Tickets</h2><span class="tag">Remaining home games · Soldier Field · prices checked Oct 23–24, 2026</span></div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_f1d5128668834b3d.webp" type="image/webp"><img src="assets/img_4383e8471f90c71d.jpg" alt="Soldier Field during a Bears game" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">Sunday Night Football</span><span class="pill">Primetime</span></div>
         <h3>Bears vs Buccaneers</h3>
@@ -402,6 +593,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_f1d5128668834b3d.webp" type="image/webp"><img src="assets/img_4383e8471f90c71d.jpg" alt="Soldier Field during a Bears game" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Sunday matinee</span></div>
         <h3>Bears vs Saints</h3>
@@ -412,8 +604,9 @@ footer p{margin:0 0 8px;max-width:85ch}
       <div class="src">TixTracer / TicketNetwork · SeatGeek · Nightout · checked Oct 23–24, 2026</div>
     </div>
 
-    <div class="flag-wrap" style="margin-bottom:12px">
+    <div class="flag-wrap" style="margin-bottom:16px">
       <article class="flag" style="grid-column:1/-1">
+        <picture class="cardpic"><source srcset="assets/img_f1d5128668834b3d.webp" type="image/webp"><img src="assets/img_4383e8471f90c71d.jpg" alt="Soldier Field during a Bears game" width="960" height="540" loading="lazy" decoding="async"></picture>
         <div class="flagtag">🐻 Christmas Day · The Revenge Game</div>
         <h3>Bears vs Packers</h3>
         <div class="meta">Fri · Dec 25, 2026 · 12:00 PM CT · Soldier Field</div>
@@ -424,11 +617,12 @@ footer p{margin:0 0 8px;max-width:85ch}
           <a class="btn ghost" href="https://tixtracer.com/tickets/chicago-bears" target="_blank" rel="noopener">TixTracer lane</a>
           <a class="btn ghost" href="https://www.vividseats.com/chicago-bears-tickets-chicago-soldier-field-3-2-2026/production/6488762" target="_blank" rel="noopener">Vivid Seats</a>
         </div>
-        <p class="src" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:12px">TixTracer / TicketNetwork · SeatGeek · Vivid Seats · checked Oct 23–24, 2026</p>
+        <p class="src">TixTracer / TicketNetwork · SeatGeek · Vivid Seats · checked Oct 23–24, 2026</p>
       </article>
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_f1d5128668834b3d.webp" type="image/webp"><img src="assets/img_4383e8471f90c71d.jpg" alt="Soldier Field during a Bears game" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Season finale</span><span class="pill gold">Date TBC</span></div>
         <h3>Bears vs Lions</h3>
@@ -479,6 +673,39 @@ footer p{margin:0 0 8px;max-width:85ch}
         <h3>SOMBR — Fiserv Forum Nov 3 / United Center Nov 4</h3>
         <p>The Milwaukee-the-night-before pattern again: if the UC floor runs tight, Fiserv Forum an hour and change up I-94 is the pressure valve. Same show, usually a softer room price.</p>
         <p class="src">Ticketmaster / Fiserv Forum listings · Oct 23, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span></div>
+        <h3>Vic Mensa — Garcia's Chicago</h3>
+        <div class="price">$48 <small>from · fees extra</small></div>
+        <p>Wed · Oct 28, 2026 · 8:00 PM · Garcia's Chicago, 1001 W Washington Blvd. Chicago's own in a small West Loop room — the intimate version of a hometown show. Heads up: <b>the $48 is the pre-fee figure — fees are extra</b> on top of it.</p>
+        <a class="btn" href="https://www.ticketmaster.com/vic-mensa-chicago-illinois-10-28-2026/event/0400652F6BB81FE9" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+        <p class="src">Ticketmaster · checked Oct 24, 2026</p>
+      </article>
+      <article class="card">
+        <picture class="cardpic"><source srcset="assets/img_afbdf5d89bcc5924.webp" type="image/webp"><img src="assets/img_a790a2140371dc69.jpg" alt="Vince Staples performing live" width="960" height="540" loading="lazy" decoding="async"></picture>
+        <div class="top"><span class="pill acc">On sale now</span></div>
+        <h3>Vince Staples — Cry Baby Tour</h3>
+        <div class="price">$81.25 <small>from · GA · all-in, fees included</small></div>
+        <p>Sun · Nov 8, 2026 · 7:30 PM · Riviera Theatre, 4746 N Racine Ave, Chicago · 17 and over. Tiers: GA from $81.25 all-in, upper level from $85 all-in, premium from $141.25 all-in. The Riv is the right-sized room for Vince — sharp, funny, zero wasted motion live.</p>
+        <a class="btn" href="https://www.ticketmaster.com/event/Z7r9jZ1A7Ptjs" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+        <p class="src">Ticketmaster · checked Oct 24, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span></div>
+        <h3>Skilla Baby — The Price of Fame Tour</h3>
+        <div class="price">$29.68 <small>from · fees extra</small></div>
+        <p>Tue · Nov 17, 2026 · House of Blues Chicago, 329 N Dearborn St · Doors 7:00 PM, show 8:00 PM · 17 and over with valid photo ID · general admission standing room. Detroit's smoothest live wire at a club price — but heads up: <b>the $29.68 is the pre-fee figure — fees are extra</b>.</p>
+        <a class="btn" href="https://www.ticketmaster.com/skilla-baby-the-price-of-fame-chicago-illinois-11-17-2026/event/0400651AD91725DE" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+        <p class="src">Ticketmaster · checked Oct 24, 2026</p>
+      </article>
+      <article class="card">
+        <div class="top"><span class="pill acc">On sale now</span></div>
+        <h3>Pivot Gang x Saba — John Walt Day</h3>
+        <div class="price">$65 <small>from · fees extra</small></div>
+        <p>Sat · Dec 19, 2026 · 8:00 PM · Thalia Hall, 1807 S Allport St, Chicago. John Walt Day plus the 10-year <i>Bucket List</i> celebration — a West Side homecoming in Pilsen's big room. Heads up: <b>fees are extra</b> — the verified figures are resale/partner prices running $65–$67.71, and no all-in figure is confirmed.</p>
+        <a class="btn" href="https://www.ticketmaster.com/saba-tickets/artist/2035530" target="_blank" rel="noopener">Tickets — Ticketmaster</a>
+        <p class="src">Ticketmaster · checked Oct 24, 2026</p>
       </article>
     </div>
   </section>
@@ -962,6 +1189,7 @@ footer p{margin:0 0 8px;max-width:85ch}
       </article>
 
       <article class="card">
+        <picture class="cardpic"><source srcset="assets/img_57bd767dc55fcad2.webp" type="image/webp"><img src="assets/img_5773888566865fca.jpg" alt="Raue Center for the Arts auditorium, Crystal Lake" width="960" height="540" loading="lazy" decoding="async"></picture>
         <div class="top"><span class="pill deal">NYE · Local</span><span class="meta">Thu · Dec 31 · 7:30 PM</span></div>
         <h3>American English — Raue Center</h3>
         <div class="meta">Crystal Lake · McHenry County</div>
@@ -1106,6 +1334,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_a6e25bbe5f07f4e6.webp" type="image/webp"><img src="assets/img_7bc556d801be5d2d.jpg" alt="Ciryl Gane, UFC heavyweight" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">PPV</span><span class="pill">Two title fights</span></div>
         <h3>UFC 334 — Gane vs Hokit</h3>
@@ -1117,6 +1346,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_489ba4d81c76750e.webp" type="image/webp"><img src="assets/img_03b67ca03677b77c.jpg" alt="Jiří Procházka, UFC light heavyweight" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill">Fight Night</span><span class="pill gold">Travel pick</span></div>
         <h3>UFC Fight Night — Prochazka vs Stirling</h3>
@@ -1128,6 +1358,7 @@ footer p{margin:0 0 8px;max-width:85ch}
     </div>
 
     <div class="trow">
+      <picture class="cardpic"><source srcset="assets/img_2568c0f500186337.webp" type="image/webp"><img src="assets/img_3e74faad34fca288.jpg" alt="Charles Oliveira in the UFC Octagon" width="960" height="540" loading="lazy" decoding="async"></picture>
       <div>
         <div class="top" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><span class="pill heat">PPV</span><span class="pill">BMF title</span></div>
         <h3>UFC 335 — Oliveira vs Lopes</h3>
@@ -1156,11 +1387,6 @@ footer p{margin:0 0 8px;max-width:85ch}
       <p><b>The APEX exception:</b> APEX Fight Nights aren't normal inventory — the room is mostly VIP and hospitality, public listings are thin, and get-ins start where arena uppers end. Treat $250–$400 as the going rate, and expect VIP packages, not discounts, as the upgrade path.</p>
     </div>
   </section>
-
-  <footer>
-    <p><b>Sheet 5 — Tickets.</b> Friday, October 23, 2026. Ticket prices were checked Oct 22–24 and move fast — re-check before you buy.</p>
-    <p>Sources: TixTracer, Ticketmaster, Vivid Seats, SeatGeek, JamBase, USA Today, Raue Center, venue calendars, official artist stores (TOOL, Linkin Park/Warner Records, 311, Iration, Puscifer, Veeps, Pelagic), Sixthman and event official sites, TickPick, UFC.com, Visit Qatar, McHenry Life, Reuters, ESPN.</p>
-  </footer>
 
 </div>
 </body>

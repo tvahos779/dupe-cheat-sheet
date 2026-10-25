@@ -72,16 +72,32 @@
       img{display:block;max-width:100%}
       .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 
-      /* ---------- cross-sheet nav ---------- */
-      nav.xsheet-nav{background:var(--paper);border-bottom:1px solid var(--line)}
-      nav.xsheet-nav .wrap{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding-top:8px;padding-bottom:8px}
-      nav.xsheet-nav .xs-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-right:2px}
-      nav.xsheet-nav a{
-        font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:500;
-        color:var(--ink-soft);text-decoration:none;padding:5px 12px;border-radius:99px;border:1px solid var(--line);
+      /* ---------- cross-sheet nav — contained segmented bar ---------- */
+      nav.xsheet-nav{background:var(--paper);padding:12px 0 4px}
+      nav.xsheet-nav .wrap{
+        display:flex;gap:4px;flex-wrap:wrap;align-items:center;
+        background:var(--panel);border:1px solid var(--line);border-radius:999px;
+        padding-top:4px;padding-bottom:4px;box-shadow:0 1px 3px rgba(23,36,43,.08);
       }
-      nav.xsheet-nav a:hover{border-color:var(--line-strong);color:var(--ink)}
-      nav.xsheet-nav a.active{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+      nav.xsheet-nav .xs-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 4px 0 8px}
+      nav.xsheet-nav a{
+        display:inline-flex;align-items:center;gap:7px;min-height:38px;white-space:nowrap;
+        font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;letter-spacing:.02em;
+        color:var(--ink-soft);text-decoration:none;padding:7px 14px;border-radius:999px;border:1px solid transparent;
+        transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
+      }
+      nav.xsheet-nav a::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.35;flex:0 0 auto;transition:opacity .2s ease}
+      nav.xsheet-nav a:hover{background:var(--panel-2);color:var(--ink);transform:translateY(-1px)}
+      nav.xsheet-nav a:hover::before{opacity:.7}
+      nav.xsheet-nav a:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+      nav.xsheet-nav a.active{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:700;box-shadow:0 2px 10px rgba(23,36,43,.28)}
+      nav.xsheet-nav a.active::before{background:var(--paper);opacity:.9}
+      nav.xsheet-nav a.active:hover{background:var(--ink);color:var(--paper)}
+      @media (max-width:640px){
+        nav.xsheet-nav{padding-top:10px}
+        nav.xsheet-nav .wrap{gap:3px;border-radius:26px}
+        nav.xsheet-nav a{flex:1 1 auto;justify-content:center;min-height:44px;padding:10px 11px;font-size:12.5px;gap:6px}
+      }
 
       /* ---------- masthead ---------- */
       .masthead{border-bottom:3px solid var(--line-strong);padding:18px 0 0}
@@ -676,6 +692,23 @@
             animation-range:entry 0% entry 45%;
           }
         }
+      }
+
+      /* ---------- polish pass — v4: card alignment + tap targets ---------- */
+      /* booking link + source line pin to the card foot, so cards in a row share one baseline */
+      .hunt-card .hc-link{margin-top:auto;padding-top:12px}
+      .hunt-card .hc-top{align-items:center;row-gap:6px}
+      section.dark .sec-head{margin-bottom:26px}
+      .hunt-card .hc-photo img{object-position:center}
+
+      /* mobile — 44px minimum tap targets on every pill, chip and card link */
+      @media (max-width:640px){
+        nav.sheet-nav a{min-height:44px;display:inline-flex;align-items:center}
+        .chip{min-height:44px;padding:10px 16px}
+        .fun-btn{min-height:44px;display:inline-flex;align-items:center}
+        .jump-list a{min-height:44px;display:inline-flex;align-items:center}
+        .hunt-card .hc-link{min-height:44px;display:inline-flex;align-items:center}
+        .food-card .fc-link a{min-height:44px;display:inline-flex;align-items:center}
       }
     </style>
   </head>
@@ -1590,7 +1623,7 @@
            note:"Nov 26–29, 2026: 3 nights at a west-coast beach resort (Añasco) + roundtrip nonstop CHI→SJU. Thanksgiving-week flights alone run $450–600 — the package lands at/below full DIY. A rental car is effectively required (Rincón is ~2.5 hrs from San Juan). Late November: hurricane season effectively over, no storm note.",
            src:"Live hunt · verified Oct 22, 2026", url:"https://www.orbitz.com/lp/theme-vacations/all-inclusive-vacations/148/Puerto-Rico", link:"Price it on Orbitz ↗"},
           {n:"Athens + Santorini — 7 days, flights included", len:"long", days:7, lenLabel:"6 NIGHTS · 7-DAY TRIP", img:"assets/img_8a46e3bb067f5917.jpg", alt:"Oia, Santorini — blue domes over the caldera", log:"⚠ LAYOVER — ORD→ATH nonstops are summer-seasonal, so the Dec–Apr dates connect via a European hub (the board's standing exception: no winter nonstop exists) · Athens↔Santorini hop by flight or ferry, included · book by Nov 18", tr:"Athens↔Santorini hop is in the fare · Athens airport→city transfers aren't — budget separately", d:"greece", c:"Live package · Travelzoo / Travelodeal", live:true, p:"$949", pn:949, u:"per person · 7-day trip · airfare + hotels + breakfast", s:null, st:"UP TO $458 UNDER COMPARABLE TRIPS", risk:false,
-           note:"7 days split the way Greece wants it — 3 nights Athens, 3 nights Santorini — with roundtrip airfare from Chicago, the Athens↔Santorini flights or ferries, and daily breakfast in. Departures Dec 2026–Apr 2027; Nov 2026 or May–Sep 2027 dates run +$100/person. <strong>Book by Nov 18.</strong> The sheet's long-haul rule in action: nothing this far away cards under a full week. Winter Santorini is scenery and sunsets, not beach weather — this is the culture-and-caldera version of Greece, and Travelzoo membership is required for the full booking details.",
+           note:"7 days split the way Greece wants it — 3 nights Athens, 3 nights Santorini — with roundtrip airfare from Chicago, the Athens↔Santorini flights or ferries, and daily breakfast in. Departures Dec 2026–Apr 2027; Nov 2026 or May–Sep 2027 dates run +$100/person. <strong>Book by Nov 18.</strong> Winter Santorini is scenery and sunsets, not beach weather — this is the culture-and-caldera version of Greece, and Travelzoo membership is required for the full booking details.",
            src:"Live hunt · verified Oct 23, 2026", url:"https://www.travelzoo.com/vacations/europe/Save-400-Greece-w-flights-3291923/", link:"Book it on Travelzoo ↗"},
           {n:"Carnival Celebration — Nov 29, 7nt Eastern Caribbean", len:"long", lenLabel:"7 NIGHTS · FULL WEEK", img:"assets/img_b5d5904c970121ff.jpg", alt:"Carnival Celebration sailing out of Miami", log:"Sails Miami · fly ORD/MDW→MIA or FLL and arrive a day early · $575pp all-in including taxes and gratuities", tr:"Port transfers aren't in the fare — MIA/FLL→PortMiami is on you. Budget separately", d:"cruises", c:"Live sailing · Excel class", live:true, p:"$575", pn:575, u:"per person · 7 nights all-in · $82/day", s:35, st:"35% BELOW THE SAME SHIP'S OTHER NOV SAILING", risk:false,
            note:"Nassau → Amber Cove → Half Moon Cay → Celebration Key, from Miami. The math: $340 base + ~$116 taxes/fees + $119 gratuities = $575pp — $1,150 for two, all-in. The same ship's Nov 15 sailing bases at $447pp.",
@@ -2186,7 +2219,7 @@
           {n:"Aruba — the ABC islands", img:"assets/img_bd6a2b7f2252a134.jpg", alt:"Eagle Beach, Aruba", log:"⚠ LAYOVER — no nonstop exists on ORD→AUA, so this is one of the routes where a stop is unavoidable · outside the hurricane belt · books like a normal Caribbean trip, minus the storm math", k:"Storm-season value, minus the storm", sec:"timing", secLabel:"§15 Timing",
            why:"The safest fixed-date September bet in the Caribbean: roughly a <strong>2% chance of a serious storm in a season</strong> and no direct hit in 50+ years. You collect hurricane-season pricing without playing hurricane roulette.",
            when:"September–October, while the rest of the Caribbean discounts for risk Aruba mostly doesn't carry.",
-           catch:"The layover, flagged plainly: no airline flies Chicago–Aruba nonstop, so a stop (usually Miami or Charlotte) is the price of this pin — it's the exception that proves the board's nonstop rule. Baseline prices also run higher than Cancún's — this is the sleep-at-night play, not the cheapest pin on the board."},
+           catch:"The layover, flagged plainly: no airline flies Chicago–Aruba nonstop, so a stop (usually Miami or Charlotte) is the price of this pin. Baseline prices also run higher than Cancún's — this is the sleep-at-night play, not the cheapest pin on the board."},
           {n:"Brussels, Belgium", img:"assets/img_9aea8f4743967559.jpg", alt:"Brussels' Grand Place dressed for the Christmas market", log:"ORD→Brussels NONSTOP (United) · the Grand Place is the center of the Winter Wonders footprint · Bruges and Ghent are short train hops", k:"Christmas markets at a deal fare", sec:"flights", secLabel:"§01 Flights",
            why:"Chicago's December deal board flags Brussels as Europe's strongest price-and-timing combo: a <strong>$432 round trip</strong> spotted for Dec 6–13 — dates that fall entirely inside <strong>Winter Wonders (Nov 27, 2026–Jan 3, 2027)</strong>, the Christmas-market takeover of the Grand Place.",
            when:"Late Nov–early Jan, inside the Winter Wonders window — early December gets the markets without the Christmas-week fare spike.",
@@ -2194,7 +2227,7 @@
           {n:"Phu Quoc, Vietnam", img:"assets/img_c60ad7d7edb73c30.jpg", alt:"A Phu Quoc beach — palms, white sand, calm water", log:"⚠ CONNECTIONS — no nonstop exists from Chicago; routings run via a hub plus Ho Chi Minh City or Hanoi, then a short domestic hop · December is dry season", k:"49% under its typical fare", sec:"flights", secLabel:"§01 Flights",
            why:"The single biggest fare gap on Chicago's December deal board: <strong>$1,131 round trip against a typical ~$2,218 — 49% below normal</strong> — landing in the middle of the island's dry season (Nov–Apr). On the ground, Vietnam runs $80–150/day for a comfortable mid-range trip (Going's budget file).",
            when:"December–February: dry season, and the window the deal fare was spotted in.",
-           catch:"Flagged plainly: this is a two-stop, 24-hour-plus journey — the fare is the compensation. It's the exception that proves the nonstop rule, priced like an apology."},
+           catch:"Flagged plainly: this is a two-stop, 24-hour-plus journey — the fare is the compensation, priced like an apology."},
           {n:"Lisbon, Portugal", img:"assets/img_214ecd8b33df1ac4.jpg", alt:"A Lisbon tram climbing past tiled facades", log:"ORD→Lisbon NONSTOP (TAP) · a walkable-hills city — stay near a metro line if your knees vote no", k:"Europe at a third less", sec:"timing", secLabel:"§15 Timing",
            why:"Portugal's cost base runs <strong>roughly one-third lower than the US</strong>, and the spring shoulder compresses flight prices on top of it — Europe's full old-world package (trams, tascas, custard tarts still warm from the oven) at a daily spend that feels like a domestic trip.",
            when:"Spring shoulder (Mar–May) for the fare-plus-weather combo; early fall runs a close second.",
