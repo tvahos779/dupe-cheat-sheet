@@ -3168,7 +3168,7 @@
       comparisonLabel:'Comparison',
       promo:'SINGLE-UNIT PRICE · EST. DELIVERY OCT 22–NOV 1',
       note:'DHgate seller amywatch888 — Crown tier, 99.2% positive feedback, 7,570 orders, 4,800+ sold, and 4.9★ across 1,361 reviews with real buyer photos. Replica/designer-style, not a genuine branded watch. Other variants start at $25.39; this card uses the black-dial variant’s $32.34 single-unit price.',
-      imgLocal:'assets/img_2ae6abd6d433df79.webp', imgLabel:'LISTING PRODUCT PHOTO',
+      imgLocal:'assets/morning-2026-10-05-automatic-sapphire-watch.webp', imgLabel:'LISTING PRODUCT PHOTO',
       imgAlt:'Black-dial 41mm automatic watch in polished 904L-style steel with sapphire crystal',
       url:'https://www.dhgate.com/product/style-black-dial-watch-42mm-automatic-mechanical/864983659.html', urlLabel:'View live DHgate listing ↗',
       new:true, verified:'Oct 5, 2026', availabilityBadge:'FREE SHIPPING · OCT 22–NOV 1'
@@ -4922,7 +4922,7 @@
       id:'restock-20261017-kay-cross-necklace', name:'Men\u2019s Cross Necklace \u2014 Stainless Steel, 24"',
       dupe:'$39.99', priceLabel:'Deal',
       note:'NEW \u00b7 Kay Outlet. A clean, classic brushed cross from a real jeweler \u2014 solid stainless steel on a 24-inch chain. No plating games, nothing to fade.',
-      imgLocal:'assets/img_c5c24d301b535880.jpg', imgLabel:'RETAILER PRODUCT PHOTO', imgAlt:'Brushed stainless steel cross pendant on a stainless chain against a white background',
+      imgLocal:'assets/restock-20261017-kay-cross-necklace.jpg', imgLabel:'RETAILER PRODUCT PHOTO', imgAlt:'Brushed stainless steel cross pendant on a stainless chain against a white background',
       url:'https://www.kayoutlet.com/mens-cross-necklace-stainless-steel-24/p/V-509350207', urlLabel:'Shop Kay Outlet \u2197',
       new:true, forceNewBadge:true, verified:'Oct 17, 2026', availabilityBadge:'IN STOCK'
     });
@@ -6836,7 +6836,7 @@
         dupe:'$549.00',priceLabel:'Deal',retail:'$799.00',comparisonLabel:'Was',
         promo:'BEST BUY DEAL OF THE DAY · TODAY ONLY · LOWEST PRICE EVER TRACKED',
         note:'NEW · Best Buy, sold by Best Buy. Deal of the Day for Nov 4 — today only, and the lowest price ever tracked per 9to5Toys (Nov 4). Milanese Loop versions are $649.00 (was $899.00). Expert take: the prior-gen Ultra at its lowest tracked price, $250 under Apple, with the full Ultra feature set (titanium, dual-frequency GPS, depth gauge) for buyers who do not need the newest Ultra 4. Single-unit price.',
-        imgLocal:'assets/img_5ed5d2e79c042684.webp',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Black titanium Apple Watch Ultra 3 with Black Ocean Band showing the depth gauge watch face',
+        imgLocal:'assets/hunt-20261104-apple-watch-ultra-3.webp',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Black titanium Apple Watch Ultra 3 with Black Ocean Band showing the depth gauge watch face',
         url:'https://www.bestbuy.com/site/promo/apple-watch-ultra-3-select-savings',urlLabel:'Shop on Best Buy ↗',
         new:true,forceNewBadge:true,stagedDate:'2026-11-04',verified:'Nov 4, 2026',dealBadge:'31% OFF',availabilityBadge:'NEW · TODAY ONLY'
       }});
@@ -6978,6 +6978,124 @@
       retired:['hunt-20261103-on-cloudboom-strike','spot-2026-012','spot-2026-013'],
       imagesDeleted:['assets/hunt-20261103-on-cloudboom-strike.jpg','assets/spot-shoe-aj4-military.jpg','assets/spot-shoe-aj4-bred.jpg'],
       orphansDeleted:['assets/collab-veja-marimekko.jpg','assets/hunt-20261029-wide-leg-jeans.jpg']
+    };
+
+    // === Morning product hunt staging — November 5, 2026 (staged only; the
+    // morning auto-publish handles publishing) ===
+    // FILE CAP counted before staging: ~285 bundled assets against the ~300
+    // cap. This pass adds 8 images and deletes 7 retired cards' images
+    // (three of the seven image files were already gone from assets/, so
+    // only the files present are removed) — final count stays under the cap.
+    // RETIREMENTS (7): the Apple Watch Ultra 3 Fresh Finds card comes out
+    // of the rotation (Nov 4 Deal of the Day ended — live price rose
+    // $549 → $649 at Best Buy); the other six retire via retireCardById.
+    for(let i=freshRotationEntries.length-1;i>=0;i--){
+      if(freshRotationEntries[i].item.id==='fresh-20261104-apple-watch-ultra-3') freshRotationEntries.splice(i,1);
+    }
+    [
+      'morning-20261005-automatic-sapphire-watch',
+      'hunt-20261010-marshall-major-v',
+      'morning-20261007-steelseries-arctis-nova-7',
+      'restock-20261017-kay-cross-necklace',
+      'hunt-20261008-woven-shoulder-bag',
+      'hunt-20261017-wurkkos-fc11c'
+    ].forEach(retireCardById);
+    // NEW CARDS (8) — all live-verified Nov 5, 2026, single-unit prices,
+    // direct listing links, seller disclosed on every card.
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-garmin-vivoactive-5'))){
+      addStagedCard('Watches',{
+        id:'hunt-20261105-garmin-vivoactive-5',name:'Garmin vivoactive 5 GPS Smartwatch — 42mm',
+        dupe:'$169.99',priceLabel:'Deal',retail:'MSRP $299.99 · Target regular $249.99',comparisonLabel:'Comparison',
+        promo:'LOWEST PRICE IN A YEAR · 4 COLORS IN STOCK: IVORY, BLACK SLATE, NAVY, ORCHID',
+        note:'NEW · Target at $169.99, verified live Nov 5 — also $169.99 at Amazon, Best Buy and Kohl\u2019s per Slickdeals (matched window). Garmin\u2019s AMOLED fitness GPS watch at its lowest price in a year — QUALITY buy: the training-watch value pick. Single-unit price.',
+        imgLocal:'assets/img_0d3105e38ad20b97.png',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Garmin vivoactive 5 GPS smartwatch with black case and silicone band showing a colorful AMOLED watch face',
+        url:'https://www.target.com/s?searchTerm=Garmin+vivoactive+5',urlLabel:'Shop on Target \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'LOWEST IN A YEAR',availabilityBadge:'NEW \u00b7 IN STOCK \u00b7 4 COLORS'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-citizen-cz-smart-pq2'))){
+      addStagedCard('Watches',{
+        id:'hunt-20261105-citizen-cz-smart-pq2',name:'Citizen CZ Smart PQ2 44mm Smartwatch — Silver/Black',
+        dupe:'$108.85',priceLabel:'Deal',retail:'Ref $277.76 \u00b7 61% off',comparisonLabel:'Comparison',
+        promo:'61% OFF \u00b7 NEW CONDITION \u00b7 SALE ENDS ~NOV 10',
+        note:'NEW · Woot at $108.85, verified live Nov 5. Genuine Citizen Wear OS smartwatch at 61% off — brand-name smartwatch money for a fraction of Pixel/Apple prices. Wear OS smartwatch (2023 model, deep clearance). Single-unit price.',
+        imgLocal:'assets/img_0bf80b4aab3d0607.jpg',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Citizen CZ Smart PQ2 44mm smartwatch with silver case and black strap showing a digital watch face',
+        url:'https://sport.woot.com/offers/citizen-cz-smart-pq2-44mm-smartwatch-6',urlLabel:'Shop on Woot \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'61% OFF',availabilityBadge:'NEW \u00b7 SALE ENDS ~NOV 10'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-pixel-watch-5-45mm'))){
+      addStagedCard('Watches',{
+        id:'hunt-20261105-pixel-watch-5-45mm',name:'Google Pixel Watch 5 — 45mm Wi-Fi',
+        dupe:'$329.99',priceLabel:'Deal',retail:'$429.99 list \u00b7 $100 off',comparisonLabel:'Was',
+        promo:'ALL-TIME LOW \u00b7 $100 OFF \u00b7 IN STOCK',
+        note:'NEW · Best Buy at $329.99, verified live Nov 5. Google\u2019s latest watch at its all-time low — $100 off the big 45mm, the size that usually never discounts. The 45mm is a different size SKU from the 41mm rotated off Nov 3. Single-unit price.',
+        imgLocal:'assets/img_d205b3d08488546c.jpg',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Google Pixel Watch with black band and domed black watch face showing 10:10',
+        url:'https://www.bestbuy.com/site/searchpage.jsp?id=pcat17071&st=Google+Pixel+Watch+5',urlLabel:'Shop on Best Buy \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'ALL-TIME LOW',availabilityBadge:'NEW \u00b7 IN STOCK'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-jbl-live-780nc'))){
+      addStagedCard('Headphones',{
+        id:'hunt-20261105-jbl-live-780nc',name:'JBL Live 780NC Wireless Over-Ear ANC Headphones — Black',
+        dupe:'$139.95',priceLabel:'Deal',retail:'$249.95 list \u00b7 44% off',comparisonLabel:'Was',
+        promo:'44% OFF \u00b7 SAME $139.95 AT JBL.COM, ABT AND SWEETWATER \u00b7 OFFER RUNS THROUGH NOV 8',
+        note:'NEW · Best Buy at $139.95, verified live Nov 5 — same price at JBL.com, Abt and Sweetwater (matched window, not a single-seller flash). 80-hour battery, adaptive ANC, Hi-Res Audio — the $140 over-ear that undercuts Sony\u2019s mid-tier by half. Single-unit price.',
+        imgLocal:'assets/img_d804b7e88da5427c.jpg',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Black JBL Live 780NC wireless over-ear noise-cancelling headphones',
+        url:'https://www.bestbuy.com/product/jbl-live-780nc-bluetooth-wireless-headband-over-the-ear-noise-cancelling-headphones-2026-black/J7LXFW3W3F/sku/6669898',urlLabel:'Shop on Best Buy \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'44% OFF',availabilityBadge:'NEW \u00b7 THROUGH NOV 8'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-muse-hifi-m5-ultra'))){
+      addStagedCard('Cool Tech',{
+        id:'hunt-20261105-muse-hifi-m5-ultra',name:'Muse HiFi M5 Ultra Bluetooth Tube DAC/AMP',
+        dupe:'$179.40',priceLabel:'Deal',retail:'Reg $299 \u00b7 40% off',comparisonLabel:'Was',
+        promo:'40% OFF \u00b7 11.11 SALE \u00b7 IN STOCK',
+        note:'NEW · HiFiGo at $179.40, verified live Nov 5. Tube warmth plus Bluetooth DAC/amp in one — the audiophile stocking-stuffer at 40% off for 11.11. Single-unit price.',
+        imgLocal:'assets/img_5afb4d57c41bb933.webp',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Muse HiFi M5 Ultra portable Bluetooth tube DAC amplifier with its retail box',
+        url:'https://hifigo.com/products/muse-hifi-m5-ultra',urlLabel:'Shop on HiFiGo \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'40% OFF',availabilityBadge:'NEW \u00b7 IN STOCK \u00b7 11.11 SALE'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-clover-pendant-necklace'))){
+      addStagedCard('Jewelry',{
+        id:'hunt-20261105-clover-pendant-necklace',name:'18K Gold-Plated Stainless Steel Clover Pendant Necklace with Gift Box — Van Cleef Alhambra-Style',
+        dupe:'$15.21',priceLabel:'Price',retail:'Was $37.09 \u00b7 59% off',comparisonLabel:'Was',
+        promo:'59% OFF \u00b7 SINGLE-UNIT PRICE \u00b7 5K+ SOLD \u00b7 5.0\u2605 (1,968 REVIEWS)',
+        note:'DHgate seller milinjewelry186 — Crown tier, 99.4% positive, 4,236 orders. 18K gold-plated stainless steel clover pendant necklace, 45cm, gift box included; 30,000 in stock. Stainless steel — not tungsten. Style dupe, not a genuine Van Cleef piece. The Van Cleef look for $15 — 5K+ sold at 5.0 stars, gift box included.',
+        imgLocal:'assets/img_a7e5dbee41f4838b.jpg',imgLabel:'LISTING PHOTO',imgAlt:'Gold clover pendant necklace with white mother-of-pearl style center displayed on a gift cushion with ribbon',
+        url:'https://www.dhgate.com/product/with-box-necklace-designer-necklace-18k-gold/1071394090.html',urlLabel:'View live DHgate listing \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'59% OFF',availabilityBadge:'5K+ SOLD \u00b7 5.0\u2605 \u00b7 GIFT BOX'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-laurel-hobo-erin'))){
+      addStagedCard('Purse Dupes',{
+        id:'hunt-20261105-laurel-hobo-erin',name:'Laurel Genuine Leather Hobo Bag \u201cErin\u201d — Coach Laurel Style',
+        dupe:'$45.74',priceLabel:'Price',retail:'Was $93.34 \u00b7 51% off',comparisonLabel:'Was',
+        promo:'51% OFF \u00b7 SINGLE-UNIT PRICE \u00b7 GENUINE LEATHER \u00b7 661 SOLD \u00b7 5.0\u2605 (45 REVIEWS) \u00b7 MANY COLORS',
+        note:'DHgate seller beautifulfashionbag — Factory Seller, 99.1% positive, 27,374 orders. Genuine leather Laurel-style hobo bag; 661 sold at 5.0 stars, 9,999 in stock, many colors, real listing photos. Coach Laurel look in genuine leather — Factory Seller, 661 sold at 5.0 stars. Style dupe, not a genuine Coach bag.',
+        imgLocal:'assets/img_20e533f9253c8a3d.jpg',imgLabel:'LISTING PHOTO',imgAlt:'Brown pebbled genuine leather Laurel-style hobo shoulder bag with top handle and crossbody strap',
+        url:'https://www.dhgate.com/product/shoulder-bags-designer-laurel-hobo-bag-erin/1125145533.html',urlLabel:'View live DHgate listing \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'51% OFF',availabilityBadge:'661 SOLD \u00b7 5.0\u2605 \u00b7 FACTORY SELLER'
+      });
+    }
+    if(!DATA.categories.some(cat=>cat.items.some(item=>item.id==='hunt-20261105-ua-expanse-boots'))){
+      addStagedCard('EDC & Gear',{
+        id:'hunt-20261105-ua-expanse-boots',name:'Under Armour Men\u2019s Expanse Mid Waterproof Boots — Castlerock',
+        dupe:'$66.94 after codes WARMUP + EXTRA',priceLabel:'Deal',retail:'Shelf $123.97 \u00b7 list $130',comparisonLabel:'Shelf/List',
+        promo:'CODES WARMUP (EXTRA 40% OFF) + EXTRA (EXTRA 10% OFF) \u00b7 CODES EXPIRE NOV 14 \u00b7 FREE SHIPPING',
+        note:'NEW · Under Armour direct at $66.94 with both codes applied — cart-tested live Nov 5 (both codes applied, total verified twice, cart abandoned, nothing purchased). Sizes 7\u201314 in stock except 10.5 and 11, which are out of stock. Waterproof winter boots at 48% off with a cart-tested code stack — QUALITY buy: Chicago-winter ready. Single-unit price.',
+        imgLocal:'assets/img_943594f6572629bf.jpg',imgLabel:'REAL PRODUCT PHOTO',imgAlt:'Under Armour Men\u2019s Expanse Mid waterproof boots in Castlerock gray',
+        url:'https://www.underarmour.com/en-us/p/6000770.html?dwvar_6000770_color=025',urlLabel:'Shop on Under Armour \u2197',
+        new:true,forceNewBadge:true,stagedDate:'2026-11-05',verified:'Nov 5, 2026',dealBadge:'48% OFF W/ CODES',availabilityBadge:'NEW \u00b7 CODES EXPIRE NOV 14'
+      });
+    }
+    window.__nov5MorningHunt={
+      added:['hunt-20261105-garmin-vivoactive-5','hunt-20261105-citizen-cz-smart-pq2','hunt-20261105-pixel-watch-5-45mm','hunt-20261105-jbl-live-780nc','hunt-20261105-muse-hifi-m5-ultra','hunt-20261105-clover-pendant-necklace','hunt-20261105-laurel-hobo-erin','hunt-20261105-ua-expanse-boots'],
+      removed:['fresh-20261104-apple-watch-ultra-3','morning-20261005-automatic-sapphire-watch','hunt-20261010-marshall-major-v','morning-20261007-steelseries-arctis-nova-7','restock-20261017-kay-cross-necklace','hunt-20261008-woven-shoulder-bag','hunt-20261017-wurkkos-fc11c'],
+      imagesDeleted:['assets/hunt-20261104-apple-watch-ultra-3.webp','assets/morning-2026-10-05-automatic-sapphire-watch.webp','assets/restock-20261017-kay-cross-necklace.jpg'],
+      imagesAlreadyAbsent:['assets/hunt-20261010-marshall-major-v.webp','assets/morning-20261007-steelseries-arctis-nova-7.webp','assets/hunt-20261008-woven-shoulder-bag.jpg','assets/hunt-20261017-wurkkos-fc11c.webp'],
+      leftUntouched:['JLab JBuds Lux (already removed Nov 2)','Cloudboom Strike (already retired by Nov 5 maintenance)','Apple Watch Ultra 3 sibling cards']
     };
 
     const freshRotation=document.getElementById('fresh-rotation');
