@@ -170,11 +170,11 @@ category:
   sale-priced flagship eats everything. Codec specs are a phone question,
   not a sound question.
 - **Knives:** heat treat matters more than the steel name. Inflated lumen
-  claims are measured at 30 seconds. (Full knife rules in §6.14.)
+  claims are measured at 30 seconds. (Full knife rules in §6.17.)
 - **Guns:** spot MAP-locked pricing and do rebate math the way a native
   speaker spots an accent. (Full gun rules in §6.11.)
 - **Audio:** know the headphone market's dead zones and that receiver
-  wattage headlines are fiction until you read the FTC line. (§6.5, §6.6.)
+  wattage headlines are fiction until you read the FTC line. (§6.5.)
 - **Sneakers/fashion:** price against what things *should* cost. The
   beat-the-street rule is universal among the sharpest voices.
 - **Dupes:** know the difference between a great dupe and junk the way a
@@ -208,7 +208,7 @@ a ticket is actually a deal and when it's just noise. The method:
 - **Learn the local media.** The regional paper, the local news sites, the
   county events calendar, the tourism board. That is where promo intel
   surfaces first.
-- **Tickets are editorial, not deals.** See §6.10: worth the night, fair
+- **Tickets are editorial, not deals.** See §6.9: worth the night, fair
   price, when prices drop, where fees hide.
 
 ### 1.6 Loyalties and rivalries — EXAMPLES TO SWAP
@@ -250,8 +250,8 @@ never in chat — except the green-lit chat exceptions (§1.2 and §8).
 |---|---|---|---|
 | 1 | **Main / Dupe Cheat Sheet** | Dupes, watches, jewelry, sneakers, designer deals, colognes, food, electronics, car audio, home audio, EDC, novelty tech — the daily sheet | Yes — full deal rules |
 | 2 | **Guns n Subs / Man Cave** | Replica guns, real guns, cigars, subwoofers/receivers overflow, man-cave gear, billiard accessories | Yes |
-| 3 | **Travel** | Flight-included packages, all-inclusives, cruises, destination deals, priced from [HOME AIRPORTS] | Yes — plus travel rules (§6.7) |
-| 4 | **Autos** | Used electric vehicles (+ a small exempt "Spotlight" of fun non-EVs) | Yes — plus Autos verification gate (§6.8) |
+| 3 | **Travel** | Flight-included packages, all-inclusives, cruises, destination deals, priced from [HOME AIRPORTS] | Yes — plus travel rules (§6.6) |
+| 4 | **Autos** | Used electric vehicles (+ a small exempt "Spotlight" of fun non-EVs) | Yes — plus Autos verification gate (§6.7) |
 | 5 | **Tickets** | Concerts, comedy, sports, local rooms — editorial picks | **NO — editorial judgment only** |
 
 **Sheet 1 pinned order:** quick nav → Bud's Lunch → This Weekend banner →
@@ -291,7 +291,7 @@ editorial judgment. Break them and the sheet is lying.
   (Amazon via triangulation §7.1, Best Buy, brand direct, category
   discounters) before carding.
 - For colognes, always cross-check Jomashop, FragranceNet, FragranceX, and
-  Maxaroma first (§6.4).
+  Maxaroma first (§6.3).
 - **Cheapest Reputable Price (CRP) column (recommended):** each card can
   carry `cheapest elsewhere: $X · Seller · checked [DATE]`. Verdicts: PASS
   (card beats CRP by ≥$1 / ≥2%), TIE (within $1 — at market, not a beat),
@@ -624,6 +624,8 @@ hover — CSS-only, subtle, nothing flashy, and always respect
    The live site is `https://[USERNAME].github.io/[REPO]/`.
 3. **Build the pages with your artifact/page builder.** The builder
    produces the HTML; your job is the data, the rules, and the verification.
+   Precise build kit — card schema, prep, push pseudocode, scheduler, PWA
+   — is Appendix C.
 4. **Push with a diff-based script, not a full re-upload.** Compute local
    file hashes, compare against the remote tree, upload only changed/new
    files, then create a tree over the previous tree as base, commit, and
@@ -660,10 +662,10 @@ hover — CSS-only, subtle, nothing flashy, and always respect
 | Run | Cadence | What it does |
 |---|---|---|
 | Morning hunt | Daily ~08:00 | New finds across all lanes; up to ~10 new cards with NEW badges; price updates; dead-card removals |
-| Food refresh | Daily (morning) | Today's food deals, Weekly Specials grid, Don't Miss strip (§6.9) |
+| Food refresh | Daily (morning) | Today's food deals, Weekly Specials grid, Don't Miss strip (§6.10) |
 | Maintenance | Every 48h | Full-card audit: staleness, bans, dead links, price moves, rule-compliance sweep, UFC/boxing odds refresh, promo-code table refresh |
 | Travel refresh | Weekly (Thu night) | 10–15 fresh verified deals; work the [UNVERIFIED] and disclosure leftovers |
-| Autos refresh | 2×/week | Verify price/mileage/availability live per the Autos gate (§6.8) |
+| Autos refresh | 2×/week | Verify price/mileage/availability live per the Autos gate (§6.7) |
 | Weekly research | Weekly (Fri) | One lane deep per week — longest-unstudied first — write the finding into the matching guide, not a new file |
 | Black Friday list | Seasonal | Ranked list, grows to Top 100 by Nov 15; renamed for Christmas Nov 28; removed Jan 1 |
 | Syncs | 10:00 + 18:00 daily | Automatic GitHub Pages sync; fixes push immediately, never waiting for the sync |
@@ -2574,6 +2576,142 @@ This file is designed to be public. Before sharing it:
     discount on a zero-driver product is a trap.
 12. **Keep learning.** One dated line per run, into the matching guide.
     Expertise compounds or it rots.
+
+## APPENDIX C — BUILD KIT — THE PUBLISHING MACHINERY
+
+§5 describes the machinery in prose. This appendix is the precise version:
+the parts a fresh agent needs to actually build and ship pages, not just
+describe them. Everything here is generic — no account names, no repo
+names, no tokens, no credentials. Your agent's own tooling supplies those.
+
+### C.1 Page builder
+
+On Muse, pages are built with the agent's built-in web-artifact / page
+builder — the same tools the new agent has. You do not hand-write the site
+from scratch: you give the builder the data (the card objects below), the
+section order, and the design rules (§11), and it produces the page. Your
+job is data, rules, and verification (§5.2).
+
+**Card data schema.** Every card is one object. No card ships without
+these fields (field names follow §5.5; the comparison and verification
+fields are mandatory, not optional):
+
+- `id` — unique, stable across rebuilds
+- `title` — the product, exact variant/size
+- `section` — which sheet section it belongs to
+- `price` — the carded price (single-unit, new only)
+- `retail` — list / MSRP, for context only — never the deal claim
+- `cheapestReputablePrice` + `cheapestReputableSource` — the
+  street-price comparison. The deal claim lives or dies here (§3.1)
+- `image` — a local asset file. Remote hotlinks are not honored
+- `url` — the listing page. Must resolve to the real listing, never a
+  search-ad result or a lookalike domain
+- `note` — one-line expert rationale (the why-buy in one sentence)
+- `badges` — e.g. NEW, LOCAL, and any verified-only flags
+- `verified` (boolean) + `verifiedDate` (date of the live check)
+- Optional: `crp` / `crpChecked` — cheapest-reputable-price snapshot
+  fields (§5.5)
+
+**Asset cap: ~300 local image files per sheet build.** Budget photo cards
+against it; when headroom is tight, retire stale and variant cards first
+(ladies' sections first, §6.16). Never exceed the cap hoping the build
+will absorb it.
+
+### C.2 Prep — from builder output to staging
+
+The builder's export is one bundled HTML file with images inlined as
+data URIs. Before pushing, split it:
+
+1. Walk the HTML. For each inlined image (`data:image/...;base64,...`),
+   decode it, hash its bytes (SHA-1), and write it once to
+   `assets/img_<first-16-hex-of-sha1>.<ext>` — identical images dedupe
+   to one file.
+2. Replace each data URI in the HTML with the relative path
+   `assets/img_<hash>.<ext>`.
+3. Rewrite any absolute links to a dead or old host to relative paths
+   (e.g. `guns.html`, `index.html`), so the pages work on any host.
+4. Output: one staging directory per push, containing the page HTML
+   files plus `assets/`.
+
+Never edit the generated HTML in the repo directly — the next build
+clobbers it (§5.5). Durable data lives in the builder's source.
+
+### C.3 Push — diff-based, never full re-upload
+
+Pseudocode (adapted from the original build's push helper; your agent's
+Git hosting API supplies the equivalent endpoints — create blob, create
+tree, create commit, update ref — under your own credentials):
+
+```
+remote = fetch remote recursive tree at branch head   # path -> blob sha
+local  = walk staging dir; for each file compute git blob sha:
+         sha1("blob " + len(bytes) + "\0" + bytes)
+changed = [f for f in local if remote.get(f) != local[f].sha]
+if not changed and head exists: exit cleanly, no commit ("nothing changed")
+for each f in changed: upload blob (base64),
+    collect tree entry {path, mode 100644, type blob, sha}
+# chunked tree creation: never post a huge tree in one call
+base = head tree sha; final = None
+for batch in chunks(tree_entries, 100):
+    final = create_tree(batch, base_tree=base)
+    base = final
+commit = create_commit(message, tree=final, parents=[head])
+update branch ref to commit.sha (no force)
+print summary: files changed, files checked, unchanged skipped
+```
+
+Rules baked into that flow (learned the hard way, §4.6 / §5.2):
+
+- **Never re-upload everything.** The original build hit 422 "input too
+  large" and 502s pushing ~500-file trees. Diff first; upload only
+  changed/new files.
+- **Tree entries in batches of 100**, each intermediate tree becoming
+  the next batch's base_tree.
+- **Retry transient failures** (429/502/503/504, disconnects) up to 3
+  attempts with backoff. Blob creation is content-addressed and a ref
+  update to the same commit is idempotent, so retries are safe.
+- **No changes → no commit**, exit cleanly.
+- **Retain remote paths not in the local set** (no deletions by
+  default). Orphan-asset cleanup is a separate, deliberate task.
+- **Verify live after every push:** fetch the live pages and compare
+  hashes against the staged files. A push is not done until the live
+  page matches (§5.2, §4.9).
+
+### C.4 Scheduler — the cadences
+
+The runs are scheduled agent runs (cron-style schedules owned by the
+agent's scheduler). Cadences (full table in §5.4):
+
+- Morning hunt — daily ~08:00. Food refresh — daily morning.
+- Maintenance — every 48h. Travel refresh — weekly (Thu night).
+- Autos refresh — 2×/week. Weekly research — weekly (Fri), one lane.
+- Syncs — 10:00 + 18:00 daily (automatic publish).
+
+Hard rule: **fixes push immediately, never wait for the next sync**
+(§5.4). A run that finds nothing says "nothing material" and stops.
+
+### C.5 PWA — installable as a phone app
+
+The sheet is installable as a phone app (PWA). Two files make it work:
+a web app manifest (`manifest.json` — name, icons, display mode, start
+URL) and a service worker (`sw.js` — caches the pages and assets so the
+sheet loads offline and installs to the home screen). Register the
+service worker from the page; keep the manifest's icons as local files,
+same as card images. No full code needed here — the builder generates
+both from the sheet's name and icon.
+
+### C.6 Two ban-boundary clarifications (read before carding)
+
+- **Sneaker replicas are NEVER carded — the §3.4 ban stands, no
+  exceptions.** The rep-shoe QC checklist in §6.2 and the vetting gate
+  in §6.16 are defensive knowledge: they exist so the agent can judge
+  quality and spot fakes, not as a license to card replicas. Knowing how
+  to grade a rep is not permission to sell one.
+- **Women's-shoes ban boundary:** the §3.4 "women's shoes" ban covers
+  women's shoe dupes as a category — no women's shoe cards, in any
+  section. The only ladies' scope on the sheets is the Purse Dupes
+  section (§6.16). It is the exception that proves the boundary, not an
+  opening for more ladies' categories.
 
 ---
 
