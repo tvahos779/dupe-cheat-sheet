@@ -216,6 +216,12 @@
     footer{margin-top:48px;padding:22px 0 6px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:grid;grid-template-columns:1fr auto;gap:20px}
     footer p{margin:0;max-width:850px}
     .back{color:var(--ink);text-decoration:none;font-weight:700}
+    .brain-file{margin:26px 0 0;padding:20px 0 2px;border-top:1px solid var(--line);text-align:center}
+    .brain-file h2{margin:0 0 6px;font-size:15px;line-height:1.2;letter-spacing:-.01em}
+    .brain-file p{margin:0 auto;max-width:640px;color:var(--muted);font-size:13px;line-height:1.55}
+    .brain-file a{color:var(--accent-ink);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    .brain-file a:hover{color:var(--ink)}
+    .brain-file a:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 38%,transparent);outline-offset:3px;border-radius:3px}
     .hidden{display:none!important}
     .food-deals{margin:0 0 28px;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
     .food-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;padding:18px 20px 16px;border-bottom:1px solid var(--line)}
@@ -1563,9 +1569,14 @@
     <section class="weekend-banner" id="weekend-banner" aria-labelledby="weekend-banner-title" hidden>
       <div class="weekend-banner-head">
         <h2 id="weekend-banner-title">This Weekend</h2>
-        <span class="weekend-range">NOV 6–8 · CHICAGO AREA</span>
+        <span class="weekend-range">NOV 13–15 · CHICAGO AREA</span>
       </div>
       <ul class="weekend-list">
+        <li class="weekend-event" data-event-date="2026-11-13"><span class="weekend-day">FRI</span><span class="weekend-copy"><strong>Annie (Theatre 121)</strong> · 7:30 PM · Woodstock Opera House</span><span class="weekend-price">from $41/ticket</span></li>
+        <li class="weekend-event" data-event-date="2026-11-13"><span class="weekend-day">FRI</span><span class="weekend-copy"><strong>Lucy&rsquo;s Comedy with Brian Noonan</strong> · 8:00 PM · Raue Center, Crystal Lake</span><span class="weekend-price">from $29/ticket</span></li>
+        <li class="weekend-event" data-event-date="2026-11-14"><span class="weekend-day">SAT</span><span class="weekend-copy"><strong>Chicago Blackhawks vs. Winnipeg Jets</strong> · 2:30 PM · United Center</span><span class="weekend-price">from $62.50/ticket</span></li>
+        <li class="weekend-event" data-event-date="2026-11-14"><span class="weekend-day">SAT</span><span class="weekend-copy"><strong>Ali Siddiq: The Custom Fit Tour</strong> · 7:00 PM · Wintrust Arena</span><span class="weekend-price">from $55.50/ticket</span></li>
+        <li class="weekend-event" data-event-date="2026-11-15"><span class="weekend-day">SUN</span><span class="weekend-copy"><strong>WWE NXT Holiday Live Tour</strong> · 7:00 PM · Aragon Ballroom</span><span class="weekend-price">from $42.25/ticket</span></li>
       </ul>
     </section>
     <script>
@@ -2688,6 +2699,10 @@
       </aside>
     </section>
     <footer><a class="back" href="#top">Back to top ↑</a></footer>
+    <section class="brain-file" aria-label="The Brain File">
+      <h2>The Brain File</h2>
+      <p>Do you want to make your own sheet? You can download the Brain File <a href="brain-file.md" download>here</a>. And all of the work that Tom did to make this sheet can be yours.</p>
+    </section>
   </main>
   <div class="lightbox" id="bud-lunch-lightbox" role="dialog" aria-modal="true" aria-label="Bud's Lunch cartoon, full size" hidden>
     <img src="assets/img_b35e50f245bd6a0a.webp" alt="Brain the white mouse gleefully munching an oversized DEALS card at the lunch table, crumbs flying, with BOSE HEADPHONES and ENTIRE STUDIOS HOODIE deal cards on the table. Behind him, the chalkboard lays out the next step of the master plan: STEP 2: FEAST ON THE DEALS." draggable="false">
