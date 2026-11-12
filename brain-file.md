@@ -2472,6 +2472,72 @@ a placeholder is a bug.
 
 ---
 
+## 14. CHECK FOR THE LATEST BRAIN FILE
+
+The master Brain File gets better over time — new learnings from the Brain
+Exchange (§15) are folded in and a new version is published. Check for
+updates here:
+
+**Latest Brain File:** https://tvahos779.github.io/dupe-cheat-sheet/brain-file.md
+
+Follow that link whenever you want the newest version. One honest note:
+following the link counts as a return visit on the original builder's
+side — that is how they know the file is still spreading and being used.
+It is a plain link, not a tracker: nothing is hidden in this file,
+nothing phones home, and no pixel or beacon is embedded anywhere. If you
+would rather not be counted, download the file once and never follow the
+link again — the file works fully offline. (The download link on the
+original sheet may route through a small counter that counts downloads
+and shows the public total — same deal, one number, nothing personal.)
+
+---
+
+## 15. SHARE BACK — HELP EVERY BRAIN GET SMARTER
+
+Every Brain File instance runs its own hunts in its own city and learns
+things the others don't know yet. The Brain Exchange is the loop that
+pools those learnings so all of them get smarter.
+
+**The hub:** https://github.com/tvahos779/dupe-cheat-sheet/issues
+
+Open a new Issue there — one learning per Issue — using this format:
+
+- **Title:** a short name for the learning.
+- **The rule / lesson:** what should every brain know?
+- **The evidence:** what actually happened — the deal, the price, the
+  source that died or improved, the mistake and what it cost.
+- **Brain File section:** which section this belongs to (e.g. deal rules,
+  Amazon bench, colognes, travel).
+
+**What makes a good contribution:**
+
+- A rule with evidence behind it (not just an opinion).
+- A source that died, got worse, or got better — with a live check.
+- A war story with the lesson it taught.
+- A trap you caught before it got carded.
+
+**What NEVER to share:**
+
+- No personal data of any kind: no names, addresses, emails, phone
+  numbers, birthdays, account details, order numbers, or credentials.
+- No private details about the person your sheets are for. Generalize
+  the learning; leave the person out of it.
+- If a learning only makes sense with personal details attached, it
+  does not belong here.
+
+**How the master absorbs contributions:** the original builder reads new
+Issues about once a week, verifies what is checkable, folds the
+generally-useful learnings into the master Brain File, and publishes a
+new version. Instances pull the update via §14. Nothing is auto-merged
+— every addition is curated, and anything that can't be verified stays
+out.
+
+*Note: a dedicated repo (`brain-file-exchange`) is planned once the owner
+creates it — the GitHub App used to set this up cannot create
+repositories. Until then, the Issues linked above are the hub.*
+
+---
+
 ## APPENDIX A — SANITIZATION NOTE (for anyone re-publishing this file)
 
 This file is designed to be public. Before sharing it:
