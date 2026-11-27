@@ -1951,6 +1951,10 @@
       <span class="badge badge-fri">FRI</span>
       <strong><a class="food-place" href="https://www.biggby.com" target="_blank" rel="noopener">BIGGBY Coffee</a></strong> (McHenry) — FREE 16-ounce hot or iced black coffee with a Bragel or Maple Waffle Sandwich, FRI NOV 27 ONLY, during the first hour after opening. In-store.
     </div>
+    <div class="deal-card">
+      <span class="badge badge-fri">FRI</span>
+      <strong><a class="food-place" href="https://7brew.com" target="_blank" rel="noopener" id="deal-7brew-bogo">7 Brew Coffee</a></strong> (CL/Alg) — BOGO FREE bakery treats, FRI NOV 27 ONLY, all day, while supplies last. Mix and match; second treat of equal or lesser value free. [in-store / drive-thru]
+    </div>
   </div>
   <div class="food-type-group">
     <h4>Grocery &amp; Meat Deals</h4>
@@ -11620,12 +11624,16 @@
     // delisted at SSENSE (the product URL now redirects to the generic
     // designer index, verified live Nov 27).
     retireCardById('hunt-20261016-gucci-orange-institutional-sunglasses');
-    // PASS A.2 — Montblanc Explorer EDP 3.3 oz: $52 -> $55.00, verified
-    // live Nov 27, 2026 on MaxAroma (JSON-LD, InStock). Seller stays MaxAroma.
+    // PASS A.2 — Montblanc Explorer EDP 3.3 oz: re-sourced to Jomashop.
+    // Live check Nov 27, 2026 found Jomashop cheaper than the $55.00
+    // MaxAroma price: standard sealed 3.3 oz / 100 ml bottle (SKU
+    // COS-EXLMES33-A, not the tester) at $65.30 asking, $52.24 after the
+    // displayed 20% coupon code FRAG20, in stock with Add to Bag live.
     updateEveryCard(item=>item.id==='deal-20261008-montblanc-explorer',{
-      dupe:'$55.00',verified:'Nov 27, 2026',promo:'VERIFIED AT MAXAROMA · IN STOCK',dealBadge:'$55.00 AT MAXAROMA',
-      retail:'3.3 oz / 100 ml',comparisonLabel:'Size',
-      note:'GENUINE · NEW/SEALED from MaxAroma. The exact 3.3 oz Eau de Parfum verified live at $55.00 on MaxAroma Nov 27, 2026 (JSON-LD, in stock).'
+      dupe:'$52.24',verified:'Nov 27, 2026',promo:'VERIFIED AT JOMASHOP · CODE FRAG20',dealBadge:'$52.24 AT JOMASHOP',
+      retail:'MaxAroma $55.00 · FragranceNet $97.99',comparisonLabel:'Checked prices',
+      url:'https://www.jomashop.com/montblanc-fragrances-exlmes33-a-3-3oz.html',urlLabel:'Shop Jomashop ↗',
+      note:'GENUINE · NEW/SEALED from Jomashop. The exact 3.3 oz Eau de Parfum verified live at $52.24 on Jomashop Nov 27, 2026 (asking $65.30, 20% off with code FRAG20; in stock). MaxAroma $55.00 is the runner-up.'
     });
     // PASS A.3 — NO CHANGE (per brief): Denon AVR-S970H stays at $764.49
     // (conflicting third-party signals not acted on); Kershaw PT-2
